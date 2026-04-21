@@ -1,0 +1,23 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated batch files (local only)
+run_images.bat
+gen_*.bat
+
+# Setup scripts (contain credentials — local only)
+setup_github.py
+setup_github.bat
+run_setup.bat
+
+# Batch files (local Windows scripts)
+*.bat

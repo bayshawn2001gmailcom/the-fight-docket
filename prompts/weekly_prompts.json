@@ -1,0 +1,40 @@
+{
+  "issue_date": "YYYY-MM-DD",
+  "prompts": [
+    {
+      "section": "intro",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    },
+    {
+      "section": "main_story",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    },
+    {
+      "section": "fight_card",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    },
+    {
+      "section": "business_intel",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    },
+    {
+      "section": "legal_docket",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    },
+    {
+      "section": "fighter_watch",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    },
+    {
+      "section": "the_take",
+      "topic": "describe section topic here",
+      "prompt": "Photorealistic documentary photograph of ... Editorial sports photography style, gritty, high contrast"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+name: Generate Newsletter Images
+
+on:
+  push:
+    paths:
+      - 'prompts/weekly_prompts.json'
+  schedule:
+    # Every Sunday at 11:15 PM UTC = 7:15 PM EDT
+    - cron: '15 23 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-genai pillow
+
+      - name: Generate images from prompts
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generate_images_action.py
+
+      - name: Commit and push images
+        run: |
+          git config user.name "Fight Docket Bot"
+          git config user.email "thefightdocket@gmail.com"
+          git add assets/newsletter_images/
+          git diff --staged --quiet || git commit -m "Add newsletter images [$(date +%Y-%m-%d)]"
+          git push
