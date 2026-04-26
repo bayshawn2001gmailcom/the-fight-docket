@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 180  # 3 hour timeout (1am → 4am)
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4

@@ -22,12 +22,12 @@ def get_api_key():
     return key
 
 
-def generate_image(prompt, aspect_ratio="16:9", resolution="2K"):
+def generate_image(prompt, api_key, aspect_ratio="16:9", resolution="2K"):
     from google import genai
     from google.genai import types
     import time
 
-    client = genai.Client()
+    client = genai.Client(api_key=api_key)
     config = types.GenerateContentConfig(
         response_modalities=["IMAGE"],
         image_config=types.ImageConfig(
@@ -60,7 +60,7 @@ def generate_image(prompt, aspect_ratio="16:9", resolution="2K"):
 
 
 def main():
-    get_api_key()
+    api_key = get_api_key()
 
     if not PROMPTS_FILE.exists():
         print(f"ERROR: {PROMPTS_FILE} not found. Skipping image generation.")
@@ -95,7 +95,7 @@ def main():
         print(f"\n  [{i}/{len(prompts)}] {section}: {topic}")
         print(f"  Prompt: {prompt[:80]}...")
 
-        image_bytes, mime_type = generate_image(prompt)
+        image_bytes, mime_type = generate_image(prompt, api_key)
 
         if image_bytes:
             ext = "jpg" if mime_type and "jpeg" in mime_type else "png"
