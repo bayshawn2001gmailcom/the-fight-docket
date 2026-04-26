@@ -33,11 +33,11 @@ jobs:
           python upcoming_fights_crawler.py
 
       - name: Commit upcoming_fights.json if changed
-              env:
-                        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "Fight Docket Bot"
           git config --global user.email "bot@thefightdocket.com"
           git add upcoming_fights.json || true
           git commit -m "🥊 Friday crawl: upcoming fights updated" || true
-          git push || true
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
