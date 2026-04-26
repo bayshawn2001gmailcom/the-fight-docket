@@ -1,0 +1,102 @@
+name: Sunday Post Fight Results
+
+# Run Sunday 1:00am EDT (0500 UTC)
+on:
+  schedule:
+    - cron: '0 5 * * 0'  # Sunday 5am UTC = 1am EDT
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  post-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180  # 3 hour timeout (1am → 4am)
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install python-dotenv instagrapi pillow google-genai --break-system-packages
+
+      - name: Create .env from secrets
+        env:
+          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          cat > .env << EOF
+          INSTAGRAM_USERNAME=$INSTAGRAM_USERNAME
+          INSTAGRAM_PASSWORD=$INSTAGRAM_PASSWORD
+          FIRECRAWL_API_KEY=$FIRECRAWL_API_KEY
+          GEMINI_API_KEY=$GEMINI_API_KEY
+          EOF
+
+      - name: First attempt — crawl for results (1:00am)
+        id: attempt_1
+        run: |
+          echo "🥊 First attempt: Crawling for fight results..."
+          python post_fight_results.py
+          echo "RESULTS_FOUND=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Check if results were found
+        id: check_results
+        run: |
+          if [ -f "instagram_content/sunday_result_*.png" ]; then
+            echo "RESULTS_FOUND=true" >> $GITHUB_OUTPUT
+          else
+            echo "RESULTS_FOUND=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Wait 1 hour if no results (2:00am attempt)
+        if: steps.check_results.outputs.RESULTS_FOUND == 'false'
+        run: |
+          echo "⏳ No results yet. Waiting 1 hour (until 2:00am)..."
+          sleep 3600
+
+      - name: Second attempt — retry crawl (2:00am)
+        if: steps.check_results.outputs.RESULTS_FOUND == 'false'
+        run: |
+          echo "🥊 Second attempt: Retrying for fight results..."
+          python post_fight_results.py
+        continue-on-error: true
+
+      - name: Wait until 4:00am for posting
+        run: |
+          CURRENT_HOUR=$(date +%H)
+          if [ "$CURRENT_HOUR" -lt "09" ]; then
+            MINUTES_TO_WAIT=$(( (9 - CURRENT_HOUR - 1) * 60 + (60 - $(date +%M)) ))
+            echo "⏳ Waiting until 4:00am EDT to post (${MINUTES_TO_WAIT} minutes)..."
+            sleep $((MINUTES_TO_WAIT * 60))
+          fi
+
+      - name: Verify image exists before posting
+        run: |
+          if ls instagram_content/sunday_result_*.png 1> /dev/null 2>&1; then
+            echo "✅ Image found. Ready to post!"
+          else
+            echo "⚠️  No image generated. Check logs for errors."
+            exit 1
+          fi
+
+      - name: Post to Instagram (4:00am)
+        run: |
+          echo "📸 Posting to Instagram @thefightdocket..."
+          python post_fight_results.py --post-only
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "✅ Fight result posted successfully!"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Workflow failed. Check logs for details."
+          exit 1

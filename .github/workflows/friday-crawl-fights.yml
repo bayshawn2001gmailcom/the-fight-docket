@@ -1,0 +1,41 @@
+name: Friday Crawl Upcoming Fights
+
+# Run Friday 6:00pm EDT (2300 UTC)
+on:
+  schedule:
+    - cron: '0 23 * * 5'  # Friday 11pm UTC = 6pm EDT
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  crawl-fights:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install python-dotenv --break-system-packages
+
+      - name: Create .env from secrets
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: |
+          echo "FIRECRAWL_API_KEY=$FIRECRAWL_API_KEY" > .env
+
+      - name: Run upcoming fights crawler
+        run: |
+          python upcoming_fights_crawler.py
+
+      - name: Commit upcoming_fights.json if changed
+        run: |
+          git config --global user.name "Fight Docket Bot"
+          git config --global user.email "bot@thefightdocket.com"
+          git add upcoming_fights.json || true
+          git commit -m "🥊 Friday crawl: upcoming fights updated" || true
+          git push || true
