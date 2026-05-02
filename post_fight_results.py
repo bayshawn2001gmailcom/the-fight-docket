@@ -252,25 +252,48 @@ def parse_fight_results(raw_data):
 # INSTAGRAM POSTING
 # ──────────────────────────────────────────────────────────────
 
+SESSION_FILE = os.path.join(SCRIPT_DIR, "instagram_content", ".ig_session.json")
+
+
 def post_to_instagram(image_path, caption):
     """
     Post image + caption to Instagram via instagrapi.
+    Uses session persistence to reduce login challenges from GitHub Actions IPs.
     """
     try:
         from instagrapi import Client
+        from instagrapi.exceptions import LoginRequired, ChallengeRequired
 
-        print(f"📸 Posting to Instagram: @{INSTAGRAM_USERNAME}")
-        client = Client()
-        client.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
+        print(f"  Posting to Instagram: @{INSTAGRAM_USERNAME}")
+        cl = Client()
+        cl.delay_range = [2, 5]
 
-        # Upload photo
-        media = client.photo_upload(image_path, caption=caption)
-        print(f"✅ Posted! Media ID: {media.id}")
+        # Try loading saved session first (avoids fresh login from new IPs)
+        if os.path.exists(SESSION_FILE):
+            try:
+                cl.load_settings(SESSION_FILE)
+                cl.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
+                print("  Session loaded from file")
+            except (LoginRequired, Exception):
+                print("  Saved session expired, logging in fresh...")
+                cl = Client()
+                cl.delay_range = [2, 5]
+                cl.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
+        else:
+            cl.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
 
-        client.logout()
+        # Save session for next run
+        os.makedirs(os.path.dirname(SESSION_FILE), exist_ok=True)
+        cl.dump_settings(SESSION_FILE)
+
+        media = cl.photo_upload(image_path, caption=caption)
+        print(f"  Posted. Media ID: {media.id}")
+        cl.logout()
         return True
+
     except Exception as e:
-        print(f"❌ Instagram post failed: {e}")
+        print(f"  Instagram post failed: {e}")
+        print("  Image and caption saved — post manually from instagram_content/")
         return False
 
 # ──────────────────────────────────────────────────────────────

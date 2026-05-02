@@ -1,0 +1,37 @@
+name: Monday IG Content Generator
+
+# Runs Monday 9am EDT (1pm UTC) — reads weekly_ig_data.json produced by the
+# Thursday newsletter pipeline and generates all 4 Instagram graphics + captions.
+on:
+  schedule:
+    - cron: '0 13 * * 1'  # Monday 1pm UTC = 9am EDT
+  workflow_dispatch:
+
+jobs:
+  generate-ig-content:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pillow python-dotenv --break-system-packages
+
+      - name: Generate IG graphics and captions
+        run: python ig_content_generator.py
+
+      - name: Commit IG content
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "Fight Docket Bot"
+          git config user.email "bot@thefightdocket.com"
+          git add instagram_content/ || true
+          git diff --staged --quiet || git commit -m "IG content generated [$(date +%Y-%m-%d)]"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true

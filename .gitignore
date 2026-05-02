@@ -22,5 +22,5 @@ run_setup.bat
 # Batch files (local Windows scripts)
 *.bat
 .env
-instagram_content/*.png
-upcoming_fights.json
+# Session file contains Instagram tokens — never commit
+instagram_content/.ig_session.json

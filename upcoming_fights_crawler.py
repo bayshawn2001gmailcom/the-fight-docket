@@ -1,102 +1,104 @@
+#!/usr/bin/env python3
 """
 The Fight Docket — Upcoming Fights Crawler
-Runs: Friday 6:00pm EDT
-Purpose: Crawl UFC.com + boxing sources for UPCOMING fights
-Stores card info as backup reference for Sunday results crawling
+Runs: Friday 6:00pm EDT via GitHub Actions (friday-crawl-fights.yml)
+Crawls UFC.com + ESPN Boxing for this weekend's fights, saves to upcoming_fights.json
 """
-
-import os
-import sys
-import json
+import os, sys, json, requests, time
 from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
+load_dotenv(Path.home() / ".env", override=False)
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-UPCOMING_FIGHTS_FILE = os.path.join(SCRIPT_DIR, "upcoming_fights.json")
+FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY", "")
+if not FIRECRAWL_API_KEY:
+    raise SystemExit("Missing FIRECRAWL_API_KEY")
 
-# ──────────────────────────────────────────────────────────────
-# CRAWL UPCOMING FIGHTS
-# ──────────────────────────────────────────────────────────────
+SCRIPT_DIR          = Path(__file__).parent
+UPCOMING_FIGHTS_FILE = SCRIPT_DIR / "upcoming_fights.json"
+FC_HEADERS = {"Authorization": f"Bearer {FIRECRAWL_API_KEY}"}
+
+
+def firecrawl_extract(url, prompt):
+    """Structured extraction via Firecrawl."""
+    try:
+        resp = requests.post(
+            "https://api.firecrawl.dev/v1/scrape",
+            json={
+                "url": url,
+                "formats": ["json"],
+                "jsonOptions": {"prompt": prompt},
+            },
+            headers=FC_HEADERS,
+            timeout=30,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        return (data.get("data") or {}).get("json") or data.get("json") or []
+    except Exception as e:
+        print(f"  Firecrawl failed for {url}: {e}")
+        return []
+
 
 def crawl_upcoming_ufc():
-    """
-    Crawl UFC.com for upcoming fights this weekend.
-    Returns: list of {fighter1, fighter2, event, date, weight_class, time}
-    """
-    try:
-        print("🥊 Crawling UFC.com for upcoming fights...")
-        fights = []
-        # TODO: Implement Firecrawl crawling of UFC.com/events
-        return fights
-    except Exception as e:
-        print(f"❌ UFC crawl failed: {e}")
-        return []
+    print("  Crawling UFC.com for upcoming events...")
+    fights = firecrawl_extract(
+        "https://www.ufc.com/events",
+        "Extract all upcoming UFC events and their main card fights. For each fight return: "
+        "fighter1 (string), fighter2 (string), event (string, e.g. 'UFC 329'), "
+        "date (string, e.g. 'July 11, 2026'), venue (string), city (string), "
+        "weight_class (string), is_title_fight (boolean). Return as array of objects.",
+    )
+    if isinstance(fights, list):
+        return [f for f in fights if isinstance(f, dict)]
+    if isinstance(fights, dict):
+        return fights.get("fights", []) or fights.get("events", []) or []
+    return []
+
 
 def crawl_upcoming_boxing():
-    """
-    Crawl BoxRec + ESPN for upcoming boxing matches this weekend.
-    Returns: list of {fighter1, fighter2, event, date, weight_class, time}
-    """
-    try:
-        print("🥊 Crawling BoxRec + ESPN for upcoming boxing...")
-        fights = []
-        # TODO: Implement Firecrawl crawling
-        return fights
-    except Exception as e:
-        print(f"❌ Boxing crawl failed: {e}")
-        return []
+    print("  Crawling ESPN for upcoming boxing cards...")
+    fights = firecrawl_extract(
+        "https://www.espn.com/boxing/schedule",
+        "Extract upcoming boxing matches scheduled within the next 30 days. For each fight: "
+        "fighter1, fighter2, event_name, date, venue, city, weight_class, is_title_fight. "
+        "Return as array of objects.",
+    )
+    if isinstance(fights, list):
+        return [f for f in fights if isinstance(f, dict)]
+    if isinstance(fights, dict):
+        return fights.get("fights", []) or fights.get("schedule", []) or []
+    return []
 
-# ──────────────────────────────────────────────────────────────
-# STORE UPCOMING FIGHTS
-# ──────────────────────────────────────────────────────────────
-
-def save_upcoming_fights(fights_data):
-    """Save upcoming fights to JSON for Sunday's results crawling."""
-    try:
-        with open(UPCOMING_FIGHTS_FILE, 'w') as f:
-            json.dump(fights_data, f, indent=2)
-        print(f"✅ Saved {len(fights_data)} upcoming fights to {UPCOMING_FIGHTS_FILE}")
-        return True
-    except Exception as e:
-        print(f"❌ Failed to save fights: {e}")
-        return False
-
-# ──────────────────────────────────────────────────────────────
-# MAIN WORKFLOW
-# ──────────────────────────────────────────────────────────────
 
 def main():
-    """
-    Main workflow: Crawl upcoming fights, store as backup.
-    Runs Friday 6pm EDT.
-    """
-    print(f"\n{'='*60}")
-    print(f"🥊 Upcoming Fights Crawler — {datetime.now()}")
-    print(f"{'='*60}\n")
+    print("=" * 55)
+    print("  Fight Docket — Upcoming Fights Crawler")
+    print(f"  {datetime.now().strftime('%A %B %d, %Y — %H:%M')}")
+    print("=" * 55)
 
-    # Crawl upcoming fights
-    ufc_fights = crawl_upcoming_ufc()
-    boxing_fights = crawl_upcoming_boxing()
+    ufc_fights     = crawl_upcoming_ufc()
+    time.sleep(0.5)
+    boxing_fights  = crawl_upcoming_boxing()
 
-    all_fights = ufc_fights + boxing_fights
+    all_fights = {
+        "crawled_at": datetime.utcnow().isoformat() + "Z",
+        "ufc":    ufc_fights,
+        "boxing": boxing_fights,
+    }
 
-    print(f"\n📊 Found {len(all_fights)} upcoming fights:")
-    for fight in all_fights:
-        print(f"  • {fight.get('fighter1')} vs {fight.get('fighter2')} — {fight.get('event')}")
+    UPCOMING_FIGHTS_FILE.write_text(json.dumps(all_fights, indent=2), encoding="utf-8")
 
-    # Save for Sunday's use
-    save_upcoming_fights({
-        "crawled_at": datetime.now().isoformat(),
-        "fights": all_fights,
-        "ufc_count": len(ufc_fights),
-        "boxing_count": len(boxing_fights)
-    })
+    print(f"\n  UFC fights found   : {len(ufc_fights)}")
+    print(f"  Boxing fights found: {len(boxing_fights)}")
+    print(f"  Saved to: {UPCOMING_FIGHTS_FILE.name}")
+    print("=" * 55)
 
-    return True
+    return bool(ufc_fights or boxing_fights)
+
 
 if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)
+    ok = main()
+    sys.exit(0 if ok else 1)

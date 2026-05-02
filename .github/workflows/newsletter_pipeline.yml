@@ -1,0 +1,40 @@
+name: Thursday Newsletter Pipeline
+
+# Runs Thursday 9pm EDT (0100 UTC Friday) — generates draft newsletter,
+# image prompts (which auto-trigger generate_images.yml), and IG content data.
+on:
+  schedule:
+    - cron: '0 1 * * 5'  # Friday 1am UTC = Thursday 9pm EDT
+  workflow_dispatch:
+
+jobs:
+  generate-newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv google-genai --break-system-packages
+
+      - name: Run newsletter generator
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python newsletter_generator.py
+
+      - name: Commit newsletter draft, prompts, and IG data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "Fight Docket Bot"
+          git config user.email "bot@thefightdocket.com"
+          git add "newsletter_*.html" prompts/weekly_prompts.json prompts/weekly_ig_data.json || true
+          git diff --staged --quiet || git commit -m "Newsletter draft + prompts [$(date +%Y-%m-%d)]"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
