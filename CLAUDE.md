@@ -162,21 +162,26 @@ python "The fight Docket/generate_weekly_ig.py"
 **Weekly automation schedule:**
 | Day/Time | Workflow | Script |
 |----------|----------|--------|
-| Thu 9pm EDT | `newsletter_pipeline.yml` | `newsletter_generator.py` → newsletter HTML + image prompts + IG data |
-| Thu 10pm EDT | `twitter_thread.yml` | `post_twitter_thread.py` → 6-tweet thread to @thefightdocket |
 | Fri 6pm EDT | `friday-crawl-fights.yml` | `upcoming_fights_crawler.py` → upcoming_fights.json |
-| Sun 1–4am EDT | `sunday-post-results.yml` | `post_fight_results.py` → result image + Instagram attempt |
+| Fri 9pm/11pm/12:30am EDT | `friday-night-results.yml` | `post_live_result.py` → live tweets + IG cards (deduped) |
+| Sat 9pm/11pm EDT | `saturday-night-results.yml` | `post_live_result.py` → live tweets + IG cards (deduped) |
+| Sun 1–4am EDT | `sunday-post-results.yml` | `post_fight_results.py` → full result recap image + Instagram |
 | Sun 7:15pm EDT | `generate_images.yml` | `generate_images_action.py` → newsletter images from prompts |
-| Mon 9am EDT | `weekly_ig_content.yml` | `ig_content_generator.py` → 4 IG graphics + captions |
+| Mon 8am EDT | `newsletter_pipeline.yml` | `newsletter_generator.py` → newsletter HTML (covers weekend results) |
+| Mon 10am EDT | `twitter_thread.yml` | `post_twitter_thread.py` → 6-tweet thread to @thefightdocket |
+| Mon 11am EDT | `weekly_ig_content.yml` | `ig_content_generator.py` → 4 IG graphics + captions |
 
 **Key scripts:**
 - `newsletter_generator.py` — Firecrawl + Gemini full newsletter automation
 - `ig_content_generator.py` — auto-generates 4 IG graphics from weekly_ig_data.json
 - `post_twitter_thread.py` — Gemini writes + tweepy posts thread to @thefightdocket
-- `post_fight_results.py` — crawls results, generates image, posts to Instagram
+- `post_live_result.py` — Friday/Saturday night live results: crawl → dedup → tweet → IG card
+- `post_fight_results.py` — Sunday recap: crawls results, generates image, posts to Instagram
 - `upcoming_fights_crawler.py` — Friday pre-crawl via Firecrawl
 - `beehiiv_prep.py` — pre-processes newsletter HTML for clean Beehiiv injection
 - `generate_weekly_ig.py` — manual fallback for IG content (edit WEEK block)
+
+**Deduplication:** `posted_results.json` tracks every result posted live so re-runs don't double-post.
 
 **GitHub Secrets set:**
 `GEMINI_API_KEY`, `FIRECRAWL_API_KEY`, `INSTAGRAM_USERNAME`, `INSTAGRAM_PASSWORD`,

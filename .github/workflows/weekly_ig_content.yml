@@ -1,10 +1,10 @@
 name: Monday IG Content Generator
 
-# Runs Monday 9am EDT (1pm UTC) — reads weekly_ig_data.json produced by the
-# Thursday newsletter pipeline and generates all 4 Instagram graphics + captions.
+# Runs Monday 11am EDT (1500 UTC) — 3 hours after newsletter pipeline,
+# reads weekly_ig_data.json produced by the Monday newsletter pipeline.
 on:
   schedule:
-    - cron: '0 13 * * 1'  # Monday 1pm UTC = 9am EDT
+    - cron: '0 15 * * 1'  # Monday 3pm UTC = 11am EDT
   workflow_dispatch:
 
 jobs:

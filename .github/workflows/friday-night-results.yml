@@ -1,0 +1,50 @@
+name: Friday Night Live Results
+
+# Friday night fight windows (EDT = UTC-4):
+#   9:00pm EDT  = Sat 01:00 UTC  → early results / prelims wrap
+#  11:00pm EDT  = Sat 03:00 UTC  → main card underway
+#  12:30am EDT  = Sat 04:30 UTC  → after main event
+on:
+  schedule:
+    - cron: '0 1 * * 6'    # Fri 9pm EDT
+    - cron: '0 3 * * 6'    # Fri 11pm EDT
+    - cron: '30 4 * * 6'   # Sat 12:30am EDT
+  workflow_dispatch:
+
+jobs:
+  post-live-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv google-genai tweepy instagrapi pillow --break-system-packages
+
+      - name: Post live results
+        env:
+          FIRECRAWL_API_KEY:     ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY:        ${{ secrets.GEMINI_API_KEY }}
+          TWITTER_API_KEY:       ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET:    ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN:  ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+          INSTAGRAM_USERNAME:    ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD:    ${{ secrets.INSTAGRAM_PASSWORD }}
+        run: python post_live_result.py
+
+      - name: Commit results log and IG cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "Fight Docket Bot"
+          git config user.email "bot@thefightdocket.com"
+          git add posted_results.json instagram_content/ || true
+          git diff --staged --quiet || git commit -m "Live results: Friday night [$(date +%Y-%m-%d %H:%M)]"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
