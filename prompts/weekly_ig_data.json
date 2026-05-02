@@ -1,0 +1,32 @@
+{
+  "date": "MAY 9, 2026",
+  "issue": "may09_2026",
+  "preview_stories": [
+    "Prates' impact on welterweight",
+    "Inoue's Japan dominance",
+    "Bellator's strategic shift"
+  ],
+  "announcement": {
+    "fighter1": "Burns",
+    "fighter2": "Brady",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "f1_vs_f2_announcement.png"
+  },
+  "result": {
+    "winner": "Prates",
+    "loser": "Della Maddalena",
+    "method": "KO/TKO",
+    "round_num": "R2",
+    "time": "3:17",
+    "event": "UFC Fight Night",
+    "filename": "name_result.png"
+  },
+  "quote": {
+    "quote": "He was a tough opponent, but my striking was just too sharp. I'm coming for the welterweight title.",
+    "attribution": "Carlos Prates",
+    "context": "Post-fight interview, UFC Perth",
+    "filename": "quote_card.png"
+  }
+}

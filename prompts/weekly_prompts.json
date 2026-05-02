@@ -1,41 +1,25 @@
 {
-  "issue_date": "2026-04-21",
-  "issue_title": "The End of Durinho — Burns Retires, Joshua/Fury Still Negotiating",
+  "issue_date": "2026-05-02",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Burns retirement — 14-year career ends in Winnipeg",
-      "prompt": "Fine art documentary photograph, a single pair of worn and battered boxing gloves laid flat and still on an empty gym floor, soft single overhead spotlight illuminating only the gloves, the rest of the gym receding into deep shadow, dust motes suspended in the beam of light, scuffed hardwood beneath the gloves, muted warm amber tones with long shadows at the edges, mood of quiet finality and fourteen years of earned dignity, 35mm film grain, no faces, no logos, no text in image"
+      "topic": "Editorial insight, combat sports business, week in review, subtle data",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, stock ticker subtly in background"
     },
     {
       "section": "main_story",
-      "topic": "Fury vs Joshua — two heavyweights, grief behind the negotiation",
-      "prompt": "Cinematic wide-angle film still, two large heavyweight silhouettes facing each other from across a vast empty press conference stage, a single hard spotlight from directly above splitting the darkness between them, each figure casting a long shadow in opposite directions across the floor, mood of unresolved weight and the gravity of grief behind the confrontation, cold steel-blue ambient fill with warm center spotlight, high contrast deep blacks, 35mm grain, no faces, no logos, no text in image"
+      "topic": "Carlos Prates upset win, Jack Della Maddalena defeated, welterweight division",
+      "prompt": "Dramatic low angle, Carlos Prates triumphant pose after Della Maddalena KO, no logos, dark arena atmosphere."
     },
     {
-      "section": "fight_card",
-      "topic": "UFC Fight Night Winnipeg — post-fight arena after the results",
-      "prompt": "Photorealistic documentary photograph of an empty UFC octagon cage immediately after a fight, the canvas scuffed and marked from the bout, a knocked-over corner stool visible at the edge of the cage, single overhead arena spotlight cutting through light haze from above, empty crowd seats rising into darkness behind the cage, cold ambient blue from the ceiling, quiet resonant atmosphere after the noise has gone, low ringside angle looking across the mat, 35mm film grain, desaturated tones, no logos visible, no text in image, no faces"
+      "section": "fight_previews",
+      "topic": "Upcoming MMA and boxing fight cards, speculation, potential matchups, events",
+      "prompt": "Blurred fight crowd, sense of anticipation, neon lights, generic arena background, no faces, no logos."
     },
     {
       "section": "business_intel",
-      "topic": "Joshua/Fury two-fight deal structure — July tune-up then November Fury",
-      "prompt": "Photorealistic documentary photograph of two large heavyweight boxing gloves resting side by side on a dark polished negotiating table, a single overhead lamp casting hard light down, the surface reflecting the gloves in deep shadow, mood of unfinished business and high stakes, cold blue-grey tones, sparse and tense composition, 35mm film grain, no logos on gloves, no text in image, no faces"
-    },
-    {
-      "section": "legal_docket",
-      "topic": "Driver charged with dangerous driving causing death — Lagos-Ibadan crash",
-      "prompt": "Atmospheric long-exposure photograph of a dark highway at night, headlight trails curving through the frame, the road wet and reflective, deep shadows flanking the lane, mood of sudden loss and grief, cold blue-black tones, empty road receding into darkness, no vehicles visible, no people, no logos, no text in image"
-    },
-    {
-      "section": "fighter_watch",
-      "topic": "Mike Malott 13-2, watching for his next matchup",
-      "prompt": "Dramatic editorial photograph, a lone fighter's silhouette standing at the center of an empty octagon cage, shot from outside the cage looking through the fence, cage diamonds framing the figure, arena lights behind the fighter creating a hard backlight outline, crowd seats in deep shadow, mood of emerging greatness and quiet confidence, high contrast, cold blue ambient, 35mm grain, no faces, no logos, no text in image"
-    },
-    {
-      "section": "the_take",
-      "topic": "Malott's grace in victory — a fighter's quiet dignity after winning",
-      "prompt": "Intimate close-up photojournalism, a fighter's taped and wrapped hands resting calmly on the top rope of a boxing ring, soft arena lights blurred warm gold in the background, shallow depth of field with the hands sharp and the crowd dissolving into bokeh, mood of quiet pride and genuine grace in victory, warm amber tones, 35mm grain, no faces visible, no logos, no text in image"
+      "topic": "Bellator MMA strategy shift, regional talent, smaller events, cost reduction",
+      "prompt": "Bellator cage, empty seats, spotlight, sense of transition, no fighters, no logos."
     }
   ]
 }
