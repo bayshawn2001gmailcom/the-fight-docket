@@ -63,6 +63,46 @@ Requires `OPENROUTER_API_KEY`.
 
 ---
 
+## Beehiiv HTML Injection — Clean Posting Workflow
+
+**Root cause of spacing/font bugs:** Injecting raw HTML via `execCommand('insertHTML')` into Beehiiv's ProseMirror editor creates empty block elements:
+- Blank lines between `<p>` tags → empty `<p>` nodes
+- `<div class="subtitle">` wrappers → orphaned empty `<div>` nodes
+
+**Fix — always pre-process HTML before injecting:**
+
+```bash
+# Step 1: Run the pre-processor on the HTML file
+python beehiiv_prep.py Fight_Docket_YYYY-MM-DD.html
+# Outputs: Fight_Docket_YYYY-MM-DD_clean.html + Fight_Docket_YYYY-MM-DD.inject.js
+```
+
+The `.inject.js` file contains the full browser console script with clean HTML already embedded. Copy-paste it into the Beehiiv editor console.
+
+**If injection was already done without pre-processing**, run this cleanup script in the browser console on the editor page:
+
+```javascript
+(function() {
+  const editor = document.querySelector('.ProseMirror');
+  editor.focus();
+  let removed = 0;
+  Array.from(editor.querySelectorAll('p')).forEach(p => {
+    if (p.textContent.trim() === '') { p.remove(); removed++; }
+  });
+  Array.from(editor.querySelectorAll('div')).forEach(d => {
+    if (d.className === '' && d.textContent.trim() === '' && !d.querySelector('img')) {
+      d.remove(); removed++;
+    }
+  });
+  editor.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true }));
+  console.log('Removed ' + removed + ' empty elements. Check for Synced status.');
+})();
+```
+
+Wait for "Synced" status to confirm autosave.
+
+---
+
 ## Social Media Accounts (set up April 21, 2026)
 
 ### Instagram — @thefightdocket
@@ -112,34 +152,36 @@ python "The fight Docket/generate_weekly_ig.py"
 
 ---
 
-## Instagram Automation Setup (April 26, 2026)
+## Full Automation Pipeline (as of May 2, 2026)
 
 **Account credentials:**
-- Email: `thefightdocket@gmail.com`
+- Instagram: `thefightdocket@gmail.com` / `@thefightdocket`
+- Twitter/X: `@thefightdocket`
 - GitHub repo: https://github.com/bayshawn2001gmailcom/the-fight-docket
 
-**Automation schedule:**
-- **Friday 6:00pm EDT** — `upcoming_fights_crawler.py` crawls UFC.com + BoxRec + ESPN for upcoming weekend fights
-- **Sunday 1:00am EDT** — `post_fight_results.py` crawls results, generates image, posts to Instagram
-- **Sunday 2:00am EDT** — Retry if results missing (wait 1 hour for full result population)
-- **Sunday 4:00am EDT** — Post to Instagram (fresh for followers Monday morning)
+**Weekly automation schedule:**
+| Day/Time | Workflow | Script |
+|----------|----------|--------|
+| Thu 9pm EDT | `newsletter_pipeline.yml` | `newsletter_generator.py` → newsletter HTML + image prompts + IG data |
+| Thu 10pm EDT | `twitter_thread.yml` | `post_twitter_thread.py` → 6-tweet thread to @thefightdocket |
+| Fri 6pm EDT | `friday-crawl-fights.yml` | `upcoming_fights_crawler.py` → upcoming_fights.json |
+| Sun 1–4am EDT | `sunday-post-results.yml` | `post_fight_results.py` → result image + Instagram attempt |
+| Sun 7:15pm EDT | `generate_images.yml` | `generate_images_action.py` → newsletter images from prompts |
+| Mon 9am EDT | `weekly_ig_content.yml` | `ig_content_generator.py` → 4 IG graphics + captions |
 
-**Scripts created:**
-- `post_fight_results.py` — main posting workflow (crawls + posts)
-- `upcoming_fights_crawler.py` — Friday pre-crawl for backup reference
-- `test_instagram_post.py` — manual test script (used Miller vs Pero test 4/26/2026)
-- `.env.example` — credentials template (GitHub Secrets: INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD, FIRECRAWL_API_KEY, GEMINI_API_KEY)
-- `.github/workflows/friday-crawl-fights.yml` — Friday 6pm automation
-- `.github/workflows/sunday-post-results.yml` — Sunday 1am-4am automation with retry logic
+**Key scripts:**
+- `newsletter_generator.py` — Firecrawl + Gemini full newsletter automation
+- `ig_content_generator.py` — auto-generates 4 IG graphics from weekly_ig_data.json
+- `post_twitter_thread.py` — Gemini writes + tweepy posts thread to @thefightdocket
+- `post_fight_results.py` — crawls results, generates image, posts to Instagram
+- `upcoming_fights_crawler.py` — Friday pre-crawl via Firecrawl
+- `beehiiv_prep.py` — pre-processes newsletter HTML for clean Beehiiv injection
+- `generate_weekly_ig.py` — manual fallback for IG content (edit WEEK block)
 
-**Test result (April 26, 2026):**
-- Generated branded image for Jarrell "Big Baby" Miller vs Lenier Pero (KO/TKO R1 1:45)
-- Image generation ✅ successful
-- Instagram posting: attempted via instagrapi (failed due to proxy/connection — Instagram anti-bot measures)
-- **Workaround:** Manual post to Instagram while GitHub automation handles future posts
+**GitHub Secrets set:**
+`GEMINI_API_KEY`, `FIRECRAWL_API_KEY`, `INSTAGRAM_USERNAME`, `INSTAGRAM_PASSWORD`,
+`TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET`,
+`TWITTER_BEARER_TOKEN`, `TWITTER_CLIENT_ID`, `TWITTER_CLIENT_SECRET`
 
-**Next steps:**
-1. Set GitHub Secrets (INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD, FIRECRAWL_API_KEY)
-2. Manually post test_miller_vs_pero.png to @thefightdocket
-3. Implement Firecrawl crawling logic in post_fight_results.py (currently placeholder)
-4. Test full automation on next fight weekend
+**Instagram note:** instagrapi with session persistence is implemented but may still be blocked
+from GitHub Actions IPs. Images + captions always committed to `instagram_content/` for manual backup posting.
