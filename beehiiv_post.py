@@ -65,17 +65,18 @@ def build_preview_text(ig_data: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Schedule: next Monday noon EDT
+# Schedule: same-day noon EDT (pipeline runs Monday 8am, sends at noon)
 # ---------------------------------------------------------------------------
 
-def next_monday_noon_edt() -> int:
-    """Return Unix timestamp for next Monday 12:00pm EDT (UTC-4)."""
+def send_time_edt() -> int:
+    """Return Unix timestamp for today at noon EDT. If already past noon, send 2 hours from now."""
     edt = timezone(timedelta(hours=-4))
     now = datetime.now(edt)
-    days_until_monday = (7 - now.weekday()) % 7 or 7
-    next_monday = now + timedelta(days=days_until_monday)
-    scheduled = next_monday.replace(hour=12, minute=0, second=0, microsecond=0)
-    return int(scheduled.timestamp())
+    noon_today = now.replace(hour=12, minute=0, second=0, microsecond=0)
+    if noon_today > now:
+        return int(noon_today.timestamp())
+    # Past noon (manual run or delayed pipeline) — send 2 hours from now
+    return int((now + timedelta(hours=2)).timestamp())
 
 
 # ---------------------------------------------------------------------------
@@ -139,7 +140,7 @@ def main():
 
     subject      = build_subject(ig_data, name)
     preview_text = build_preview_text(ig_data)
-    send_at      = next_monday_noon_edt()
+    send_at      = send_time_edt()
 
     print(f"  Subject:  {subject}")
     print(f"  Preview:  {preview_text[:60]}...")
