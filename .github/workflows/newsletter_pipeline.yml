@@ -27,7 +27,7 @@ jobs:
       - name: Run newsletter generator
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
         run: python newsletter_generator.py
 
       - name: Commit newsletter draft, prompts, and IG data
@@ -39,3 +39,9 @@ jobs:
           git add "newsletter_*.html" prompts/weekly_prompts.json prompts/weekly_ig_data.json || true
           git diff --staged --quiet || git commit -m "Newsletter draft + prompts [$(date +%Y-%m-%d)]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
+
+      - name: Post to Beehiiv and schedule send
+        env:
+          BEEHIIV_API_KEY:        ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+        run: python beehiiv_post.py
