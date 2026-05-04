@@ -4,6 +4,9 @@ The Fight Docket — Beehiiv Auto-Poster
 Reads the latest newsletter HTML + prompts/weekly_ig_data.json,
 creates a post via Beehiiv API v2, and schedules it for Monday noon EDT.
 
+Retry logic: if prompts/post_status.json shows a previous failed attempt,
+uses that newsletter and sends immediately instead of waiting for noon.
+
 Run: python beehiiv_post.py
 Or triggered by newsletter_pipeline.yml after newsletter_generator.py
 """
@@ -23,16 +26,43 @@ for k, v in [("BEEHIIV_API_KEY", API_KEY), ("BEEHIIV_PUBLICATION_ID", PUBLICATIO
     if not v:
         raise SystemExit(f"Missing {k}")
 
-SCRIPT_DIR = Path(__file__).parent
-BASE_URL   = "https://api.beehiiv.com/v2"
-HEADERS    = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+SCRIPT_DIR  = Path(__file__).parent
+BASE_URL    = "https://api.beehiiv.com/v2"
+HEADERS     = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+STATUS_FILE = SCRIPT_DIR / "prompts" / "post_status.json"
+
+
+# ---------------------------------------------------------------------------
+# Post status tracking
+# ---------------------------------------------------------------------------
+
+def load_post_status() -> dict:
+    if STATUS_FILE.exists():
+        try:
+            return json.loads(STATUS_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
+def save_post_status(data: dict):
+    STATUS_FILE.parent.mkdir(exist_ok=True)
+    STATUS_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------
 # Load newsletter content
 # ---------------------------------------------------------------------------
 
-def load_newsletter():
+def load_newsletter(status: dict, is_retry: bool) -> tuple:
+    """Return (filename, html). On retry, use the previously unposted file."""
+    if is_retry and status.get("newsletter_file"):
+        candidate = SCRIPT_DIR / status["newsletter_file"]
+        if candidate.exists():
+            print(f"  Retrying unposted newsletter: {candidate.name}")
+            return candidate.name, candidate.read_text(encoding="utf-8")
+        print(f"  Retry file not found ({status['newsletter_file']}), finding latest...")
+
     files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), reverse=True)
     if not files:
         raise SystemExit("No newsletter_*.html found. Run newsletter_generator.py first.")
@@ -46,6 +76,25 @@ def load_ig_data() -> dict:
     if ig_file.exists():
         return json.loads(ig_file.read_text(encoding="utf-8"))
     return {}
+
+
+def load_thumbnail_url() -> str:
+    """Return the first generated image URL from last_generated_images.json."""
+    images_file = SCRIPT_DIR / "prompts" / "last_generated_images.json"
+    if not images_file.exists():
+        return ""
+    try:
+        data = json.loads(images_file.read_text(encoding="utf-8"))
+        images = data.get("images", [])
+        if images:
+            url = images[0].get("url", "")
+            # Fix broken URL template from older generator runs
+            if "{GITHUB_REPOSITORY}" in url:
+                url = url.replace("{GITHUB_REPOSITORY}", "bayshawn2001gmailcom/the-fight-docket")
+            return url
+    except Exception:
+        pass
+    return ""
 
 
 def build_subject(ig_data: dict, newsletter_name: str) -> str:
@@ -65,26 +114,26 @@ def build_preview_text(ig_data: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Schedule: same-day noon EDT (pipeline runs Monday 8am, sends at noon)
+# Schedule: noon EDT normally; immediate (now + 5 min) on retry or if late
 # ---------------------------------------------------------------------------
 
-def send_time_edt() -> int:
-    """Return Unix timestamp for today at noon EDT. If already past noon, send 2 hours from now."""
+def send_time_edt(send_immediately: bool) -> int:
     edt = timezone(timedelta(hours=-4))
     now = datetime.now(edt)
+    if send_immediately:
+        return int((now + timedelta(minutes=5)).timestamp())
     noon_today = now.replace(hour=12, minute=0, second=0, microsecond=0)
     if noon_today > now:
         return int(noon_today.timestamp())
-    # Past noon (manual run or delayed pipeline) — send 2 hours from now
-    return int((now + timedelta(hours=2)).timestamp())
+    # Past noon on expected send day — fire in 5 minutes
+    return int((now + timedelta(minutes=5)).timestamp())
 
 
 # ---------------------------------------------------------------------------
 # Beehiiv API calls
 # ---------------------------------------------------------------------------
 
-def create_post(subject: str, preview_text: str, html_content: str) -> dict:
-    """Create a draft post via Beehiiv API v2."""
+def create_post(subject: str, preview_text: str, html_content: str, thumbnail_url: str = "") -> dict:
     url = f"{BASE_URL}/publications/{PUBLICATION_ID}/posts"
 
     payload = {
@@ -95,8 +144,12 @@ def create_post(subject: str, preview_text: str, html_content: str) -> dict:
         "status":       "draft",
         "audience":     "all",
     }
+    if thumbnail_url:
+        payload["thumbnail_url"] = thumbnail_url
 
     print(f"  Creating post: '{subject}'")
+    if thumbnail_url:
+        print(f"  Thumbnail: {thumbnail_url[:80]}...")
     resp = requests.post(url, json=payload, headers=HEADERS, timeout=30)
 
     if not resp.ok:
@@ -106,7 +159,6 @@ def create_post(subject: str, preview_text: str, html_content: str) -> dict:
 
 
 def schedule_post(post_id: str, send_at: int):
-    """Schedule an existing draft post."""
     url = f"{BASE_URL}/publications/{PUBLICATION_ID}/posts/{post_id}"
 
     payload = {
@@ -134,20 +186,38 @@ def main():
     print("  The Fight Docket — Beehiiv Auto-Poster")
     print("=" * 55)
 
+    # Check for a previously failed/unposted newsletter
+    status = load_post_status()
+    is_retry = not status.get("posted", True) and bool(status.get("newsletter_file"))
+    if is_retry:
+        print(f"\n  [RETRY] Previous post not confirmed — retrying with immediate send")
+
     print("\n[1/3] Loading newsletter...")
-    name, html = load_newsletter()
-    ig_data    = load_ig_data()
+    name, html   = load_newsletter(status, is_retry)
+    ig_data      = load_ig_data()
+    thumbnail    = load_thumbnail_url()
 
     subject      = build_subject(ig_data, name)
     preview_text = build_preview_text(ig_data)
-    send_at      = send_time_edt()
+    send_at      = send_time_edt(send_immediately=is_retry)
 
-    print(f"  Subject:  {subject}")
-    print(f"  Preview:  {preview_text[:60]}...")
-    print(f"  Send at:  {datetime.utcfromtimestamp(send_at).strftime('%Y-%m-%d %H:%M UTC')}")
+    print(f"  Subject:   {subject}")
+    print(f"  Preview:   {preview_text[:60]}...")
+    print(f"  Send at:   {datetime.utcfromtimestamp(send_at).strftime('%Y-%m-%d %H:%M UTC')}")
+    if thumbnail:
+        print(f"  Thumbnail: (loaded from last_generated_images.json)")
+    else:
+        print(f"  Thumbnail: none — last_generated_images.json not found")
+
+    # Mark attempt in progress before API call
+    save_post_status({
+        "posted": False,
+        "newsletter_file": name,
+        "attempted_at": datetime.now(timezone.utc).isoformat(),
+    })
 
     print("\n[2/3] Creating post in Beehiiv...")
-    post = create_post(subject, preview_text, html)
+    post = create_post(subject, preview_text, html, thumbnail)
     post_id = post.get("id", "")
     if not post_id:
         raise SystemExit(f"No post ID returned: {post}")
@@ -156,9 +226,18 @@ def main():
     print("\n[3/3] Scheduling post...")
     scheduled = schedule_post(post_id, send_at)
 
+    # Persist success so next run won't retry the same newsletter
+    save_post_status({
+        "posted": True,
+        "newsletter_file": name,
+        "post_id": post_id,
+        "posted_at": datetime.now(timezone.utc).isoformat(),
+    })
+
     print("\n" + "=" * 55)
     if scheduled:
-        print(f"  DONE — Post scheduled for Monday noon EDT")
+        send_label = "immediately (retry)" if is_retry else "Monday noon EDT"
+        print(f"  DONE — Post scheduled ({send_label})")
         print(f"  View: https://app.beehiiv.com/posts/{post_id}")
     else:
         print(f"  DONE — Draft created (schedule manually)")

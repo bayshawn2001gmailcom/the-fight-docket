@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "Fight Docket Bot"
           git config user.email "thefightdocket@gmail.com"
-          git add assets/newsletter_images/
+          git add assets/newsletter_images/ prompts/last_generated_images.json || true
           git diff --staged --quiet || git commit -m "Add newsletter images [$(date +%Y-%m-%d)]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

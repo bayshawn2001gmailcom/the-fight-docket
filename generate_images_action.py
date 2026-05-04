@@ -103,10 +103,11 @@ def main():
             output_path = OUTPUT_DIR / filename
             output_path.write_bytes(image_bytes)
             print(f"  Saved: {filename} ({len(image_bytes) / 1024:.1f} KB)")
+            repo = os.environ.get("GITHUB_REPOSITORY", "bayshawn2001gmailcom/the-fight-docket")
             generated.append({
                 "section": section,
                 "file": filename,
-                "url": f"https://raw.githubusercontent.com/{{GITHUB_REPOSITORY}}/main/assets/newsletter_images/{filename}"
+                "url": f"https://raw.githubusercontent.com/{repo}/main/assets/newsletter_images/{filename}"
             })
         else:
             print(f"  FAILED to generate image for {section}")
