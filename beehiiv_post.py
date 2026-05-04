@@ -64,7 +64,8 @@ def load_newsletter(status: dict, is_retry: bool) -> tuple:
             return candidate.name, candidate.read_text(encoding="utf-8")
         print(f"  Retry file not found ({status['newsletter_file']}), finding latest...")
 
-    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), reverse=True)
+    # Sort by modification time so mixed filename formats pick the newest file
+    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), key=lambda f: f.stat().st_mtime, reverse=True)
     if not files:
         raise SystemExit("No newsletter_*.html found. Run newsletter_generator.py first.")
     latest = files[0]
@@ -159,10 +160,11 @@ def send_time_edt(send_immediately: bool) -> int:
 # Beehiiv API calls
 # ---------------------------------------------------------------------------
 
-def create_post(subject: str, preview_text: str, html_content: str, thumbnail_url: str = "") -> dict:
+def create_post(subject: str, preview_text: str, html_content: str) -> dict:
     url = f"{BASE_URL}/publications/{PUBLICATION_ID}/posts"
 
     payload = {
+        "title":        subject,
         "subject":      subject,
         "preview_text": preview_text,
         "content_type": "html",
@@ -170,12 +172,8 @@ def create_post(subject: str, preview_text: str, html_content: str, thumbnail_ur
         "status":       "draft",
         "audience":     "all",
     }
-    if thumbnail_url:
-        payload["thumbnail_url"] = thumbnail_url
 
     print(f"  Creating post: '{subject}'")
-    if thumbnail_url:
-        print(f"  Thumbnail: {thumbnail_url[:80]}...")
     resp = requests.post(url, json=payload, headers=HEADERS, timeout=30)
 
     if not resp.ok:
@@ -192,7 +190,7 @@ def schedule_post(post_id: str, send_at: int):
         "send_at": send_at,
     }
 
-    print(f"  Scheduling post {post_id} at UTC {datetime.utcfromtimestamp(send_at).strftime('%Y-%m-%d %H:%M')}")
+    print(f"  Scheduling post {post_id} at UTC {datetime.fromtimestamp(send_at, tz=timezone.utc).strftime('%Y-%m-%d %H:%M')}")
     resp = requests.patch(url, json=payload, headers=HEADERS, timeout=30)
 
     if not resp.ok:
@@ -229,7 +227,7 @@ def main():
 
     print(f"  Subject:   {subject}")
     print(f"  Preview:   {preview_text[:60]}...")
-    print(f"  Send at:   {datetime.utcfromtimestamp(send_at).strftime('%Y-%m-%d %H:%M UTC')}")
+    print(f"  Send at:   {datetime.fromtimestamp(send_at, tz=timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     if thumbnail:
         print(f"  Thumbnail: (loaded from last_generated_images.json)")
     else:
@@ -243,7 +241,7 @@ def main():
     })
 
     print("\n[2/3] Creating post in Beehiiv...")
-    post = create_post(subject, preview_text, html, thumbnail)
+    post = create_post(subject, preview_text, html)
     post_id = post.get("id", "")
     if not post_id:
         raise SystemExit(f"No post ID returned: {post}")
