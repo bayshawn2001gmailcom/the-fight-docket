@@ -190,3 +190,14 @@ python "The fight Docket/generate_weekly_ig.py"
 
 **Instagram note:** instagrapi with session persistence is implemented but may still be blocked
 from GitHub Actions IPs. Images + captions always committed to `instagram_content/` for manual backup posting.
+
+---
+
+## Google Cloud — SEO Tool (added May 4, 2026)
+
+We now have **Google Cloud** available as a tool to increase SEO for **fastrakmobilelab.com** and other projects.
+
+- Use Google Cloud services (e.g., Cloud Run, Cloud Functions, BigQuery, Vertex AI) to build and automate SEO workflows.
+- Google Search Console data can be pulled programmatically via the Google Search Console API (authenticated through Google Cloud service accounts).
+- Potential use cases: automated keyword tracking, crawl analysis, content gap identification, structured data generation, and search performance dashboards.
+- Credentials/service account keys should be stored as GitHub Secrets and never committed to the repo.
