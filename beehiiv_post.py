@@ -8,8 +8,10 @@ Retry logic: if prompts/post_status.json shows a previous failed attempt,
 uses that newsletter and sends immediately instead of waiting for noon.
 
 Run: python beehiiv_post.py
+     python beehiiv_post.py --send-now   # immediate send (testing)
 Or triggered by newsletter_pipeline.yml after newsletter_generator.py
 """
+import argparse
 import os, sys, re, json
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -31,6 +33,13 @@ SCRIPT_DIR  = Path(__file__).parent
 BASE_URL    = "https://api.beehiiv.com/v2"
 HEADERS     = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
 STATUS_FILE = SCRIPT_DIR / "prompts" / "post_status.json"
+
+PLACEHOLDER_MAP = {
+    "intro":          "[IMAGE_PLACEHOLDER_intro]",
+    "main_story":     "[IMAGE_PLACEHOLDER_main_story]",
+    "fight_previews": "[IMAGE_PLACEHOLDER_fight_previews]",
+    "business_intel": "[IMAGE_PLACEHOLDER_business_intel]",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -124,6 +133,61 @@ def load_thumbnail_url() -> str:
     return ""
 
 
+def inject_images_into_html(html: str) -> str:
+    """Upload generated images to ImgBB and replace [IMAGE_PLACEHOLDER_xxx] tags in HTML."""
+    images_file = SCRIPT_DIR / "prompts" / "last_generated_images.json"
+
+    if not images_file.exists():
+        print("  No last_generated_images.json — removing image placeholders")
+        for placeholder in PLACEHOLDER_MAP.values():
+            html = html.replace(placeholder, "")
+        return html
+
+    try:
+        data = json.loads(images_file.read_text(encoding="utf-8"))
+        images = data.get("images", [])
+    except Exception as e:
+        print(f"  Could not load generated images: {e}")
+        for placeholder in PLACEHOLDER_MAP.values():
+            html = html.replace(placeholder, "")
+        return html
+
+    replaced = 0
+    for img_data in images:
+        section = img_data.get("section", "")
+        placeholder = PLACEHOLDER_MAP.get(section)
+        if not placeholder or placeholder not in html:
+            continue
+
+        filename = img_data.get("file", "")
+        image_path = SCRIPT_DIR / "assets" / "newsletter_images" / filename
+        img_url = ""
+
+        if image_path.exists() and IMGBB_API_KEY:
+            img_url = upload_to_imgbb(image_path)
+        if not img_url:
+            img_url = img_data.get("url", "")
+
+        if img_url:
+            img_tag = (
+                f'<img src="{img_url}" alt="" '
+                f'style="width:100%;max-width:680px;height:auto;display:block;margin:16px auto;border-radius:4px;">'
+            )
+            html = html.replace(placeholder, img_tag)
+            replaced += 1
+            print(f"  Injected image: {section}")
+        else:
+            html = html.replace(placeholder, "")
+            print(f"  Removed placeholder: {section} (no image available)")
+
+    for placeholder in PLACEHOLDER_MAP.values():
+        if placeholder in html:
+            html = html.replace(placeholder, "")
+
+    print(f"  Images injected: {replaced}/{len(images)}")
+    return html
+
+
 def build_subject(ig_data: dict, newsletter_name: str) -> str:
     stories = ig_data.get("preview_stories", [])
     if stories:
@@ -206,6 +270,11 @@ def schedule_post(post_id: str, send_at: int):
 # ---------------------------------------------------------------------------
 
 def main():
+    parser = argparse.ArgumentParser(description="Post newsletter to Beehiiv")
+    parser.add_argument("--send-now", action="store_true",
+                        help="Schedule for immediate send (5 min from now), for testing")
+    args = parser.parse_args()
+
     print("=" * 55)
     print("  The Fight Docket — Beehiiv Auto-Poster")
     print("=" * 55)
@@ -215,15 +284,20 @@ def main():
     is_retry = not status.get("posted", True) and bool(status.get("newsletter_file"))
     if is_retry:
         print(f"\n  [RETRY] Previous post not confirmed — retrying with immediate send")
+    if args.send_now:
+        print(f"\n  [SEND-NOW] Scheduling for immediate delivery")
 
     print("\n[1/3] Loading newsletter...")
     name, html   = load_newsletter(status, is_retry)
     ig_data      = load_ig_data()
     thumbnail    = load_thumbnail_url()
 
+    print("  Injecting images into HTML...")
+    html = inject_images_into_html(html)
+
     subject      = build_subject(ig_data, name)
     preview_text = build_preview_text(ig_data)
-    send_at      = send_time_edt(send_immediately=is_retry)
+    send_at      = send_time_edt(send_immediately=args.send_now or is_retry)
 
     print(f"  Subject:   {subject}")
     print(f"  Preview:   {preview_text[:60]}...")
@@ -260,7 +334,10 @@ def main():
 
     print("\n" + "=" * 55)
     if scheduled:
-        send_label = "immediately (retry)" if is_retry else "Monday noon EDT"
+        if args.send_now or is_retry:
+            send_label = "immediately (test/retry)"
+        else:
+            send_label = "Monday noon EDT"
         print(f"  DONE — Post scheduled ({send_label})")
         print(f"  View: https://app.beehiiv.com/posts/{post_id}")
     else:
