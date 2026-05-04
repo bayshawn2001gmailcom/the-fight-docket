@@ -72,6 +72,17 @@ def main():
     issue_date = data.get("issue_date", datetime.now().strftime("%Y-%m-%d"))
     prompts = data.get("prompts", [])
 
+    # Skip if images were already generated for this issue (e.g. pipeline already ran them)
+    summary_path = Path("prompts/last_generated_images.json")
+    if summary_path.exists():
+        try:
+            existing = json.loads(summary_path.read_text())
+            if existing.get("issue_date") == issue_date and existing.get("images"):
+                print(f"Images already generated for {issue_date} — skipping.")
+                sys.exit(0)
+        except Exception:
+            pass
+
     if not prompts:
         print("No prompts found in weekly_prompts.json. Nothing to generate.")
         sys.exit(0)
