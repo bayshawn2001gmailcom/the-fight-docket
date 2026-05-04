@@ -46,7 +46,8 @@ def list_posts():
 
 def find_post(posts, keyword):
     for p in posts:
-        if keyword.lower() in p.get("subject", "").lower():
+        subject = p.get("subject_line") or p.get("title") or ""
+        if keyword.lower() in subject.lower():
             return p
     return None
 
@@ -56,7 +57,7 @@ def patch_thumbnail(post_id: str, thumbnail_url: str, label: str):
     resp = requests.patch(url, json={"thumbnail_url": thumbnail_url}, headers=HEADERS, timeout=30)
     if resp.ok:
         print(f"  OK   {label}")
-        print(f"       → {thumbnail_url}")
+        print(f"       -> {thumbnail_url}")
     else:
         print(f"  FAIL {label}: {resp.status_code} {resp.text[:200]}")
 
@@ -72,7 +73,8 @@ def main():
     posts = list_posts()
     print(f"Found {len(posts)} posts:")
     for p in posts:
-        print(f"  [{p.get('id','?')}] {p.get('subject','')[:70]}")
+        subject = p.get("subject_line") or p.get("title") or ""
+        print(f"  [{p.get('id','?')}] {subject[:70]}")
 
     apr27 = find_post(posts, APR27_KEYWORD)
     may4  = find_post(posts, MAY4_KEYWORD)
@@ -83,8 +85,8 @@ def main():
         raise SystemExit(f"Could not find May 4 post (keyword: '{MAY4_KEYWORD}'). Check subject line.")
 
     print(f"\nMatched:")
-    print(f"  Apr 27 → [{apr27['id']}] {apr27.get('subject','')[:60]}")
-    print(f"  May 4  → [{may4['id']}]  {may4.get('subject','')[:60]}")
+    print(f"  Apr 27 -> [{apr27['id']}] {(apr27.get('subject_line') or apr27.get('title',''))[:60]}")
+    print(f"  May 4  -> [{may4['id']}]  {(may4.get('subject_line') or may4.get('title',''))[:60]}")
 
     print("\nPatching thumbnails...")
     patch_thumbnail(apr27["id"], raw_url(APR27_IMG), "Apr 27 — Fight Game on Two Fronts")
