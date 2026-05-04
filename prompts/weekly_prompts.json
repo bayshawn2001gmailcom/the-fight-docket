@@ -1,25 +1,25 @@
 {
-  "issue_date": "2026-05-02",
+  "issue_date": "2026-05-04",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Editorial insight, combat sports business, week in review, subtle data",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, stock ticker subtly in background"
+      "topic": "Gloves in locker room, sweat, determination, pre-fight atmosphere, combat sports.",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere"
     },
     {
       "section": "main_story",
-      "topic": "Carlos Prates upset win, Jack Della Maddalena defeated, welterweight division",
-      "prompt": "Dramatic low angle, Carlos Prates triumphant pose after Della Maddalena KO, no logos, dark arena atmosphere."
+      "topic": "Carlos Prates triumphant, rising star, Perth upset, welterweight chaos, chaos.",
+      "prompt": "Action shot of Carlos Prates celebrating in the octagon after his victory, dynamic lighting, sweat glistening, Australian flag subtly visible in the background, ringside perspective."
     },
     {
       "section": "fight_previews",
-      "topic": "Upcoming MMA and boxing fight cards, speculation, potential matchups, events",
-      "prompt": "Blurred fight crowd, sense of anticipation, neon lights, generic arena background, no faces, no logos."
+      "topic": "Fighters clashing, dramatic lighting, intense face-off, stadium atmosphere, physicality.",
+      "prompt": "Split image: Khamzat Chimaev and Sean Strickland face-off, intense and personal, gritty and realistic, dark lighting with strong contrast, hint of Prudential Center in background."
     },
     {
       "section": "business_intel",
-      "topic": "Bellator MMA strategy shift, regional talent, smaller events, cost reduction",
-      "prompt": "Bellator cage, empty seats, spotlight, sense of transition, no fighters, no logos."
+      "topic": "Naoya Inoue victorious, global appeal, boxing expansion, spotlight, international.",
+      "prompt": "Naoya Inoue raising his arms in victory, triumphant and determined, surrounded by flashing lights, a sense of global reach and recognition, arena setting."
     }
   ]
 }
