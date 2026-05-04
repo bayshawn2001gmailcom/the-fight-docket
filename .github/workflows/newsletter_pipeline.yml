@@ -69,6 +69,7 @@ jobs:
         env:
           BEEHIIV_API_KEY:        ${{ secrets.BEEHIIV_API_KEY }}
           BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+          IMGBB_API_KEY:          ${{ secrets.IMGBB_API_KEY }}
         run: python beehiiv_post.py
 
       - name: Commit post status

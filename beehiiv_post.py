@@ -21,6 +21,7 @@ load_dotenv(Path.home() / ".env", override=False)
 
 API_KEY        = os.getenv("BEEHIIV_API_KEY", "")
 PUBLICATION_ID = os.getenv("BEEHIIV_PUBLICATION_ID", "")
+IMGBB_API_KEY  = os.getenv("IMGBB_API_KEY", "")
 
 for k, v in [("BEEHIIV_API_KEY", API_KEY), ("BEEHIIV_PUBLICATION_ID", PUBLICATION_ID)]:
     if not v:
@@ -78,11 +79,34 @@ def load_ig_data() -> dict:
     return {}
 
 
+def upload_to_imgbb(image_path: Path) -> str:
+    """Upload image file to ImgBB and return the direct image URL."""
+    if not IMGBB_API_KEY:
+        print("  Warning: IMGBB_API_KEY not set — skipping thumbnail upload")
+        return ""
+    try:
+        with open(image_path, "rb") as f:
+            resp = requests.post(
+                "https://api.imgbb.com/1/upload",
+                params={"key": IMGBB_API_KEY},
+                files={"image": f},
+                timeout=60,
+            )
+        if resp.ok:
+            url = resp.json()["data"]["url"]
+            print(f"  ImgBB upload OK: {url[:70]}...")
+            return url
+        print(f"  ImgBB upload failed {resp.status_code}: {resp.text[:150]}")
+    except Exception as e:
+        print(f"  ImgBB upload error: {e}")
+    return ""
+
+
 def load_thumbnail_url() -> str:
-    """Return the first generated image URL via jsDelivr CDN.
-    jsDelivr serves GitHub content without restrictive headers that block Beehiiv's downloader."""
+    """Upload the first generated image to ImgBB and return the hosted URL."""
     images_file = SCRIPT_DIR / "prompts" / "last_generated_images.json"
     if not images_file.exists():
+        print("  No last_generated_images.json — no thumbnail")
         return ""
     try:
         data = json.loads(images_file.read_text(encoding="utf-8"))
@@ -90,10 +114,12 @@ def load_thumbnail_url() -> str:
         if images:
             filename = images[0].get("file", "")
             if filename:
-                repo = "bayshawn2001gmailcom/the-fight-docket"
-                return f"https://cdn.jsdelivr.net/gh/{repo}@main/assets/newsletter_images/{filename}"
-    except Exception:
-        pass
+                image_path = SCRIPT_DIR / "assets" / "newsletter_images" / filename
+                if image_path.exists():
+                    return upload_to_imgbb(image_path)
+                print(f"  Image file not found locally: {filename}")
+    except Exception as e:
+        print(f"  load_thumbnail_url error: {e}")
     return ""
 
 
