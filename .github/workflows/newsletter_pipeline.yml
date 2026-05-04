@@ -22,7 +22,9 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests python-dotenv google-genai --break-system-packages
+        run: |
+          pip install requests python-dotenv google-genai playwright --break-system-packages
+          playwright install chromium --with-deps
 
       # Check if a previous newsletter failed to post — if so, skip regeneration
       - name: Check for unposted newsletter
@@ -67,10 +69,11 @@ jobs:
 
       - name: Post to Beehiiv and schedule send
         env:
-          BEEHIIV_API_KEY:        ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_EMAIL:          ${{ secrets.BEEHIIV_EMAIL }}
+          BEEHIIV_PASSWORD:       ${{ secrets.BEEHIIV_PASSWORD }}
           BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
           IMGBB_API_KEY:          ${{ secrets.IMGBB_API_KEY }}
-        run: python beehiiv_post.py
+        run: python beehiiv_browser_post.py
 
       - name: Commit post status
         if: always()
