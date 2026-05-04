@@ -79,7 +79,8 @@ def load_ig_data() -> dict:
 
 
 def load_thumbnail_url() -> str:
-    """Return the first generated image URL from last_generated_images.json."""
+    """Return the first generated image URL via jsDelivr CDN.
+    jsDelivr serves GitHub content without restrictive headers that block Beehiiv's downloader."""
     images_file = SCRIPT_DIR / "prompts" / "last_generated_images.json"
     if not images_file.exists():
         return ""
@@ -87,11 +88,10 @@ def load_thumbnail_url() -> str:
         data = json.loads(images_file.read_text(encoding="utf-8"))
         images = data.get("images", [])
         if images:
-            url = images[0].get("url", "")
-            # Fix broken URL template from older generator runs
-            if "{GITHUB_REPOSITORY}" in url:
-                url = url.replace("{GITHUB_REPOSITORY}", "bayshawn2001gmailcom/the-fight-docket")
-            return url
+            filename = images[0].get("file", "")
+            if filename:
+                repo = "bayshawn2001gmailcom/the-fight-docket"
+                return f"https://cdn.jsdelivr.net/gh/{repo}@main/assets/newsletter_images/{filename}"
     except Exception:
         pass
     return ""
