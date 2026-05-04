@@ -106,24 +106,43 @@ def send_time_edt(send_immediately: bool) -> datetime:
     return now + timedelta(minutes=10)
 
 
+SESSION_FILE = SCRIPT_DIR / "beehiiv_session.json"
+
+
+def get_session_state() -> str | None:
+    """Load session from file or BEEHIIV_SESSION env var (base64 encoded for GitHub Actions)."""
+    env_session = os.getenv("BEEHIIV_SESSION", "")
+    if env_session:
+        import base64, tempfile
+        data = base64.b64decode(env_session)
+        tmp = Path(tempfile.mktemp(suffix=".json"))
+        tmp.write_bytes(data)
+        return str(tmp)
+    if SESSION_FILE.exists():
+        return str(SESSION_FILE)
+    return None
+
+
 def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_at: datetime, headless: bool = True):
     from playwright.sync_api import sync_playwright
 
-    if not BEEHIIV_EMAIL or not BEEHIIV_PASSWORD:
-        raise SystemExit("Missing BEEHIIV_EMAIL or BEEHIIV_PASSWORD in .env")
+    session = get_session_state()
+    if not session:
+        raise SystemExit(
+            "No Beehiiv session found. Run: python beehiiv_save_session.py\n"
+            "Then encode for GitHub Actions: python beehiiv_encode_session.py"
+        )
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
-        ctx = browser.new_context()
+        ctx = browser.new_context(storage_state=session)
         page = ctx.new_page()
 
-        print("  Logging in to Beehiiv...")
-        page.goto("https://app.beehiiv.com/login")
-        page.fill('input[type="email"]', BEEHIIV_EMAIL)
-        page.fill('input[type="password"]', BEEHIIV_PASSWORD)
-        page.click('button[type="submit"]')
-        page.wait_for_url("**/dashboard**", timeout=15000)
-        print("  Logged in.")
+        print("  Loading Beehiiv (using saved session)...")
+        page.goto("https://app.beehiiv.com/dashboard", wait_until="domcontentloaded", timeout=20000)
+        # If redirected to login, session expired
+        if "/login" in page.url:
+            raise SystemExit("Session expired. Re-run: python beehiiv_save_session.py")
 
         print("  Creating new post...")
         page.goto(f"https://app.beehiiv.com/posts/new")

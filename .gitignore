@@ -24,3 +24,4 @@ run_setup.bat
 .env
 # Session file contains Instagram tokens — never commit
 instagram_content/.ig_session.json
+beehiiv_session.json
