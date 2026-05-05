@@ -3,23 +3,23 @@
   "prompts": [
     {
       "section": "intro",
-      "topic": "Fighter reputation, risks, volatile personalities, brand image in combat sports",
-      "prompt": "cinematic image of a darkened, smoky back room, silhouettes of fighters and promoters, tense atmosphere, no faces, no logos"
+      "topic": "Combat sports uncertainty, backstage brawls and fighter autonomy themes.",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere"
     },
     {
       "section": "main_story",
-      "topic": "High-stakes UFC title fight, promotional strategy, risk management",
-      "prompt": "overhead view of a chessboard with UFC fighter figurines as pieces, dramatic lighting, focused and intense"
+      "topic": "Khamzat Chimaev and Sean Strickland face off, title fight anticipation.",
+      "prompt": "Split image, intense face-off, dark and gritty setting, no logos, dramatic lighting."
     },
     {
       "section": "fight_previews",
-      "topic": "MMA fight preview, Chimaev vs. Strickland, Van vs. Taira, face-off",
-      "prompt": "stylized, dark portrait of two fighters facing off, eyes locked, gritty texture, no logos"
+      "topic": "Upcoming fight cards, Van vs. Taira, Wardley vs. Dubois explosive action",
+      "prompt": "collage of fight posters, dynamic angles, sense of speed, no specific fighter faces."
     },
     {
       "section": "business_intel",
-      "topic": "Karate Combat brand damage, fighter conduct, sponsor risk assessment",
-      "prompt": "a cracked karate board with dollar bills spilling out, dark background, symbolic of financial loss, no logos"
+      "topic": "Karate Combat backstage brawl, questions of transparency, fighter's narrative control.",
+      "prompt": "Backstage chaos, blurred figures, sense of urgency, muted colors, no branding."
     }
   ]
 }

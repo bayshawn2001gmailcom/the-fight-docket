@@ -2,9 +2,9 @@
   "date": "MAY 9, 2026",
   "issue": "may09_2026",
   "preview_stories": [
-    "UFC 328 main event breakdown",
-    "Pitbull brothers cause chaos",
-    "Benavidez's next opponent"
+    "Chimaev vs Strickland - the nastiest grudge match ever?",
+    "Pitbull brothers allege Karate Combat manipulation",
+    "Benavidez's next opponent, Bivol or Opetaia?"
   ],
   "announcement": {
     "fighter1": "Chimaev",
@@ -19,14 +19,14 @@
     "loser": "Ramirez",
     "method": "KO/TKO",
     "round_num": "R6",
-    "time": "3:45",
-    "event": "Boxing Undercard",
+    "time": "N/A",
+    "event": "Boxing Bout",
     "filename": "name_result.png"
   },
   "quote": {
     "quote": "Legacy is everything to me.",
     "attribution": "Angelo Leo",
-    "context": "Speaking on his aspirations in boxing.",
+    "context": "Speaking about the importance of his boxing career.",
     "filename": "quote_card.png"
   }
 }
