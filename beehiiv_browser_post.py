@@ -3,11 +3,15 @@
 beehiiv_browser_post.py — Post newsletter to Beehiiv via browser automation.
 Used instead of the API (free plan blocks API post creation).
 
-Logs in, creates a new post, injects HTML content, sets thumbnail, schedules send.
+Logs in (session or email/password), creates a new post, injects HTML with
+real images replacing [IMAGE_PLACEHOLDER_xxx] tags, sets thumbnail, schedules.
 
 Run: python beehiiv_browser_post.py
+     python beehiiv_browser_post.py --send-now
 """
+import argparse
 import os, json, sys, time
+import requests
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
@@ -23,6 +27,17 @@ IMGBB_API_KEY    = os.getenv("IMGBB_API_KEY", "")
 SCRIPT_DIR  = Path(__file__).parent
 STATUS_FILE = SCRIPT_DIR / "prompts" / "post_status.json"
 
+PLACEHOLDER_MAP = {
+    "intro":          "[IMAGE_PLACEHOLDER_intro]",
+    "main_story":     "[IMAGE_PLACEHOLDER_main_story]",
+    "fight_previews": "[IMAGE_PLACEHOLDER_fight_previews]",
+    "business_intel": "[IMAGE_PLACEHOLDER_business_intel]",
+}
+
+
+# ---------------------------------------------------------------------------
+# Status tracking
+# ---------------------------------------------------------------------------
 
 def load_post_status() -> dict:
     if STATUS_FILE.exists():
@@ -37,6 +52,10 @@ def save_post_status(data: dict):
     STATUS_FILE.parent.mkdir(exist_ok=True)
     STATUS_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
+
+# ---------------------------------------------------------------------------
+# Newsletter loading
+# ---------------------------------------------------------------------------
 
 def load_newsletter(status: dict, is_retry: bool) -> tuple:
     if is_retry and status.get("newsletter_file"):
@@ -67,33 +86,107 @@ def build_subject(ig_data: dict, newsletter_name: str) -> str:
     return f"The Fight Docket | {date_str}"
 
 
-def upload_thumbnail_to_imgbb() -> str:
+# ---------------------------------------------------------------------------
+# Image upload + injection
+# ---------------------------------------------------------------------------
+
+def upload_to_imgbb(image_path: Path) -> str:
+    if not IMGBB_API_KEY:
+        return ""
+    try:
+        with open(image_path, "rb") as f:
+            resp = requests.post(
+                "https://api.imgbb.com/1/upload",
+                params={"key": IMGBB_API_KEY},
+                files={"image": f},
+                timeout=60,
+            )
+        if resp.ok:
+            url = resp.json()["data"]["url"]
+            print(f"  ImgBB upload OK: {url[:70]}...")
+            return url
+        print(f"  ImgBB upload failed {resp.status_code}: {resp.text[:150]}")
+    except Exception as e:
+        print(f"  ImgBB upload error: {e}")
+    return ""
+
+
+def inject_images_into_html(html: str) -> str:
+    """Replace [IMAGE_PLACEHOLDER_xxx] tags with real <img> tags from generated images."""
+    images_file = SCRIPT_DIR / "prompts" / "last_generated_images.json"
+
+    if not images_file.exists():
+        print("  No last_generated_images.json — removing image placeholders")
+        for placeholder in PLACEHOLDER_MAP.values():
+            html = html.replace(placeholder, "")
+        return html
+
+    try:
+        data = json.loads(images_file.read_text(encoding="utf-8"))
+        images = data.get("images", [])
+    except Exception as e:
+        print(f"  Could not load generated images: {e}")
+        for placeholder in PLACEHOLDER_MAP.values():
+            html = html.replace(placeholder, "")
+        return html
+
+    replaced = 0
+    for img_data in images:
+        section = img_data.get("section", "")
+        placeholder = PLACEHOLDER_MAP.get(section)
+        if not placeholder or placeholder not in html:
+            continue
+
+        filename = img_data.get("file", "")
+        image_path = SCRIPT_DIR / "assets" / "newsletter_images" / filename
+        img_url = ""
+
+        if image_path.exists() and IMGBB_API_KEY:
+            img_url = upload_to_imgbb(image_path)
+        if not img_url:
+            img_url = img_data.get("url", "")
+
+        if img_url:
+            img_tag = (
+                f'<img src="{img_url}" alt="" '
+                f'style="width:100%;max-width:680px;height:auto;display:block;margin:16px auto;border-radius:4px;">'
+            )
+            html = html.replace(placeholder, img_tag)
+            replaced += 1
+            print(f"  Injected image: {section}")
+        else:
+            html = html.replace(placeholder, "")
+            print(f"  Removed placeholder: {section} (no image available)")
+
+    for placeholder in PLACEHOLDER_MAP.values():
+        if placeholder in html:
+            html = html.replace(placeholder, "")
+
+    print(f"  Images injected: {replaced}/{len(images)}")
+    return html
+
+
+def upload_thumbnail_url() -> str:
+    """Return ImgBB URL for the first generated image (used as post thumbnail)."""
     images_file = SCRIPT_DIR / "prompts" / "last_generated_images.json"
     if not images_file.exists() or not IMGBB_API_KEY:
         return ""
     try:
-        import requests
         data = json.loads(images_file.read_text(encoding="utf-8"))
         images = data.get("images", [])
         if images:
             filename = images[0].get("file", "")
             image_path = SCRIPT_DIR / "assets" / "newsletter_images" / filename
             if image_path.exists():
-                with open(image_path, "rb") as f:
-                    resp = requests.post(
-                        "https://api.imgbb.com/1/upload",
-                        params={"key": IMGBB_API_KEY},
-                        files={"image": f},
-                        timeout=60,
-                    )
-                if resp.ok:
-                    url = resp.json()["data"]["url"]
-                    print(f"  Thumbnail uploaded: {url[:70]}...")
-                    return url
+                return upload_to_imgbb(image_path)
     except Exception as e:
         print(f"  Thumbnail upload failed: {e}")
     return ""
 
+
+# ---------------------------------------------------------------------------
+# Scheduling
+# ---------------------------------------------------------------------------
 
 def send_time_edt(send_immediately: bool) -> datetime:
     edt = timezone(timedelta(hours=-4))
@@ -106,11 +199,15 @@ def send_time_edt(send_immediately: bool) -> datetime:
     return now + timedelta(minutes=10)
 
 
+# ---------------------------------------------------------------------------
+# Session management
+# ---------------------------------------------------------------------------
+
 SESSION_FILE = SCRIPT_DIR / "beehiiv_session.json"
 
 
 def get_session_state() -> str | None:
-    """Load session from file or BEEHIIV_SESSION env var (base64 encoded for GitHub Actions)."""
+    """Load session from BEEHIIV_SESSION env var (base64) or local file."""
     env_session = os.getenv("BEEHIIV_SESSION", "")
     if env_session:
         import base64, tempfile
@@ -123,91 +220,120 @@ def get_session_state() -> str | None:
     return None
 
 
+# ---------------------------------------------------------------------------
+# Browser automation
+# ---------------------------------------------------------------------------
+
 def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_at: datetime, headless: bool = True):
     from playwright.sync_api import sync_playwright
 
     session = get_session_state()
-    if not session:
-        raise SystemExit(
-            "No Beehiiv session found. Run: python beehiiv_save_session.py\n"
-            "Then encode for GitHub Actions: python beehiiv_encode_session.py"
-        )
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
-        ctx = browser.new_context(storage_state=session)
-        page = ctx.new_page()
 
-        print("  Loading Beehiiv (using saved session)...")
-        page.goto("https://app.beehiiv.com/dashboard", wait_until="domcontentloaded", timeout=20000)
-        # If redirected to login, session expired
-        if "/login" in page.url:
-            raise SystemExit("Session expired. Re-run: python beehiiv_save_session.py")
+        if session:
+            print("  Using saved session...")
+            ctx = browser.new_context(storage_state=session)
+            page = ctx.new_page()
+            page.goto("https://app.beehiiv.com/dashboard", wait_until="domcontentloaded", timeout=30000)
+            if "/login" in page.url:
+                print("  Session expired — falling back to email/password login")
+                session = None
+
+        if not session:
+            if not BEEHIIV_EMAIL or not BEEHIIV_PASSWORD:
+                raise SystemExit(
+                    "No session and no BEEHIIV_EMAIL/BEEHIIV_PASSWORD set.\n"
+                    "Either run beehiiv_save_session.py locally and encode the session,\n"
+                    "or set BEEHIIV_EMAIL and BEEHIIV_PASSWORD secrets in GitHub Actions."
+                )
+            print("  Logging in with email/password...")
+            ctx = browser.new_context()
+            page = ctx.new_page()
+            page.goto("https://app.beehiiv.com/login", wait_until="domcontentloaded", timeout=30000)
+            page.fill('input[type="email"], input[name="email"]', BEEHIIV_EMAIL)
+            page.fill('input[type="password"], input[name="password"]', BEEHIIV_PASSWORD)
+            page.click('button[type="submit"]')
+            try:
+                page.wait_for_url("**/dashboard**", timeout=20000)
+                print("  Login successful")
+            except Exception:
+                raise SystemExit(f"Login failed — still at: {page.url}")
 
         print("  Creating new post...")
-        page.goto(f"https://app.beehiiv.com/posts/new")
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto("https://app.beehiiv.com/posts/new", wait_until="domcontentloaded", timeout=30000)
+        page.wait_for_load_state("networkidle", timeout=20000)
+        time.sleep(2)
 
         # Set subject / title
-        subject_field = page.locator('input[placeholder*="Subject"], input[name*="subject"], input[aria-label*="subject" i]').first
-        subject_field.click()
-        subject_field.fill(subject)
+        subject_field = page.locator(
+            'input[placeholder*="Subject" i], input[name*="subject" i], input[aria-label*="subject" i]'
+        ).first
+        if subject_field.count() > 0:
+            subject_field.click()
+            subject_field.fill(subject)
+            time.sleep(1)
 
-        # Inject HTML via the source editor
+        # Inject HTML content
         print("  Injecting HTML content...")
-        # Try to find the HTML/source editor toggle
-        source_btn = page.locator('button:has-text("HTML"), button:has-text("Source"), [aria-label*="source" i], [aria-label*="html" i]').first
+        source_btn = page.locator(
+            'button:has-text("HTML"), button:has-text("Source"), [aria-label*="source" i], [aria-label*="html" i]'
+        ).first
         if source_btn.count() > 0:
             source_btn.click()
             time.sleep(1)
             editor = page.locator('textarea.CodeMirror-scroll, textarea[class*="source"], .CodeMirror textarea').first
-            editor.fill(html_content)
+            if editor.count() > 0:
+                editor.fill(html_content)
         else:
-            # ProseMirror editor — paste as HTML via JS
             editor = page.locator('.ProseMirror').first
-            editor.click()
-            page.evaluate(f"""
-                const editor = document.querySelector('.ProseMirror');
-                editor.focus();
-                document.execCommand('selectAll');
-                document.execCommand('insertHTML', false, {json.dumps(html_content)});
-                editor.dispatchEvent(new InputEvent('input', {{bubbles: true}}));
-            """)
-
+            if editor.count() > 0:
+                editor.click()
+                page.evaluate(f"""
+                    const editor = document.querySelector('.ProseMirror');
+                    editor.focus();
+                    document.execCommand('selectAll');
+                    document.execCommand('insertHTML', false, {json.dumps(html_content)});
+                    editor.dispatchEvent(new InputEvent('input', {{bubbles: true}}));
+                """)
         time.sleep(2)
 
-        # Set thumbnail if we have one
+        # Set thumbnail
         if thumbnail_url:
-            print("  Setting thumbnail via URL...")
-            thumb_btn = page.locator('button:has-text("Add thumbnail"), button:has-text("Thumbnail"), [aria-label*="thumbnail" i]').first
+            print("  Setting thumbnail...")
+            thumb_btn = page.locator(
+                'button:has-text("Add thumbnail"), button:has-text("Thumbnail"), [aria-label*="thumbnail" i]'
+            ).first
             if thumb_btn.count() > 0:
                 thumb_btn.click()
                 time.sleep(1)
-                url_input = page.locator('input[placeholder*="URL"], input[type="url"]').first
+                url_input = page.locator('input[placeholder*="URL" i], input[type="url"]').first
                 if url_input.count() > 0:
                     url_input.fill(thumbnail_url)
                     page.keyboard.press("Enter")
                     time.sleep(2)
 
-        # Schedule the send
+        # Schedule
         print(f"  Scheduling for {send_at.strftime('%Y-%m-%d %H:%M %Z')}...")
         schedule_btn = page.locator('button:has-text("Schedule"), [aria-label*="schedule" i]').first
         if schedule_btn.count() > 0:
             schedule_btn.click()
             time.sleep(1)
-            # Fill date/time fields
             date_input = page.locator('input[type="date"], input[placeholder*="date" i]').first
             time_input = page.locator('input[type="time"], input[placeholder*="time" i]').first
             if date_input.count() > 0:
                 date_input.fill(send_at.strftime("%Y-%m-%d"))
             if time_input.count() > 0:
                 time_input.fill(send_at.strftime("%H:%M"))
-            confirm = page.locator('button:has-text("Confirm"), button:has-text("Schedule post"), button:has-text("Save")').first
+            confirm = page.locator(
+                'button:has-text("Confirm"), button:has-text("Schedule post"), button:has-text("Save")'
+            ).first
             if confirm.count() > 0:
                 confirm.click()
                 time.sleep(2)
 
-        # Save/publish
+        # Final save
         save_btn = page.locator('button:has-text("Save"), button:has-text("Publish")').first
         if save_btn.count() > 0:
             save_btn.click()
@@ -219,35 +345,66 @@ def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_a
         return url
 
 
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
 def main():
+    parser = argparse.ArgumentParser(description="Post newsletter to Beehiiv via browser")
+    parser.add_argument("--send-now", action="store_true",
+                        help="Schedule for immediate send (10 min from now), for testing")
+    args = parser.parse_args()
+
     print("=" * 55)
     print("  The Fight Docket — Beehiiv Browser Poster")
     print("=" * 55)
 
-    status    = load_post_status()
-    is_retry  = not status.get("posted", True) and bool(status.get("newsletter_file"))
+    status   = load_post_status()
+    is_retry = not status.get("posted", True) and bool(status.get("newsletter_file"))
     if is_retry:
         print("\n  [RETRY] Previous post unconfirmed — sending immediately")
+    if args.send_now:
+        print("\n  [SEND-NOW] Scheduling for immediate delivery")
 
-    print("\n[1/3] Loading content...")
-    name, html   = load_newsletter(status, is_retry)
-    ig_data      = load_ig_data()
-    subject      = build_subject(ig_data, name)
-    thumbnail    = upload_thumbnail_to_imgbb()
-    send_at      = send_time_edt(send_immediately=is_retry)
+    print("\n[1/4] Loading content...")
+    name, html = load_newsletter(status, is_retry)
+    ig_data    = load_ig_data()
+    subject    = build_subject(ig_data, name)
+    send_at    = send_time_edt(send_immediately=args.send_now or is_retry)
 
     print(f"  Subject:  {subject}")
     print(f"  Send at:  {send_at.strftime('%Y-%m-%d %H:%M %Z')}")
 
-    save_post_status({"posted": False, "newsletter_file": name, "attempted_at": datetime.now(timezone.utc).isoformat()})
+    print("\n[2/4] Uploading thumbnail...")
+    thumbnail = upload_thumbnail_url()
+    if thumbnail:
+        print(f"  Thumbnail: uploaded")
+    else:
+        print(f"  Thumbnail: none")
 
-    print("\n[2/3] Posting via browser...")
+    print("\n[3/4] Injecting images into HTML...")
+    html = inject_images_into_html(html)
+
+    save_post_status({
+        "posted": False,
+        "newsletter_file": name,
+        "attempted_at": datetime.now(timezone.utc).isoformat(),
+    })
+
+    print("\n[4/4] Posting via browser...")
     post_url = post_via_browser(subject, html, thumbnail, send_at)
 
-    save_post_status({"posted": True, "newsletter_file": name, "posted_at": datetime.now(timezone.utc).isoformat()})
+    save_post_status({
+        "posted": True,
+        "newsletter_file": name,
+        "posted_at": datetime.now(timezone.utc).isoformat(),
+    })
 
     print("\n" + "=" * 55)
-    print(f"  DONE — {'Retry sent immediately' if is_retry else 'Scheduled for noon EDT'}")
+    if args.send_now or is_retry:
+        print("  DONE — Scheduled for immediate send (10 min)")
+    else:
+        print("  DONE — Scheduled for Monday noon EDT")
     print(f"  URL: {post_url}")
     print("=" * 55)
 
