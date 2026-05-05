@@ -175,10 +175,14 @@ For newsletter_html use EXACTLY this structure (do not omit any inline styles):
 
 def gemini_generate(prompt):
     from google import genai
+    from google.genai import types
     client = genai.Client(api_key=GEMINI_API_KEY)
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=[prompt],
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+        ),
     )
     return response.text
 
@@ -191,20 +195,34 @@ CRAWLED NEWS CONTENT (use this as source material):
 
 Generate the newsletter JSON now. Output only valid JSON, no markdown fences:"""
 
-    print("  Calling Gemini to draft newsletter...")
-    raw = gemini_generate(prompt)
+    max_attempts = 3
+    for attempt in range(1, max_attempts + 1):
+        print(f"  Calling Gemini to draft newsletter (attempt {attempt}/{max_attempts})...")
+        raw = gemini_generate(prompt)
 
-    # Strip markdown code fences if present
-    raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
-    raw = re.sub(r"\s*```$", "", raw.strip())
+        # Strip markdown code fences if present
+        raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
+        raw = re.sub(r"\s*```$", "", raw.strip())
 
-    # Find outermost JSON object
-    start = raw.find("{")
-    end   = raw.rfind("}") + 1
-    if start == -1 or end == 0:
-        raise ValueError(f"No JSON found in Gemini response. First 200 chars:\n{raw[:200]}")
+        # Find outermost JSON object
+        start = raw.find("{")
+        end   = raw.rfind("}") + 1
+        if start == -1 or end == 0:
+            print(f"  No JSON object found in response (attempt {attempt}). First 200 chars:\n{raw[:200]}")
+            if attempt == max_attempts:
+                raise ValueError("Gemini returned no valid JSON after all attempts.")
+            time.sleep(5)
+            continue
 
-    return json.loads(raw[start:end])
+        try:
+            return json.loads(raw[start:end])
+        except json.JSONDecodeError as e:
+            print(f"  JSON parse error on attempt {attempt}: {e}")
+            if attempt == max_attempts:
+                raise
+            time.sleep(5)
+
+    raise RuntimeError("build_newsletter: exhausted all attempts")
 
 
 # ---------------------------------------------------------------------------
