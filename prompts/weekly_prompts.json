@@ -1,25 +1,25 @@
 {
-  "issue_date": "2026-05-04",
+  "issue_date": "2026-05-05",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Gloves in locker room, sweat, determination, pre-fight atmosphere, combat sports.",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere"
+      "topic": "Combat sports industry, behind-the-scenes deals, strategic planning, and unexpected outcomes",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere. A dimly lit boardroom table with contract papers scattered, a boxing glove resting on top, suggesting strategy and risk."
     },
     {
       "section": "main_story",
-      "topic": "Carlos Prates triumphant, rising star, Perth upset, welterweight chaos, chaos.",
-      "prompt": "Action shot of Carlos Prates celebrating in the octagon after his victory, dynamic lighting, sweat glistening, Australian flag subtly visible in the background, ringside perspective."
+      "topic": "Karate Combat brawl fallout highlighting control and reputational challenges for emerging leagues",
+      "prompt": "A dramatic, low-angle shot of a Karate Combat ring in disarray after a brawl, emphasizing the chaos and loss of control. Dark lighting, no visible faces."
     },
     {
       "section": "fight_previews",
-      "topic": "Fighters clashing, dramatic lighting, intense face-off, stadium atmosphere, physicality.",
-      "prompt": "Split image: Khamzat Chimaev and Sean Strickland face-off, intense and personal, gritty and realistic, dark lighting with strong contrast, hint of Prudential Center in background."
+      "topic": "Upcoming high-stakes fights featuring Chimaev, Strickland, Van, Taira and Wardley/Dubois",
+      "prompt": "A split-screen showcasing the intense stare-downs of Chimaev vs. Strickland on one side, and the focused training of Van and Taira on the other. Dark, gritty atmosphere."
     },
     {
       "section": "business_intel",
-      "topic": "Naoya Inoue victorious, global appeal, boxing expansion, spotlight, international.",
-      "prompt": "Naoya Inoue raising his arms in victory, triumphant and determined, surrounded by flashing lights, a sense of global reach and recognition, arena setting."
+      "topic": "David Benavidez's victory and his strategic career options for maximum financial reward",
+      "prompt": "A close-up of David Benavidez's face after his victory, with a subtle overlay of stock charts and financial graphs, hinting at his potential earnings and career trajectory."
     }
   ]
 }

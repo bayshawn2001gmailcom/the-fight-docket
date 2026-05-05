@@ -2,9 +2,9 @@
   "date": "MAY 9, 2026",
   "issue": "may09_2026",
   "preview_stories": [
-    "Prates shakes up welterweight division",
-    "Benavidez eyes a jump to heavyweight",
-    "Inoue's appeal fuels global boxing"
+    "UFC 328: Chimaev vs. Strickland preview.",
+    "Pitbull bros brawl: Karate Combat implications.",
+    "Benavidez's next move after cruiserweight win."
   ],
   "announcement": {
     "fighter1": "Chimaev",
@@ -15,18 +15,18 @@
     "filename": "f1_vs_f2_announcement.png"
   },
   "result": {
-    "winner": "Prates",
-    "loser": "Maddalena",
+    "winner": "Benavidez",
+    "loser": "Ramirez",
     "method": "KO/TKO",
-    "round_num": "R2",
-    "time": "3:45",
-    "event": "UFC Fight Night",
+    "round_num": "R6",
+    "time": "N/A",
+    "event": "Cruiserweight Title Fight",
     "filename": "name_result.png"
   },
   "quote": {
-    "quote": "\u2018I should be next\u2019 for winner of Islam Makhachev vs. Ian Machado Garry",
-    "attribution": "Carlos Prates",
-    "context": "Post-fight interview",
+    "quote": "His trajectory and marketability continues to make him a valuable asset for any promotion, and one to watch carefully.",
+    "attribution": "The Fight Docket",
+    "context": "Analyzing David Benavidez's future prospects after his victory.",
     "filename": "quote_card.png"
   }
 }
