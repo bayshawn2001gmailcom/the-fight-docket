@@ -3,23 +3,23 @@
   "prompts": [
     {
       "section": "intro",
-      "topic": "Combat sports industry, behind-the-scenes deals, strategic planning, and unexpected outcomes",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere. A dimly lit boardroom table with contract papers scattered, a boxing glove resting on top, suggesting strategy and risk."
+      "topic": "Combat sports editor contemplating the week's news, serious, thoughtful.",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, focus on hands holding a pen and notebook in a dimly lit office, paperwork scattered around, keyboard glowing."
     },
     {
       "section": "main_story",
-      "topic": "Karate Combat brawl fallout highlighting control and reputational challenges for emerging leagues",
-      "prompt": "A dramatic, low-angle shot of a Karate Combat ring in disarray after a brawl, emphasizing the chaos and loss of control. Dark lighting, no visible faces."
+      "topic": "Chimaev vs. Strickland face-off, intense, high-stakes, modern gladiators.",
+      "prompt": "cinematic image prompt, no faces, no logos, UFC Octagon, two muscular fighters in a tense face-off, sweat glistening, harsh lighting, gritty atmosphere, implied violence."
     },
     {
       "section": "fight_previews",
-      "topic": "Upcoming high-stakes fights featuring Chimaev, Strickland, Van, Taira and Wardley/Dubois",
-      "prompt": "A split-screen showcasing the intense stare-downs of Chimaev vs. Strickland on one side, and the focused training of Van and Taira on the other. Dark, gritty atmosphere."
+      "topic": "Upcoming fight cards, dynamic, varied combat styles, global reach.",
+      "prompt": "cinematic image prompt, montage of different combat sports scenes: MMA cage, boxing ring, karate dojo, showcasing diverse fighters and techniques, no faces, dark and dramatic lighting."
     },
     {
       "section": "business_intel",
-      "topic": "David Benavidez's victory and his strategic career options for maximum financial reward",
-      "prompt": "A close-up of David Benavidez's face after his victory, with a subtle overlay of stock charts and financial graphs, hinting at his potential earnings and career trajectory."
+      "topic": "Karate Combat controversy, behind-the-scenes tension, credibility concerns.",
+      "prompt": "cinematic image prompt, no faces, no logos, dimly lit boardroom, figures in shadow arguing, documents scattered on the table, tension palpable, sense of mistrust."
     }
   ]
 }

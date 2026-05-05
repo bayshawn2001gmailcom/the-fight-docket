@@ -2,9 +2,9 @@
   "date": "MAY 9, 2026",
   "issue": "may09_2026",
   "preview_stories": [
-    "UFC 328: Chimaev vs. Strickland preview.",
-    "Pitbull bros brawl: Karate Combat implications.",
-    "Benavidez's next move after cruiserweight win."
+    "Chimaev/Strickland's impact on PPV",
+    "Benavidez's next opponent?",
+    "Karate Combat in hot water"
   ],
   "announcement": {
     "fighter1": "Chimaev",
@@ -20,13 +20,13 @@
     "method": "KO/TKO",
     "round_num": "R6",
     "time": "N/A",
-    "event": "Cruiserweight Title Fight",
+    "event": "Boxing Bout",
     "filename": "name_result.png"
   },
   "quote": {
-    "quote": "His trajectory and marketability continues to make him a valuable asset for any promotion, and one to watch carefully.",
-    "attribution": "The Fight Docket",
-    "context": "Analyzing David Benavidez's future prospects after his victory.",
+    "quote": "Legacy is everything to me.",
+    "attribution": "Angelo Leo",
+    "context": "On his boxing career",
     "filename": "quote_card.png"
   }
 }
