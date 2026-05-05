@@ -106,7 +106,11 @@ def main():
         print(f"\n  [{i}/{len(prompts)}] {section}: {topic}")
         print(f"  Prompt: {prompt[:80]}...")
 
-        image_bytes, mime_type = generate_image(prompt, api_key)
+        try:
+            image_bytes, mime_type = generate_image(prompt, api_key)
+        except Exception as e:
+            print(f"  Unexpected error generating {section}: {e}")
+            image_bytes, mime_type = None, None
 
         if image_bytes:
             ext = "jpg" if mime_type and "jpeg" in mime_type else "png"
