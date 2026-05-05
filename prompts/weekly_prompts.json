@@ -3,23 +3,23 @@
   "prompts": [
     {
       "section": "intro",
-      "topic": "Analytical overview of the combat sports industry and its recent challenges",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, a chessboard with boxing gloves and MMA gloves as pieces"
+      "topic": "Fighter reputation, risks, volatile personalities, brand image in combat sports",
+      "prompt": "cinematic image of a darkened, smoky back room, silhouettes of fighters and promoters, tense atmosphere, no faces, no logos"
     },
     {
       "section": "main_story",
-      "topic": "Pitbull brothers' brawl disrupting Karate Combat event and finances.",
-      "prompt": "grainy security camera footage of a chaotic brawl, focusing on the blurred figures of the Pitbull brothers, dark and intense"
+      "topic": "High-stakes UFC title fight, promotional strategy, risk management",
+      "prompt": "overhead view of a chessboard with UFC fighter figurines as pieces, dramatic lighting, focused and intense"
     },
     {
       "section": "fight_previews",
-      "topic": "Upcoming UFC 328: Chimaev vs. Strickland and Van vs. Taira",
-      "prompt": "Split screen showing intense fighters, one side Chimaev, the other side Strickland, dynamic lighting, no logos"
+      "topic": "MMA fight preview, Chimaev vs. Strickland, Van vs. Taira, face-off",
+      "prompt": "stylized, dark portrait of two fighters facing off, eyes locked, gritty texture, no logos"
     },
     {
       "section": "business_intel",
-      "topic": "David Benavidez's boxing career post-Ramirez, future match possibilities.",
-      "prompt": "Close-up of David Benavidez's face, determined expression, money subtly blurred in the background, high contrast lighting, boxing ring setting"
+      "topic": "Karate Combat brand damage, fighter conduct, sponsor risk assessment",
+      "prompt": "a cracked karate board with dollar bills spilling out, dark background, symbolic of financial loss, no logos"
     }
   ]
 }
