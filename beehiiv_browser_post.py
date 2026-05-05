@@ -236,7 +236,8 @@ def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_a
             print("  Using saved session...")
             ctx = browser.new_context(storage_state=session)
             page = ctx.new_page()
-            page.goto("https://app.beehiiv.com/dashboard", wait_until="domcontentloaded", timeout=30000)
+            page.goto("https://app.beehiiv.com/dashboard", wait_until="networkidle", timeout=30000)
+            time.sleep(2)
             if "/login" in page.url:
                 print("  Session expired — falling back to email/password login")
                 session = None
@@ -262,9 +263,11 @@ def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_a
                 raise SystemExit(f"Login failed — still at: {page.url}")
 
         print("  Creating new post...")
-        page.goto("https://app.beehiiv.com/posts/new", wait_until="domcontentloaded", timeout=30000)
-        page.wait_for_load_state("networkidle", timeout=20000)
+        page.goto("https://app.beehiiv.com/posts/new", wait_until="networkidle", timeout=30000)
         time.sleep(2)
+
+        if "/login" in page.url:
+            raise SystemExit(f"Redirected to login on /posts/new — session is invalid. Re-run beehiiv_capture_session.py.")
 
         # Set subject / title
         subject_field = page.locator(
