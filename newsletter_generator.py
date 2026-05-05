@@ -173,62 +173,47 @@ For newsletter_html use EXACTLY this structure (do not omit any inline styles):
 """
 
 
-GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-2.5-flash-lite-preview-06-17"]
-
-
-def gemini_generate(prompt, model="gemini-2.0-flash"):
-    from google import genai
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    for attempt in range(3):
-        try:
-            response = client.models.generate_content(model=model, contents=[prompt])
-            return response.text
-        except Exception as e:
-            msg = str(e)
-            if attempt < 2 and ("429" in msg or "503" in msg or "quota" in msg.lower()):
-                wait = 30 * (attempt + 1)
-                print(f"  Gemini {model} error (attempt {attempt+1}): {msg[:80]} — retrying in {wait}s")
-                time.sleep(wait)
-            else:
-                raise
-    raise RuntimeError(f"Gemini {model} failed after 3 attempts")
-
-
-def parse_json_response(raw):
-    raw = re.sub(r"^```(?:json)?\s*", "", raw.strip())
-    raw = re.sub(r"\s*```$", "", raw.strip())
-    start = raw.find("{")
-    end   = raw.rfind("}") + 1
-    if start == -1 or end == 0:
-        raise ValueError(f"No JSON object in response. Preview:\n{raw[:200]}")
-    return json.loads(raw[start:end])
+GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.5-flash"]
 
 
 def build_newsletter(news_content):
+    from google import genai
+    client = genai.Client(api_key=GEMINI_API_KEY)
+
     prompt = f"""{SYSTEM_PROMPT}
 
 CRAWLED NEWS CONTENT (use this as source material):
 {news_content[:14000]}
 
-Generate the newsletter JSON now. Output only valid JSON, no markdown fences:"""
+Generate the newsletter JSON now:"""
 
     last_err = None
     for model in GEMINI_MODELS:
         for attempt in range(2):
             print(f"  Calling Gemini ({model}, attempt {attempt+1})...")
             try:
-                raw = gemini_generate(prompt, model=model)
-                return parse_json_response(raw)
+                response = client.models.generate_content(
+                    model=model,
+                    contents=[prompt],
+                    config={"response_mime_type": "application/json"},
+                )
+                return json.loads(response.text)
             except json.JSONDecodeError as e:
                 print(f"  JSON parse error: {e} — retrying")
                 last_err = e
             except Exception as e:
-                print(f"  Generation error: {e}")
-                last_err = e
-                break  # try next model
+                msg = str(e)
+                if "429" in msg or "503" in msg:
+                    wait = 30 * (attempt + 1)
+                    print(f"  Rate limit ({model}): retrying in {wait}s")
+                    time.sleep(wait)
+                else:
+                    print(f"  Error ({model}): {msg[:120]}")
+                    last_err = e
+                    break
         time.sleep(5)
 
-    raise SystemExit(f"Newsletter generation failed after all retries. Last error: {last_err}")
+    raise SystemExit(f"Newsletter generation failed. Last error: {last_err}")
 
 
 # ---------------------------------------------------------------------------
