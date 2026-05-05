@@ -1,25 +1,25 @@
 {
-  "issue_date": "2026-05-04",
+  "issue_date": "2026-05-05",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Gloves in locker room, sweat, determination, pre-fight atmosphere, combat sports.",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere"
+      "topic": "Analytical overview of the combat sports industry and its recent challenges",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, a chessboard with boxing gloves and MMA gloves as pieces"
     },
     {
       "section": "main_story",
-      "topic": "Carlos Prates triumphant, rising star, Perth upset, welterweight chaos, chaos.",
-      "prompt": "Action shot of Carlos Prates celebrating in the octagon after his victory, dynamic lighting, sweat glistening, Australian flag subtly visible in the background, ringside perspective."
+      "topic": "Pitbull brothers' brawl disrupting Karate Combat event and finances.",
+      "prompt": "grainy security camera footage of a chaotic brawl, focusing on the blurred figures of the Pitbull brothers, dark and intense"
     },
     {
       "section": "fight_previews",
-      "topic": "Fighters clashing, dramatic lighting, intense face-off, stadium atmosphere, physicality.",
-      "prompt": "Split image: Khamzat Chimaev and Sean Strickland face-off, intense and personal, gritty and realistic, dark lighting with strong contrast, hint of Prudential Center in background."
+      "topic": "Upcoming UFC 328: Chimaev vs. Strickland and Van vs. Taira",
+      "prompt": "Split screen showing intense fighters, one side Chimaev, the other side Strickland, dynamic lighting, no logos"
     },
     {
       "section": "business_intel",
-      "topic": "Naoya Inoue victorious, global appeal, boxing expansion, spotlight, international.",
-      "prompt": "Naoya Inoue raising his arms in victory, triumphant and determined, surrounded by flashing lights, a sense of global reach and recognition, arena setting."
+      "topic": "David Benavidez's boxing career post-Ramirez, future match possibilities.",
+      "prompt": "Close-up of David Benavidez's face, determined expression, money subtly blurred in the background, high contrast lighting, boxing ring setting"
     }
   ]
 }
