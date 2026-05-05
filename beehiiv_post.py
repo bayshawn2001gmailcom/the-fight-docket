@@ -240,6 +240,8 @@ def create_post(subject: str, preview_text: str, html_content: str) -> dict:
     print(f"  Creating post: '{subject}'")
     resp = requests.post(url, json=payload, headers=HEADERS, timeout=30)
 
+    print(f"  Beehiiv response {resp.status_code}: {resp.text[:500]}")
+
     if not resp.ok:
         raise SystemExit(f"Beehiiv API error {resp.status_code}: {resp.text[:300]}")
 

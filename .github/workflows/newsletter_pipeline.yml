@@ -50,7 +50,6 @@ jobs:
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${GITHUB_REF_NAME} || true
 
       - name: Post to Beehiiv and schedule send
-        continue-on-error: true
         env:
           BEEHIIV_API_KEY:        ${{ secrets.BEEHIIV_API_KEY }}
           BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
