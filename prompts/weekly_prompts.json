@@ -1,25 +1,25 @@
 {
-  "issue_date": "2026-05-05",
+  "issue_date": "2026-05-11",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Combat sports editor contemplating the week's news, serious, thoughtful.",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, focus on hands holding a pen and notebook in a dimly lit office, paperwork scattered around, keyboard glowing."
+      "topic": "Analyzing fighter wins and losses, business intelligence, combat sports industry",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, a chess board with pieces toppled over"
     },
     {
       "section": "main_story",
-      "topic": "Chimaev vs. Strickland face-off, intense, high-stakes, modern gladiators.",
-      "prompt": "cinematic image prompt, no faces, no logos, UFC Octagon, two muscular fighters in a tense face-off, sweat glistening, harsh lighting, gritty atmosphere, implied violence."
+      "topic": "Khamzat Chimaev's UFC 328 loss impact, career crossroads, future weight division",
+      "prompt": "A fighter standing at a crossroads, two paths diverging, one marked 'Welterweight,' the other 'Middleweight.' Dark, uncertain atmosphere, no faces, no logos."
     },
     {
       "section": "fight_previews",
-      "topic": "Upcoming fight cards, dynamic, varied combat styles, global reach.",
-      "prompt": "cinematic image prompt, montage of different combat sports scenes: MMA cage, boxing ring, karate dojo, showcasing diverse fighters and techniques, no faces, dark and dramatic lighting."
+      "topic": "Upcoming boxing and UFC fights, Keyshawn Davis, Oklahoma City card previews",
+      "prompt": "A split screen: One side showing boxing gloves, the other an MMA octagon. High contrast, action-oriented, no faces, no logos."
     },
     {
       "section": "business_intel",
-      "topic": "Karate Combat controversy, behind-the-scenes tension, credibility concerns.",
-      "prompt": "cinematic image prompt, no faces, no logos, dimly lit boardroom, figures in shadow arguing, documents scattered on the table, tension palpable, sense of mistrust."
+      "topic": "Zuffa Boxing strategy, profitability challenges, talent development, market disruption",
+      "prompt": "A boxing ring seen from above, with dollar signs subtly incorporated into the canvas design. Dark, serious tone, no faces, no logos."
     }
   ]
 }

@@ -2,31 +2,31 @@
   "date": "MAY 9, 2026",
   "issue": "may09_2026",
   "preview_stories": [
-    "Chimaev/Strickland's impact on PPV",
-    "Benavidez's next opponent?",
-    "Karate Combat in hot water"
+    "Chimaev's Next Move?",
+    "Zuffa Boxing's Slow Burn",
+    "OKC UFC Card"
   ],
   "announcement": {
-    "fighter1": "Chimaev",
-    "fighter2": "Strickland",
-    "event": "UFC 328",
+    "fighter1": "Hill",
+    "fighter2": "Craig",
+    "event": "UFC 329",
     "date": "July 11 \u00b7 Las Vegas, NV",
     "weight_class": "Welterweight",
     "filename": "f1_vs_f2_announcement.png"
   },
   "result": {
-    "winner": "Benavidez",
-    "loser": "Ramirez",
-    "method": "KO/TKO",
-    "round_num": "R6",
-    "time": "N/A",
-    "event": "Boxing Bout",
+    "winner": "Strickland",
+    "loser": "Chimaev",
+    "method": "Decision",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC 328",
     "filename": "name_result.png"
   },
   "quote": {
-    "quote": "Legacy is everything to me.",
-    "attribution": "Angelo Leo",
-    "context": "On his boxing career",
+    "quote": "I think a move to middleweight could be a calculated risk.",
+    "attribution": "The Fight Docket",
+    "context": "Analyzing Khamzat Chimaev's UFC future.",
     "filename": "quote_card.png"
   }
 }
