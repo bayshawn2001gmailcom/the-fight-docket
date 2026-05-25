@@ -69,9 +69,10 @@ jobs:
 
       - name: Wait until 4:00am for posting
         run: |
-          CURRENT_HOUR=$(date +%H)
-          if [ "$CURRENT_HOUR" -lt "09" ]; then
-            MINUTES_TO_WAIT=$(( (9 - CURRENT_HOUR - 1) * 60 + (60 - $(date +%M)) ))
+          CURRENT_HOUR=$((10#$(date +%H)))
+          if [ "$CURRENT_HOUR" -lt 9 ]; then
+            CURRENT_MIN=$(date +%M)
+            MINUTES_TO_WAIT=$(( (9 - CURRENT_HOUR - 1) * 60 + (60 - 10#$CURRENT_MIN) ))
             echo "⏳ Waiting until 4:00am EDT to post (${MINUTES_TO_WAIT} minutes)..."
             sleep $((MINUTES_TO_WAIT * 60))
           fi
