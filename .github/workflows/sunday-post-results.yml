@@ -1,10 +1,7 @@
 name: Sunday Post Fight Results
 
-# Run Sunday 1:00am EDT (0500 UTC)
 on:
-  schedule:
-    - cron: '0 5 * * 0'  # Sunday 5am UTC = 1am EDT
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:  # Manual trigger only
 
 jobs:
   post-results:
