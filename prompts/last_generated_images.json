@@ -1,25 +1,25 @@
 {
-  "issue_date": "2026-05-11",
+  "issue_date": "2026-05-18",
   "images": [
     {
       "section": "intro",
-      "file": "nb2_2026-05-11_intro.jpg",
-      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-11_intro.jpg"
+      "file": "nb2_2026-05-18_intro.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-18_intro.jpg"
     },
     {
       "section": "main_story",
-      "file": "nb2_2026-05-11_main_story.jpg",
-      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-11_main_story.jpg"
+      "file": "nb2_2026-05-18_main_story.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-18_main_story.jpg"
     },
     {
       "section": "fight_previews",
-      "file": "nb2_2026-05-11_fight_previews.jpg",
-      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-11_fight_previews.jpg"
+      "file": "nb2_2026-05-18_fight_previews.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-18_fight_previews.jpg"
     },
     {
       "section": "business_intel",
-      "file": "nb2_2026-05-11_business_intel.jpg",
-      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-11_business_intel.jpg"
+      "file": "nb2_2026-05-18_business_intel.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-05-18_business_intel.jpg"
     }
   ]
 }
