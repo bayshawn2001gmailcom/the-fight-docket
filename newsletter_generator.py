@@ -13,7 +13,8 @@ load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
 FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY", "")
-GEMINI_API_KEY    = os.getenv("GEMINI_API_KEY", "")
+GEMINI_API_KEY     = os.getenv("GEMINI_API_KEY", "")
+PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY", "")
 
 if not FIRECRAWL_API_KEY:
     raise SystemExit("Missing FIRECRAWL_API_KEY")
@@ -69,6 +70,51 @@ def crawl_news():
         if content:
             chunks.append(f"=== {url} ===\n{content[:3500]}\n")
         time.sleep(0.4)
+    return "\n\n".join(chunks)
+
+
+# ---------------------------------------------------------------------------
+# Perplexity Sonar -- real-time supplemental news search
+# ---------------------------------------------------------------------------
+
+PERPLEXITY_QUERIES = [
+    "What are the biggest MMA fight results and news from the past 7 days? Include fight results, fighter news, and promotional announcements.",
+    "What are the biggest professional boxing fight results and news from the past 7 days? Include title fights, results, and upcoming cards.",
+    "What is the latest combat sports business, legal, and financial news from the past 7 days? Include media rights deals, lawsuits, and regulatory updates.",
+]
+
+
+def perplexity_search():
+    if not PERPLEXITY_API_KEY:
+        print("  Perplexity key not set -- skipping")
+        return ""
+    headers = {
+        "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
+        "Content-Type": "application/json",
+    }
+    chunks = []
+    for i, query in enumerate(PERPLEXITY_QUERIES, 1):
+        print(f"  Perplexity query {i}/{len(PERPLEXITY_QUERIES)}...")
+        try:
+            resp = requests.post(
+                "https://api.perplexity.ai/chat/completions",
+                json={
+                    "model": "sonar",
+                    "messages": [{"role": "user", "content": query}],
+                    "max_tokens": 600,
+                },
+                headers=headers,
+                timeout=30,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            answer = data["choices"][0]["message"]["content"]
+            citations = data.get("citations", [])
+            citation_str = "\n".join(f"  - {c}" for c in citations[:5])
+            chunks.append(f"=== Perplexity: {query[:60]}... ===\n{answer}\nSources: {citation_str}\n")
+        except Exception as e:
+            print(f"  Perplexity query {i} failed: {e}")
+        time.sleep(1)
     return "\n\n".join(chunks)
 
 
@@ -249,6 +295,14 @@ def main():
     if not news_content.strip():
         raise SystemExit("ERROR: No content crawled. Check FIRECRAWL_API_KEY.")
     print(f"  Crawled {len(news_content):,} chars")
+
+    print(f"\n[1b/3] Querying Perplexity Sonar ({len(PERPLEXITY_QUERIES)} queries)...")
+    perplexity_content = perplexity_search()
+    if perplexity_content:
+        print(f"  Perplexity  : {len(perplexity_content):,} chars")
+        news_content = news_content + "\n\n" + perplexity_content
+    else:
+        print("  Perplexity  : skipped")
 
     print("\n[2/3] Generating newsletter with Gemini...")
     data = build_newsletter(news_content)
