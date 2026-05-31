@@ -25,8 +25,9 @@ jobs:
 
       - name: Run newsletter generator
         env:
-          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
-          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
+          FIRECRAWL_API_KEY:  ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY:     ${{ secrets.GEMINI_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
         run: python newsletter_generator.py
 
       - name: Commit newsletter, prompts, and IG data
