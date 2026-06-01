@@ -2,31 +2,31 @@
   "date": "MAY 9, 2026",
   "issue": "may09_2026",
   "preview_stories": [
-    "Jones' contract talks & future",
-    "McGregor's return: Business angle",
-    "Boxing's US promotional shifts"
+    "Song Yadong's bantamweight statement at UFC Macau",
+    "Matchroom & Queensberry hint at 5x5 rematch",
+    "Muhammad-Bonfim tops this week's UFC Fight Night"
   ],
   "announcement": {
-    "fighter1": "McGregor",
-    "fighter2": "Chandler",
-    "event": "UFC 306",
-    "date": "Sept 7 \u00b7 Las Vegas, NV",
+    "fighter1": "Edwards",
+    "fighter2": "Covington",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
     "weight_class": "Welterweight",
-    "filename": "mcgregor_vs_chandler_announcement.png"
+    "filename": "edwards_vs_covington_announcement.png"
   },
   "result": {
-    "winner": "Arnold Allen",
-    "loser": "Melquizael Costa",
-    "method": "TKO",
-    "round_num": "R3",
-    "time": "2:49",
-    "event": "UFC Fight Night",
-    "filename": "arnold_allen_result.png"
+    "winner": "Song",
+    "loser": "Figueiredo",
+    "method": "Submission",
+    "round_num": "R2",
+    "time": "3:45",
+    "event": "UFC Macau",
+    "filename": "song_result.png"
   },
   "quote": {
-    "quote": "I really have no reason to fight anymore.",
-    "attribution": "Jon Jones",
-    "context": "Discussing contract situation & Ngannou fight",
-    "filename": "jon_jones_quote_card.png"
+    "quote": "If he loses to me at 155, he\u2019s gonna be gone.",
+    "attribution": "Arman Tsarukyan",
+    "context": "On Ilia Topuria's potential fight against Islam Makhachev",
+    "filename": "tsarukyan_quote_card.png"
   }
 }
