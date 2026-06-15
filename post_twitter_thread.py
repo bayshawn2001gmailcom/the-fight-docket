@@ -113,8 +113,8 @@ THREAD RULES:
 - Tweet 1 (Hook): Bold, specific, provocative opener. End with 🧵. MAX 260 chars.
 - Tweet 2-5 (Body): Each covers one key story — business angle, specific figures, implications.
   No fluff. Each MAX 260 chars.
-- Tweet 6 (CTA): Drive to newsletter. Include URL placeholder [NEWSLETTER_URL]. MAX 260 chars.
-  Add 2-3 relevant hashtags: #MMA #Boxing #UFC etc.
+- Tweet 6 (CTA): Drive to newsletter subscribe page. Include URL placeholder [NEWSLETTER_URL]. MAX 260 chars.
+  Frame as "subscribe free" or "join X readers" — make the ask explicit. Add 2-3 hashtags: #MMA #Boxing #UFC etc.
 
 TONE: Authoritative, insider. "Here's what this means...", specific $$ figures, named sources.
 NEVER use: "exciting", "amazing", "thrilled". No emojis except 🧵 on tweet 1 and 🥊 sparingly.
@@ -150,8 +150,8 @@ def generate_thread(newsletter_text, ig_data):
 
     tweets = json.loads(raw[start:end])
 
-    # Replace newsletter URL placeholder
-    newsletter_url = "https://thefightdocket.com"
+    # Replace newsletter URL placeholder — points directly to subscribe page
+    newsletter_url = "https://thefightdocket.beehiiv.com/subscribe"
     tweets = [t.replace("[NEWSLETTER_URL]", newsletter_url) for t in tweets]
 
     # Enforce 280-char limit (hard truncate with ellipsis as safety net)

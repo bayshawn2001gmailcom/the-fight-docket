@@ -227,10 +227,16 @@ def get_session_state() -> str | None:
 def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_at: datetime, headless: bool = True):
     from playwright.sync_api import sync_playwright
 
+    is_ci = bool(os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS"))
     session = get_session_state()
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
+        # In CI use headless Playwright Chromium with saved session.
+        # Locally use real Chrome (channel="chrome") so Cloudflare doesn't block.
+        if is_ci:
+            browser = p.chromium.launch(headless=True)
+        else:
+            browser = p.chromium.launch(channel="chrome", headless=False)
 
         if session:
             print("  Using saved session...")
@@ -239,25 +245,20 @@ def post_via_browser(subject: str, html_content: str, thumbnail_url: str, send_a
             page.goto("https://app.beehiiv.com/dashboard", wait_until="networkidle", timeout=30000)
             time.sleep(2)
             if "/login" in page.url:
-                print("  Session expired — falling back to email/password login")
+                print("  Session expired — falling back to login")
                 session = None
 
         if not session:
-            if not BEEHIIV_EMAIL or not BEEHIIV_PASSWORD:
-                raise SystemExit(
-                    "No session and no BEEHIIV_EMAIL/BEEHIIV_PASSWORD set.\n"
-                    "Either run beehiiv_save_session.py locally and encode the session,\n"
-                    "or set BEEHIIV_EMAIL and BEEHIIV_PASSWORD secrets in GitHub Actions."
-                )
             print("  Logging in with email/password...")
             ctx = browser.new_context()
             page = ctx.new_page()
-            page.goto("https://app.beehiiv.com/login", wait_until="domcontentloaded", timeout=30000)
+            page.goto("https://app.beehiiv.com/login", wait_until="networkidle", timeout=30000)
+            time.sleep(2)
             page.fill('input[type="email"], input[name="email"]', BEEHIIV_EMAIL)
             page.fill('input[type="password"], input[name="password"]', BEEHIIV_PASSWORD)
             page.click('button[type="submit"]')
             try:
-                page.wait_for_url("**/dashboard**", timeout=20000)
+                page.wait_for_url("**/dashboard**", timeout=30000)
                 print("  Login successful")
             except Exception:
                 raise SystemExit(f"Login failed — still at: {page.url}")

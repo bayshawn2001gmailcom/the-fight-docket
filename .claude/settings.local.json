@@ -12,7 +12,11 @@
       "Bash(GEMINI_API_KEY=\"AIzaSyCgW5zG9tYXlfE8Sm3avU-G6kAs8s2cnKs\" python nano_banana_gen.py \"Photorealistic documentary photograph of a professional weigh-in scale standing alone under a single harsh overhead spotlight on a bare stage, the scale platform worn and scratched from years of use, deep black background, a folded towel draped over a stool beside it, concrete floor visible, no people, shot from a low angle at floor level, tense and atmospheric, 35mm film photography feel. Editorial sports photography style, gritty, high contrast, 35mm film grain, shallow depth of field, desaturated tones, no faces, no logos, no text in image\" --aspect-ratio 16:9 --resolution 2K --image-only)",
       "Bash(GEMINI_API_KEY=\"AIzaSyCgW5zG9tYXlfE8Sm3avU-G6kAs8s2cnKs\" python nano_banana_gen.py \"Photorealistic photograph shot on 35mm film of a temporary professional boxing ring erected on the pitch of a massive football stadium at night, 60000 dark seats rising on all sides into blackness, the ring illuminated by a single powerful overhead spotlight, canvas worn and slightly dirty, two corner stools on opposite sides of the ring, ring ropes casting hard shadows across the canvas, shot from pitch level at a wide angle showing the full scale of the empty stadium surrounding the ring, cold tungsten light on the canvas, blue ambient fill from distant stadium floodlights, atmospheric haze. Editorial sports photography style, gritty, high contrast, 35mm film grain, shallow depth of field, desaturated tones, no faces, no logos, no text in image\" --aspect-ratio 16:9 --resolution 2K --image-only)",
       "Bash(python -c \"from google import genai; from PIL import Image; print\\('Dependencies OK'\\)\")",
-      "Bash(ls \"C:/The fight Docket/\"*.png)"
+      "Bash(ls \"C:/The fight Docket/\"*.png)",
+      "Bash(python -c \"from playwright.sync_api import sync_playwright; print\\('playwright OK'\\)\")",
+      "Bash(python -c \"import dotenv; print\\('dotenv OK'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(dir newsletter_*.html)"
     ]
   }
 }
