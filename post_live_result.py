@@ -135,7 +135,7 @@ def extract_results(raw_content: str) -> list:
 
     prompt = EXTRACT_PROMPT.replace("{content}", raw_content[:8000])
     print("  Calling Gemini to extract results...")
-    response = client.models.generate_content(model="gemini-2.0-flash", contents=[prompt])
+    response = client.models.generate_content(model="gemini-2.5-flash", contents=[prompt])
     raw = response.text.strip()
 
     raw = re.sub(r"^```(?:json)?\s*", "", raw)

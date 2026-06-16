@@ -219,7 +219,7 @@ For newsletter_html use EXACTLY this structure (do not omit any inline styles):
 """
 
 
-GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.5-flash"]
+GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-pro"]
 
 
 def build_newsletter(news_content):

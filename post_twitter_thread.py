@@ -136,7 +136,7 @@ def generate_thread(newsletter_text, ig_data):
     prompt = f"{THREAD_PROMPT}\n\n{context}\n\nGenerate the 6-tweet thread JSON array now:"
 
     print("  Calling Gemini to write thread...")
-    response = client.models.generate_content(model="gemini-2.0-flash", contents=[prompt])
+    response = client.models.generate_content(model="gemini-2.5-flash", contents=[prompt])
     raw = response.text.strip()
 
     # Strip markdown fences

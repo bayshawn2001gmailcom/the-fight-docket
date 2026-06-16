@@ -157,7 +157,7 @@ def generate_prompt(client, slug: str, section_text: str) -> str:
     for attempt in range(1, retries + 1):
         try:
             response = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-2.5-flash",
                 contents=[user_message],
                 config=config,
             )
