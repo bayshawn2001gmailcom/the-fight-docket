@@ -11,7 +11,7 @@ Usage:
 Runs from GitHub Actions on Mon/Tue/Thu/Sat.
 Token refresh required every 60 days — see INSTAGRAM_TOKEN_ISSUED_AT in .env.
 """
-import argparse, base64, glob, os, re, sys
+import argparse, base64, glob, os, re, sys, time
 from pathlib import Path
 from dotenv import load_dotenv
 import requests
@@ -19,10 +19,15 @@ import requests
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
-INSTAGRAM_ACCOUNT_ID = os.getenv("INSTAGRAM_ACCOUNT_ID", "")
-INSTAGRAM_PAGE_TOKEN = os.getenv("INSTAGRAM_PAGE_TOKEN", "")
-FACEBOOK_PAGE_ID     = os.getenv("FACEBOOK_PAGE_ID", "")
-FACEBOOK_PAGE_TOKEN  = os.getenv("FACEBOOK_PAGE_TOKEN", "")
+def _tok(key):
+    """Get env var and strip surrounding quotes/whitespace that .env editors add."""
+    v = os.getenv(key, "").strip().strip("'\"")
+    return v
+
+INSTAGRAM_ACCOUNT_ID = _tok("INSTAGRAM_ACCOUNT_ID")
+INSTAGRAM_PAGE_TOKEN = _tok("INSTAGRAM_PAGE_TOKEN")
+FACEBOOK_PAGE_ID     = _tok("FACEBOOK_PAGE_ID")
+FACEBOOK_PAGE_TOKEN  = _tok("FACEBOOK_PAGE_TOKEN")
 IMGBB_API_KEY        = os.getenv("IMGBB_API_KEY", "")
 
 CARD_PATTERNS = {
@@ -87,6 +92,7 @@ def post_instagram(img_url: str, caption: str) -> bool:
     ig = INSTAGRAM_ACCOUNT_ID
     tok = INSTAGRAM_PAGE_TOKEN
 
+    # Step 1: Create media container
     r = requests.post(
         f"https://graph.facebook.com/v19.0/{ig}/media",
         data={"image_url": img_url, "caption": caption, "access_token": tok},
@@ -97,6 +103,25 @@ def post_instagram(img_url: str, caption: str) -> bool:
         print(f"  IG container error: {r.json()}")
         return False
 
+    # Step 2: Poll until container is FINISHED (Instagram processes the image async)
+    for attempt in range(12):
+        time.sleep(5)
+        status = requests.get(
+            f"https://graph.facebook.com/v19.0/{cid}",
+            params={"fields": "status_code", "access_token": tok},
+            timeout=15,
+        ).json().get("status_code", "")
+        print(f"  IG container status: {status} (attempt {attempt + 1})")
+        if status == "FINISHED":
+            break
+        if status == "ERROR":
+            print("  IG container processing failed")
+            return False
+    else:
+        print("  IG container timed out — never reached FINISHED")
+        return False
+
+    # Step 3: Publish
     r = requests.post(
         f"https://graph.facebook.com/v19.0/{ig}/media_publish",
         data={"creation_id": cid, "access_token": tok},
