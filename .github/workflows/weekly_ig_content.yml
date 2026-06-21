@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install pillow python-dotenv --break-system-packages
+        run: pip install pillow python-dotenv requests --break-system-packages
 
       - name: Generate IG graphics and captions
         run: python ig_content_generator.py
@@ -35,3 +35,12 @@ jobs:
           git add instagram_content/ || true
           git diff --staged --quiet || git commit -m "IG content generated [$(date +%Y-%m-%d)]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
+
+      - name: Post Monday preview card (IG + FB)
+        env:
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          INSTAGRAM_PAGE_TOKEN: ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+          FACEBOOK_PAGE_ID:     ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN:  ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          IMGBB_API_KEY:        ${{ secrets.IMGBB_API_KEY }}
+        run: python post_instagram_weekly.py --card preview
