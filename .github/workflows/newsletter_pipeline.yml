@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests python-dotenv google-genai pillow playwright --break-system-packages
+          pip install requests python-dotenv google-genai pillow playwright crawl4ai --break-system-packages
           playwright install chromium --with-deps
 
       - name: Run newsletter generator

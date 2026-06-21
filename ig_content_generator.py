@@ -97,7 +97,7 @@ def main():
     quote_text   = q.get("quote", "") if q else ""
     quote_attr   = q.get("attribution", "") if q else ""
 
-    captions = f"""The Fight Docket — {week.get('date', '')}
+    captions = f”””The Fight Docket — {week.get('date', '')}
 Generated: {date.today().isoformat()}
 =========================================
 
@@ -106,7 +106,7 @@ Generated: {date.today().isoformat()}
 
 {stories_text}
 
-Full breakdown at thefightdocket.com
+Subscribe free → www.thefightdocket.com
 #FightDocket #MMA #Boxing #CombatSports #UFC
 
 --- TUESDAY: Fight Result ---
@@ -115,7 +115,7 @@ Full breakdown at thefightdocket.com
 {winner.upper()} def. {loser.upper()}
 {method} · {rnd} · {t}
 
-Full card breakdown at thefightdocket.com
+Full breakdown in this week's newsletter → www.thefightdocket.com
 #MMA #UFC #Boxing #FightResults #CombatSports
 
 --- THURSDAY: Fight Announcement ---
@@ -124,15 +124,17 @@ Full card breakdown at thefightdocket.com
 {f1} vs. {f2}
 {event_ann} · {date_ann}
 
-Full preview in this week's Fight Docket → thefightdocket.com
+Full preview in The Fight Docket newsletter → www.thefightdocket.com
 #UFC #MMA #FightAnnouncement #{event_ann.replace(' ', '')}
 
 --- SATURDAY: Quote Card ---
 “{quote_text}”
 — {quote_attr}
 
+Combat sports business intelligence, weekly and free.
+Subscribe → www.thefightdocket.com
 #FightDocket #MMA #Boxing #CombatSports
-"""
+“””
 
     captions_file = IG_CONTENT_DIR / f"{issue}_captions.txt"
     captions_file.write_text(captions, encoding="utf-8")

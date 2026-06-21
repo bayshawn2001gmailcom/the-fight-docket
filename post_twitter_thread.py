@@ -151,7 +151,7 @@ def generate_thread(newsletter_text, ig_data):
     tweets = json.loads(raw[start:end])
 
     # Replace newsletter URL placeholder — points directly to subscribe page
-    newsletter_url = "https://thefightdocket.beehiiv.com/subscribe"
+    newsletter_url = "https://www.thefightdocket.com"
     tweets = [t.replace("[NEWSLETTER_URL]", newsletter_url) for t in tweets]
 
     # Enforce 280-char limit (hard truncate with ellipsis as safety net)

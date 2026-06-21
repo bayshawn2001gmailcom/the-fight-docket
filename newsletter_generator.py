@@ -16,10 +16,10 @@ FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY", "")
 GEMINI_API_KEY     = os.getenv("GEMINI_API_KEY", "")
 PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY", "")
 
-if not FIRECRAWL_API_KEY:
-    raise SystemExit("Missing FIRECRAWL_API_KEY")
 if not GEMINI_API_KEY:
     raise SystemExit("Missing GEMINI_API_KEY")
+if not FIRECRAWL_API_KEY:
+    print("Warning: FIRECRAWL_API_KEY not set — will use Crawl4AI for scraping")
 
 SCRIPT_DIR   = Path(__file__).parent
 PROMPTS_DIR  = SCRIPT_DIR / "prompts"
@@ -47,6 +47,7 @@ NEWS_SOURCES = [
 # ---------------------------------------------------------------------------
 
 def firecrawl_scrape(url):
+    """Returns (content, credits_exhausted)."""
     try:
         resp = requests.post(
             "https://api.firecrawl.dev/v1/scrape",
@@ -54,19 +55,45 @@ def firecrawl_scrape(url):
             headers=FC_HEADERS,
             timeout=30,
         )
+        if resp.status_code == 402:
+            return "", True
         resp.raise_for_status()
         data = resp.json()
-        return (data.get("data") or {}).get("markdown", "") or data.get("markdown", "")
+        content = (data.get("data") or {}).get("markdown", "") or data.get("markdown", "")
+        return content, False
     except Exception as e:
         print(f"  Firecrawl failed for {url}: {e}")
+        return "", False
+
+
+def crawl4ai_scrape(url):
+    """Crawl4AI fallback — free, no credits."""
+    try:
+        import asyncio
+        from crawl4ai import AsyncWebCrawler
+        async def _run():
+            async with AsyncWebCrawler(headless=True) as crawler:
+                r = await crawler.arun(url=url, only_text=True, word_count_threshold=10)
+                return r.markdown or ""
+        return asyncio.run(_run())
+    except Exception as e:
+        print(f"  Crawl4AI failed for {url}: {e}")
         return ""
 
 
 def crawl_news():
     chunks = []
+    use_crawl4ai = not bool(FIRECRAWL_API_KEY)
     for url in NEWS_SOURCES:
-        print(f"  Crawling {url}...")
-        content = firecrawl_scrape(url)
+        print(f"  Crawling {url} via {'Crawl4AI' if use_crawl4ai else 'Firecrawl'}...")
+        if not use_crawl4ai:
+            content, credits_exhausted = firecrawl_scrape(url)
+            if credits_exhausted:
+                print("  Firecrawl credits exhausted — switching to Crawl4AI")
+                use_crawl4ai = True
+                content = crawl4ai_scrape(url)
+        else:
+            content = crawl4ai_scrape(url)
         if content:
             chunks.append(f"=== {url} ===\n{content[:3500]}\n")
         time.sleep(0.4)
@@ -290,24 +317,28 @@ def main():
     print(f"  Issue: {ISSUE_DATE}")
     print("=" * 55)
 
-    print("\n[1/3] Crawling news sources...")
-    news_content = crawl_news()
-    if not news_content.strip():
-        raise SystemExit("ERROR: No content crawled. Check FIRECRAWL_API_KEY.")
-    print(f"  Crawled {len(news_content):,} chars")
-
-    print(f"\n[1b/3] Querying Perplexity Sonar ({len(PERPLEXITY_QUERIES)} queries)...")
+    print(f"\n[1/3] Querying Perplexity Sonar ({len(PERPLEXITY_QUERIES)} queries)...")
     perplexity_content = perplexity_search()
     if perplexity_content:
         print(f"  Perplexity  : {len(perplexity_content):,} chars")
-        news_content = news_content + "\n\n" + perplexity_content
     else:
-        print("  Perplexity  : skipped")
+        print("  Perplexity  : skipped (no key or all queries failed)")
 
-    print("\n[2/3] Generating newsletter with Gemini...")
+    print("\n[2/3] Scraping news sources (Firecrawl → Crawl4AI fallback)...")
+    scraped_content = crawl_news()
+    if scraped_content:
+        print(f"  Scraped     : {len(scraped_content):,} chars")
+    else:
+        print("  Scraped     : nothing returned")
+
+    news_content = "\n\n".join(filter(None, [perplexity_content, scraped_content]))
+    if not news_content.strip():
+        raise SystemExit("ERROR: All sources returned empty. Check API keys and network.")
+
+    print("\n[3/3] Generating newsletter with Gemini...")
     data = build_newsletter(news_content)
 
-    print("\n[3/3] Writing outputs...")
+    print("\n[4/4] Writing outputs...")
     write_outputs(data)
 
     print("\n" + "=" * 55)

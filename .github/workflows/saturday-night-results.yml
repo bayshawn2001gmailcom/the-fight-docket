@@ -5,9 +5,7 @@ name: Saturday Night Live Results
 #  11:00pm EDT  = Sun 03:00 UTC  → main card underway
 # Sunday 1am comprehensive recap handled by sunday-post-results.yml
 on:
-  schedule:
-    - cron: '0 1 * * 0'    # Sat 9pm EDT
-    - cron: '0 3 * * 0'    # Sat 11pm EDT
+  # Cron disabled — replaced by CMA Fight Night Watchdog (2:30 AM EDT, all 3 platforms, official Graph API)
   workflow_dispatch:
 
 jobs:
