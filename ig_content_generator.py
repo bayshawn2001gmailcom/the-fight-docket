@@ -97,7 +97,7 @@ def main():
     quote_text   = q.get("quote", "") if q else ""
     quote_attr   = q.get("attribution", "") if q else ""
 
-    captions = f”””The Fight Docket — {week.get('date', '')}
+    captions = f"""The Fight Docket — {week.get('date', '')}
 Generated: {date.today().isoformat()}
 =========================================
 
@@ -128,13 +128,13 @@ Full preview in The Fight Docket newsletter → www.thefightdocket.com
 #UFC #MMA #FightAnnouncement #{event_ann.replace(' ', '')}
 
 --- SATURDAY: Quote Card ---
-“{quote_text}”
+"{quote_text}"
 — {quote_attr}
 
 Combat sports business intelligence, weekly and free.
 Subscribe → www.thefightdocket.com
 #FightDocket #MMA #Boxing #CombatSports
-“””
+"""
 
     captions_file = IG_CONTENT_DIR / f"{issue}_captions.txt"
     captions_file.write_text(captions, encoding="utf-8")
