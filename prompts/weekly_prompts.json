@@ -1,25 +1,25 @@
 {
-  "issue_date": "2026-06-01",
+  "issue_date": "2026-06-22",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Combat sports industry dynamics, global expansion, promotional shifts",
-      "prompt": "Cinematic image of a globally interconnected network of fighting arenas and business deals, subtle glow, dark editorial atmosphere, no faces, no logos, high detail."
+      "topic": "Blurred fight poster, urban grit, rain-slicked street",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, blurred fight poster reflected in wet asphalt, neon lights, urban grit, rain-slicked street, dramatic low angle"
     },
     {
       "section": "main_story",
-      "topic": "UFC Macau event, Song Yadong's bantamweight victory impact",
-      "prompt": "Cinematic image of a victorious fighter's silhouette in a large arena, spotlight on a raised arm, digital statistics overlay, dark editorial atmosphere, no faces, no logos, high detail."
+      "topic": "Abstract media rights negotiations, holographic screens, city skyline",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, abstract representation of media rights negotiations, shadowy figures at a boardroom table, glowing holographic screens displaying complex data, distant city skyline through large window, moody lighting"
     },
     {
       "section": "fight_previews",
-      "topic": "Belal Muhammad vs Gabriel Bonfim, Brendan Allen's upcoming fight",
-      "prompt": "Cinematic image of two fighters in a intense staredown, split screen effect, digital analysis flowing between them, dark editorial atmosphere, no faces, no logos, high detail."
+      "topic": "Two boxers in silhouette facing off in ring, empty arena",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, two boxers in silhouette facing off in the center of a boxing ring, dramatic spotlight from above, empty arena seats in the background, sense of anticipation and quiet intensity"
     },
     {
       "section": "business_intel",
-      "topic": "Queensberry Promotions and Matchroom Boxing collaboration",
-      "prompt": "Cinematic image of two strong hands clasped in a formal agreement over a holographic projection of boxing rings, dark editorial atmosphere, no faces, no logos, high detail."
+      "topic": "Gavel on legal documents, dimly lit courtroom, corporate boardroom",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, a wooden gavel resting on a stack of legal documents, dimly lit courtroom setting or corporate boardroom table, focused light on the gavel and papers, somber and authoritative mood"
     }
   ]
 }

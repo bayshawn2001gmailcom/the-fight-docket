@@ -2,31 +2,31 @@
   "date": "MAY 9, 2026",
   "issue": "may09_2026",
   "preview_stories": [
-    "Song Yadong's bantamweight statement at UFC Macau",
-    "Matchroom & Queensberry hint at 5x5 rematch",
-    "Muhammad-Bonfim tops this week's UFC Fight Night"
+    "Media Rights Talks Heat Up for UFC",
+    "Legal Battle Over UFC White House Event",
+    "Rodriguez Claims WBA Bantamweight Gold"
   ],
   "announcement": {
-    "fighter1": "Edwards",
-    "fighter2": "Covington",
-    "event": "UFC 329",
-    "date": "July 11 \u00b7 Las Vegas, NV",
-    "weight_class": "Welterweight",
-    "filename": "edwards_vs_covington_announcement.png"
+    "fighter1": "Rodriguez",
+    "fighter2": "Collazo",
+    "event": "WBA/WBO Bantamweight Unification",
+    "date": "Sept 12 \u00b7 Las Vegas, NV",
+    "weight_class": "Bantamweight",
+    "filename": "rodriguez_vs_collazo_announcement.png"
   },
   "result": {
-    "winner": "Song",
-    "loser": "Figueiredo",
-    "method": "Submission",
-    "round_num": "R2",
-    "time": "3:45",
-    "event": "UFC Macau",
-    "filename": "song_result.png"
+    "winner": "Gabriel Bonfim",
+    "loser": "Belal Muhammad",
+    "method": "Decision (Unanimous)",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC Fight Night",
+    "filename": "bonfim_result.png"
   },
   "quote": {
-    "quote": "If he loses to me at 155, he\u2019s gonna be gone.",
-    "attribution": "Arman Tsarukyan",
-    "context": "On Ilia Topuria's potential fight against Islam Makhachev",
-    "filename": "tsarukyan_quote_card.png"
+    "quote": "UFC rights are 'up,' and I'm actively discussing new media deals across the TKO combat sports portfolio.",
+    "attribution": "Dana White",
+    "context": "On current media rights negotiations",
+    "filename": "white_quote.png"
   }
 }
