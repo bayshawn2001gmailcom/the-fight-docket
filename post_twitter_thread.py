@@ -110,13 +110,19 @@ business intelligence newsletter (@thefightdocket on X/Twitter).
 Write a 6-tweet thread based on the newsletter content below.
 
 THREAD RULES:
-- Tweet 1 (Hook): Bold, specific, provocative opener. End with 🧵. MAX 260 chars.
+- Tweet 1 (Hook): Specific, provocative opener. End with 🧵. MAX 240 chars — must end on a complete sentence.
 - Tweet 2-5 (Body): Each covers one key story — business angle, specific figures, implications.
-  No fluff. Each MAX 260 chars.
-- Tweet 6 (CTA): Drive to newsletter subscribe page. Include URL placeholder [NEWSLETTER_URL]. MAX 260 chars.
+  No fluff. Each MAX 240 chars — must end on a complete sentence or thought.
+- Tweet 6 (CTA): Drive to newsletter subscribe page. Include URL placeholder [NEWSLETTER_URL]. MAX 240 chars.
   Frame as "subscribe free" or "join X readers" — make the ask explicit. Add 2-3 hashtags: #MMA #Boxing #UFC etc.
 
-TONE: Authoritative, insider. "Here's what this means...", specific $$ figures, named sources.
+FORMATTING RULES (critical):
+- Plain text only. NO markdown. No **bold**, no *italic*, no underscores.
+- No bullet points or dashes inside tweets.
+- Each tweet must be a complete thought — never end mid-sentence.
+- Count characters carefully. 240 is a hard ceiling including spaces and emoji.
+
+TONE: Authoritative, insider. Specific $$ figures, named sources, implications.
 NEVER use: "exciting", "amazing", "thrilled". No emojis except 🧵 on tweet 1 and 🥊 sparingly.
 
 Output ONLY a JSON array of 6 strings (the tweets), no other text:
@@ -154,7 +160,7 @@ def generate_thread(newsletter_text, ig_data):
     newsletter_url = "https://www.thefightdocket.com"
     tweets = [t.replace("[NEWSLETTER_URL]", newsletter_url) for t in tweets]
 
-    # Enforce 280-char limit (hard truncate with ellipsis as safety net)
+    # Hard truncate only if Gemini ignores the 240-char instruction
     safe = []
     for t in tweets:
         if len(t) > 280:
