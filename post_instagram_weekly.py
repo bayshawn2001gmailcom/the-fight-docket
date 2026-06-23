@@ -50,14 +50,14 @@ IG_CONTENT  = SCRIPT_DIR / "instagram_content"
 
 def find_latest_image(card: str) -> Path:
     pattern = str(IG_CONTENT / CARD_PATTERNS[card])
-    files = sorted(glob.glob(pattern), reverse=True)
+    files = sorted(glob.glob(pattern), key=os.path.getmtime, reverse=True)
     if not files:
         raise SystemExit(f"No image found for card='{card}' in {IG_CONTENT}/")
     return Path(files[0])
 
 
 def parse_caption(card: str) -> str:
-    caps = sorted(IG_CONTENT.glob("*_captions.txt"), reverse=True)
+    caps = sorted(IG_CONTENT.glob("*_captions.txt"), key=os.path.getmtime, reverse=True)
     if not caps:
         raise SystemExit(f"No captions file found in {IG_CONTENT}/")
 
