@@ -1,32 +1,32 @@
 {
-  "date": "MAY 9, 2026",
-  "issue": "may09_2026",
+  "date": "JUNE 22, 2026",
+  "issue": "jun22_2026",
   "preview_stories": [
-    "Media Rights Talks Heat Up for UFC",
-    "Legal Battle Over UFC White House Event",
-    "Rodriguez Claims WBA Bantamweight Gold"
+    "Turki Alalshikh cancer diagnosis introduces profound uncertainty to boxing's future.",
+    "Xander Zayas takes career-defining risk against welterweight champ Jaron Ennis.",
+    "Most Valuable Promotions signs title contender, signaling move into legit boxing."
   ],
   "announcement": {
-    "fighter1": "Rodriguez",
-    "fighter2": "Collazo",
-    "event": "WBA/WBO Bantamweight Unification",
-    "date": "Sept 12 \u00b7 Las Vegas, NV",
-    "weight_class": "Bantamweight",
-    "filename": "rodriguez_vs_collazo_announcement.png"
+    "fighter1": "McGregor",
+    "fighter2": "Holloway",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "mcgregor_vs_holloway_announcement.png"
   },
   "result": {
-    "winner": "Gabriel Bonfim",
-    "loser": "Belal Muhammad",
-    "method": "Decision (Unanimous)",
-    "round_num": "R5",
-    "time": "5:00",
+    "winner": "Kai Asakura",
+    "loser": "Renan Barao",
+    "method": "KO/TKO",
+    "round_num": "R2",
+    "time": "3:45",
     "event": "UFC Fight Night",
-    "filename": "bonfim_result.png"
+    "filename": "asakura_result.png"
   },
   "quote": {
-    "quote": "UFC rights are 'up,' and I'm actively discussing new media deals across the TKO combat sports portfolio.",
-    "attribution": "Dana White",
-    "context": "On current media rights negotiations",
-    "filename": "white_quote.png"
+    "quote": "Jaron Ennis\u2019 record is 'padded,' and he 'ducked the big fights.'",
+    "attribution": "Xander Zayas",
+    "context": "On his upcoming IBF title challenge",
+    "filename": "zayas_quote_card.png"
   }
 }

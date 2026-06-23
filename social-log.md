@@ -1,4 +1,19 @@
 
+## 2026-06-22 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-06-22.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2069244937678315866
+
+  T1: **Turki Alalshikh's serious cancer diagnosis has detonated a bomb in boxing's fi...
+  T2: Alalshikh's influence was boxing's de facto central bank, underwriting purses th...
+  T3: The immediate fallout: severe financial & operational implications for Riyadh Se...
+  T4: Top Rank's high-risk strategic play: prospect Xander Zayas (21-0) challenges IBF...
+  T5: Rumor Mill (High Confidence): Gervonta 'Tank' Davis is exploring a mega-fight wi...
+  T6: Don't get left behind. For the deepest insights into combat sports business, fin...
+
+- Status: ✅ Posted
+
 ## 2026-06-16 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_april_20_2026.html
