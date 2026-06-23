@@ -189,58 +189,92 @@ Based on the crawled news, write this week's full newsletter. Output ONLY valid 
   }}
 }}
 
-For newsletter_html use EXACTLY this structure (do not omit any inline styles):
+For newsletter_html use EXACTLY this dark-branded structure (preserve ALL inline styles):
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>The Fight Docket | {TODAY.strftime("%B %d, %Y").upper()}</title>
+<style>
+  body {{ margin:0; padding:0; background-color:#0D0D0D !important; }}
+  p {{ margin:0 0 18px 0; color:#F2F2E8; font-size:16px; line-height:1.8; }}
+  a {{ color:#DE1E20; text-decoration:none; }}
+  strong, b {{ color:#F2F2E8; }}
+  h2, h3 {{ color:#F2F2E8; }}
+</style>
 </head>
-<body style="font-family: Georgia, 'Times New Roman', serif; max-width: 680px; margin: 0 auto; padding: 20px; color: #1a1a1a; line-height: 1.7; background: #ffffff;">
+<body style="margin:0; padding:0; background-color:#0D0D0D;">
+<div style="max-width:680px; margin:0 auto; background-color:#0D0D0D; font-family:Georgia,'Times New Roman',serif; color:#F2F2E8;">
 
-<div style="text-align: center; border-bottom: 3px solid #1a1a1a; padding-bottom: 20px; margin-bottom: 30px;">
-  <h1 style="font-size: 36px; font-weight: 900; letter-spacing: -1px; margin: 0; text-transform: uppercase;">The Fight Docket</h1>
-  <p style="margin: 6px 0 0 0; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #555;">Business Intelligence for the Combat Sports Industry</p>
-  <p style="margin: 4px 0 0 0; font-size: 12px; color: #888;">{TODAY.strftime("%B %d, %Y").upper()}</p>
+  <!-- HEADER -->
+  <div style="background:#0D0D0D; border-top:6px solid #DE1E20; padding:36px 40px 28px 40px;">
+    <p style="margin:0 0 1px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:8px; color:#C5A059;">The</p>
+    <div style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:56px; font-weight:900; text-transform:uppercase; color:#F2F2E8; line-height:0.95; letter-spacing:-2px; margin:0 0 16px 0;">FIGHT<br>DOCKET</div>
+    <div style="height:1px; background:#C5A059; margin:0 0 12px 0;"></div>
+    <p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:10px; text-transform:uppercase; letter-spacing:4px; color:#C5A059;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
+    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#555;">{TODAY.strftime("%B %d, %Y").upper()}</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div style="padding:0 40px 48px 40px;">
+
+    <!-- EDITOR'S NOTE -->
+    <div style="padding-top:40px;">
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#C5A059;">Editor's Note</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_intro]
+      <div style="color:#F2F2E8;">[3 paragraphs of editorial context — personal tone ("My read..."), sets the week's themes. Each <p> must have style='color:#F2F2E8;']</div>
+    </div>
+
+    <div style="height:1px; background:#1E1E1E; border-top:1px solid #C5A059; opacity:0.25; margin:40px 0;"></div>
+
+    <!-- MAIN STORY -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Main Story</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_main_story]
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:28px; font-weight:900; line-height:1.2; margin:0 0 22px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">[HEADLINE]</h2>
+      <div style="color:#F2F2E8;">[4-5 paragraphs of deep analytical reporting. Each <p> must have style='color:#F2F2E8;']</div>
+    </div>
+
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- FIGHT CARD PREVIEWS -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fight Card Previews</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_fight_previews]
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">What's on Deck</h2>
+      <div style="color:#F2F2E8;">[2-3 fights. Use <strong style='color:#DE1E20;'>Fighter vs Fighter (Date)</strong> subheads. Each <p> must have style='color:#F2F2E8;']</div>
+    </div>
+
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- BUSINESS INTEL -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Business Intel</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_business_intel]
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">[HEADLINE]</h2>
+      <div style="color:#F2F2E8;">[3-4 paragraphs on media rights, contracts, fighter pay, regulatory moves. Each <p> must have style='color:#F2F2E8;']</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid #C5A059; background:#0D0D0D; padding:32px 40px 36px 40px;">
+    <p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:6px; color:#C5A059;">The Fight Docket</p>
+    <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; text-transform:uppercase; letter-spacing:3px; color:#888888;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
+    <p style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; color:#888888;">
+      <a href="https://www.thefightdocket.com" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a>
+    </p>
+    <p style="margin:12px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">You're receiving this because you subscribed. Forward to a fight fan who thinks like an analyst.</p>
+  </div>
+
 </div>
-
-<!-- EDITOR'S NOTE (3 paragraphs, no headline) -->
-<p style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 6px;">Editor's Note</p>
-[IMAGE_PLACEHOLDER_intro]
-[3 paragraphs of editorial context — personal tone, sets the week's themes]
-
-<hr style="border: none; border-top: 2px solid #1a1a1a; margin: 32px 0;">
-
-<!-- MAIN STORY (4-5 paragraphs) -->
-[IMAGE_PLACEHOLDER_main_story]
-<p style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 6px;">Main Story</p>
-<h2 style="font-size: 26px; font-weight: 800; line-height: 1.2; margin-top: 0; margin-bottom: 16px;">[HEADLINE]</h2>
-[4-5 paragraphs of deep analytical reporting]
-
-<hr style="border: none; border-top: 2px solid #1a1a1a; margin: 32px 0;">
-
-<!-- FIGHT CARD PREVIEWS (3-4 paragraphs, subheads for each fight) -->
-[IMAGE_PLACEHOLDER_fight_previews]
-<p style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 6px;">Fight Card Previews</p>
-<h2 style="font-size: 26px; font-weight: 800; line-height: 1.2; margin-top: 0; margin-bottom: 16px;">What's Coming Up</h2>
-[2-3 fights with <p style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">FIGHTER vs FIGHTER, Event, Date</p> subheads]
-
-<hr style="border: none; border-top: 2px solid #1a1a1a; margin: 32px 0;">
-
-<!-- BUSINESS INTEL (3-4 paragraphs) -->
-[IMAGE_PLACEHOLDER_business_intel]
-<p style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 6px;">Business Intel</p>
-<h2 style="font-size: 26px; font-weight: 800; line-height: 1.2; margin-top: 0; margin-bottom: 16px;">[HEADLINE]</h2>
-[3-4 paragraphs on media rights, contracts, fighter pay, regulatory moves]
-
-<hr style="border: none; border-top: 2px solid #1a1a1a; margin: 32px 0;">
-
-<p style="font-size: 13px; color: #888; text-align: center; margin-top: 32px;">
-  The Fight Docket &nbsp;·&nbsp; <a href="https://thefightdocket.com" style="color:#888;">thefightdocket.com</a> &nbsp;·&nbsp; Subscribe free
-</p>
-
 </body>
 </html>
 """
@@ -293,9 +327,43 @@ Generate the newsletter JSON now:"""
 # Output
 # ---------------------------------------------------------------------------
 
+LAST_IMAGES_FILE = PROMPTS_DIR / "last_generated_images.json"
+IMG_STYLE = 'width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;'
+
+PLACEHOLDER_SECTIONS = {
+    "[IMAGE_PLACEHOLDER_intro]":         "intro",
+    "[IMAGE_PLACEHOLDER_main_story]":    "main_story",
+    "[IMAGE_PLACEHOLDER_fight_previews]":"fight_previews",
+    "[IMAGE_PLACEHOLDER_business_intel]":"business_intel",
+}
+
+
+def inject_images(html):
+    """Replace [IMAGE_PLACEHOLDER_*] tags with <img> tags from last_generated_images.json."""
+    if not LAST_IMAGES_FILE.exists():
+        print("  No last_generated_images.json — placeholders left as-is")
+        return html
+
+    with open(LAST_IMAGES_FILE) as f:
+        img_data = json.load(f)
+
+    url_map = {item["section"]: item["url"] for item in img_data.get("images", [])}
+    replaced = 0
+    for placeholder, section in PLACEHOLDER_SECTIONS.items():
+        url = url_map.get(section)
+        if url:
+            img_tag = f'<img src="{url}" alt="{section}" style="{IMG_STYLE}">'
+            html = html.replace(placeholder, img_tag)
+            replaced += 1
+        else:
+            html = html.replace(placeholder, "")
+    print(f"  Images      : {replaced}/4 placeholders replaced")
+    return html
+
+
 def write_outputs(data):
-    # Newsletter HTML
-    html = data["newsletter_html"]
+    # Newsletter HTML — inject images then save
+    html = inject_images(data["newsletter_html"])
     ISSUE_FILE.write_text(html, encoding="utf-8")
     print(f"  Newsletter  : {ISSUE_FILE.name}")
 
