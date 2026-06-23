@@ -13,17 +13,17 @@ from dotenv import load_dotenv
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
-TWITTER_API_KEY       = os.getenv("TWITTER_API_KEY", "")
-TWITTER_API_SECRET    = os.getenv("TWITTER_API_SECRET", "")
-TWITTER_ACCESS_TOKEN  = os.getenv("TWITTER_ACCESS_TOKEN", "")
-TWITTER_ACCESS_SECRET = os.getenv("TWITTER_ACCESS_SECRET", "")
-GEMINI_API_KEY        = os.getenv("GEMINI_API_KEY", "")
+TWITTER_API_KEY            = os.getenv("TWITTER_API_KEY", "")
+TWITTER_API_SECRET         = os.getenv("TWITTER_API_SECRET", "")
+TWITTER_ACCESS_TOKEN       = os.getenv("TWITTER_ACCESS_TOKEN", "")
+TWITTER_ACCESS_TOKEN_SECRET = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "")
+GEMINI_API_KEY             = os.getenv("GEMINI_API_KEY", "")
 
 for k, v in [
     ("TWITTER_API_KEY", TWITTER_API_KEY),
     ("TWITTER_API_SECRET", TWITTER_API_SECRET),
     ("TWITTER_ACCESS_TOKEN", TWITTER_ACCESS_TOKEN),
-    ("TWITTER_ACCESS_SECRET", TWITTER_ACCESS_SECRET),
+    ("TWITTER_ACCESS_TOKEN_SECRET", TWITTER_ACCESS_TOKEN_SECRET),
     ("GEMINI_API_KEY", GEMINI_API_KEY),
 ]:
     if not v:
@@ -42,7 +42,7 @@ def get_twitter_client():
         consumer_key=TWITTER_API_KEY,
         consumer_secret=TWITTER_API_SECRET,
         access_token=TWITTER_ACCESS_TOKEN,
-        access_token_secret=TWITTER_ACCESS_SECRET,
+        access_token_secret=TWITTER_ACCESS_TOKEN_SECRET,
     )
 
 
@@ -78,7 +78,7 @@ def post_thread(tweets):
 
 def load_newsletter():
     """Find and read the most recent newsletter HTML."""
-    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), reverse=True)
+    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), key=lambda p: p.stat().st_mtime, reverse=True)
     if not files:
         return None, None
     latest = files[0]
