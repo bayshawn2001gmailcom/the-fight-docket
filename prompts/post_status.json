@@ -1,5 +1,7 @@
 {
-  "posted": false,
+  "posted": true,
   "newsletter_file": "newsletter_2026-05-04.html",
-  "attempted_at": "2026-05-05T07:05:12.592671+00:00"
+  "attempted_at": "2026-05-05T07:05:12.592671+00:00",
+  "cleared_at": "2026-06-22T00:00:00+00:00",
+  "note": "Cleared stale retry — browser automation blocked on GitHub CI"
 }
