@@ -11,7 +11,7 @@ Usage:
 Runs from GitHub Actions on Mon/Tue/Thu/Sat.
 Token refresh required every 60 days — see INSTAGRAM_TOKEN_ISSUED_AT in .env.
 """
-import argparse, base64, glob, os, re, sys, time
+import argparse, base64, glob, json, os, re, sys, time
 from pathlib import Path
 from dotenv import load_dotenv
 import requests
@@ -48,7 +48,24 @@ SCRIPT_DIR = Path(__file__).parent
 IG_CONTENT  = SCRIPT_DIR / "instagram_content"
 
 
+def load_manifest() -> dict:
+    """Read current_week.json written by ig_content_generator.py."""
+    manifest_file = IG_CONTENT / "current_week.json"
+    if manifest_file.exists():
+        return json.loads(manifest_file.read_text(encoding="utf-8"))
+    return {}
+
+
 def find_latest_image(card: str) -> Path:
+    # Prefer manifest — mtime sort is unreliable on GitHub Actions (all files same timestamp)
+    manifest = load_manifest()
+    if manifest.get(card):
+        p = IG_CONTENT / manifest[card]
+        if p.exists():
+            print(f"  (via manifest: issue {manifest.get('issue', '?')})")
+            return p
+
+    # Fallback: mtime sort (works locally where files have real timestamps)
     pattern = str(IG_CONTENT / CARD_PATTERNS[card])
     files = sorted(glob.glob(pattern), key=os.path.getmtime, reverse=True)
     if not files:
@@ -57,14 +74,26 @@ def find_latest_image(card: str) -> Path:
 
 
 def parse_caption(card: str) -> str:
+    # Prefer manifest for captions file too
+    manifest = load_manifest()
+    caps_name = manifest.get("captions")
+    if caps_name:
+        caps_path = IG_CONTENT / caps_name
+        if caps_path.exists():
+            text = caps_path.read_text(encoding="utf-8")
+            day  = DAY_HEADERS[card]
+            pattern = rf"---\s+{day}:.*?---\n(.*?)(?=\n---\s+[A-Z]+:|\Z)"
+            match = re.search(pattern, text, re.DOTALL)
+            if match:
+                return match.group(1).strip()
+
+    # Fallback: mtime sort across all captions files
     caps = sorted(IG_CONTENT.glob("*_captions.txt"), key=os.path.getmtime, reverse=True)
     if not caps:
         raise SystemExit(f"No captions file found in {IG_CONTENT}/")
 
     text = caps[0].read_text(encoding="utf-8")
     day  = DAY_HEADERS[card]
-
-    # Section starts with "--- DAY: ...---" and ends at the next "--- " section or EOF
     pattern = rf"---\s+{day}:.*?---\n(.*?)(?=\n---\s+[A-Z]+:|\Z)"
     match = re.search(pattern, text, re.DOTALL)
     if not match:

@@ -140,6 +140,23 @@ Subscribe → www.thefightdocket.com
     captions_file.write_text(captions, encoding="utf-8")
     print(f"\n  Captions saved: {captions_file.name}")
 
+    # Write manifest so post_instagram_weekly.py can find the right files
+    # (GitHub Actions checkouts give all files identical timestamps, making mtime sort unreliable)
+    ann_filename = f"{issue}_{a.get('filename', 'announcement.png')}" if a else ""
+    res_filename = f"{issue}_{r.get('filename', 'result.png')}" if r else ""
+    qot_filename = f"{issue}_{q.get('filename', 'quote.png')}" if q else ""
+    manifest = {
+        "issue": issue,
+        "captions": captions_file.name,
+        "preview":      f"{issue}_newsletter_preview.png",
+        "announcement": ann_filename,
+        "result":       res_filename,
+        "quote":        qot_filename,
+    }
+    manifest_file = IG_CONTENT_DIR / "current_week.json"
+    manifest_file.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"  Manifest saved: current_week.json  (issue: {issue})")
+
     print(f"\n  All 4 graphics + captions ready in instagram_content/")
     print(f"\n  Posting schedule:")
     print("    Mon  — Newsletter Preview")
