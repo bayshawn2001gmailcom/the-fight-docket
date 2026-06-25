@@ -5,7 +5,7 @@ Crawls fight news → Gemini drafts newsletter HTML + image prompts + IG content
 Run: python newsletter_generator.py
 """
 import os, sys, json, re, requests, time
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -26,6 +26,9 @@ PROMPTS_DIR  = SCRIPT_DIR / "prompts"
 PROMPTS_DIR.mkdir(exist_ok=True)
 
 TODAY        = date.today()
+_days_since_sat = (TODAY.weekday() - 5) % 7
+LAST_SAT     = TODAY - timedelta(days=_days_since_sat) if _days_since_sat > 0 else TODAY
+LAST_SUN     = LAST_SAT + timedelta(days=1)
 ISSUE_DATE   = TODAY.strftime("%B %d, %Y").upper()
 ISSUE_SLUG   = TODAY.strftime("%b%d_%Y").lower()
 ISSUE_FILE   = SCRIPT_DIR / f"newsletter_{TODAY.isoformat()}.html"
@@ -105,9 +108,18 @@ def crawl_news():
 # ---------------------------------------------------------------------------
 
 PERPLEXITY_QUERIES = [
-    "What are the biggest MMA fight results and news from the past 7 days? Include fight results, fighter news, and promotional announcements.",
-    "What are the biggest professional boxing fight results and news from the past 7 days? Include title fights, results, and upcoming cards.",
-    "What is the latest combat sports business, legal, and financial news from the past 7 days? Include media rights deals, lawsuits, and regulatory updates.",
+    # Q1: MMA news
+    "What are the biggest MMA fight results and news from the past 7 days? Include fight results, fighter news, contract signings, and promotional announcements.",
+    # Q2: Boxing news
+    "What are the biggest professional boxing fight results and news from the past 7 days? Include title fights, results, upcoming cards, and fighter moves.",
+    # Q3: Federal courts and PACER — active combat sports litigation
+    "What are the latest federal court filings, PACER docket updates, and legal developments in combat sports from the past 7 days? Include active cases involving UFC, TKO Group, Top Rank, Matchroom, Golden Boy, PFL, and any fighters. Include case numbers, courts, and filing dates where available. Check for new complaints, motions, rulings, and settlements.",
+    # Q4: Athletic commissions — NYSAC, CSAC, NSAC decisions
+    "What are the latest decisions, suspensions, license denials, and regulatory actions from the New York State Athletic Commission (NYSAC), California State Athletic Commission (CSAC), and Nevada State Athletic Commission (NSAC) in the past 7 days? Include any fighter suspensions, drug test results (USADA/VADA), and hearing outcomes.",
+    # Q5: Combat sports business intelligence
+    "What is the latest combat sports business and financial news from the past 7 days? Include media rights deals, TV ratings, PPV buyrate estimates, sponsor announcements, promoter acquisitions, venue contracts, broadcast rights negotiations, and fighter pay disputes.",
+    # Q6: Weekend results — exhaustive, date-anchored
+    f"List ALL combat sports fight results from {LAST_SAT.strftime('%B %d')} and {LAST_SUN.strftime('%B %d, %Y')} this past weekend. Include EVERY title fight, main event, and co-main event — winner, method of victory, round, and time. Cover boxing and MMA. Be exhaustive.",
 ]
 
 
