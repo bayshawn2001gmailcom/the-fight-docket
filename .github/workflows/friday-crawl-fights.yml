@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install python-dotenv --break-system-packages
+          pip install requests python-dotenv --break-system-packages
 
       - name: Create .env from secrets
         env:
