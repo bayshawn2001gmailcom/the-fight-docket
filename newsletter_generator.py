@@ -39,9 +39,15 @@ FC_HEADERS = {"Authorization": f"Bearer {FIRECRAWL_API_KEY}"}
 
 NEWS_SOURCES = [
     "https://www.mmafighting.com/",
-    "https://www.ufc.com/news",
     "https://www.espn.com/mma/",
+    "https://www.ufc.com/news",
     "https://www.boxingscene.com/",
+    "https://www.sherdog.com/news/",
+    "https://www.bloodyelbow.com/",
+    "https://www.ringtv.com/",
+    "https://www.badlefthook.com/",
+    "https://www.mixedmartialarts.com/",
+    "https://www.fightnews.com/",
 ]
 
 
@@ -50,23 +56,29 @@ NEWS_SOURCES = [
 # ---------------------------------------------------------------------------
 
 def firecrawl_scrape(url):
-    """Returns (content, credits_exhausted)."""
+    """Returns content string, or None on 402 (credits exhausted)."""
     try:
         resp = requests.post(
             "https://api.firecrawl.dev/v1/scrape",
-            json={"url": url, "formats": ["markdown"]},
+            json={
+                "url": url,
+                "formats": ["markdown"],
+                "onlyMainContent": True,
+                "removeBase64Images": True,
+                "excludeTags": ["nav", "footer", "aside", "header", "form", "script", "style"],
+                "maxAge": 86400000,
+            },
             headers=FC_HEADERS,
             timeout=30,
         )
         if resp.status_code == 402:
-            return "", True
+            return None
         resp.raise_for_status()
         data = resp.json()
-        content = (data.get("data") or {}).get("markdown", "") or data.get("markdown", "")
-        return content, False
+        return (data.get("data") or {}).get("markdown", "") or data.get("markdown", "")
     except Exception as e:
         print(f"  Firecrawl failed for {url}: {e}")
-        return "", False
+        return ""
 
 
 def crawl4ai_scrape(url):
@@ -86,20 +98,20 @@ def crawl4ai_scrape(url):
 
 def crawl_news():
     chunks = []
-    use_crawl4ai = not bool(FIRECRAWL_API_KEY)
+    use_fallback = not bool(FIRECRAWL_API_KEY)
     for url in NEWS_SOURCES:
-        print(f"  Crawling {url} via {'Crawl4AI' if use_crawl4ai else 'Firecrawl'}...")
-        if not use_crawl4ai:
-            content, credits_exhausted = firecrawl_scrape(url)
-            if credits_exhausted:
-                print("  Firecrawl credits exhausted — switching to Crawl4AI")
-                use_crawl4ai = True
-                content = crawl4ai_scrape(url)
-        else:
+        print(f"  Crawling {url}...")
+        if use_fallback:
             content = crawl4ai_scrape(url)
+        else:
+            content = firecrawl_scrape(url)
+            if content is None:
+                print("  Firecrawl credits exhausted — switching to Crawl4AI")
+                use_fallback = True
+                content = crawl4ai_scrape(url)
         if content:
-            chunks.append(f"=== {url} ===\n{content[:3500]}\n")
-        time.sleep(0.4)
+            chunks.append(f"=== {url} ===\n{content[:3000]}\n")
+        time.sleep(0.5)
     return "\n\n".join(chunks)
 
 
@@ -107,19 +119,20 @@ def crawl_news():
 # Perplexity Sonar -- real-time supplemental news search
 # ---------------------------------------------------------------------------
 
+# (query, max_tokens) — legal/results queries get more room to be thorough
 PERPLEXITY_QUERIES = [
     # Q1: MMA news
-    "What are the biggest MMA fight results and news from the past 7 days? Include fight results, fighter news, contract signings, and promotional announcements.",
+    ("What are the biggest MMA fight results and news from the past 7 days? Include fight results, fighter news, contract signings, and promotional announcements.", 600),
     # Q2: Boxing news
-    "What are the biggest professional boxing fight results and news from the past 7 days? Include title fights, results, upcoming cards, and fighter moves.",
+    ("What are the biggest professional boxing fight results and news from the past 7 days? Include title fights, results, upcoming cards, and fighter moves.", 600),
     # Q3: Federal courts and PACER — active combat sports litigation
-    "What are the latest federal court filings, PACER docket updates, and legal developments in combat sports from the past 7 days? Include active cases involving UFC, TKO Group, Top Rank, Matchroom, Golden Boy, PFL, and any fighters. Include case numbers, courts, and filing dates where available. Check for new complaints, motions, rulings, and settlements.",
+    ("What are the latest federal court filings, PACER docket updates, and legal developments in combat sports from the past 7 days? Include active cases involving UFC, TKO Group, Top Rank, Matchroom, Golden Boy, PFL, and any fighters. Include case numbers, courts, and filing dates where available. Check for new complaints, motions, rulings, and settlements.", 1000),
     # Q4: Athletic commissions — NYSAC, CSAC, NSAC decisions
-    "What are the latest decisions, suspensions, license denials, and regulatory actions from the New York State Athletic Commission (NYSAC), California State Athletic Commission (CSAC), and Nevada State Athletic Commission (NSAC) in the past 7 days? Include any fighter suspensions, drug test results (USADA/VADA), and hearing outcomes.",
+    ("What are the latest decisions, suspensions, license denials, and regulatory actions from the New York State Athletic Commission (NYSAC), California State Athletic Commission (CSAC), and Nevada State Athletic Commission (NSAC) in the past 7 days? Include any fighter suspensions, drug test results (USADA/VADA), and hearing outcomes.", 1000),
     # Q5: Combat sports business intelligence
-    "What is the latest combat sports business and financial news from the past 7 days? Include media rights deals, TV ratings, PPV buyrate estimates, sponsor announcements, promoter acquisitions, venue contracts, broadcast rights negotiations, and fighter pay disputes.",
+    ("What is the latest combat sports business and financial news from the past 7 days? Include media rights deals, TV ratings, PPV buyrate estimates, sponsor announcements, promoter acquisitions, venue contracts, broadcast rights negotiations, and fighter pay disputes.", 600),
     # Q6: Weekend results — exhaustive, date-anchored
-    f"List ALL combat sports fight results from {LAST_SAT.strftime('%B %d')} and {LAST_SUN.strftime('%B %d, %Y')} this past weekend. Include EVERY title fight, main event, and co-main event — winner, method of victory, round, and time. Cover boxing and MMA. Be exhaustive.",
+    (f"List ALL combat sports fight results from {LAST_SAT.strftime('%B %d')} and {LAST_SUN.strftime('%B %d, %Y')} this past weekend. Include EVERY title fight, main event, and co-main event — winner, method of victory, round, and time. Cover boxing and MMA. Be exhaustive.", 1000),
 ]
 
 
@@ -132,7 +145,7 @@ def perplexity_search():
         "Content-Type": "application/json",
     }
     chunks = []
-    for i, query in enumerate(PERPLEXITY_QUERIES, 1):
+    for i, (query, max_tokens) in enumerate(PERPLEXITY_QUERIES, 1):
         print(f"  Perplexity query {i}/{len(PERPLEXITY_QUERIES)}...")
         try:
             resp = requests.post(
@@ -140,7 +153,7 @@ def perplexity_search():
                 json={
                     "model": "sonar",
                     "messages": [{"role": "user", "content": query}],
-                    "max_tokens": 600,
+                    "max_tokens": max_tokens,
                 },
                 headers=headers,
                 timeout=30,
@@ -161,12 +174,13 @@ def perplexity_search():
 # Generation
 # ---------------------------------------------------------------------------
 
-SYSTEM_PROMPT = f"""You are the editor of The Fight Docket, a premium weekly newsletter covering
-the combat sports industry (MMA + boxing) from a business intelligence angle.
+SYSTEM_PROMPT = f"""You are the editor of The Fight Docket — an institutional-grade combat sports intelligence newsletter covering the financial, legal, and operational drivers of MMA and professional boxing.
 
-VOICE: Analytical, insider, authoritative. Direct first person ("My read is...", "Sources tell me...").
-Lead with implications, not just events. Specific figures ($, dates, deals) when available.
-No promotional language. No "exciting" or "amazing" — find precise adjectives.
+EDITORIAL PRIORITY RULE: If any major boxing or MMA title fight, championship bout, or marquee main event occurred in the past 72 hours, it MUST be the main_story. Recent fight results ARE business intelligence — a title change reshuffles the entire promotional landscape. Do NOT lead with a business or legal story when a major fight result exists in the source data. Only override if the business/legal story is of once-in-a-decade significance.
+
+VOICE: Authoritative, unbiased. Strategic framing — every story is about what it means operationally or financially. Technical precision: case numbers, dollar figures, contract terms. First-person analytical: "My read is...", "The filing reveals...", "What this signals to the market is..." No promotional language. No "exciting" or "amazing". Benchmark: Bloomberg Businessweek meets legal trade press, applied to combat sports.
+
+DARK THEME: ALL inline HTML styles must use color:#F2F2E8 for body text, color:#888888 for secondary text, color:#DE1E20 for links and labels, color:#F2F2E8 for bold. Do NOT use dark text like #333 — invisible on dark background.
 
 TODAY: {TODAY.strftime("%B %d, %Y")}
 
@@ -254,13 +268,38 @@ For newsletter_html use EXACTLY this dark-branded structure (preserve ALL inline
 
     <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
 
+    <!-- LEGAL TRACKER -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Legal Tracker</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_legal]
+      <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#DE1E20; margin:0 0 20px 0;">Active Federal Cases</p>
+      [For each active case: <p style='margin:0 0 20px 0; color:#F2F2E8;'><strong style='color:#F2F2E8;'>CASE NAME (COURT NO.)</strong><br><span style='color:#888;'>Last activity: DATE</span> — analytical description<br><em style='color:#888;'>Status: phrase</em></p>. If no new activity, one analytical sentence on the Johnson v. Zuffa antitrust (D. Nev. 2:21-cv-01189) state of play. Also include any NYSAC/CSAC/NSAC suspensions or USADA/VADA results from this week.]
+    </div>
+
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- RUMOR MILL -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Rumor Mill</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_rumor]
+      [2-3 rumor items. HIGH confidence (#C5A059), MEDIUM (#888888), LOW (#444444). Format each as:
+      <div style='border-left:3px solid COLOR; padding:4px 0 4px 18px; margin-bottom:28px;'>
+        <p style='font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:COLOR; margin:0 0 10px 0;'>CONFIDENCE — 0.XX</p>
+        <p style='margin:0; color:#F2F2E8; line-height:1.8;'>Rumor text. Name the source publication or flag as unverified.</p>
+      </div>]
+    </div>
+
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
     <!-- FIGHT CARD PREVIEWS -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fight Card Previews</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       [IMAGE_PLACEHOLDER_fight_previews]
       <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">What's on Deck</h2>
-      <div style="color:#F2F2E8;">[2-3 fights. Use <strong style='color:#DE1E20;'>Fighter vs Fighter (Date)</strong> subheads. Each <p> must have style='color:#F2F2E8;']</div>
+      <div style="color:#F2F2E8;">[2-3 fights. Use <strong style='color:#DE1E20;'>Fighter vs Fighter (Date)</strong> subheads. Odds context and what each fight means for rankings and promoter economics. Each <p> must have style='color:#F2F2E8;']</div>
     </div>
 
     <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
@@ -271,7 +310,18 @@ For newsletter_html use EXACTLY this dark-branded structure (preserve ALL inline
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       [IMAGE_PLACEHOLDER_business_intel]
       <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">[HEADLINE]</h2>
-      <div style="color:#F2F2E8;">[3-4 paragraphs on media rights, contracts, fighter pay, regulatory moves. Each <p> must have style='color:#F2F2E8;']</div>
+      <div style="color:#F2F2E8;">[3-4 paragraphs on media rights, TV ratings, PPV buyrates, contracts, fighter pay, promoter moves. Each <p> must have style='color:#F2F2E8;']</div>
+    </div>
+
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- FIGHTER SPOTLIGHT -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fighter Spotlight</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      [IMAGE_PLACEHOLDER_fighter_spotlight]
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">[FIGHTER NAME]</h2>
+      <div style="color:#F2F2E8;">[400 words on one fighter's career arc, earnings trajectory, and what fight makes commercial and competitive sense next. Each <p> must have style='color:#F2F2E8;']</div>
     </div>
 
   </div>
@@ -281,9 +331,12 @@ For newsletter_html use EXACTLY this dark-branded structure (preserve ALL inline
     <p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:6px; color:#C5A059;">The Fight Docket</p>
     <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; text-transform:uppercase; letter-spacing:3px; color:#888888;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
     <p style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; color:#888888;">
-      <a href="https://www.thefightdocket.com" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a>
+      <a href="https://www.thefightdocket.com/" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a>
+      &nbsp;&middot;&nbsp;
+      Tips &amp; sources: <a href="mailto:tips@thefightdocket.com" style="color:#DE1E20; text-decoration:none;">tips@thefightdocket.com</a>
     </p>
     <p style="margin:12px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">You're receiving this because you subscribed. Forward to a fight fan who thinks like an analyst.</p>
+    <p style="margin:6px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">Not subscribed yet? Join free &rarr; <a href="https://www.thefightdocket.com/" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a></p>
   </div>
 
 </div>
@@ -292,7 +345,7 @@ For newsletter_html use EXACTLY this dark-branded structure (preserve ALL inline
 """
 
 
-GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-pro"]
+GEMINI_MODELS = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash"]
 
 
 def build_newsletter(news_content):
@@ -301,8 +354,8 @@ def build_newsletter(news_content):
 
     prompt = f"""{SYSTEM_PROMPT}
 
-CRAWLED NEWS CONTENT (use this as source material):
-{news_content[:14000]}
+CRAWLED NEWS CONTENT (use this as source material — {len(news_content):,} chars):
+{news_content[:24000]}
 
 Generate the newsletter JSON now:"""
 
