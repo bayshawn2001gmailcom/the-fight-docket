@@ -125,7 +125,7 @@ Full breakdown in this week's newsletter → www.thefightdocket.com
 {event_ann} · {date_ann}
 
 Full preview in The Fight Docket newsletter → www.thefightdocket.com
-#UFC #MMA #FightAnnouncement #{event_ann.replace(' ', '')}
+#UFC #MMA #FightAnnouncement #{event_ann.replace(' ', '')} #{f1.split()[-1]} #{f2.split()[-1]}
 
 --- SATURDAY: Quote Card ---
 "{quote_text}"
