@@ -1,0 +1,37 @@
+{
+  "issue_date": "2026-06-01",
+  "images": [
+    {
+      "section": "thumbnail",
+      "file": "nb2_2026-06-01_thumbnail.jpg"
+    },
+    {
+      "section": "intro",
+      "file": "nb2_2026-06-01_intro.jpg"
+    },
+    {
+      "section": "main_story",
+      "file": "nb2_2026-06-01_main_story.jpg"
+    },
+    {
+      "section": "legal",
+      "file": "nb2_2026-06-01_legal.jpg"
+    },
+    {
+      "section": "rumor",
+      "file": "nb2_2026-06-01_rumor.jpg"
+    },
+    {
+      "section": "fight_previews",
+      "file": "nb2_2026-06-01_fight_previews.jpg"
+    },
+    {
+      "section": "business_intel",
+      "file": "nb2_2026-06-01_business_intel.jpg"
+    },
+    {
+      "section": "fighter_spotlight",
+      "file": "nb2_2026-06-01_fighter_spotlight.jpg"
+    }
+  ]
+}

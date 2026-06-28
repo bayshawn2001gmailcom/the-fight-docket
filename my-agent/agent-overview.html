@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fight Night Watchdog — agent schema</title>
+<style>
+  :root {
+    --bg:#faf9f5; --panel:#ffffff; --inset:#f0eee6; --ink:#141413; --body:#3d3d3a; --sub:#73726c; --mut:#9c9a92;
+    --hairline:rgba(20,20,19,.12); --hairline-soft:rgba(20,20,19,.07);
+    --live:#22865c; --live-bright:#1d7a52; --clay:#ad5724; --amber:#9a7d24; --ghost:#b0aea5;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         background:var(--bg); color:var(--body); font-size:14px; line-height:1.5;
+         background-image:linear-gradient(rgba(20,20,19,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(20,20,19,.045) 1px,transparent 1px);
+         background-size:46px 46px; }
+  .wrap { max-width:1320px; margin:0 auto; padding:0 22px 44px; }
+  @keyframes ledPulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,134,92,.45);}50%{opacity:.55;box-shadow:0 0 0 5px rgba(34,134,92,0);} }
+  .topbar { position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:18px;
+            background:rgba(250,249,245,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--hairline);
+            padding:12px 22px;margin:0 -22px; }
+  .ident { display:flex;align-items:center;gap:12px;min-width:0; }
+  .sigil { width:36px;height:36px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:9px;
+           background:rgba(34,134,92,.10);border:1px solid rgba(34,134,92,.35);font-size:18px; }
+  h1 { margin:0;font-size:19px;font-weight:600;color:var(--ink);letter-spacing:-.01em; }
+  .statepill { display:inline-flex;align-items:center;gap:7px;padding:3px 11px;border-radius:999px;font-family:var(--mono);font-size:11px;letter-spacing:.08em; }
+  .statepill.planned { background:var(--inset);border:1px solid var(--hairline);color:var(--sub); }
+  .statepill.live { background:rgba(34,134,92,.10);border:1px solid rgba(34,134,92,.35);color:var(--live-bright); }
+  .led { width:7px;height:7px;border-radius:50%; }
+  .led.planned { background:transparent;border:1.5px solid var(--ghost); }
+  .led.live { background:var(--live);animation:ledPulse 2s ease-in-out infinite; }
+  .byline { font-family:var(--mono);font-size:11.5px;color:var(--mut);margin-top:3px; }
+  .stats { display:flex;align-items:stretch;flex:none; }
+  .stat { padding:0 16px;border-left:1px solid var(--hairline); }
+  .stat:first-child { border-left:none; }
+  .stat-k { font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut); }
+  .stat-v { font-family:var(--mono);font-size:13.5px;color:var(--ink);margin-top:3px;white-space:nowrap; }
+  .stat-v .dim { color:var(--sub); }
+  .problem { margin:14px 2px 0;color:var(--sub);font-size:13.5px;max-width:95ch; }
+  .lane-label { margin:18px 2px 8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut); }
+  .pipeline { display:grid;grid-template-columns:minmax(240px,1fr) 28px minmax(360px,1.6fr) 28px minmax(280px,1.15fr);gap:12px;align-items:stretch; }
+  .col { display:flex;flex-direction:column;gap:12px;min-width:0; }
+  .col > .grow { flex:1;display:flex;flex-direction:column; }
+  .col > .grow .node-body { flex:1; }
+  .col-title { font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin:0 0 -2px 2px; }
+  .joint { display:flex;align-items:center;justify-content:center; }
+  .joint::before { content:"";width:100%;height:1.5px;background:linear-gradient(90deg,var(--hairline),rgba(34,134,92,.5));
+                   clip-path:polygon(0 0,calc(100% - 8px) 0,calc(100% - 8px) -5px,100% 50%,calc(100% - 8px) 250%,calc(100% - 8px) 100%,0 100%); }
+  .node { background:var(--panel);border:1px solid var(--hairline);border-radius:12px;overflow:hidden;display:flex;flex-direction:column; }
+  .node.key { border-color:rgba(34,134,92,.30); }
+  .node.ghost { border-style:dashed;background:transparent;opacity:.62; }
+  .node-head { display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--hairline-soft); }
+  .node-icon { font-size:16px;line-height:1; }
+  .node-head h2 { margin:0;font-size:14.5px;font-weight:600;color:var(--ink); }
+  .node-meta { margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--mut);background:var(--inset);
+               border:1px solid var(--hairline);border-radius:6px;padding:3px 8px;white-space:nowrap;max-width:60%;overflow:hidden;text-overflow:ellipsis; }
+  .node-meta b { color:var(--live-bright);font-weight:500; }
+  .node-body { padding:11px 14px 13px; }
+  .node-body p { margin:.3em 0; }
+  .node-foot { margin-top:auto;padding:9px 14px 11px;border-top:1px dashed var(--hairline-soft);color:var(--sub);font-size:12.5px; }
+  .field { margin:9px 0; }
+  .field:first-child { margin-top:2px; }
+  .field-k { font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:3px; }
+  .sub { color:var(--sub); } .small { font-size:13px; }
+  strong { color:var(--ink);font-weight:600; }
+  code,.mono { font-family:var(--mono);font-size:12.5px;background:var(--inset);border:1px solid var(--hairline-soft);padding:1px 6px;border-radius:5px;color:var(--body); }
+  .tag { display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;margin:2px 4px 2px 0;
+         background:var(--inset);border:1px solid var(--hairline);color:var(--sub);font-family:var(--mono); }
+  .tag.on { color:var(--ink);border-color:rgba(173,87,36,.5); }
+  .tag.good { color:var(--live-bright);border-color:rgba(34,134,92,.40); }
+  .env-frame { border:1px dashed rgba(20,20,19,.18);border-radius:15px;padding:11px;display:flex;flex-direction:column;gap:11px;background:rgba(20,20,19,.03);height:100%; }
+  .env-tab { align-self:flex-start;max-width:100%;background:var(--bg);border:1px dashed rgba(20,20,19,.2);border-radius:10px;padding:4px 11px;line-height:1.5;font-family:var(--mono);font-size:11px;color:var(--sub);overflow-wrap:anywhere; }
+  .attach-grid { display:grid;grid-template-columns:1fr 1fr;gap:9px; }
+  .attach { background:var(--inset);border:1px solid var(--hairline-soft);border-radius:10px;padding:10px 12px; }
+  .attach.ghost { border-style:dashed;opacity:.58; }
+  .attach h3 { margin:0 0 4px;font-size:13px;color:var(--ink);display:flex;gap:7px;align-items:center; }
+  .attach p { margin:0;font-size:12.5px;color:var(--sub); }
+  ul,ol { margin:.3em 0 .3em 1.15em;padding:0; } li { margin:.3em 0;font-size:13px; }
+  ol.rubric { list-style:none;margin-left:0;counter-reset:rb; }
+  ol.rubric li { display:flex;gap:9px;counter-increment:rb;align-items:flex-start; }
+  ol.rubric li::before { content:counter(rb);flex:none;width:19px;height:19px;border-radius:5px;background:var(--inset);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--live-bright);margin-top:1px; }
+  .lane-grid { display:grid;grid-template-columns:1.1fr 1fr;gap:12px;margin-top:12px; }
+  .lane { background:var(--panel);border:1px solid var(--hairline);border-radius:12px;overflow:hidden;display:flex;flex-direction:column; }
+  .lane.full { margin-top:12px; }
+  .lane-head { display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--hairline-soft); }
+  .lane-head h2 { margin:0;font-size:14.5px;font-weight:600;color:var(--ink); }
+  .lane-meta { margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--mut); }
+  .lane-body { padding:10px 14px 12px; }
+  .overflow { overflow-x:auto; }
+  table { width:100%;border-collapse:collapse;font-size:13px; }
+  th { text-align:left;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);border-bottom:1px solid var(--hairline);padding:5px 8px; }
+  td { padding:6px 8px;border-bottom:1px solid var(--hairline-soft);vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  .rail { display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:11px; }
+  .ver { background:var(--inset);border:1px solid var(--hairline);border-radius:10px;padding:11px 13px; }
+  .ver-tag { font-family:var(--mono);font-size:11px;color:var(--clay);margin-bottom:4px; }
+  .ver-what { font-weight:600;font-size:13.5px;color:var(--ink); }
+  .ver-why { color:var(--sub);font-size:12.5px;margin:3px 0; }
+  .ver-how { font-size:12.5px; } .ver-how::before { content:"How: ";color:var(--clay);font-weight:600; }
+  a.console { color:var(--live-bright);text-decoration:none;border-bottom:1px dotted rgba(34,134,92,.5); }
+  footer { padding:20px 2px 0;color:var(--mut);font-family:var(--mono);font-size:11px; }
+  @media (max-width:1020px) { .pipeline{grid-template-columns:1fr;} .joint{height:26px;} .joint::before{width:1.5px;height:100%;background:linear-gradient(180deg,var(--hairline),rgba(34,134,92,.5));clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),250% calc(100% - 8px),50% 100%,-150% calc(100% - 8px),0 calc(100% - 8px));} .lane-grid{grid-template-columns:1fr;} .stats{display:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="ident">
+      <div class="sigil">🥊</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <h1>Fight Night Watchdog</h1>
+          <span class="statepill planned"><span class="led planned"></span>○ PLANNED · NOT LAUNCHED</span>
+        </div>
+        <div class="byline">Claude Managed Agent · The Fight Docket · created 2026-06-20</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-k">Model</div><div class="stat-v">claude-opus-4-8</div></div>
+      <div class="stat"><div class="stat-k">Fires</div><div class="stat-v">*/10 Fri+Sat <span class="dim">UTC</span></div></div>
+      <div class="stat"><div class="stat-k">Agent</div><div class="stat-v"><span class="dim">at launch</span></div></div>
+      <div class="stat"><div class="stat-k">Deployment</div><div class="stat-v"><span class="dim">after first pass</span></div></div>
+    </div>
+  </div>
+
+  <p class="problem">"Social posts after big boxing or UFC events need to go out immediately — right now they require manual triggering and the PC being on."</p>
+
+  <p class="lane-label">System schema</p>
+  <div class="pipeline">
+
+    <div class="col">
+      <p class="col-title">Trigger</p>
+      <div class="node key grow">
+        <div class="node-head"><span class="node-icon">🗓️</span><h2>Deployment</h2><span class="node-meta">cron · <b>*/10 * * * 5,6</b></span></div>
+        <div class="node-body">
+          <div class="field"><div class="field-k">schedule · expression / timezone</div><strong>Every 10 min · Fri + Sat</strong> <span class="sub small">UTC (covers all US fight-night windows)</span></div>
+          <div class="field"><div class="field-k">Status</div><span class="tag">created after first run passes</span></div>
+          <div class="field"><div class="field-k">initial_events</div><p class="small sub">Each firing replays the 🎯 Outcome into a fresh ▶️ session. Agent exits immediately if no events tonight.</p></div>
+          <div class="field"><div class="field-k">Manual trigger</div><p class="small sub">POST /deployments/:id/run for PPV nights on other days (Sat main cards, Saudi shows, etc.)</p></div>
+        </div>
+        <div class="node-foot">▶️ Also on-demand — <code>LAUNCH.md</code> Step 6 fires the same kickoff.</div>
+      </div>
+    </div>
+
+    <div class="joint" aria-hidden="true"></div>
+
+    <div class="col">
+      <p class="col-title">Worker</p>
+      <div class="env-frame">
+        <span class="env-tab">📦 environment · type: cloud · networking: unrestricted · pip: requests google-genai tweepy Pillow python-dotenv</span>
+
+        <div class="node key">
+          <div class="node-head"><span class="node-icon">🤖</span><h2>Agent — fight-night-watchdog</h2><span class="node-meta"><b>claude-opus-4-8</b> · v1 at launch</span></div>
+          <div class="node-body">
+            <div class="field"><div class="field-k">system · the job</div>
+              <p class="small">Searches ESPN MMA, MMA Fighting, UFC.com, BoxingScene for tonight's results. For each new result: extracts facts → writes business angle → generates Gemini image → posts to IG + FB + Twitter → records in memory. Exits immediately if no events tonight.</p></div>
+            <div class="field"><div class="field-k">never-dos · system</div>
+              <span class="tag">no duplicates — check memory first</span><span class="tag">no unverified results</span><span class="tag">no hype clichés</span><span class="tag">max 10 results/session</span></div>
+          </div>
+        </div>
+
+        <div class="attach-grid">
+          <div class="attach">
+            <h3>🛠️ Tools</h3>
+            <p><code>tools[] · agent_toolset_20260401</code><br><span class="tag on">web_search</span><span class="tag on">web_fetch</span><span class="tag on">bash</span><span class="tag on">write</span><span class="tag on">read</span></p>
+          </div>
+          <div class="attach">
+            <h3>🧠 Memory store</h3>
+            <p><code>resources[] · memory_store</code> <span class="tag good">read_write</span><br><strong>fight-results-memory</strong> — posted results log, one line per result. Prevents duplicate posts across sessions.</p>
+          </div>
+          <div class="attach">
+            <h3>🔐 Vault</h3>
+            <p><code>vault_ids[]</code> <strong>fight-docket-social-vault</strong><br>10 credentials: <code>GEMINI_API_KEY</code>, <code>INSTAGRAM_*</code>, <code>FACEBOOK_*</code>, <code>IMGBB_API_KEY</code>, <code>TWITTER_*</code></p>
+          </div>
+          <div class="attach ghost">
+            <h3>📄 Skills</h3>
+            <p><code>skills[]</code> — empty; image generated via Gemini API at runtime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="joint" aria-hidden="true"></div>
+
+    <div class="col">
+      <p class="col-title">Output &amp; grading</p>
+
+      <div class="node">
+        <div class="node-head"><span class="node-icon">📤</span><h2>Deliverable</h2><span class="node-meta">3 platforms · files api</span></div>
+        <div class="node-body">
+          <p class="small"><strong>Live posts</strong> on Instagram, Facebook, and Twitter/X — result card + business-angle caption.</p>
+          <p class="small"><code>summary.md</code> in session outputs — per-result status for all 3 platforms.</p>
+          <div class="field"><div class="field-k">Guardrails</div>
+            <span class="tag">max_iterations: 5</span><span class="tag">memory dedup</span><span class="tag">verify before posting</span></div>
+        </div>
+      </div>
+
+      <div class="node key grow">
+        <div class="node-head"><span class="node-icon">🎯</span><h2>Outcome</h2><span class="node-meta"><b>user.define_outcome</b> · max_iterations 5</span></div>
+        <div class="node-body">
+          <p class="small sub" style="margin-bottom:8px;">Your definition of done — <code>rubric.content</code>, graded every run.</p>
+          <ol class="rubric small">
+            <li>Event check completed — results found OR clear "no events" logged</li>
+            <li>All key facts accurate — winner, method, round, time, event name</li>
+            <li>No duplicates — memory store confirmed clean before each post</li>
+            <li>All 3 platforms attempted — Instagram ✅ Facebook ✅ Twitter/X ✅</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lane-grid">
+    <div class="lane">
+      <div class="lane-head"><span class="node-icon">📜</span><h2>Sessions · run log</h2><span class="lane-meta">no runs yet</span></div>
+      <div class="lane-body">
+        <div class="overflow">
+        <table>
+          <thead><tr><th>Run</th><th>Session</th><th>Verdict</th><th>Results posted</th></tr></thead>
+          <tbody>
+            <tr><td>—</td><td class="mono">—</td><td><span class="tag">no runs yet</span></td><td class="sub">First launch fills this in.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <div class="lane">
+      <div class="lane-head"><span class="node-icon">🧪</span><h2>Evals</h2><span class="lane-meta">1 case · regression</span></div>
+      <div class="lane-body">
+        <div class="overflow">
+        <table>
+          <thead><tr><th>Case</th><th>Input</th><th>Last verdict</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">case-01</td><td>Gaethje def. Topuria · TKO R4 4:51 · UFC Freedom 250</td><td><span class="tag">not run yet</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="small sub" style="margin:.5em 0 0;">Today's verified output becomes eval case-01 expected. Re-run before promoting any new agent version.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lane full">
+    <div class="lane-head"><span class="node-icon">🧭</span><h2>Next directions</h2><span class="lane-meta">the version rail</span></div>
+    <div class="lane-body">
+      <div class="rail">
+        <div class="ver">
+          <div class="ver-tag">v1</div>
+          <div class="ver-what">Exact brand-matched result cards</div>
+          <div class="ver-why">Gemini images won't match Fight Docket typography — v0 is good enough to ship</div>
+          <div class="ver-how">Download BigShoulders-Bold.ttf from GitHub repo at startup; use Pillow to draw card matching <code>ig_templates.py</code> style</div>
+        </div>
+        <div class="ver">
+          <div class="ver-tag">v2</div>
+          <div class="ver-what">Breaking news monitoring throughout the week</div>
+          <div class="ver-why">Currently only activates on fight nights — title shots and signings on Mon–Thu get no immediate coverage</div>
+          <div class="ver-how">Separate deployment <code>0 */3 * * 1-5</code>; shares same vault and memory store; searches for non-result breaking news</div>
+        </div>
+        <div class="ver">
+          <div class="ver-tag">v3</div>
+          <div class="ver-what">TikTok video posting</div>
+          <div class="ver-why">TikTok Content API requires video — needs a video generation pipeline</div>
+          <div class="ver-how">Gemini video generation or ffmpeg Ken Burns on result card; TikTok Content Posting API at developers.tiktok.com — requires separate app approval</div>
+        </div>
+        <div class="ver">
+          <div class="ver-tag">always</div>
+          <div class="ver-what">Re-run evals before promoting a new version</div>
+          <div class="ver-why">Process habit — not a build task</div>
+          <div class="ver-how"><code>evals/run-evals.sh</code> against new version; promote to deployment only when all verdicts hold</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>generated from build-sheet.json · live runs: <a class="console" href="https://platform.claude.com/workspaces/default/agents">open the console</a> (your key's workspace — swap "default" if yours differs)</footer>
+</div>
+</body>
+</html>

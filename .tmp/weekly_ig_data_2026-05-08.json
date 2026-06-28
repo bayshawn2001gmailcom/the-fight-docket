@@ -1,0 +1,32 @@
+{
+  "date": "MAY 08, 2026",
+  "issue": "may08_2026",
+  "preview_stories": [
+    "Mayweather-Pacquiao set for Netflix",
+    "Chimaev faces Strickland at UFC 328",
+    "Legal case: Johnson v. Zuffa updates"
+  ],
+  "announcement": {
+    "fighter1": "Chimaev",
+    "fighter2": "Strickland",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "f1_vs_f2_announcement.png"
+  },
+  "result": {
+    "winner": "Name",
+    "loser": "Name",
+    "method": "KO/TKO",
+    "round_num": "R2",
+    "time": "3:45",
+    "event": "UFC Fight Night",
+    "filename": "name_result.png"
+  },
+  "quote": {
+    "quote": "The aim is to be active and consistent. You need the stars to make noise, that's what we're hoping to achieve.",
+    "attribution": "Zuffa Boxing Exec",
+    "context": "Goals for new Zuffa Boxing",
+    "filename": "quote_card.png"
+  }
+}

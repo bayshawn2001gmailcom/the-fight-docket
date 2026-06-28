@@ -1,0 +1,32 @@
+{
+  "date": "JUNE 22, 2026",
+  "issue": "jun22_2026",
+  "preview_stories": [
+    "Turki Alalshikh cancer diagnosis introduces profound uncertainty to boxing's future.",
+    "Xander Zayas takes career-defining risk against welterweight champ Jaron Ennis.",
+    "Most Valuable Promotions signs title contender, signaling move into legit boxing."
+  ],
+  "announcement": {
+    "fighter1": "McGregor",
+    "fighter2": "Holloway",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "mcgregor_vs_holloway_announcement.png"
+  },
+  "result": {
+    "winner": "Kai Asakura",
+    "loser": "Renan Barao",
+    "method": "KO/TKO",
+    "round_num": "R2",
+    "time": "3:45",
+    "event": "UFC Fight Night",
+    "filename": "asakura_result.png"
+  },
+  "quote": {
+    "quote": "Jaron Ennis\u2019 record is 'padded,' and he 'ducked the big fights.'",
+    "attribution": "Xander Zayas",
+    "context": "On his upcoming IBF title challenge",
+    "filename": "zayas_quote_card.png"
+  }
+}

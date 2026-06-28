@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-05-17",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image \u2014 main story hook",
+      "prompt": "Wide editorial thumbnail image: An abstract representation of a strategic business alliance in boxing. A luxury fountain pen signing a contract on a dark mahogany desk, with subtle reflections of boxing ring ropes and arena lights on the glossy surface. Cinematic banner composition, dramatic spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "Matchroom and Bruin Sports Capital alliance",
+      "prompt": "Abstract representation of a major business deal in combat sports. Two shadowy figures in suits shaking hands, with the background being a subtle composite of the New York Stock Exchange floor and a brightly lit boxing arena. Black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dramatic high-contrast lighting. No faces clearly visible, no text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "Gavel and legal documents reimagined through a combat sports lens. A golden gavel rests on a stack of legal papers bound by boxing hand wraps. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, a single smartphone illuminating a face deep in conversation in a dark, empty arena locker room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces clearly visible, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Islam Makhachev vs Arman Tsarukyan staredown",
+      "prompt": "Islam Makhachev and Arman Tsarukyan in a dramatic face-off \u2014 intense expressions, foreheads nearly touching, dramatic overhead arena lighting casting deep shadows. Black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Combat sports media rights and broadcasting",
+      "prompt": "Abstract representation of combat sports media business. A wall of television screens showing static and color bars, with one central screen displaying a glowing boxing ring. Broadcast equipment and cables are visible in the dimly lit foreground. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Arnold Allen career arc",
+      "prompt": "Dramatic close-up portrait of Arnold Allen \u2014 intense expression of focus, sweat beading on his brow, cinematic arena lighting from the side creating high contrast. Premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

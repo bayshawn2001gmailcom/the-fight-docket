@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-05-11",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image \u2014 main story hook",
+      "prompt": "Wide editorial thumbnail image: a dejected MMA fighter silhouette leaving an octagon, a single championship belt left on the canvas under a dramatic spotlight. Cinematic banner composition, dramatic arena spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces clearly visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "Sean Strickland defeats Khamzat Chimaev at UFC 328",
+      "prompt": "Dramatic editorial portrait of Sean Strickland, newly crowned champion, looking intense and focused, contrasted with a shadowed, blurred image of Khamzat Chimaev in the background. Cinematic arena lighting, black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "Gavel and legal documents reimagined through a combat sports lens. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, dark fight gym or press room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Arnold Allen vs. Melquizael Costa staredown",
+      "prompt": "Dramatic face-off between fighters Arnold Allen and Melquizael Costa, intense expressions, dramatic arena lighting, black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Combat sports business and finance",
+      "prompt": "Abstract representation of combat sports business \u2014 broadcast equipment, contracts, arena infrastructure, financial scale. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Shane Mosley Jr. career arc",
+      "prompt": "Dramatic close-up portrait of boxer Shane Mosley Jr., showing intense focus and determination post-victory, cinematic arena lighting, premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-05-10",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image \u2014 main story hook",
+      "prompt": "Wide editorial thumbnail image: A dramatic pre-fight staredown between two opposing fighters, one representing Sean Strickland and the other Khamzat Chimaev. Cinematic banner composition, dramatic arena spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces clearly visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "Sean Strickland's upset victory over Khamzat Chimaev",
+      "prompt": "An intense editorial portrait of MMA fighter Sean Strickland, face visible, holding a championship belt over his shoulder. He has a focused, determined expression, captured in cinematic arena lighting against a black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "Gavel and legal documents reimagined through a combat sports lens. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, dark fight gym or press room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Shane Mosley Jr. vs. Serhii Bohachuk for Zuffa Boxing",
+      "prompt": "Two boxers in a dramatic face-off, representing Shane Mosley Jr. and Serhii Bohachuk. Intense expressions, dramatic arena lighting, black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Zuffa Boxing business strategy",
+      "prompt": "Abstract representation of combat sports business: UFC Fight Pass logo glowing on a screen behind boxing contracts and broadcast equipment. Black background, deep red and gold palette, premium editorial style. No faces, no text."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Daniel Dubois career arc",
+      "prompt": "Dramatic close-up portrait of heavyweight boxer Daniel Dubois, face visible with an intense expression of focus and grit. Cinematic arena lighting, premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

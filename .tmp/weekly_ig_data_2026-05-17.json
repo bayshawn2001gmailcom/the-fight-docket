@@ -1,0 +1,32 @@
+{
+  "date": "MAY 17, 2026",
+  "issue": "may17_2026",
+  "preview_stories": [
+    "Matchroom partners with Bruin Sports Capital to escalate U.S. expansion.",
+    "Analysis: Ben Shalom positions Boxxer as Sky Sports' post-Matchroom solution.",
+    "Fighter Spotlight: What's next for Arnold Allen after his UFC main event win?"
+  ],
+  "announcement": {
+    "fighter1": "Rakhmonov",
+    "fighter2": "Muhammad",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "rakhmonov_vs_muhammad_announcement.png"
+  },
+  "result": {
+    "winner": "Arnold Allen",
+    "loser": "Melquizael Costa",
+    "method": "DEC",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC Fight Night",
+    "filename": "allen_result.png"
+  },
+  "quote": {
+    "quote": "I'm in a position where I can call it a career and I'd be happy... I really have no reason to fight anymore.",
+    "attribution": "Jon Jones",
+    "context": "On his future in the UFC",
+    "filename": "jones_quote_card.png"
+  }
+}

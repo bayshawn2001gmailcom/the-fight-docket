@@ -1,0 +1,10 @@
+{
+  "name": "fight-docket-env",
+  "config": {
+    "type": "cloud",
+    "networking": {"type": "unrestricted"},
+    "packages": {
+      "pip": ["requests", "google-genai", "tweepy", "Pillow", "python-dotenv", "crawl4ai", "playwright"]
+    }
+  }
+}

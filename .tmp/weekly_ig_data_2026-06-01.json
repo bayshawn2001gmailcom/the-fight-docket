@@ -1,0 +1,32 @@
+{
+  "date": "JUNE 01, 2026",
+  "issue": "jun01_2026",
+  "preview_stories": [
+    "Foster retains WBC title, derails Matchroom's plans at 130 lbs",
+    "UFC's Asia push & the future of cross-promotional boxing events",
+    "Fighter Spotlight: What's next for Song Yadong after his biggest win?"
+  ],
+  "announcement": {
+    "fighter1": "McGregor",
+    "fighter2": "Holloway",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "mcgregor_vs_holloway_announcement.png"
+  },
+  "result": {
+    "winner": "Song Yadong",
+    "loser": "Deiveson Figueiredo",
+    "method": "Submission",
+    "round_num": "R3",
+    "time": "2:14",
+    "event": "UFC Fight Night: Macau",
+    "filename": "yadong_result.png"
+  },
+  "quote": {
+    "quote": "If he loses to me at 155, he's gonna be gone.",
+    "attribution": "Arman Tsarukyan",
+    "context": "On Ilia Topuria's potential move to Lightweight",
+    "filename": "tsarukyan_quote_card.png"
+  }
+}

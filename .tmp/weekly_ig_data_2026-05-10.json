@@ -1,0 +1,32 @@
+{
+  "date": "MAY 10, 2026",
+  "issue": "may10_2026",
+  "preview_stories": [
+    "Market Correction: Strickland derails Chimaev hype train at UFC 328.",
+    "Comeback King: Daniel Dubois survives knockdowns to win WBO Heavyweight title.",
+    "TKO's Other Bet: Zuffa Boxing's crucial live-market test."
+  ],
+  "announcement": {
+    "fighter1": "Kattar",
+    "fighter2": "Chikadze",
+    "event": "UFC Fight Night",
+    "date": "May 17 \u00b7 Las Vegas, NV",
+    "weight_class": "Featherweight",
+    "filename": "kattar_vs_chikadze_announcement.png"
+  },
+  "result": {
+    "winner": "Sean Strickland",
+    "loser": "Khamzat Chimaev",
+    "method": "SD",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC 328",
+    "filename": "strickland_result.png"
+  },
+  "quote": {
+    "quote": "They can never question my heart again. I walked through fire tonight and I am the champion.",
+    "attribution": "Daniel Dubois",
+    "context": "After winning the WBO Heavyweight Title",
+    "filename": "dubois_quote_card.png"
+  }
+}

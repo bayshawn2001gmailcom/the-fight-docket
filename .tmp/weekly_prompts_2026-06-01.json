@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-06-01",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image \u2014 main story hook",
+      "prompt": "Wide editorial thumbnail image: a boxer with his back to the camera, WBC championship belt draped over his shoulder, looking out over a darkened boxing ring under a single spotlight. Cinematic banner composition, dramatic arena spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces clearly visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "O'Shaquie Foster defeats Raymond Ford",
+      "prompt": "Dramatic editorial portrait of boxer O'Shaquie Foster, intense and focused expression, holding the green WBC championship belt. Cinematic arena lighting from the side, casting deep shadows, black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "Gavel and legal documents reimagined through a combat sports lens. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, dark fight gym or press room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Belal Muhammad vs. Gabriel Bonfim",
+      "prompt": "MMA fighters Belal Muhammad and Gabriel Bonfim in a dramatic face-off staredown. Intense expressions, dramatic overhead arena lighting, black background with deep red and gold light accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Global combat sports business",
+      "prompt": "Abstract representation of combat sports business: a satellite view of Asia centered on Macau, with glowing red and gold network lines connecting to other global cities. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Song Yadong career arc",
+      "prompt": "Dramatic close-up portrait of MMA fighter Song Yadong, looking intensely focused. Cinematic arena lighting, premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

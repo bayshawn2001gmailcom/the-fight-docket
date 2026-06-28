@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-06-07",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image \u2014 main story hook",
+      "prompt": "Wide editorial thumbnail image: a solitary, silhouetted cruiserweight boxer standing in the center of a London arena, the ring lights casting a dramatic glow on the canvas. The WBO championship belt is draped over his shoulder, glinting with gold. Cinematic banner composition, dramatic arena spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces clearly visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "Chris Billam-Smith retaining his WBO Cruiserweight title",
+      "prompt": "Dramatic editorial portrait of boxer Chris Billam-Smith. He is not celebrating, but has a look of intense, gritty exhaustion and determination. Cinematic arena lighting from the side, casting deep shadows. Black background with deep red and gold light accents. No text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "A golden gavel rests on a stack of legal documents watermarked with faint octagon patterns. Black background, gold and deep red palette, dramatic shadows casting long lines, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "A shadowy, atmospheric scene inside a high-end hotel lobby bar at night. Two figures in suits are deep in conversation, their forms blurred and indistinct, suggesting a secret negotiation. Cinematic noir aesthetic, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Jesse Rodriguez vs. Juan Francisco Estrada",
+      "prompt": "Boxers Jesse Rodriguez and Juan Francisco Estrada in a dramatic, intense face-off. Their faces are inches apart, expressions of extreme focus. Cinematic arena lighting from above, creating a spotlight effect on them. Black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Promotional rivalry between Dana White and Eddie Hearn",
+      "prompt": "Abstract representation of a business conflict. Two chess king pieces, one crimson red and one gold, facing off on a dark, reflective board. In the background, out of focus, are broadcast cameras and arena lights. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Jesse 'Bam' Rodriguez career arc",
+      "prompt": "Dramatic close-up portrait of fighter Jesse 'Bam' Rodriguez. He has an intense, focused expression, looking directly into the camera. Cinematic arena lighting highlights the contours of his face. Premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

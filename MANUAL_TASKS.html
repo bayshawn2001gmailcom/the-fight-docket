@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Fight Docket — Weekly Manual Task Sheet</title>
+<style>
+  @media print {
+    body { margin: 0.5in; }
+    .no-print { display: none; }
+    .page-break { page-break-before: always; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #111;
+    background: #fff;
+    padding: 30px;
+    max-width: 820px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #111;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    background: #111;
+    padding: 4px 10px;
+    margin: 20px 0 10px 0;
+  }
+  .card {
+    border: 1px solid #ccc;
+    border-left: 4px solid #111;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+  }
+  .card.automated {
+    border-left-color: #aaa;
+    background: #f8f8f8;
+    color: #555;
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+  }
+  .task-name {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .task-day {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+  }
+  .task-day.manual {
+    color: #111;
+  }
+  .step {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    align-items: flex-start;
+  }
+  .step-num {
+    background: #111;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-body { flex: 1; }
+  .step-label { font-weight: 700; }
+  .path {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 2px 6px;
+    display: inline-block;
+    margin-top: 2px;
+    word-break: break-all;
+  }
+  .cmd {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    background: #111;
+    color: #0f0;
+    padding: 6px 10px;
+    display: block;
+    margin-top: 4px;
+    word-break: break-all;
+  }
+  .auto-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #ddd;
+    color: #555;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .manual-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #111;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .note {
+    font-size: 11px;
+    color: #555;
+    font-style: italic;
+    margin-top: 3px;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 3px;
+  }
+  .checkbox {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #111;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  td, th { border: 1px solid #ccc; padding: 5px 8px; text-align: left; font-size: 12px; }
+  th { background: #f0f0f0; font-weight: 700; }
+  .divider { border: none; border-top: 1px solid #ddd; margin: 16px 0; }
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Print This Page</button>
+
+<h1>The Fight Docket — Weekly Manual Task Sheet</h1>
+<p class="subtitle">Computer must be ON for Task Scheduler tasks &nbsp;·&nbsp; GitHub Actions run automatically in the cloud</p>
+
+<!-- =====================================================================
+     WEEKLY SCHEDULE OVERVIEW
+     ===================================================================== -->
+<div class="section-title">Weekly Schedule at a Glance</div>
+
+<table>
+  <tr>
+    <th>Day / Time</th>
+    <th>Task</th>
+    <th>How It Runs</th>
+    <th>You Do?</th>
+  </tr>
+  <tr>
+    <td>Friday 6pm EDT</td>
+    <td>Upcoming fights crawler</td>
+    <td>GitHub Actions</td>
+    <td>Nothing</td>
+  </tr>
+  <tr>
+    <td>Fri 9pm · 11pm · 12:30am EDT</td>
+    <td>Live result tweets + IG cards</td>
+    <td>GitHub Actions</td>
+    <td>Nothing (see fight-night section)</td>
+  </tr>
+  <tr>
+    <td>Sat 9pm · 11pm EDT</td>
+    <td>Live result tweets + IG cards</td>
+    <td>GitHub Actions</td>
+    <td>Nothing (see fight-night section)</td>
+  </tr>
+  <tr>
+    <td>Sunday 1am EDT</td>
+    <td>Full results recap image</td>
+    <td>GitHub Actions</td>
+    <td>Nothing</td>
+  </tr>
+  <tr>
+    <td>Sunday 7:15pm EDT</td>
+    <td>Newsletter images (Nano Banana 2)</td>
+    <td>GitHub Actions</td>
+    <td>Nothing</td>
+  </tr>
+  <tr>
+    <td><b>Monday 7:30am EDT</b></td>
+    <td>Token refresh</td>
+    <td>Task Scheduler (PC must be ON)</td>
+    <td>Nothing</td>
+  </tr>
+  <tr>
+    <td>Monday 8am EDT</td>
+    <td>Newsletter generates → Beehiiv post → noon send</td>
+    <td>GitHub Actions</td>
+    <td>Nothing</td>
+  </tr>
+  <tr>
+    <td>Monday 10am EDT</td>
+    <td>Twitter 6-tweet thread</td>
+    <td>GitHub Actions</td>
+    <td>Nothing</td>
+  </tr>
+  <tr>
+    <td>Monday 11am EDT</td>
+    <td>4 Instagram graphics + captions generated</td>
+    <td>GitHub Actions</td>
+    <td>Nothing (files saved locally)</td>
+  </tr>
+  <tr style="background:#fffbe6;">
+    <td><b>Monday afternoon</b></td>
+    <td>Post newsletter preview card · Run SEO article</td>
+    <td style="color:#c00;font-weight:700;">MANUAL</td>
+    <td><b>YOU</b></td>
+  </tr>
+  <tr style="background:#fffbe6;">
+    <td><b>Tuesday morning</b></td>
+    <td>Post fight result card</td>
+    <td style="color:#c00;font-weight:700;">MANUAL</td>
+    <td><b>YOU</b></td>
+  </tr>
+  <tr>
+    <td><b>Thursday 9am EDT</b></td>
+    <td>Post fight announcement card (IG + FB)</td>
+    <td>Task Scheduler (PC must be ON)</td>
+    <td>Nothing</td>
+  </tr>
+  <tr style="background:#fffbe6;">
+    <td><b>Thursday (optional)</b></td>
+    <td>Check token refresh ran OK</td>
+    <td style="color:#c00;font-weight:700;">CHECK</td>
+    <td><b>YOU</b></td>
+  </tr>
+  <tr>
+    <td><b>Saturday 10am EDT</b></td>
+    <td>Post quote card (IG + FB)</td>
+    <td>Task Scheduler (PC must be ON)</td>
+    <td>Nothing</td>
+  </tr>
+</table>
+
+<!-- =====================================================================
+     MANUAL TASK 1 — MONDAY PREVIEW CARD
+     ===================================================================== -->
+<div class="section-title" style="margin-top:24px;">Task 1 — Monday: Post Newsletter Preview Card</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="task-name">Instagram + Facebook — Preview Card</span>
+    <span class="task-day manual">MONDAY AFTERNOON (after 11am EDT)</span>
+  </div>
+  <p class="note">GitHub Actions generates the graphics at 11am EDT. Wait until then, then post.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <span class="step-label">Open the IG folder to get the image file:</span><br>
+      <span class="path">C:\Users\baysh\Fight Newsletter\.tmp\ig\</span><br>
+      <span class="note">Look for the file ending in <b>_newsletter_preview.png</b><br>
+      Example: <b>jun16_2026_newsletter_preview.png</b></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <span class="step-label">Open the captions file for the caption text:</span><br>
+      <span class="path">C:\Users\baysh\Fight Newsletter\.tmp\ig\MONTHDD_YYYY_captions.txt</span><br>
+      <span class="note">Example: <b>jun16_2026_captions.txt</b> — find the "Preview" section and copy that caption</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <span class="step-label">Post by running this command in the terminal:</span>
+      <code class="cmd">cd "C:\Users\baysh\Fight Newsletter"
+python tools/social_post.py --card=preview --platform=all</code>
+      <span class="note">Posts to Instagram AND Facebook automatically. If it fails, post manually from the files above.</span>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     MANUAL TASK 2 — MONDAY SEO ARTICLE
+     ===================================================================== -->
+<div class="section-title">Task 2 — Monday: Run SEO Article + Publish</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="task-name">Generate &amp; Publish Weekly SEO Article</span>
+    <span class="task-day manual">MONDAY (after newsletter pipeline runs)</span>
+  </div>
+  <p class="note">This creates a public article on Beehiiv that Google can find and index. No Firecrawl credits used — it reads the newsletter draft already saved on the computer.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <span class="step-label">Run the SEO article generator:</span>
+      <code class="cmd">cd "C:\Users\baysh\Fight Newsletter"
+python tools/seo_article.py</code>
+      <span class="note">It will print a Beehiiv draft link when done. Copy that link.</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <span class="step-label">Open the Beehiiv draft link (printed in the terminal)</span><br>
+      <span class="note">It looks like: <b>https://app.beehiiv.com/posts/post_xxxxxxxx</b></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <span class="step-label">In Beehiiv: Click "Publish" → choose "Web only"</span><br>
+      <span class="note">This makes the article public on the web WITHOUT emailing your subscribers.<br>
+      Your subscribers already get the full newsletter — this article is for people finding you on Google.</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <span class="step-label">Article is also saved locally:</span><br>
+      <span class="path">C:\Users\baysh\Fight Newsletter\.tmp\seo_articles\</span>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     MANUAL TASK 3 — TUESDAY RESULT CARD
+     ===================================================================== -->
+<div class="section-title">Task 3 — Tuesday: Post Fight Result Card</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="task-name">Instagram + Facebook — Result Card</span>
+    <span class="task-day manual">TUESDAY MORNING</span>
+  </div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <span class="step-label">Find the result card image:</span><br>
+      <span class="path">C:\Users\baysh\Fight Newsletter\.tmp\ig\</span><br>
+      <span class="note">Look for the file ending in <b>_result.png</b><br>
+      Example: <b>jun15_2026_strickland_result.png</b></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <span class="step-label">Get the caption from the captions file (Result section):</span><br>
+      <span class="path">C:\Users\baysh\Fight Newsletter\.tmp\ig\MONTHDD_YYYY_captions.txt</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <span class="step-label">Post by running:</span>
+      <code class="cmd">cd "C:\Users\baysh\Fight Newsletter"
+python tools/social_post.py --card=result --platform=all</code>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     FIGHT NIGHT PROTOCOL
+     ===================================================================== -->
+<div class="section-title page-break">Fight Night Protocol — Post Results Immediately</div>
+
+<div class="card">
+  <div class="card-header">
+    <span class="task-name">Post a Fight Result RIGHT After It Happens</span>
+    <span class="task-day manual">FRIDAY OR SATURDAY NIGHT — DURING THE EVENT</span>
+  </div>
+  <p class="note">GitHub Actions auto-posts live results every 90 min, but if you want something posted INSTANTLY (main event, big upset), run this manually as soon as the fight ends.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <span class="step-label">Open a terminal (Git Bash or PowerShell) and run:</span>
+      <code class="cmd">cd "C:\Users\baysh\Fight Newsletter"
+python tools/post_result_now.py --winner="WINNER NAME" --loser="LOSER NAME" --method="KO/TKO" --round=3 --time="2:45" --event="UFC 315"</code>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <span class="step-label">Fill in the actual fight details. Method options:</span><br>
+      <span class="note">
+        <b>KO/TKO</b> &nbsp;·&nbsp; <b>Submission</b> &nbsp;·&nbsp; <b>Decision (Unanimous)</b> &nbsp;·&nbsp; <b>Decision (Split)</b>
+      </span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <span class="step-label">Example — Gaethje TKO win:</span>
+      <code class="cmd">python tools/post_result_now.py --winner="Gaethje" --loser="Topuria" --method="KO/TKO" --round=4 --time="4:51" --event="UFC Freedom 250"</code>
+    </div>
+  </div>
+</div>
+
+<!-- =====================================================================
+     FILE LOCATIONS QUICK REFERENCE
+     ===================================================================== -->
+<div class="section-title">Quick Reference — Where to Find Files</div>
+
+<div class="grid-2">
+  <div>
+    <div style="font-weight:700;margin-bottom:6px;">Instagram / Facebook Cards</div>
+    <table>
+      <tr><th>Card Type</th><th>Filename Pattern</th></tr>
+      <tr><td>Preview (Mon)</td><td><b>*_newsletter_preview.png</b></td></tr>
+      <tr><td>Result (Tue)</td><td><b>*_result.png</b></td></tr>
+      <tr><td>Announcement (Thu — Auto)</td><td><b>*_announcement.png</b></td></tr>
+      <tr><td>Quote (Sat — Auto)</td><td><b>*_quote_card.png</b></td></tr>
+    </table>
+    <p class="note" style="margin-top:4px;">All files in: <span class="path" style="display:inline;">C:\Users\baysh\Fight Newsletter\.tmp\ig\</span></p>
+  </div>
+
+  <div>
+    <div style="font-weight:700;margin-bottom:6px;">Other Key Files</div>
+    <table>
+      <tr><th>What</th><th>Where</th></tr>
+      <tr><td>Captions</td><td><b>.tmp\ig\*_captions.txt</b></td></tr>
+      <tr><td>Newsletter draft</td><td><b>.tmp\newsletter_draft_*.json</b></td></tr>
+      <tr><td>SEO articles</td><td><b>.tmp\seo_articles\</b></td></tr>
+      <tr><td>Newsletter HTML</td><td><b>the-fight-docket\newsletter_*.html</b></td></tr>
+    </table>
+    <p class="note" style="margin-top:4px;">Root: <span class="path" style="display:inline;">C:\Users\baysh\</span></p>
+  </div>
+</div>
+
+<!-- =====================================================================
+     AUTOMATED TASK SCHEDULER — REQUIRES PC ON
+     ===================================================================== -->
+<div class="section-title" style="margin-top:20px;">Task Scheduler — Runs Automatically (PC Must Be ON)</div>
+
+<table>
+  <tr><th>Task Name</th><th>Runs</th><th>What It Does</th></tr>
+  <tr>
+    <td>TokenRefresh</td>
+    <td>Monday 7:30am EDT</td>
+    <td>Refreshes Instagram/Facebook access tokens (keeps posting working)</td>
+  </tr>
+  <tr>
+    <td>PostAnnouncement</td>
+    <td>Thursday 9:00am EDT</td>
+    <td>Posts the fight announcement card to Instagram + Facebook</td>
+  </tr>
+  <tr>
+    <td>PostQuote</td>
+    <td>Saturday 10:00am EDT</td>
+    <td>Posts the weekly quote card to Instagram + Facebook</td>
+  </tr>
+</table>
+<p class="note" style="margin-top:6px;">If the PC is asleep or off when these run, the task will be missed. Wake the PC before these times if you know it will be off.<br>
+To check task history: Task Scheduler → Task Scheduler Library → FightDocket → right-click task → History.</p>
+
+<!-- =====================================================================
+     COMMON ISSUES
+     ===================================================================== -->
+<div class="section-title" style="margin-top:20px;">If Something Goes Wrong</div>
+
+<table>
+  <tr><th>Problem</th><th>Fix</th></tr>
+  <tr>
+    <td>social_post.py fails — token expired</td>
+    <td>Run: <code>python tools/refresh_tokens.py</code> then retry</td>
+  </tr>
+  <tr>
+    <td>No files in .tmp/ig/ after Monday 11am</td>
+    <td>Check GitHub Actions: github.com/bayshawn2001gmailcom/the-fight-docket/actions</td>
+  </tr>
+  <tr>
+    <td>seo_article.py can't find a draft</td>
+    <td>Newsletter pipeline didn't run — check GitHub Actions or run newsletter_draft.py manually</td>
+  </tr>
+  <tr>
+    <td>Post went to wrong account / duplicate post</td>
+    <td>Check Instagram app and Facebook Page manually to delete. Then re-run with correct card.</td>
+  </tr>
+  <tr>
+    <td>GitHub Actions shows red X</td>
+    <td>Go to the Actions tab, click the failed run, read the error. Usually a missing API credit or token issue.</td>
+  </tr>
+</table>
+
+<!-- =====================================================================
+     IMPORTANT LINKS
+     ===================================================================== -->
+<div class="section-title" style="margin-top:20px;">Important Links</div>
+
+<table>
+  <tr>
+    <td style="width:180px;font-weight:700;">Beehiiv Dashboard</td>
+    <td>app.beehiiv.com &nbsp;—&nbsp; manage newsletter posts and subscribers</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700;">GitHub Actions</td>
+    <td>github.com/bayshawn2001gmailcom/the-fight-docket/actions</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700;">Instagram Profile</td>
+    <td>instagram.com/thefightdocket</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700;">Facebook Page</td>
+    <td>facebook.com/profile.php?id=1057706444094539</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700;">Twitter / X</td>
+    <td>x.com/thefightdocket</td>
+  </tr>
+  <tr>
+    <td style="font-weight:700;">Subscribe Page</td>
+    <td>thefightdocket.beehiiv.com/subscribe</td>
+  </tr>
+</table>
+
+<hr class="divider" style="margin-top:24px;">
+<p style="font-size:10px;color:#aaa;text-align:center;">The Fight Docket — Manual Task Reference Sheet &nbsp;·&nbsp; Updated June 2026</p>
+
+</body>
+</html>

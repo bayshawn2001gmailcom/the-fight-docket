@@ -1,0 +1,32 @@
+{
+  "date": "JUNE 07, 2026",
+  "issue": "jun07_2026",
+  "preview_stories": [
+    "Billam-Smith retains WBO title, validating Matchroom's UK gatekeeper strategy.",
+    "Hearn vs. White: The public feud over Zuffa Boxing's business model escalates.",
+    "Spotlight: Jesse 'Bam' Rodriguez's path to becoming a promotional cornerstone."
+  ],
+  "announcement": {
+    "fighter1": "Edwards",
+    "fighter2": "Muhammad",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight Championship",
+    "filename": "edwards_vs_muhammad_announcement.png"
+  },
+  "result": {
+    "winner": "Billam-Smith",
+    "loser": "Rozicki",
+    "method": "UD",
+    "round_num": "R12",
+    "time": "3:00",
+    "event": "Matchroom Boxing",
+    "filename": "billam-smith_result.png"
+  },
+  "quote": {
+    "quote": "It\u2019s disgusting, how they treat fighters...",
+    "attribution": "Eddie Hearn",
+    "context": "On Zuffa Boxing's rumored operational model",
+    "filename": "hearn_quote_card.png"
+  }
+}

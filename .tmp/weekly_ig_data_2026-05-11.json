@@ -1,0 +1,32 @@
+{
+  "date": "MAY 11, 2026",
+  "issue": "may11_2026",
+  "preview_stories": [
+    "Strickland Upsets Chimaev at UFC 328, Reshaping Middleweight Title Picture",
+    "Daniel Dubois Captures WBO Heavyweight Title in Thriller vs. Wardley",
+    "Shane Mosley Jr. Secures Career-Defining Stoppage Over Serhii Bohachuk"
+  ],
+  "announcement": {
+    "fighter1": "Rakhmonov",
+    "fighter2": "Muhammad",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "rakhmonov_vs_muhammad_announcement.png"
+  },
+  "result": {
+    "winner": "Strickland",
+    "loser": "Chimaev",
+    "method": "Unanimous Decision",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC 328",
+    "filename": "strickland_result.png"
+  },
+  "quote": {
+    "quote": "That's what this sport is about. On any given night, anything can happen. The hype train is real until it's not.",
+    "attribution": "Dana White",
+    "context": "UFC 328 Post-Fight Press Conference",
+    "filename": "white_quote_card.png"
+  }
+}

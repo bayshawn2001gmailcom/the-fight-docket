@@ -1,0 +1,473 @@
+{
+  "cookies": [
+    {
+      "name": "_gcl_gs",
+      "value": "2.1.k1$i1775603286$u81267716",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_rdt_uuid",
+      "value": "1777772652117.9c781511-d938-42e9-bfa2-8bc3be59812f",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "fs_uid",
+      "value": "#14NRVG#5d9e32d9-9376-4a20-9a8e-e47f51b68ff3:b94ac173-c03a-4082-ac27-29a3c0d88b12:1778239851144::2#61867e89##/1809308859",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "attr_last",
+      "value": "%7B%22source%22%3A%22(direct)%22%2C%22medium%22%3A%22(none)%22%2C%22campaign%22%3A%22(not%20set)%22%2C%22term%22%3A%22(not%20provided)%22%2C%22content%22%3A%22(not%20set)%22%2C%22id%22%3A%22(not%20set)%22%2C%22source_platform%22%3A%22(not%20set)%22%2C%22marketing_tactic%22%3A%22(not%20set)%22%2C%22creative_format%22%3A%22(not%20set)%22%2C%22adgroup%22%3A%22(not%20set)%22%2C%22lp%22%3A%22www.beehiiv.com%2F%22%2C%22date%22%3A%222026-05-8%22%2C%22timestamp%22%3A1778240237400%7D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_user_id",
+      "value": "a8f122bf-0dc1-46d1-8c98-8bc1157859bf",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rl_page_init_referrer",
+      "value": "RS_ENC_v3_Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vIg%3D%3D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rs_au",
+      "value": "1.1.846947202.1777772651.1570178824.1777772662.1777772665",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_bhp",
+      "value": "b4b3002a-f515-4049-a074-1aa201225b0e",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "__stripe_mid",
+      "value": "0142212d-aa92-42b5-9e8b-6142b61b0b70acaf2d",
+      "domain": ".app.beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "upgradeODAAdsBannerHidden_global",
+      "value": "true",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_tt_enable_cookie",
+      "value": "1",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab_testing_uid",
+      "value": "JHPrupEVKUwHeiLlsX8gvzSKUo4v0UR1CVLViB0HE35%2FstrWfV3ZOAs10euA1%2FgoXhDP13309BNs3ZXli%2FP5oMPu7dr6iXErI19s4BRa7%2FIVKdC7pnt%2FuB%2Bw9AnJAKRVqAkSy%2FbiG6kIWSEfOfoAcrVD5btj76by1Y6a9G89z7BhLSJhI9Od%2BU4ajF0%3D--na%2BuSUjOks4dK7y2--jYsD6bGnLc7BAeoDjTaZ6g%3D%3D",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "g_state",
+      "value": "{\"i_l\":0,\"i_ll\":1778240244994,\"i_b\":\"p3NeFBr3925RFPAZM6a3xq1RNKo14T6GuK1Fl+ipK3g\",\"i_e\":{\"enable_itp_optimization\":1},\"i_et\":1777277839825}",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_fbp",
+      "value": "fb.1.1774304227323.595089900334167613",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_swarm_session",
+      "value": "aAI1cP0AGgIoHFcLwvQtp978HUc4orSTZIoNYMeg6zfANSLJY7ixCuxyML1PAd6PNneTHka66hAKoot%2FXudSU8ZHxjx9GjmadnJYqNHVbGPmA8RauOc8%2Bk30Xp0M61wyMmD%2B8Qjgm1CXI8OEtkXV099ESenNwuoc7YA3ZuBKqF8u4TX8WW31HNhFX%2FXac62G8oZWB3h29l0YgsFKIwtFJk4g5nGY2IXpAQ9LTlot7icuBhtWEkZRbiFryXo3jejSMS96QLn4Sp5LRIMGMZ8HXhglaoaOs9NC11tju%2BKR2JRcDxgKiwp3IwVLNCFXMz7FFQmHEj%2FEcREBeiQ00AzIPQwM1OxUplmoxr4JZTTfztnWsSDlA%2BdVeexFdcVBuFRyF%2BwfJnElj2FKP7VQKk5IkzyLsIMjcLlDkCcLwctVVT%2B2qlV547TBBHO0CgQAgFR1Iy1BeKYJhQZZ1SDjlcGINbbmlsi2vrXVyNKIuIAlYiou6IIdfBjA2xPG--Uu0m8q%2B646jzwEMx--PC6z7gZ%2BeUk9jIIpSQFioA%3D%3D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "hideTestEmailBanner",
+      "value": "true",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uetsid",
+      "value": "4e5d9fc04abc11f1872da5f75592af31|1nyo2ka|2|g5v|0|2319",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "attr_first",
+      "value": "%7B%22source%22%3A%22google%22%2C%22medium%22%3A%22cpc%22%2C%22campaign%22%3A%22mof-search-brand-defense-pm-tier%201%20english%22%2C%22term%22%3A%22beehiiv%22%2C%22content%22%3A%22714678068854%22%2C%22id%22%3A%2221743371325%22%2C%22source_platform%22%3A%22google_search%22%2C%22marketing_tactic%22%3A%22direct_response%22%2C%22creative_format%22%3A%22search%22%2C%22adgroup%22%3A%22168920475538%22%2C%22lp%22%3A%22www.beehiiv.com%2F%22%2C%22date%22%3A%222026-03-23%22%2C%22timestamp%22%3A1774304224319%7D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uetvid",
+      "value": "95a597c0469111f193aa15102b90db2d|1n4c55s|1778240273419|8|1|bat.bing.com/p/insights/c/o",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ttcsid_C8H4OIGB3BVP1792I4IG",
+      "value": "1778239846735::SVbb7UlNsuqq1Rx3bekg.10.1778240274727.1",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AMP_c009a0926b",
+      "value": "JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjI1Y2E0NTZkZS1hZTdlLTQ2OTctYWEwZS0xNGQ0NjI4NzZiMDQlMjIlMkMlMjJ1c2VySWQlMjIlM0ElMjJhOGYxMjJiZi0wZGMxLTQ2ZDEtOGM5OC04YmMxMTU3ODU5YmYlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzc3OTcxMjg3Njk4JTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc3Nzk3MTI4NzcwMCUyQyUyMmxhc3RFdmVudElkJTIyJTNBOSUyQyUyMnBhZ2VDb3VudGVyJTIyJTNBMCUyQyUyMmNvb2tpZURvbWFpbiUyMiUzQSUyMi5iZWVoaWl2LmNvbSUyMiU3RA==",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rl_page_init_referring_domain",
+      "value": "RS_ENC_v3_Ind3dy5nb29nbGUuY29tIg%3D%3D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__hstc",
+      "value": "101613854.377eae83043e9140de1828f65edbe8f6.1777772650679.1778230804928.1778239851844.14",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_twpid",
+      "value": "tw.1774304225665.798162172358271851",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "__hssrc",
+      "value": "1",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_dd_s",
+      "value": "aid=75b79e24-d07e-4fcd-8a9a-a9b09b9595fa&rum=1&id=dbaee2ba-1cea-44da-8178-cf712ea969fd&created=1778239848632&expire=1778241172501",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "_gcl_aw",
+      "value": "GCL.1775603289.CjwKCAjw1tLOBhAMEiwAiPkRHjIaj7gBqE3J_9s7a5au4d0ysUxG_EOvppGJXh7P7O7jAJSzT0mFvRoCBt4QAvD_BwE",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "heroku-session-affinity",
+      "value": "Q38DAQERU3RpY2t5U2Vzc2lvbkRhdGEB/4AAAQMBBUFwcElEAQwAAQhEeW5vTmFtZQEMAAEJRHlub0NvdW50AQQAAAAM/4ACBXdlYi4zAUYA97jzHwNaQeEal4dGy31X4tWCBIx2PdDS8eCKYei1bkQ=",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__hssc",
+      "value": "101613854.3.1778239851844",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.501981060.1774304226",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_anonymous_id",
+      "value": "817228de-ac88-4168-913b-1fd4adab8b60",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__birdie_snippet_status",
+      "value": "%7B%22status%22%3A%22ready%22%2C%22ts%22%3A1778240288375%7D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "C9MieingJpmsYzE6iRzCAcL3qPeoR.PXWP29f5a9EyY-1778240245.4412014-1.0.1.1-xNpBMLN7V06YCGad9XgdDmNDXlO8EXaOIUnNZucCz3XYb20hIyJ0omWWmru.E.dX3VrQM2p0CLnzxwg_brSet2.2grWnommWmnnecxcSB4X4ZhaHPEzFCd1Wky5Y_knj",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__qca",
+      "value": "P1-80000672-7ff0-4c63-ac17-1b1b635bdd6d",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__stripe_sid",
+      "value": "26152b07-979a-4430-952e-11af201f3ecca025dc",
+      "domain": ".app.beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "_csrf_token",
+      "value": "-17peacZCr192gwaGQUNS1OwKYPbJZE9jlw-7fuALV4Q0eWw2hXR9J3bKpJfkm6oLyfLSgBiZvu357HKkRyokw",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_E6Y4WLQ2EC",
+      "value": "GS2.1.s1778239846$o8$g1$t1778240273$j25$l1$h1726950865",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.1636024729.1774304226.1024367198.1778240262.1778240272",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ttp",
+      "value": "01KMECBTYDJ7HDKBKY7HP1E2Z6_.tt.1",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uuid",
+      "value": "a8f122bf-0dc1-46d1-8c98-8bc1157859bf",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "ahoy_visitor",
+      "value": "547835b4-341f-49f1-b3f0-b4698b6e8c35",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_group_id",
+      "value": "3ee36121-475b-43f5-87b9-9a610d46779b",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "event_session_id",
+      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqQXhPV1V3TnpWbUxXTmhOell0TjJRME55MWlabUl5TFRsaFkySTBNV0kyTm1Vd01pST0iLCJleHAiOiIyMDI2LTA1LTA4VDE1OjM3OjUzLjQ0M1oiLCJwdXIiOiJjb29raWUuZXZlbnRfc2Vzc2lvbl9pZCJ9fQ%3D%3D--6cda05c8f9d0fc5e904f17ada17c5274188b4252",
+      "domain": "app.beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "fs_lua",
+      "value": "1.1778240246074",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "hubspotutk",
+      "value": "377eae83043e9140de1828f65edbe8f6",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rl_anonymous_id",
+      "value": "RS_ENC_v3_IjVjYTQ1NmRlLWFlN2UtNDY5Ny1hYTBlLTE0ZDQ2Mjg3NmIwNCI%3D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rl_session",
+      "value": "RS_ENC_v3_eyJhdXRvVHJhY2siOnRydWUsInRpbWVvdXQiOjE4MDAwMDAsImV4cGlyZXNBdCI6MTc3ODI0MjA3MzY3NywiaWQiOjE3NzgyNDAxNzMyMTcsInNlc3Npb25TdGFydCI6ZmFsc2V9",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rl_trait",
+      "value": "RS_ENC_v3_eyJlbWFpbCI6InRoZWZpZ2h0ZG9ja2V0QGdtYWlsLmNvbSIsInB1YmxpY2F0aW9uX2lkIjoiM2VlMzYxMjEtNDc1Yi00M2Y1LTg3YjktOWE2MTBkNDY3NzliIiwib3JnYW5pemF0aW9uX2lkIjoiMDQzNDBkZGEtZmRiYy00NzA4LWIxMzMtNjNkZjRhNGRiZjk1In0%3D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rl_user_id",
+      "value": "RS_ENC_v3_ImE4ZjEyMmJmLTBkYzEtNDZkMS04Yzk4LThiYzExNTc4NTliZiI%3D",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rs_ga",
+      "value": "GA1.1.5ca456de-ae7e-4697-aa0e-14d462876b04",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "rs_ga_E6Y4WLQ2EC",
+      "value": "GS2.1.s1777772651024$o1$g1$t1777774763$j58$l1$h234255926",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ttcsid",
+      "value": "1778239846727::jqEFBuAtSWbcon0z9Fhl.11.1778240274727.0::1.426263.399363::425805.12.1339.809::0.0.0",
+      "domain": ".beehiiv.com",
+      "path": "/",
+      "secure": false,
+      "httpOnly": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

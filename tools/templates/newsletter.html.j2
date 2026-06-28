@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>The Fight Docket | {{ issue_date_display }}</title>
+<style>
+  body { margin:0; padding:0; background-color:#0D0D0D !important; }
+  p { margin:0 0 18px 0; color:#F2F2E8; font-size:16px; line-height:1.8; }
+  a { color:#DE1E20; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  strong, b { color:#F2F2E8; }
+  em { color:#999; }
+  h2, h3 { color:#F2F2E8; }
+  ul, ol { color:#F2F2E8; padding-left:20px; margin:0 0 18px 0; }
+  li { margin-bottom:8px; line-height:1.7; }
+  blockquote { border-left:3px solid #DE1E20; padding:4px 0 4px 18px; margin:24px 0; }
+  blockquote p { color:#C5A059; font-style:italic; }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#0D0D0D;">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- EMAIL CONTAINER                                        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div style="max-width:680px; margin:0 auto; background-color:#0D0D0D; font-family:Georgia,'Times New Roman',serif; color:#F2F2E8;">
+
+  <!-- ════════ HEADER ════════ -->
+  <div style="background:#0D0D0D; border-top:6px solid #DE1E20; padding:36px 40px 28px 40px;">
+    <p style="margin:0 0 1px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:8px; color:#C5A059;">The</p>
+    <div style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:56px; font-weight:900; text-transform:uppercase; color:#F2F2E8; line-height:0.95; letter-spacing:-2px; margin:0 0 16px 0;">
+      FIGHT<br>DOCKET
+    </div>
+    <div style="height:1px; background:#C5A059; margin:0 0 12px 0;"></div>
+    <p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:10px; text-transform:uppercase; letter-spacing:4px; color:#C5A059;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
+    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#555;">{{ issue_date_display }}</p>
+  </div>
+
+  <!-- ════════ CONTENT ════════ -->
+  <div style="padding:0 40px 48px 40px;">
+
+    <!-- EDITOR'S NOTE -->
+    <div style="padding-top:40px;">
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#C5A059;">Editor's Note</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if intro_image_url %}
+      <img src="{{ intro_image_url }}" alt="Editor's note" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <div style="color:#F2F2E8;">{{ editors_note_html | safe }}</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height:1px; background:#1E1E1E; border-top:1px solid #C5A059; opacity:0.25; margin:40px 0;"></div>
+
+    <!-- MAIN STORY -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Main Story</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if main_story_image_url %}
+      <img src="{{ main_story_image_url }}" alt="{{ main_story_headline }}" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:28px; font-weight:900; line-height:1.2; margin:0 0 22px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">{{ main_story_headline }}</h2>
+      <div style="color:#F2F2E8;">{{ main_story_html | safe }}</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- LEGAL TRACKER -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Legal Tracker</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if legal_image_url %}
+      <img src="{{ legal_image_url }}" alt="Legal tracker" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">{{ legal_tracker_headline }}</h2>
+      <div style="color:#F2F2E8;">{{ legal_tracker_html | safe }}</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- RUMOR MILL -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Rumor Mill</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if rumor_image_url %}
+      <img src="{{ rumor_image_url }}" alt="Rumor mill" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <div style="color:#F2F2E8;">{{ rumor_mill_html | safe }}</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- FIGHT CARD PREVIEWS -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fight Card Previews</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if fight_previews_image_url %}
+      <img src="{{ fight_previews_image_url }}" alt="Fight previews" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">{{ fight_previews_headline }}</h2>
+      <div style="color:#F2F2E8;">{{ fight_previews_html | safe }}</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- BUSINESS INTEL -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Business Intel</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if business_intel_image_url %}
+      <img src="{{ business_intel_image_url }}" alt="Business intel" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">{{ business_intel_headline }}</h2>
+      <div style="color:#F2F2E8;">{{ business_intel_html | safe }}</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+
+    <!-- FIGHTER SPOTLIGHT -->
+    <div>
+      <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fighter Spotlight</p>
+      <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
+      {% if fighter_spotlight_image_url %}
+      <img src="{{ fighter_spotlight_image_url }}" alt="{{ fighter_spotlight_name }} spotlight" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
+      {% endif %}
+      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">{{ fighter_spotlight_name }}</h2>
+      <div style="color:#F2F2E8;">{{ fighter_spotlight_html | safe }}</div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- ════════ FOOTER ════════ -->
+  <div style="border-top:1px solid #C5A059; background:#0D0D0D; padding:32px 40px 36px 40px;">
+    <p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:6px; color:#C5A059;">The Fight Docket</p>
+    <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; text-transform:uppercase; letter-spacing:3px; color:#888888;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
+    <p style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; color:#888888;">
+      <a href="https://thefightdocket.com" style="color:#DE1E20; text-decoration:none;">thefightdocket.com</a>
+      &nbsp;&middot;&nbsp;
+      Tips &amp; sources: <a href="mailto:tips@thefightdocket.com" style="color:#DE1E20; text-decoration:none;">tips@thefightdocket.com</a>
+    </p>
+    <p style="margin:12px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">You're receiving this because you subscribed. Forward to a fight fan who thinks like an analyst.</p>
+    <p style="margin:6px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">Not subscribed yet? Join free &rarr; <a href="https://www.thefightdocket.com/" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a></p>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-06-22",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image \u2014 main story hook",
+      "prompt": "Wide editorial thumbnail image: An ornate, throne-like chair sits empty in the center of a dark, vacant boxing ring. A single, dramatic spotlight shines down on it from above. The scene evokes a sense of a power vacuum and uncertainty. Cinematic banner composition, dramatic arena spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "Turki Alalshikh's impact on boxing",
+      "prompt": "Abstract representation of a boxing world in crisis. A golden chess king piece stands alone on a board under a harsh spotlight, with other pieces in deep shadow, suggesting strategic uncertainty. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "Gavel and legal documents reimagined through a combat sports lens. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, dark fight gym or press room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Xander Zayas vs Jaron Ennis and Conor McGregor vs Max Holloway",
+      "prompt": "Two pairs of fighters in dramatic face-off or staredown. On the left, two boxers (Zayas and Ennis). On the right, two MMA fighters (McGregor and Holloway). Intense expressions, dramatic arena lighting, split-screen composition, black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Combat sports business and promotion",
+      "prompt": "Abstract representation of combat sports business \u2014 a contract with a fountain pen lying on it, next to a boxing glove, all under a sharp, cinematic light. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Xander Zayas career arc",
+      "prompt": "Dramatic close-up portrait of the featured fighter, Xander Zayas. Intense expression and focus, cinematic arena lighting from the side, premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

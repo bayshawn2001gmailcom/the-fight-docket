@@ -1,0 +1,40 @@
+{
+  "issue_date": "2026-05-08",
+  "prompts": [
+    {
+      "section": "intro",
+      "topic": "Combat sports intelligence",
+      "prompt": "Cinematic editorial image, dark editorial atmosphere, moody arena lighting, black and deep crimson red palette, no faces, no text, no logos. Premium sports editorial photography style."
+    },
+    {
+      "section": "main_story",
+      "topic": "Mayweather-Pacquiao Netflix",
+      "prompt": "Floyd Mayweather and Manny Pacquiao dramatic pre-fight staredown portrait, intense expressions, cinematic arena lighting, black background with deep red and gold accents, premium sports editorial style. No text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Legal proceedings combat sports",
+      "prompt": "Gavel and legal documents reimagined through a combat sports lens. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, dark fight gym or press room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "Chimaev vs Strickland UFC 328",
+      "prompt": "Khamzat Chimaev and Sean Strickland dramatic staredown, both fighters face-to-face, intense expressions, cinematic arena lighting, black background with deep red and gold accents, premium sports editorial style. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Combat sports broadcast rights",
+      "prompt": "Abstract representation of broadcast waves over a boxing ring. Black background, neon red and blue palette, futuristic aesthetic. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Khamzat Chimaev career arc",
+      "prompt": "Khamzat Chimaev dramatic close-up portrait, intense determined expression, cinematic arena lighting, black background with deep red and gold light, premium sports magazine editorial aesthetic. No text, no logos."
+    }
+  ]
+}

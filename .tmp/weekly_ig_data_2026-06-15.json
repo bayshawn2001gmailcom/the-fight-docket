@@ -1,0 +1,32 @@
+{
+  "date": "JUNE 15, 2026",
+  "issue": "jun15_2026",
+  "preview_stories": [
+    "Gaethje dethrones Topuria, upends UFC's entire European market strategy.",
+    "Zuffa Boxing's proposed Ali Act changes face organized political opposition.",
+    "The contract issue holding up the planned Anthony Joshua vs. Tyson Fury superfight."
+  ],
+  "announcement": {
+    "fighter1": "Rakhmonov",
+    "fighter2": "Muhammad",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "rakhmonov_vs_muhammad_announcement.png"
+  },
+  "result": {
+    "winner": "Justin Gaethje",
+    "loser": "Ilia Topuria",
+    "method": "TKO",
+    "round_num": "R4",
+    "time": "4:51",
+    "event": "UFC Freedom 250",
+    "filename": "gaethje_result.png"
+  },
+  "quote": {
+    "quote": "This isn't about boxing, it's about control. They want to undermine the Ali Act to replicate the UFC model.",
+    "attribution": "Eddie Hearn",
+    "context": "On Zuffa Boxing's Legislative Push",
+    "filename": "hearn_quote_card.png"
+  }
+}

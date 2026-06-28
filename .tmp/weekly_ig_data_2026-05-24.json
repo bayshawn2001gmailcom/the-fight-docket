@@ -1,0 +1,32 @@
+{
+  "date": "MAY 24, 2026",
+  "issue": "may24_2026",
+  "preview_stories": [
+    "Usyk-Verhoeven: Controversial TKO creates lucrative rematch demand.",
+    "Muhammad Ali Act update passes U.S. House, targets contract reform.",
+    "Keyshawn Davis' weight miss a red flag for new Top Rank/DAZN deal."
+  ],
+  "announcement": {
+    "fighter1": "Foster",
+    "fighter2": "Ford",
+    "event": "DAZN Boxing",
+    "date": "May 30 \u00b7 Houston, TX",
+    "weight_class": "Super Featherweight",
+    "filename": "foster_vs_ford_announcement.png"
+  },
+  "result": {
+    "winner": "Usyk",
+    "loser": "Verhoeven",
+    "method": "TKO",
+    "round_num": "R11",
+    "time": "2:30",
+    "event": "Usyk vs. Verhoeven",
+    "filename": "usyk_result.png"
+  },
+  "quote": {
+    "quote": "It's not my job to worry about controversy. I won.",
+    "attribution": "Oleksandr Usyk",
+    "context": "Post-fight press conference",
+    "filename": "usyk_quote_card.png"
+  }
+}

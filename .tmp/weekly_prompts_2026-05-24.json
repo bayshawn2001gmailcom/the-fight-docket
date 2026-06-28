@@ -1,0 +1,45 @@
+{
+  "issue_date": "2026-05-24",
+  "prompts": [
+    {
+      "section": "thumbnail",
+      "topic": "Newsletter cover image",
+      "prompt": "Wide editorial thumbnail image: a heavyweight boxing champion standing victorious in a flood-lit arena after a controversial stoppage, dramatic silhouette, gold championship belt visible. Cinematic banner composition, dramatic arena spotlight lighting, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, premium sports magazine cover style, high contrast. No faces clearly visible, no text, no logos, no watermarks."
+    },
+    {
+      "section": "intro",
+      "topic": "MMA and boxing combat sports intelligence",
+      "prompt": "Two MMA fighters squaring off in an octagon, dramatic silhouette, cinematic arena lighting from above, black background (#0D0D0D), deep crimson red (#DE1E20) and gold (#C5A059) color palette, dark editorial atmosphere, premium sports magazine style. No faces visible, no text, no logos."
+    },
+    {
+      "section": "main_story",
+      "topic": "Usyk vs Verhoeven controversial stoppage",
+      "prompt": "Dramatic editorial boxing scene: heavyweight champion in the ring under dramatic arena spotlights after a controversial stoppage, referee visible in background, championship belts prominent. Black background with deep red and gold accents, cinematic lighting. No text, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Muhammad Ali Act boxing legislation",
+      "prompt": "Capitol building silhouette merged with boxing gloves and legal scales, dramatic dark editorial composition. Black background, gold and deep red palette, dramatic shadows, premium editorial style. No text, no faces, no logos."
+    },
+    {
+      "section": "rumor",
+      "topic": "Combat sports intelligence",
+      "prompt": "Shadowy atmospheric scene, dark fight gym or press room, whisper aesthetic, cinematic noir, dramatic directional lighting, black and gold palette. No faces, no text."
+    },
+    {
+      "section": "fight_previews",
+      "topic": "O'Shaquie Foster vs Anthony Ford",
+      "prompt": "Dramatic face-off between two super featherweight boxers in a championship fight pose, intense expressions, dramatic arena lighting, black background with deep red and gold accents. No text, no logos."
+    },
+    {
+      "section": "business_intel",
+      "topic": "Combat sports media rights and business",
+      "prompt": "Abstract representation of combat sports business: streaming platform screens, broadcast rights contracts, arena infrastructure. Black background, deep red and gold palette, premium editorial style. No faces, no text, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Hamzah Sheeraz new WBO champion",
+      "prompt": "Dramatic close-up portrait of a world champion boxer raising his first world title belt in victory, cinematic arena lighting, premium sports magazine editorial aesthetic. Black background with deep red and gold light. No text, no logos."
+    }
+  ]
+}

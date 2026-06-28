@@ -1,0 +1,32 @@
+{
+  "date": "MAY 18, 2026",
+  "issue": "may18_2026",
+  "preview_stories": [
+    "Jon Jones signals potential UFC exit, creating instability in the heavyweight division.",
+    "Matchroom-Bruin alliance aims to bolster promotional growth in the US market.",
+    "Arnold Allen's main event win repositions him in the featherweight title chase."
+  ],
+  "announcement": {
+    "fighter1": "Rakhmonov",
+    "fighter2": "Muhammad",
+    "event": "UFC 329",
+    "date": "July 11 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "rakhmonov_vs_muhammad_announcement.png"
+  },
+  "result": {
+    "winner": "Arnold Allen",
+    "loser": "Melquizael Costa",
+    "method": "Unanimous Decision",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC Fight Night",
+    "filename": "allen_result.png"
+  },
+  "quote": {
+    "quote": "I really have no reason to fight anymore.",
+    "attribution": "Jon Jones",
+    "context": "On his UFC future and motivation",
+    "filename": "jones_quote_card.png"
+  }
+}

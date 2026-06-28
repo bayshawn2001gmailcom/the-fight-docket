@@ -1,0 +1,85 @@
+{
+  "name": "fight-night-watchdog",
+  "version": "v0",
+  "created": "2026-06-20",
+  "problem": "Social media posts after big UFC/boxing/combat sports events require manual triggering — missing the news cycle window and requiring the PC to be on.",
+  "owner": "The Fight Docket (@thefightdocket)",
+
+  "agent": {
+    "name": "fight-night-watchdog",
+    "model": "claude-opus-4-8",
+    "description": "Monitors for fight results on combat sports event nights and posts immediately to Instagram, Facebook, and Twitter/X.",
+    "tools": [{"type": "agent_toolset_20260401"}],
+    "sources_to_check": ["ESPN MMA", "MMA Fighting", "UFC.com", "BoxingScene.com", "The Athletic MMA", "ONE Championship"],
+    "sports_covered": ["UFC", "Boxing", "Bellator", "PFL", "ONE Championship", "kickboxing"]
+  },
+
+  "environment": {
+    "type": "cloud",
+    "networking": "unrestricted",
+    "packages": ["requests", "google-genai", "tweepy", "Pillow", "python-dotenv"]
+  },
+
+  "outcome": {
+    "rubric_criteria": [
+      "Results detected within 10 min of appearing on ESPN/MMA Fighting",
+      "All key facts accurate — winner, method, round, time, event",
+      "No duplicates — memory store confirms result not previously posted",
+      "Posted to all 3 platforms: Instagram, Facebook, Twitter/X"
+    ],
+    "max_iterations": 5
+  },
+
+  "deployment": {
+    "schedule": "*/10 * * * 5,6",
+    "timezone": "UTC",
+    "notes": "Every 10 min all-day Fri + Sat UTC (covers Fri/Sat night fight windows in US timezones). Agent exits early if no event tonight. Manual trigger for PPV nights on other days."
+  },
+
+  "memory_store": {
+    "name": "fight-results-memory",
+    "description": "Tracks posted fight results to prevent duplicate posts across sessions",
+    "access": "read_write"
+  },
+
+  "_deprecation_note": "my-agent is RETIRED as of 2026-06-28. Claude Code + GitHub Actions is now the deployment path. All credentials have been migrated to GitHub Secrets (github.com/bayshawn2001gmailcom/the-fight-docket/settings/secrets/actions). Local .env paths below are archived for reference only — do not rely on them.",
+
+  "vault": {
+    "name": "fight-docket-social-vault",
+    "credentials": [
+      {"secret_name": "GEMINI_API_KEY", "source": "github-secrets: the-fight-docket repo", "_was": "C:\\Users\\baysh\\.env"},
+      {"secret_name": "INSTAGRAM_ACCOUNT_ID", "source": "github-secrets: the-fight-docket repo", "_was": "C:\\Users\\baysh\\Fight Newsletter\\.env"},
+      {"secret_name": "INSTAGRAM_PAGE_TOKEN", "source": "github-secrets: the-fight-docket repo", "_was": "C:\\Users\\baysh\\Fight Newsletter\\.env"},
+      {"secret_name": "FACEBOOK_PAGE_ID", "source": "github-secrets: the-fight-docket repo", "_was": "C:\\Users\\baysh\\Fight Newsletter\\.env"},
+      {"secret_name": "FACEBOOK_PAGE_TOKEN", "source": "github-secrets: the-fight-docket repo", "_was": "C:\\Users\\baysh\\Fight Newsletter\\.env"},
+      {"secret_name": "IMGBB_API_KEY", "source": "github-secrets: the-fight-docket repo", "_was": "C:\\Users\\baysh\\Fight Newsletter\\.env"},
+      {"secret_name": "TWITTER_API_KEY", "source": "github-secrets: the-fight-docket repo"},
+      {"secret_name": "TWITTER_API_SECRET", "source": "github-secrets: the-fight-docket repo"},
+      {"secret_name": "TWITTER_ACCESS_TOKEN", "source": "github-secrets: the-fight-docket repo"},
+      {"secret_name": "TWITTER_ACCESS_TOKEN_SECRET", "source": "github-secrets: the-fight-docket repo"}
+    ]
+  },
+
+  "versions": {
+    "v0": "Fight night results → IG + FB + Twitter, Gemini image, dedup via Memory — building now",
+    "v1": "Exact brand-matched cards: download fonts from GitHub repo + Pillow (needs environment setup)",
+    "v2": "Breaking non-fight news throughout the week (title shots, signings, contracts) — separate deployment",
+    "v3": "TikTok video posting (requires video generation pipeline — different media type)"
+  },
+
+  "evals": {
+    "case-01": {
+      "input": "Gaethje def. Topuria | TKO R4 4:51 | UFC Freedom 250",
+      "expected": "Post on IG, FB, Twitter within 10 min with accurate facts and business angle"
+    }
+  },
+
+  "ids": {
+    "agent_id": null,
+    "agent_version": null,
+    "env_id": null,
+    "memory_store_id": null,
+    "vault_id": null,
+    "deployment_id": null
+  }
+}
