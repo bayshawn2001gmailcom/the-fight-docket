@@ -6,14 +6,6 @@ created: 2026-06-28
 tags: [fight-docket, newsletter, beehiiv, combat-sports, ai-pipeline]
 ---
 
-# ---
-title: The Fight Docket — Context
-type: business-context
-status: active / early-stage
-created: 2026-06-28
-tags: [fight-docket, newsletter, beehiiv, combat-sports, claude-code]
----
-
 # The Fight Docket — Context
 
 ## Identity
@@ -42,17 +34,22 @@ The Fight Docket is a **combat sports newsletter** published on **Beehiiv**. Cov
 - Content is produced ad-hoc through Claude Code sessions rather than on a fixed editorial cadence.
 
 ## Tech Stack
-Operations run through **[[Claude Code]]** as the primary work surface. No standing multi-agent pipeline — workflows are executed on-demand via prompted Claude Code sessions.
+Operations run through a **scheduled GitHub Actions pipeline** with [[Claude Code]] as the primary work surface for ad-hoc development and one-off tasks.
 
-| Function | How it's handled |
-|---|---|
-| **Research / scraping** | Claude Code session invoking [[Firecrawl MCP]] against athletic commission sites, event calendars, and fight results |
-| **Drafting** | Claude Code generates newsletter copy and social posts from research output |
-| **Publishing** | Beehiiv API calls executed from within Claude Code; manual review before send |
+| Day/Time | Function | How it's handled |
+| --- | --- | --- |
+| Fri 6pm EDT | Fight crawl | `upcoming_fights_crawler.py` via Firecrawl → `upcoming_fights.json` |
+| Fri–Sat nights | Live results | `post_live_result.py` → deduped tweets + IG cards |
+| Sun 1am EDT | Recap image | `post_fight_results.py` → image + Instagram post |
+| Sun 7:15pm EDT | Newsletter images | `generate_images_action.py` → Gemini image generation |
+| Mon 8am EDT | Newsletter | `newsletter_generator.py` (Firecrawl + Gemini) → auto-posts to Beehiiv → schedules noon send |
+| Mon 10am EDT | Twitter thread | `post_twitter_thread.py` → 6-tweet thread |
+| Mon 11am EDT | IG content | `ig_content_generator.py` → 4 graphics + captions |
 
-### Why Claude Code (vs. a standing agent system)
-- Zero infrastructure overhead — no servers, no process managers, no agent orchestration to maintain.
-- Fits the **near-fully-automated-or-sunset** rule: time only goes in when an issue is being produced.
+### Why this architecture
+
+- Zero infrastructure overhead — GitHub Actions handles scheduling, no servers or process managers to maintain.
+- Fits the **near-fully-automated-or-sunset** rule: manual time only goes in when developing or debugging the pipeline.
 - MCP server access (Firecrawl, Beehiiv) gives the same capability surface a custom multi-agent system would, without the maintenance tax.
 
 ## Known Issues / Bugs

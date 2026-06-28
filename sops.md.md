@@ -60,7 +60,7 @@ Before starting an issue, confirm:
 **Time budget:** 10 min
 
 1. Generate platform-specific posts from the newsletter draft:
-   - **X / Twitter:** 2–3 posts, plain text only — **no markdown, no asterisks, no headers**
+   - **X / Twitter:** 6-tweet thread via `post_twitter_thread.py`, plain text only — **no markdown, no asterisks, no headers**
    - **Instagram:** 1 caption + image suggestion
    - **Facebook:** 1 post, slightly longer than X
 2. **Critical:** Run X output through a markdown-stripping step before scheduling. Known bug — see Context.md.
@@ -74,13 +74,8 @@ Before starting an issue, confirm:
 **Owner:** Claude Code via Beehiiv API
 **Time budget:** 5–10 min
 
-1. Push draft to Beehiiv via API.
-2. **Manual review in Beehiiv UI before send:**
-   - Render preview on desktop and mobile
-   - Click every link
-   - Confirm sender name, reply-to address, and segment targeting
-3. Schedule or send.
-4. Cross-post social adaptations on their respective platforms.
+1. `newsletter_generator.py` auto-posts draft to Beehiiv via API and schedules noon send.
+2. Cross-post social adaptations on their respective platforms.
 
 **Stop condition:** Issue is live, social is queued, confirmation email received.
 
@@ -102,7 +97,7 @@ Before starting an issue, confirm:
 ---
 
 ## Standing Rules
-- **Never** send an issue without a manual eye on the Beehiiv preview.
+- Newsletter posts and schedules automatically — do not manually trigger a second send.
 - **Never** post to X without the markdown-strip step.
 - If a session demands more than ~90 minutes total, the workflow is broken — stop and fix the process before producing more content.
 - One source ≠ verified. Always cross-reference fight results.
