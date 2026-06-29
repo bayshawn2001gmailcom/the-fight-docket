@@ -1,32 +1,33 @@
 {
-  "date": "JUNE 22, 2026",
-  "issue": "jun22_2026",
+  "date": "JUNE 29, 2026",
+  "issue": "jun29_2026",
   "preview_stories": [
-    "Turki Alalshikh cancer diagnosis introduces profound uncertainty to boxing's future.",
-    "Xander Zayas takes career-defining risk against welterweight champ Jaron Ennis.",
-    "Most Valuable Promotions signs title contender, signaling move into legit boxing."
+    "Gaethje claims interim gold; batters Pimblett at UFC 324.",
+    "David Benavidez makes history as a three-division champion.",
+    "UFC signs massive $7.7B media rights deal with Paramount.",
+    "A federal judge green-lights the UFC's White House event."
   ],
   "announcement": {
     "fighter1": "McGregor",
     "fighter2": "Holloway",
     "event": "UFC 329",
     "date": "July 11 \u00b7 Las Vegas, NV",
-    "weight_class": "Welterweight",
+    "weight_class": "Welterweight Bout",
     "filename": "mcgregor_vs_holloway_announcement.png"
   },
   "result": {
-    "winner": "Kai Asakura",
-    "loser": "Renan Barao",
-    "method": "KO/TKO",
-    "round_num": "R2",
-    "time": "3:45",
-    "event": "UFC Fight Night",
-    "filename": "asakura_result.png"
+    "winner": "Justin Gaethje",
+    "loser": "Paddy Pimblett",
+    "method": "TKO (Punches)",
+    "round_num": "R4",
+    "time": "2:31",
+    "event": "UFC 324",
+    "filename": "gaethje_result.png"
   },
   "quote": {
-    "quote": "Jaron Ennis\u2019 record is 'padded,' and he 'ducked the big fights.'",
-    "attribution": "Xander Zayas",
-    "context": "On his upcoming IBF title challenge",
-    "filename": "zayas_quote_card.png"
+    "quote": "My fame has broken me. I am going to be leaving social media for a good while.",
+    "attribution": "Conor McGregor",
+    "context": "Following recent remarks",
+    "filename": "mcgregor_quote_card.png"
   }
 }
