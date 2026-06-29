@@ -18,8 +18,22 @@ PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY", "")
 
 if not GEMINI_API_KEY:
     raise SystemExit("Missing GEMINI_API_KEY")
+
+def _crawl4ai_available():
+    try:
+        import crawl4ai  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+CRAWL4AI_AVAILABLE = _crawl4ai_available()
+
 if not FIRECRAWL_API_KEY:
-    print("Warning: FIRECRAWL_API_KEY not set — will use Crawl4AI for scraping")
+    if CRAWL4AI_AVAILABLE:
+        print("Warning: FIRECRAWL_API_KEY not set — using Crawl4AI for scraping")
+    else:
+        print("Warning: No FIRECRAWL_API_KEY and crawl4ai not installed.")
+        print("  Install: pip install crawl4ai && crawl4ai-setup")
 
 SCRIPT_DIR   = Path(__file__).parent
 PROMPTS_DIR  = SCRIPT_DIR / "prompts"
@@ -32,8 +46,9 @@ LAST_SUN     = LAST_SAT + timedelta(days=1)
 ISSUE_DATE   = TODAY.strftime("%B %d, %Y").upper()
 ISSUE_SLUG   = TODAY.strftime("%b%d_%Y").lower()
 ISSUE_FILE   = SCRIPT_DIR / f"newsletter_{TODAY.isoformat()}.html"
-PROMPTS_FILE = PROMPTS_DIR / "weekly_prompts.json"
-IG_DATA_FILE = PROMPTS_DIR / "weekly_ig_data.json"
+PROMPTS_FILE         = PROMPTS_DIR / "weekly_prompts.json"
+IG_DATA_FILE         = PROMPTS_DIR / "weekly_ig_data.json"
+UPCOMING_FIGHTS_FILE = SCRIPT_DIR / "upcoming_fights.json"
 
 FC_HEADERS = {"Authorization": f"Bearer {FIRECRAWL_API_KEY}"}
 
@@ -116,6 +131,50 @@ def crawl_news():
 
 
 # ---------------------------------------------------------------------------
+# Upcoming fights loader (Friday crawler output — authoritative source)
+# ---------------------------------------------------------------------------
+
+def load_upcoming_fights():
+    """Load upcoming_fights.json written by friday-crawl-fights.yml.
+    Returns a formatted text block used as the exclusive source for Fight Card Previews."""
+    if not UPCOMING_FIGHTS_FILE.exists():
+        return ""
+    try:
+        with open(UPCOMING_FIGHTS_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        crawled_at = data.get("crawled_at", "")[:10]
+        lines = [f"CONFIRMED UPCOMING FIGHTS (crawled {crawled_at}, verified by Friday crawler):"]
+        found_any = False
+        for sport, key in [("UFC / MMA", "ufc"), ("Boxing", "boxing")]:
+            fights = data.get(key, [])
+            if not fights:
+                continue
+            lines.append(f"\n{sport}:")
+            for fight in fights:
+                parts = []
+                if fight.get("fighter1") and fight.get("fighter2"):
+                    parts.append(f"{fight['fighter1']} vs {fight['fighter2']}")
+                if fight.get("event"):
+                    parts.append(fight["event"])
+                if fight.get("date"):
+                    parts.append(fight["date"])
+                if fight.get("venue") and fight.get("city"):
+                    parts.append(f"{fight['venue']}, {fight['city']}")
+                elif fight.get("city"):
+                    parts.append(fight["city"])
+                if fight.get("weight_class"):
+                    parts.append(fight["weight_class"])
+                if fight.get("is_title_fight"):
+                    parts.append("TITLE FIGHT")
+                lines.append(f"  - {' | '.join(parts)}")
+                found_any = True
+        return "\n".join(lines) if found_any else ""
+    except Exception as e:
+        print(f"  Could not load upcoming_fights.json: {e}")
+        return ""
+
+
+# ---------------------------------------------------------------------------
 # Perplexity Sonar -- real-time supplemental news search
 # ---------------------------------------------------------------------------
 
@@ -133,6 +192,8 @@ PERPLEXITY_QUERIES = [
     ("What is the latest combat sports business and financial news from the past 7 days? Include media rights deals, TV ratings, PPV buyrate estimates, sponsor announcements, promoter acquisitions, venue contracts, broadcast rights negotiations, and fighter pay disputes.", 600),
     # Q6: Weekend results — exhaustive, date-anchored
     (f"List ALL combat sports fight results from {LAST_SAT.strftime('%B %d')} and {LAST_SUN.strftime('%B %d, %Y')} this past weekend. Include EVERY title fight, main event, and co-main event — winner, method of victory, round, and time. Cover boxing and MMA. Be exhaustive.", 1000),
+    # Q7: Confirmed upcoming fights — future only, strict date filter
+    (f"What professional boxing and MMA fights are officially announced and confirmed for dates STRICTLY AFTER {TODAY.strftime('%B %d, %Y')}? For each fight list: exact confirmed date, event name, venue and city, both fighters' full names, weight class, and whether it is a title fight. CRITICAL: Only include fights that have NOT yet taken place as of {TODAY.strftime('%B %d, %Y')}. Do NOT include past results, fights that already occurred, or unconfirmed rumors.", 800),
 ]
 
 
@@ -181,6 +242,15 @@ EDITORIAL PRIORITY RULE: If any major boxing or MMA title fight, championship bo
 VOICE: Authoritative, unbiased. Strategic framing — every story is about what it means operationally or financially. Technical precision: case numbers, dollar figures, contract terms. First-person analytical: "My read is...", "The filing reveals...", "What this signals to the market is..." No promotional language. No "exciting" or "amazing". Benchmark: Bloomberg Businessweek meets legal trade press, applied to combat sports.
 
 DARK THEME: ALL inline HTML styles must use color:#F2F2E8 for body text, color:#888888 for secondary text, color:#DE1E20 for links and labels, color:#F2F2E8 for bold. Do NOT use dark text like #333 — invisible on dark background.
+
+FIGHT CARD PREVIEWS — MANDATORY ACCURACY RULE:
+The FIGHT CARD PREVIEWS section MUST use ONLY fights that appear in the "CONFIRMED UPCOMING FIGHTS" data block passed to you. Fight announcement web pages found in crawled news content are NOT reliable for this section — those pages stay indexed on the internet for months or years after the fight has already taken place. A crawled page announcing a fight is NOT proof that fight is upcoming.
+Rules you must follow:
+(1) Only write Fight Card Preview entries for fights explicitly listed in the CONFIRMED UPCOMING FIGHTS block.
+(2) NEVER include a fight whose date has already passed as of {TODAY.strftime("%B %d, %Y")}.
+(3) NEVER include a fighter who is retired or has announced retirement.
+(4) If the CONFIRMED UPCOMING FIGHTS block is empty or has no fights scheduled within the next 30 days, write exactly this in the Fight Card Previews section: "No major fights are confirmed for the coming week as of press time. Check thefightdocket.com Friday evening for the full card breakdown."
+(5) Do NOT fabricate matchups, dates, venues, or event names.
 
 TODAY: {TODAY.strftime("%B %d, %Y")}
 
@@ -348,11 +418,23 @@ For newsletter_html use EXACTLY this dark-branded structure (preserve ALL inline
 GEMINI_MODELS = ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash"]
 
 
-def build_newsletter(news_content):
+def build_newsletter(news_content, upcoming_fights_data=""):
     from google import genai
     client = genai.Client(api_key=GEMINI_API_KEY)
 
+    if upcoming_fights_data:
+        upcoming_block = f"\n\n{upcoming_fights_data}"
+    else:
+        upcoming_block = (
+            "\n\nCONFIRMED UPCOMING FIGHTS: None available — upcoming_fights.json was not found "
+            "or the Friday crawler has not run yet. For the Fight Card Previews section, use ONLY "
+            "fights confirmed by the Q7 Perplexity query above. If none are confirmed, write: "
+            "'No major fights are confirmed for the coming week as of press time. Check "
+            "thefightdocket.com Friday evening for the full card breakdown.'"
+        )
+
     prompt = f"""{SYSTEM_PROMPT}
+{upcoming_block}
 
 CRAWLED NEWS CONTENT (use this as source material — {len(news_content):,} chars):
 {news_content[:24000]}
@@ -450,14 +532,23 @@ def main():
     print(f"  Issue: {ISSUE_DATE}")
     print("=" * 55)
 
-    print(f"\n[1/3] Querying Perplexity Sonar ({len(PERPLEXITY_QUERIES)} queries)...")
+    print("\n[1/4] Loading confirmed upcoming fights...")
+    upcoming_fights_data = load_upcoming_fights()
+    if upcoming_fights_data:
+        fight_lines = upcoming_fights_data.count("\n") + 1
+        print(f"  Upcoming fights: loaded ({fight_lines} lines from upcoming_fights.json)")
+    else:
+        print("  Upcoming fights: upcoming_fights.json not found or empty")
+        print("  (Fight Card Previews will rely on Q7 Perplexity query only)")
+
+    print(f"\n[2/4] Querying Perplexity Sonar ({len(PERPLEXITY_QUERIES)} queries)...")
     perplexity_content = perplexity_search()
     if perplexity_content:
         print(f"  Perplexity  : {len(perplexity_content):,} chars")
     else:
         print("  Perplexity  : skipped (no key or all queries failed)")
 
-    print("\n[2/3] Scraping news sources (Firecrawl → Crawl4AI fallback)...")
+    print("\n[3/4] Scraping news sources (Firecrawl → Crawl4AI fallback)...")
     scraped_content = crawl_news()
     if scraped_content:
         print(f"  Scraped     : {len(scraped_content):,} chars")
@@ -468,10 +559,10 @@ def main():
     if not news_content.strip():
         raise SystemExit("ERROR: All sources returned empty. Check API keys and network.")
 
-    print("\n[3/3] Generating newsletter with Gemini...")
-    data = build_newsletter(news_content)
+    print("\n[4/4] Generating newsletter with Gemini...")
+    data = build_newsletter(news_content, upcoming_fights_data)
 
-    print("\n[4/4] Writing outputs...")
+    print("\n[5/5] Writing outputs...")
     write_outputs(data)
 
     print("\n" + "=" * 55)
