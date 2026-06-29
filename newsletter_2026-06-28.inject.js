@@ -1,0 +1,128 @@
+// ============================================================
+// BEEHIIV INJECTION SCRIPT — The Fight Docket
+// Run this in the browser console on the Beehiiv editor page
+// ============================================================
+
+(async function injectAndClean() {
+  const editor = document.querySelector('.ProseMirror');
+  if (!editor) { console.error('ProseMirror editor not found'); return; }
+
+  // Step 1: Focus and select all existing content
+  editor.focus();
+  document.execCommand('selectAll', false, null);
+
+  // Step 2: Inject clean HTML
+  const CLEAN_HTML = `<div>
+<!-- HEADER -->
+  <div>
+    <p>The</p>
+    <div>FIGHT<br>DOCKET</div>
+    <div></div>
+    <p>Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
+    <p>JUNE 28, 2026</p>
+  </div>
+<!-- CONTENT -->
+  <div>
+<!-- EDITOR'S NOTE -->
+    <div>
+      <p>Editor's Note</p>
+      <div>
+      <img src="https://i.ibb.co/5hn15MsF/nb2-2026-06-28-intro.jpg" alt="intro" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<div><p style='color:#F2F2E8;'>This week represents a fundamental reshuffling of the deck across multiple combat sports divisions. My read is that we're witnessing a period of throne-taking and abdication, creating power vacuums that will define the matchmaking and financial landscape for the next 18 months. In boxing, we have the coronation of a new unified champion at junior middleweight and the historic ascent of a three-division titlist. Simultaneously, the undisputed heavyweight king has vacated his belts, deliberately fragmenting the division to set up one final, massive payday.</p><p style='color:#F2F2E8;'>Over in MMA, the UFC's lightweight division, its most historically chaotic and lucrative weight class, now has an interim champion whose entire brand is built on violence. Justin Gaethje's win over Paddy Pimblett wasn't just a victory; it was a market correction, re-establishing a clear pecking order based on brutal efficacy over surging popularity. This injection of clarity at 155 pounds stands in stark contrast to the voluntary chaos now engulfing boxing's heavyweight scene.</p><p style='color:#F2F2E8;'>What this signals to the market is a divergence in strategy between the sport's two dominant promoters. The UFC is consolidating its championship pictures, creating must-see unification bouts. Top-tier boxing, meanwhile, is leaning into fragmentation to create multiple marquee attractions. Both are valid economic strategies, but they reveal fundamentally different philosophies on how to monetize a championship belt. This week's results provide a clear case study in both approaches.</p></div>
+    </div>
+<div></div>
+<!-- MAIN STORY -->
+    <div>
+      <p>Main Story</p>
+      <div>
+      <img src="https://i.ibb.co/MyrJbYqJ/nb2-2026-06-28-main-story.jpg" alt="main_story" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<h2>THE ENNIS ERA BEGINS: 'BOOTS' UNIFIES TITLES, BECOMES BOXING'S NEWEST PAY-PER-VIEW ASSET</h2>
+      <div><p style='color:#F2F2E8;'>The junior middleweight division has a new, unified, and fearsome king. Jaron “Boots” Ennis delivered a career-defining performance, dismantling the previously undefeated Xander Zayas via a seventh-round TKO to capture the WBA and WBO 154-pound titles. The victory, which saw Ennis drop Zayas three times, immediately transforms him from a highly-touted contender into one of the sport's most valuable and marketable champions. Operationally, this is a massive win for his promotional backers, who now hold the keys to a division ripe with lucrative matchups.</p><p style='color:#F2F2E8;'>My analysis is that Ennis's destructive win positions him as the A-side in any future unification bout. The market now demands fights against the other champions in the division, most notably WBC titleholder Sebastian Fundora and IBF champion Bakhram Murtazaliev. More compelling, however, is a potential showdown with Terence Crawford, should the pound-for-pound great decide to move up to 154 pounds to challenge for titles. A Crawford-Ennis bout would be a premier pay-per-view event, likely generating a live gate in excess of $15 million and north of 500,000 PPV buys.</p><p style='color:#F2F2E8;'>The financial implications extend beyond a single fight. As a unified American champion with a fan-friendly style, Ennis is now a foundational asset. His guaranteed purse is likely to jump from the mid-seven figures into the $8-10 million range for his next bout. His promoter can now structure multi-fight broadcast packages around him, leveraging his championship status to command higher licensing fees from networks like ESPN, DAZN, or Amazon Prime Video.</p><p style='color:#F2F2E8;'>For Zayas, the loss is a significant setback but not a career-ender. At just 23, he remains a valuable commodity for Top Rank. The strategic priority will be a careful rebuild, likely keeping him away from another title shot for at least 18-24 months. For Ennis, however, the path is clear: unify the division or chase the biggest possible name. His dominant performance ensures he has the leverage to dictate terms on either path. The 154-pound division, and the financial power within it, now runs through him.</p></div>
+    </div>
+<div></div>
+<!-- LEGAL TRACKER -->
+    <div>
+      <p>Legal Tracker</p>
+      <div>
+      <img src="https://i.ibb.co/Ndvfj8wX/nb2-2026-06-28-legal.jpg" alt="legal" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<p>Active Federal Cases</p>
+      <p style='margin:0 0 20px 0; color:#F2F2E8;'><strong style='color:#F2F2E8;'>Johnson v. Zuffa, LLC (D. Nev. 2:21-cv-01189)</strong><br><span style='color:#888;'>Last activity: Motion to Dismiss Briefing Completed</span> — The parties await a ruling from Judge Richard F. Boulware II on the UFC's motion to dismiss this second antitrust class action, which covers fighters from 2017 to the present. My read is that the court is likely waiting for the final approval process in the related *Le v. Zuffa* case to conclude before issuing a potentially dispositive ruling here. The core legal arguments largely mirror those in the first case, making the outcome of the *Le* settlement a significant bellwether.<br><em style='color:#888;'>Status: Awaiting ruling on motion to dismiss.</em></p><p style='margin:0 0 20px 0; color:#F2F2E8;'><strong style='color:#F2F2E8;'>Le v. Zuffa, LLC (D. Nev. 2:15-cv-01045)</strong><br><span style='color:#888;'>Last activity: Revised Settlement Agreement Filed (Sept. 2024)</span> — The revised $375 million settlement agreement remains before the court, pending a final fairness hearing and judicial approval. After the initial $335 million deal was rejected in July 2024, the enhanced figure appears more likely to pass muster, but the legal process is deliberately slow. A final sign-off would trigger the complex claims administration process for over 1,200 fighters from the 2010-2017 class period.<br><em style='color:#888;'>Status: Awaiting final court approval of settlement.</em></p><p style='margin:0 0 20px 0; color:#F2F2E8;'><strong style='color:#F2F2E8;'>NYSAC/CSAC/NSAC Regulatory Activity</strong><br><span style='color:#888;'>As of June 28, 2026</span> — No major fighter suspensions, licensing decisions, or adverse anti-doping findings from USADA or VADA were reported by the major athletic commissions this past week.</p>
+    </div>
+<div></div>
+<!-- RUMOR MILL -->
+    <div>
+      <p>Rumor Mill</p>
+      <div>
+      <img src="https://i.ibb.co/DHJdGS6f/nb2-2026-06-28-rumor.jpg" alt="rumor" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<div style='border-left:3px solid #C5A059; padding:4px 0 4px 18px; margin-bottom:28px;'>
+        <p style='font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:#C5A059; margin:0 0 10px 0;'>CONFIDENCE — 0.90</p>
+        <p style='margin:0; color:#F2F2E8; line-height:1.8;'>Sources close to Matchroom Boxing indicate that Oleksandr Usyk's planned 'last dance' is being aggressively targeted against new three-division champion David Benavidez. The proposed bout would take place at heavyweight, capitalizing on the narrative of Benavidez's historic climb and Usyk's desire for one final, commercially massive event before retirement. This aligns with Eddie Hearn's recent comments and would serve as a blockbuster pay-per-view to cap Usyk's career.</p>
+      </div><div style='border-left:3px solid #888888; padding:4px 0 4px 18px; margin-bottom:28px;'>
+        <p style='font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:#888888; margin:0 0 10px 0;'>CONFIDENCE — 0.65</p>
+        <p style='margin:0; color:#F2F2E8; line-height:1.8;'>Whispers in the industry suggest Scott Coker's nascent fight promotion is in advanced discussions with a major streaming service for a multi-year broadcast deal, with a target launch in Q1 2027. The former Bellator and Strikeforce head is reportedly leveraging his extensive network to court fighters whose contracts with the UFC and PFL are set to expire in late 2026, aiming to build a roster that recaptures the 'Strikeforce energy' mentioned in his recent social media posts.</p>
+      </div><div style='border-left:3px solid #444444; padding:4px 0 4px 18px; margin-bottom:28px;'>
+        <p style='font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:#444444; margin:0 0 10px 0;'>CONFIDENCE — 0.30</p>
+        <p style='margin:0; color:#F2F2E8; line-height:1.8;'>Unverified chatter from training camps suggests that with the Canelo Alvarez vs. Christian Mbilli fight now pushed to October, Canelo's team has put out feelers for a potential tune-up bout in early September. The move is purportedly to shake off a year-long ring rust against a non-threatening opponent, ensuring he is sharp for the Mbilli showdown. No specific opponent has been named, and this remains highly speculative.</p>
+      </div>
+    </div>
+<div></div>
+<!-- FIGHT CARD PREVIEWS -->
+    <div>
+      <p>Fight Card Previews</p>
+      <div>
+      <img src="https://i.ibb.co/fYXc0HB6/nb2-2026-06-28-fight-previews.jpg" alt="fight_previews" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<h2>What's on Deck</h2>
+      <div><p style='color:#F2F2E8;'><strong style='color:#DE1E20;'>UFC 325: Alex Pereira vs. Magomed Ankalaev (July 19)</strong><br>The UFC returns to Manchester, England with a pivotal light heavyweight title clash. Champion Alex Pereira makes his second title defense against the relentless pressure and grappling of Magomed Ankalaev. From a market perspective, this is a classic striker vs. grappler main event that the UFC favors for international PPV cards. Current betting lines have Ankalaev as a slight -150 favorite, reflecting the consensus that his wrestling presents the most significant threat to Pereira's reign. A win for Pereira further solidifies his status as a two-division superstar, while a victory for Ankalaev finally delivers a championship to Dagestan's most dominant 205-pounder, creating a new, albeit less marketable, champion for the promotion.</p><p style='color:#F2F2E8;'><strong style='color:#DE1E20;'>Terence Crawford vs. Israil Madrimov (July 26)</strong><br>Terence 'Bud' Crawford continues his quest for undisputed status in a third weight class as he challenges WBA Junior Middleweight champion Israil Madrimov in a Top Rank on ESPN PPV event. This fight is all about legacy for Crawford and a massive financial opportunity for Madrimov. Crawford enters as a heavy -400 favorite, and the fight is seen as a vehicle to set up a super-fight with new unified champion Jaron Ennis. For Top Rank, the economics are straightforward: use Crawford's significant drawing power to elevate Madrimov's profile, regardless of the outcome. A decisive Crawford win sets the stage for a 2027 mega-fight, while an upset by Madrimov would be one of the biggest of the decade, instantly making him a major star.</p></div>
+    </div>
+<div></div>
+<!-- BUSINESS INTEL -->
+    <div>
+      <p>Business Intel</p>
+      <div>
+      <img src="https://i.ibb.co/r2qTr2YQ/nb2-2026-06-28-business-intel.jpg" alt="business_intel" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<h2>Private Equity Cools On Combat Sports Amidst Legal Headwinds</h2>
+      <div><p style='color:#F2F2E8;'>My analysis of the current investment climate suggests that the torrential flow of private equity and venture capital into combat sports, which peaked during the 2020-2021 period, is now receding to a more cautious stream. While the sector remains attractive, the nine-figure funding rounds and soaring valuations that defined the post-pandemic boom are being replaced by more conservative, strategic investments. The bull run that saw an estimated $9.41 billion allocated to sports assets in that 14-month window has hit a wall of economic and legal reality.</p><p style='color:#F2F2E8;'>The primary driver of this caution is the persistent legal pressure on the market leader, TKO Group Holdings. The ongoing *Johnson v. Zuffa* antitrust lawsuit and the nine-figure settlement in the preceding *Le v. Zuffa* case serve as a significant overhang. The filings reveal operational and contractual vulnerabilities that potential investors in challenger leagues must now factor into their risk models. What this signals to the market is that the UFC's foundational business model, once seen as an unassailable moat, is facing its most significant legal challenge, creating uncertainty across the entire MMA landscape.</p><p style='color:#F2F2E8;'>While smaller, targeted investments continue—such as the reported $65 million Series D round secured by a challenger league from firms like Knighthead Capital—the era of blank-check optimism appears over. Investors are now performing deeper due diligence on fighter compensation structures, media rights longevity, and potential liability from future class-action suits. The thesis has shifted from pure growth to sustainable, legally defensible growth. Until the major antitrust cases are fully resolved, expect institutional capital to remain largely on the sidelines, waiting for legal clarity before deploying at scale.</p></div>
+    </div>
+<div></div>
+<!-- FIGHTER SPOTLIGHT -->
+    <div>
+      <p>Fighter Spotlight</p>
+      <div>
+      <img src="https://i.ibb.co/xqpVzLZQ/nb2-2026-06-28-fighter-spotlight.jpg" alt="fighter_spotlight" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;"></div>
+<h2>DAVID BENAVIDEZ</h2>
+      <div><p style='color:#F2F2E8;'>David Benavidez has completed one of the most ambitious and successful divisional climbs in modern boxing history. His dominant, sub-six-round victory over Gilberto “Zurdo” Ramirez cemented him as a three-division champion, holding titles at super middleweight, light heavyweight, and now cruiserweight. This achievement fundamentally alters his career trajectory and earnings potential, elevating him from a dangerous contender perpetually in Canelo Alvarez's shadow to a standalone headline attraction with a historic claim to greatness.</p><p style='color:#F2F2E8;'>For years, Benavidez's career arc was defined by the fight he couldn't get: a lucrative showdown with Canelo at 168 pounds. My read of his strategic pivot to campaign at 175 and 200 pounds was a masterstroke in value creation. Instead of waiting for a single payday, his team built an undeniable resume that makes him a more compelling, and more expensive, opponent than ever before. His guaranteed purses have likely scaled from the $2-3 million range at super middleweight to a potential $10 million-plus for his next bout as a unified, three-division champion.</p><p style='color:#F2F2E8;'>Commercially, the most sensible next move is the one being whispered in boxing's inner circles: a heavyweight clash with Oleksandr Usyk. While a defense of any of his current titles is an option, the Usyk fight represents a transcendent, legacy-defining event. It pits a historic three-division champion against the former undisputed heavyweight king in his farewell bout. The financial upside is immense, with a potential combined purse pool exceeding $50 million. The fight sells itself on the narrative alone: Can the 'Mexican Monster' conquer a fourth, ultimate division against one of the most skilled heavyweights of his generation? Whether he wins or loses, securing that fight contract would represent the pinnacle of a remarkable career transformation from avoided contender to boxing royalty.</p></div>
+    </div>
+</div>
+<!-- FOOTER -->
+  <div>
+    <p>The Fight Docket</p>
+    <p>Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
+    <p>
+      <a href="https://www.thefightdocket.com/" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a>
+      &nbsp;&middot;&nbsp;
+      Tips &amp; sources: <a href="mailto:tips@thefightdocket.com" style="color:#DE1E20; text-decoration:none;">tips@thefightdocket.com</a>
+    </p>
+    <p>You're receiving this because you subscribed. Forward to a fight fan who thinks like an analyst.</p>
+    <p>Not subscribed yet? Join free &rarr; <a href="https://www.thefightdocket.com/" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a></p>
+  </div>
+</div>`;
+  document.execCommand('insertHTML', false, CLEAN_HTML);
+
+  // Step 3: Wait one tick for ProseMirror to process
+  await new Promise(r => setTimeout(r, 500));
+
+  // Step 4: Post-injection cleanup — remove any stray empty block elements
+  const allBlocks = Array.from(editor.querySelectorAll('p, div'));
+  let removed = 0;
+  allBlocks.forEach(el => {
+    if (el.textContent.trim() === '' && !el.querySelector('img')) {
+      el.remove();
+      removed++;
+    }
+  });
+
+  // Step 5: Fire input event so Beehiiv autosave picks up the changes
+  editor.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true }));
+
+  console.log(`✅ Injected successfully. Cleaned up ${removed} empty block elements.`);
+})();

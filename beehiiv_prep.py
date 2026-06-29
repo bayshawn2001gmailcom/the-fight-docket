@@ -59,18 +59,19 @@ def clean_for_prosemirror(html: str) -> str:
     # Also catch standalone empty <div> tags
     body = re.sub(r'<div\s*/?>(\s*)</div>', '', body)
 
-    # Step 3: Strip class and style attributes from block elements
-    # (h1-h6, p, blockquote, li, ul, ol — Beehiiv uses its own styling)
+    # Step 3: Strip class attributes from block elements only.
+    # Do NOT strip style attributes — inline style="color:#F2F2E8;" etc. are required
+    # because Beehiiv strips the <style> block on paste, leaving the page with no color rules.
     block_tags = r'(?:h[1-6]|p|blockquote|li|ul|ol|div)'
     body = re.sub(
-        rf'(<{block_tags})\s+(?:class|style)="[^"]*"',
+        rf'(<{block_tags})\s+class="[^"]*"',
         r'\1',
         body,
         flags=re.IGNORECASE
     )
     # Handle multiple attributes on same tag
     body = re.sub(
-        rf'(<{block_tags}[^>]*?)\s+(?:class|style)="[^"]*"',
+        rf'(<{block_tags}[^>]*?)\s+class="[^"]*"',
         r'\1',
         body,
         flags=re.IGNORECASE
