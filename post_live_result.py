@@ -15,14 +15,23 @@ from dotenv import load_dotenv
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
+def _tok(key):
+    """Get env var and strip surrounding quotes/whitespace that .env editors add."""
+    return os.getenv(key, "").strip().strip("'\"")
+
 FIRECRAWL_API_KEY    = os.getenv("FIRECRAWL_API_KEY", "")
 GEMINI_API_KEY       = os.getenv("GEMINI_API_KEY", "")
 TWITTER_API_KEY      = os.getenv("TWITTER_API_KEY", "")
 TWITTER_API_SECRET   = os.getenv("TWITTER_API_SECRET", "")
 TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN", "")
-TWITTER_ACCESS_SECRET= os.getenv("TWITTER_ACCESS_SECRET", "")
-INSTAGRAM_USERNAME   = os.getenv("INSTAGRAM_USERNAME", "")
-INSTAGRAM_PASSWORD   = os.getenv("INSTAGRAM_PASSWORD", "")
+TWITTER_ACCESS_SECRET= os.getenv("TWITTER_ACCESS_SECRET", "") or os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "")
+# Official Graph API credentials (replaces instagrapi username/password login,
+# which Instagram blocks from GitHub Actions IPs)
+INSTAGRAM_ACCOUNT_ID = _tok("INSTAGRAM_ACCOUNT_ID")
+INSTAGRAM_PAGE_TOKEN = _tok("INSTAGRAM_PAGE_TOKEN")
+FACEBOOK_PAGE_ID     = _tok("FACEBOOK_PAGE_ID")
+FACEBOOK_PAGE_TOKEN  = _tok("FACEBOOK_PAGE_TOKEN")
+IMGBB_API_KEY        = os.getenv("IMGBB_API_KEY", "")
 
 for k, v in [("FIRECRAWL_API_KEY", FIRECRAWL_API_KEY), ("GEMINI_API_KEY", GEMINI_API_KEY)]:
     if not v:
@@ -229,33 +238,96 @@ def generate_ig_card(result: dict) -> str | None:
         return None
 
 
-def post_to_instagram(image_path: str, caption: str) -> bool:
-    if not all([INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD]):
-        print("  Skipping Instagram — credentials not set")
+def _upload_imgbb(image_path: str) -> str | None:
+    """Instagram Graph API requires a public image URL — host on ImgBB first."""
+    import base64, requests
+    if not IMGBB_API_KEY:
+        print("  Skipping image host — IMGBB_API_KEY not set")
+        return None
+    try:
+        with open(image_path, "rb") as f:
+            b64 = base64.b64encode(f.read()).decode()
+        r = requests.post(
+            "https://api.imgbb.com/1/upload",
+            data={"key": IMGBB_API_KEY, "image": b64, "expiration": 0},
+            timeout=30,
+        )
+        r.raise_for_status()
+        return r.json()["data"]["url"]
+    except Exception as e:
+        print(f"  ImgBB upload failed: {e}")
+        return None
+
+
+def post_to_instagram(image_path: str, caption: str, img_url: str | None = None) -> bool:
+    """Post via official Instagram Graph API (works from GitHub Actions IPs)."""
+    import requests
+    if not all([INSTAGRAM_ACCOUNT_ID, INSTAGRAM_PAGE_TOKEN]):
+        print("  Skipping Instagram — Graph API credentials not set")
+        return False
+    img_url = img_url or _upload_imgbb(image_path)
+    if not img_url:
         return False
     try:
-        from instagrapi import Client
-        cl = Client()
-        cl.delay_range = [2, 5]
-        session_file = str(SESSION_FILE)
-        if os.path.exists(session_file):
-            try:
-                cl.load_settings(session_file)
-                cl.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
-            except Exception:
-                cl = Client()
-                cl.delay_range = [2, 5]
-                cl.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
-        else:
-            cl.login(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD)
+        r = requests.post(
+            f"https://graph.facebook.com/v19.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            data={"image_url": img_url, "caption": caption, "access_token": INSTAGRAM_PAGE_TOKEN},
+            timeout=30,
+        )
+        cid = r.json().get("id")
+        if not cid:
+            print(f"  IG container error: {r.json()}")
+            return False
 
-        cl.dump_settings(session_file)
-        cl.photo_upload(image_path, caption=caption)
-        cl.logout()
-        print("  Posted to Instagram")
-        return True
+        for attempt in range(12):
+            time.sleep(5)
+            status = requests.get(
+                f"https://graph.facebook.com/v19.0/{cid}",
+                params={"fields": "status_code", "access_token": INSTAGRAM_PAGE_TOKEN},
+                timeout=15,
+            ).json().get("status_code", "")
+            if status == "FINISHED":
+                break
+            if status == "ERROR":
+                print("  IG container processing failed")
+                return False
+        else:
+            print("  IG container timed out — never reached FINISHED")
+            return False
+
+        r = requests.post(
+            f"https://graph.facebook.com/v19.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
+            data={"creation_id": cid, "access_token": INSTAGRAM_PAGE_TOKEN},
+            timeout=30,
+        )
+        ok = "id" in r.json()
+        print("  Posted to Instagram" if ok else f"  IG publish error: {r.json()}")
+        return ok
     except Exception as e:
         print(f"  Instagram post failed (image committed for manual posting): {e}")
+        return False
+
+
+def post_to_facebook(image_path: str, caption: str, img_url: str | None = None) -> bool:
+    """Post the same card to the Facebook page."""
+    import requests
+    if not all([FACEBOOK_PAGE_ID, FACEBOOK_PAGE_TOKEN]):
+        print("  Skipping Facebook — Graph API credentials not set")
+        return False
+    img_url = img_url or _upload_imgbb(image_path)
+    if not img_url:
+        return False
+    try:
+        r = requests.post(
+            f"https://graph.facebook.com/v19.0/{FACEBOOK_PAGE_ID}/photos",
+            data={"url": img_url, "message": caption, "access_token": FACEBOOK_PAGE_TOKEN},
+            timeout=30,
+        )
+        ok = "id" in r.json()
+        print("  Posted to Facebook" if ok else f"  FB post error: {r.json()}")
+        return ok
+    except Exception as e:
+        print(f"  Facebook post failed: {e}")
         return False
 
 
@@ -321,7 +393,9 @@ def main():
 
         if card_path:
             caption = build_ig_caption(result, tweet_url)
-            post_to_instagram(card_path, caption)
+            img_url = _upload_imgbb(card_path)  # upload once, share across platforms
+            post_to_instagram(card_path, caption, img_url)
+            post_to_facebook(card_path, caption, img_url)
 
         mark_posted(fid, posted, {
             "winner":  result["winner"],

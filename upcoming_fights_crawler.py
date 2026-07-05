@@ -30,13 +30,20 @@ def firecrawl_extract(url, prompt):
                 "url": url,
                 "formats": ["json"],
                 "jsonOptions": {"prompt": prompt},
+                "waitFor": 3000,
             },
             headers=FC_HEADERS,
-            timeout=30,
+            timeout=60,
         )
         resp.raise_for_status()
         data = resp.json()
-        return (data.get("data") or {}).get("json") or data.get("json") or []
+        result = (data.get("data") or {}).get("json") or data.get("json") or []
+
+        # Check if we got valid data (not hallucinated dummy data)
+        if isinstance(result, dict):
+            result = result.get("upcoming_matches") or result.get("fights") or []
+
+        return result if isinstance(result, list) else []
     except Exception as e:
         print(f"  Firecrawl failed for {url}: {e}")
         return []
@@ -44,33 +51,68 @@ def firecrawl_extract(url, prompt):
 
 def crawl_upcoming_ufc():
     print("  Crawling UFC.com for upcoming events...")
+
+    # Use a very specific prompt based on UFC.com page structure
     fights = firecrawl_extract(
         "https://www.ufc.com/events",
-        "Extract all upcoming UFC events and their main card fights. For each fight return: "
-        "fighter1 (string), fighter2 (string), event (string, e.g. 'UFC 329'), "
-        "date (string, e.g. 'July 11, 2026'), venue (string), city (string), "
-        "weight_class (string), is_title_fight (boolean). Return as array of objects.",
+        "Look at the page and find all upcoming UFC events listed. For each event, extract: "
+        "1) Event name/number (e.g., 'UFC 329'), 2) Main fight matchup (e.g., 'McGregor vs Holloway'), "
+        "3) Date and time if available, 4) Venue/Location. "
+        "Return ONLY the event data you can actually see on the page. "
+        "Return as: [{ 'event': 'UFC 329', 'main_fight': 'McGregor vs Holloway', 'date': '2026-07-11', 'location': 'Las Vegas' }, ...]",
     )
-    if isinstance(fights, list):
-        return [f for f in fights if isinstance(f, dict)]
-    if isinstance(fights, dict):
-        return fights.get("fights", []) or fights.get("events", []) or []
-    return []
+
+    # Parse the response - it might come as string, dict, or list
+    valid_fights = []
+    if isinstance(fights, str):
+        try:
+            fights = json.loads(fights)
+        except:
+            return []
+
+    if isinstance(fights, list) and fights:
+        for f in fights:
+            if isinstance(f, dict) and f.get("event") and f.get("main_fight"):
+                # Reject dummy data
+                if not any(dummy in str(f.get("main_fight", "")).lower() for dummy in ["fighter a", "fighter b", "fighter c"]):
+                    valid_fights.append(f)
+
+    return valid_fights
 
 
 def crawl_upcoming_boxing():
     print("  Crawling ESPN for upcoming boxing cards...")
+
+    # Try ESPN boxing
     fights = firecrawl_extract(
         "https://www.espn.com/boxing/schedule",
-        "Extract upcoming boxing matches scheduled within the next 30 days. For each fight: "
-        "fighter1, fighter2, event_name, date, venue, city, weight_class, is_title_fight. "
+        "Extract upcoming boxing matches in the next 30 days. For each match: "
+        "fighter1_name, fighter2_name, event_name, date (YYYY-MM-DD), venue, city, weight_class, is_title_fight. "
         "Return as array of objects.",
     )
+
+    # Validate - reject clearly fake data
+    valid_fights = []
     if isinstance(fights, list):
-        return [f for f in fights if isinstance(f, dict)]
+        for f in fights:
+            if isinstance(f, dict):
+                # Check for dummy fighter names
+                f1 = str(f.get("fighter1_name", "")).lower() if "fighter1_name" in f else str(f.get("fighter1", "")).lower()
+                f2 = str(f.get("fighter2_name", "")).lower() if "fighter2_name" in f else str(f.get("fighter2", "")).lower()
+
+                # Reject dummy names and 2023 dates (obvious hallucinations)
+                date_str = str(f.get("date", ""))
+                if not any(dummy in f1 for dummy in ["fighter a", "fighter b", "fighter c", "fighter d", "fighter e", "fighter f"]) and \
+                   not any(dummy in f2 for dummy in ["fighter a", "fighter b", "fighter c", "fighter d", "fighter e", "fighter f"]) and \
+                   not date_str.startswith("2023") and \
+                   f1 and f2 and f1 != f2:
+                    valid_fights.append(f)
+
     if isinstance(fights, dict):
-        return fights.get("fights", []) or fights.get("schedule", []) or []
-    return []
+        fights_list = fights.get("upcoming_matches", []) or fights.get("fights", []) or fights.get("schedule", []) or []
+        valid_fights = [f for f in fights_list if isinstance(f, dict)]
+
+    return valid_fights
 
 
 def main():
