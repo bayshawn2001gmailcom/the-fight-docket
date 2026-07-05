@@ -109,7 +109,7 @@ Sunset or pause the newsletter if:
 - Subscriber growth is flat or negative for 60 days with no fixable cause.
 
 ## Related Notes
-- [[Context]]
+- [[the-fight-docket/context.md]]
 - [[Claude Code]]
 - [[Firecrawl MCP]]
 - [[Beehiiv API]]

@@ -8,7 +8,7 @@ tags: [fight-docket, architecture, claude-code, mcp, beehiiv, github-actions]
 
 # The Fight Docket — System Architecture
 
-> Technical reference for how the newsletter operation is wired. Source of truth for components, data flow, credentials, and failure modes. See [[Context]] for business context and [[SOP]] for the operational runbook.
+> Technical reference for how the newsletter operation is wired. Source of truth for components, data flow, credentials, and failure modes. See [[the-fight-docket/context.md]] for business context and [[SOP]] for the operational runbook.
 
 ---
 
@@ -165,7 +165,7 @@ When Claude notices an inefficiency in any session, the report must include:
 ---
 
 ## Related Notes
-- [[Context]]
+- [[the-fight-docket/context.md]]
 - [[SOP]]
 - [[Claude Code]]
 - [[Firecrawl MCP]]

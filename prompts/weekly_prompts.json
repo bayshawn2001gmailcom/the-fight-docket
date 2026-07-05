@@ -1,40 +1,25 @@
 {
-  "issue_date": "2026-06-29",
+  "issue_date": "2026-06-22",
   "prompts": [
     {
       "section": "intro",
-      "topic": "An overview of a huge weekend of combat sports title changes.",
-      "prompt": "Overhead cinematic photograph of a single boxing glove and a single MMA glove resting side-by-side on a dark, polished concrete floor, under a single harsh spotlight. Dark editorial atmosphere."
+      "topic": "Blurred fight poster, urban grit, rain-slicked street",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, blurred fight poster reflected in wet asphalt, neon lights, urban grit, rain-slicked street, dramatic low angle"
     },
     {
       "section": "main_story",
-      "topic": "Justin Gaethje wins the interim UFC Lightweight title with a punishing performance.",
-      "prompt": "Cinematic, wide shot of an empty, dramatically lit MMA octagon viewed from cageside. The canvas is subtly stained, the air is hazy. Dark, tense, editorial atmosphere."
-    },
-    {
-      "section": "legal",
-      "topic": "Federal court ruling on UFC's White House event and antitrust case update.",
-      "prompt": "Close-up cinematic image of a dark wooden gavel resting on a stack of legal documents on a large desk in a dimly lit, wood-paneled office. Dark editorial atmosphere."
-    },
-    {
-      "section": "rumor",
-      "topic": "Rumors about Canelo Alvarez, Errol Spence Jr., and a potential UK mega-fight.",
-      "prompt": "Atmospheric shot of a single, bare incandescent bulb flickering, illuminating a smoky, clandestine meeting room with shadowy figures implied but not seen. Dark, mysterious editorial atmosphere."
+      "topic": "Abstract media rights negotiations, holographic screens, city skyline",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, abstract representation of media rights negotiations, shadowy figures at a boardroom table, glowing holographic screens displaying complex data, distant city skyline through large window, moody lighting"
     },
     {
       "section": "fight_previews",
-      "topic": "No major fights are scheduled for the upcoming week.",
-      "prompt": "Cinematic photo of a dusty, empty fight poster frame hanging askew on a dark, weathered concrete wall in an empty arena corridor. Somber, quiet, editorial atmosphere."
+      "topic": "Two boxers in silhouette facing off in ring, empty arena",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, two boxers in silhouette facing off in the center of a boxing ring, dramatic spotlight from above, empty arena seats in the background, sense of anticipation and quiet intensity"
     },
     {
       "section": "business_intel",
-      "topic": "UFC's landmark $7.7 billion media rights deal with Paramount.",
-      "prompt": "Extreme close-up on a stock ticker screen in a dark room, with financial data and graphs glowing. The focus is sharp on the numbers. Professional, serious editorial atmosphere."
-    },
-    {
-      "section": "fighter_spotlight",
-      "topic": "David Benavidez becomes a historic three-division boxing champion.",
-      "prompt": "Cinematic shot of three different, ornate championship belts displayed under a single, dramatic spotlight against a completely black background. Triumphant, moody, editorial atmosphere."
+      "topic": "Gavel on legal documents, dimly lit courtroom, corporate boardroom",
+      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, a wooden gavel resting on a stack of legal documents, dimly lit courtroom setting or corporate boardroom table, focused light on the gavel and papers, somber and authoritative mood"
     }
   ]
 }
