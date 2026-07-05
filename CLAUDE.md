@@ -152,41 +152,87 @@ python "The fight Docket/generate_weekly_ig.py"
 
 ---
 
-## Full Automation Pipeline (as of May 2, 2026)
+## Full Automation Pipeline (rebuilt & verified July 5, 2026)
 
 **Account credentials:**
 - Instagram: `thefightdocket@gmail.com` / `@thefightdocket`
 - Twitter/X: `@thefightdocket`
 - GitHub repo: https://github.com/bayshawn2001gmailcom/the-fight-docket
 
-**Weekly automation schedule:**
-| Day/Time | Workflow | Script |
+**Weekly automation schedule (all crons live on GitHub as of 2026-07-05):**
+| Day/Time (EDT) | Workflow | Script |
 |----------|----------|--------|
-| Fri 6pm EDT | `friday-crawl-fights.yml` | `upcoming_fights_crawler.py` → upcoming_fights.json |
-| Fri 9pm/11pm/12:30am EDT | `friday-night-results.yml` | `post_live_result.py` → live tweets + IG cards (deduped) |
-| Sat 9pm/11pm EDT | `saturday-night-results.yml` | `post_live_result.py` → live tweets + IG cards (deduped) |
-| Sun 1–4am EDT | `sunday-post-results.yml` | `post_fight_results.py` → full result recap image + Instagram |
-| Sun 7:15pm EDT | `generate_images.yml` | `generate_images_action.py` → newsletter images from prompts |
-| Mon 8am EDT | `newsletter_pipeline.yml` | `newsletter_generator.py` → newsletter HTML (covers weekend results) |
-| Mon 10am EDT | `twitter_thread.yml` | `post_twitter_thread.py` → 6-tweet thread to @thefightdocket |
-| Mon 11am EDT | `weekly_ig_content.yml` | `ig_content_generator.py` → 4 IG graphics + captions |
+| Fri 6pm | `friday-crawl-fights.yml` | `upcoming_fights_crawler.py` → upcoming_fights.json |
+| Fri 9pm/11pm/12:30am | `friday-night-results.yml` | `post_live_result.py` → X + IG + FB (deduped) |
+| Sat 9pm/11pm | `saturday-night-results.yml` | `post_live_result.py` → X + IG + FB (deduped) |
+| Sun 6am | `sunday-post-results.yml` | `post_live_result.py` final sweep — catches missed results |
+| Sun 7:15pm | `generate_images.yml` | `generate_images_action.py` → newsletter images from prompts |
+| Mon 8am | `newsletter_pipeline.yml` | `newsletter_generator.py` → newsletter HTML |
+| Mon 10am | `twitter_thread.yml` | `post_twitter_thread.py` → 6-tweet thread |
+| Mon 11am | `weekly_ig_content.yml` | `ig_content_generator.py` → 4 IG graphics + captions |
+| Tue/Thu/Sat 12pm | `weekly_ig_post_*.yml` | `post_instagram_weekly.py` → IG + FB card |
 
 **Key scripts:**
 - `newsletter_generator.py` — Firecrawl + Gemini full newsletter automation
 - `ig_content_generator.py` — auto-generates 4 IG graphics from weekly_ig_data.json
 - `post_twitter_thread.py` — Gemini writes + tweepy posts thread to @thefightdocket
-- `post_live_result.py` — Friday/Saturday night live results: crawl → dedup → tweet → IG card
-- `post_fight_results.py` — Sunday recap: crawls results, generates image, posts to Instagram
+- `post_live_result.py` — ALL fight-night results (Fri/Sat/Sun): crawl → Gemini → X + IG + FB via Graph API
+- `post_fight_results.py` — DEPRECATED (instagrapi-based; replaced by post_live_result.py)
 - `upcoming_fights_crawler.py` — Friday pre-crawl via Firecrawl
 - `beehiiv_prep.py` — pre-processes newsletter HTML for clean Beehiiv injection
 - `generate_weekly_ig.py` — manual fallback for IG content (edit WEEK block)
 
 **Deduplication:** `posted_results.json` tracks every result posted live so re-runs don't double-post.
 
-**GitHub Secrets set:**
-`GEMINI_API_KEY`, `FIRECRAWL_API_KEY`, `INSTAGRAM_USERNAME`, `INSTAGRAM_PASSWORD`,
-`TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET`,
-`TWITTER_BEARER_TOKEN`, `TWITTER_CLIENT_ID`, `TWITTER_CLIENT_SECRET`
+---
 
-**Instagram note:** instagrapi with session persistence is implemented but may still be blocked
-from GitHub Actions IPs. Images + captions always committed to `instagram_content/` for manual backup posting.
+## HARD-WON LESSONS — read before touching the automation (July 5, 2026 debugging session)
+
+These bugs silently broke the pipeline for up to 9 weeks. Do not reintroduce them.
+
+1. **This folder is NOT a git repo.** There is no `.git` here. Fixes made locally do NOT reach
+   GitHub on their own — the Friday crawler was fixed locally July 3 but GitHub ran the broken
+   copy for 9 straight weeks. Any script/workflow change must be explicitly pushed
+   (web upload via browser, or set up a proper git clone). ALWAYS verify a fix landed on
+   GitHub main after making it.
+
+2. **Never use instagrapi in GitHub Actions.** Instagram blocks Actions IPs — it hangs until
+   the job times out (the old Sunday workflow burned 1-hour timeouts every week). Always use
+   the official Graph API (see `post_instagram_weekly.py` / `post_to_instagram()` in
+   `post_live_result.py`): ImgBB upload → media container → poll status → publish.
+
+3. **Strip credentials in every script:** `os.getenv(k).strip().strip("'\"")`. A trailing
+   newline pasted into a GitHub secret caused weeks of Twitter 401s even though the token
+   itself was valid. The `_tok()` helper exists in both posting scripts — use it for ALL creds.
+
+4. **Workflow `secrets.X` names must match what's actually stored.** A workflow referencing a
+   secret that doesn't exist resolves to an empty string — no error, just silent 401s.
+   Both `TWITTER_ACCESS_SECRET` and `TWITTER_ACCESS_TOKEN_SECRET` exist as secrets; scripts
+   accept either env name.
+
+5. **Dead scrape sources fail silently.** `espn.com/mma/results` and `espn.com/boxing/results`
+   are 404s that return a full HTML error page — the crawl "succeeds" with nav junk. Current
+   good sources: `ufc.com/events`, `sherdog.com/events/recent`, `boxingscene.com/results`,
+   `boxingscene.com/articles`. `firecrawl_scrape()` now checks `metadata.statusCode >= 400`.
+   Use `onlyMainContent: true` on all Firecrawl scrapes.
+
+6. **Don't starve Gemini of content.** The old code sent 2,500 chars/source truncated to 8K
+   total (all nav junk) → 0 results extracted every time while runs showed green. Current
+   budgets: 8K/source, 30K to Gemini. Boxing goes 12 rounds — the extraction schema must say
+   round 1–12, not 1–5, or Gemini drops late-round boxing stoppages (this hid Mason vs Bell).
+
+7. **"Success" ≠ "posted."** These scripts exit 0 when nothing is found, so green runs can mean
+   zero output for weeks. When auditing, check `posted_results.json` / bot commits / the actual
+   social accounts, not just run status.
+
+8. **Scheduled Cowork/Claude tasks are machine-dependent.** The "CMA Fight Night Watchdog" that
+   replaced the night crons silently ceased to exist, killing all fight-night coverage. Standing
+   automation belongs in GitHub Actions crons; Claude-side scheduled tasks are for reminders only.
+
+9. **Gemini 503s crash the posting script** (no retry wrapper yet). The multiple crons per fight
+   night absorb one-off failures; if adding new single-shot workflows, add a retry.
+
+**Known open items:** Carrington vs Palacios (Jul 4) posted to IG/FB but never tweeted (Twitter
+was still broken at that moment). Sunday image-gen consumes the previous Monday's prompts
+(one week stale) — consider moving image gen into the Monday pipeline. Local folder still needs
+a real git link to GitHub.
