@@ -4,8 +4,12 @@ name: Friday Night Live Results
 #   9:00pm EDT  = Sat 01:00 UTC  → early results / prelims wrap
 #  11:00pm EDT  = Sat 03:00 UTC  → main card underway
 #  12:30am EDT  = Sat 04:30 UTC  → after main event
+# Posts via official Graph API (IG + FB) + tweepy (X). Deduped via posted_results.json.
 on:
-  # Cron disabled — replaced by CMA Fight Night Watchdog (2:30 AM EDT, all 3 platforms, official Graph API)
+  schedule:
+    - cron: '0 1 * * 6'
+    - cron: '0 3 * * 6'
+    - cron: '30 4 * * 6'
   workflow_dispatch:
 
 jobs:
@@ -14,15 +18,15 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests python-dotenv google-genai tweepy instagrapi pillow --break-system-packages
+        run: pip install requests python-dotenv google-genai tweepy pillow --break-system-packages
 
       - name: Post live results
         env:
@@ -32,8 +36,11 @@ jobs:
           TWITTER_API_SECRET:    ${{ secrets.TWITTER_API_SECRET }}
           TWITTER_ACCESS_TOKEN:  ${{ secrets.TWITTER_ACCESS_TOKEN }}
           TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-          INSTAGRAM_USERNAME:    ${{ secrets.INSTAGRAM_USERNAME }}
-          INSTAGRAM_PASSWORD:    ${{ secrets.INSTAGRAM_PASSWORD }}
+          INSTAGRAM_ACCOUNT_ID:  ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          INSTAGRAM_PAGE_TOKEN:  ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+          FACEBOOK_PAGE_ID:      ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN:   ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          IMGBB_API_KEY:         ${{ secrets.IMGBB_API_KEY }}
         run: python post_live_result.py
 
       - name: Commit results log and IG cards
@@ -43,5 +50,5 @@ jobs:
           git config user.name "Fight Docket Bot"
           git config user.email "bot@thefightdocket.com"
           git add posted_results.json instagram_content/ || true
-          git diff --staged --quiet || git commit -m "Live results: Friday night [$(date +%Y-%m-%d %H:%M)]"
+          git diff --staged --quiet || git commit -m "Live results: Friday night [$(date '+%Y-%m-%d %H:%M')]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true

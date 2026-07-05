@@ -1,100 +1,51 @@
 name: Sunday Post Fight Results
 
+# Sunday 6:00am EDT (10:00 UTC) final sweep — catches any results the
+# Friday/Saturday night runs missed. Same script + dedup, so nothing
+# double-posts. Replaces the old instagrapi 1am–4am sleep-loop design
+# (instagrapi is blocked from GitHub Actions IPs; Graph API is not).
 on:
-  workflow_dispatch:  # Manual trigger only
+  schedule:
+    - cron: '0 10 * * 0'
+  workflow_dispatch:
 
 jobs:
   post-results:
     runs-on: ubuntu-latest
-    timeout-minutes: 180  # 3 hour timeout (1am → 4am)
+    timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install python-dotenv instagrapi pillow google-genai --break-system-packages
+        run: pip install requests python-dotenv google-genai tweepy pillow --break-system-packages
 
-      - name: Create .env from secrets
+      - name: Final results sweep (post any missed results)
         env:
-          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
-          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
-          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          cat > .env << EOF
-          INSTAGRAM_USERNAME=$INSTAGRAM_USERNAME
-          INSTAGRAM_PASSWORD=$INSTAGRAM_PASSWORD
-          FIRECRAWL_API_KEY=$FIRECRAWL_API_KEY
-          GEMINI_API_KEY=$GEMINI_API_KEY
-          EOF
+          FIRECRAWL_API_KEY:     ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY:        ${{ secrets.GEMINI_API_KEY }}
+          TWITTER_API_KEY:       ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET:    ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN:  ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          INSTAGRAM_ACCOUNT_ID:  ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          INSTAGRAM_PAGE_TOKEN:  ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+          FACEBOOK_PAGE_ID:      ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN:   ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          IMGBB_API_KEY:         ${{ secrets.IMGBB_API_KEY }}
+        run: python post_live_result.py
 
-      - name: First attempt — crawl for results (1:00am)
-        id: attempt_1
+      - name: Commit results log and IG cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "🥊 First attempt: Crawling for fight results..."
-          python post_fight_results.py
-          echo "RESULTS_FOUND=true" >> $GITHUB_OUTPUT
-        continue-on-error: true
-
-      - name: Check if results were found
-        id: check_results
-        run: |
-          if [ -f "instagram_content/sunday_result_*.png" ]; then
-            echo "RESULTS_FOUND=true" >> $GITHUB_OUTPUT
-          else
-            echo "RESULTS_FOUND=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Wait 1 hour if no results (2:00am attempt)
-        if: steps.check_results.outputs.RESULTS_FOUND == 'false'
-        run: |
-          echo "⏳ No results yet. Waiting 1 hour (until 2:00am)..."
-          sleep 3600
-
-      - name: Second attempt — retry crawl (2:00am)
-        if: steps.check_results.outputs.RESULTS_FOUND == 'false'
-        run: |
-          echo "🥊 Second attempt: Retrying for fight results..."
-          python post_fight_results.py
-        continue-on-error: true
-
-      - name: Wait until 4:00am for posting
-        run: |
-          CURRENT_HOUR=$((10#$(date +%H)))
-          if [ "$CURRENT_HOUR" -lt 9 ]; then
-            CURRENT_MIN=$(date +%M)
-            MINUTES_TO_WAIT=$(( (9 - CURRENT_HOUR - 1) * 60 + (60 - 10#$CURRENT_MIN) ))
-            echo "⏳ Waiting until 4:00am EDT to post (${MINUTES_TO_WAIT} minutes)..."
-            sleep $((MINUTES_TO_WAIT * 60))
-          fi
-
-      - name: Verify image exists before posting
-        run: |
-          if ls instagram_content/sunday_result_*.png 1> /dev/null 2>&1; then
-            echo "✅ Image found. Ready to post!"
-          else
-            echo "⚠️  No image generated. Check logs for errors."
-            exit 1
-          fi
-
-      - name: Post to Instagram (4:00am)
-        run: |
-          echo "📸 Posting to Instagram @thefightdocket..."
-          python post_fight_results.py --post-only
-
-      - name: Notify on success
-        if: success()
-        run: |
-          echo "✅ Fight result posted successfully!"
-
-      - name: Notify on failure
-        if: failure()
-        run: |
-          echo "❌ Workflow failed. Check logs for details."
-          exit 1
+          git config user.name "Fight Docket Bot"
+          git config user.email "bot@thefightdocket.com"
+          git add posted_results.json instagram_content/ || true
+          git diff --staged --quiet || git commit -m "Live results: Sunday sweep [$(date '+%Y-%m-%d %H:%M')]"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
