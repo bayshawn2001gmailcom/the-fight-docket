@@ -1,0 +1,54 @@
+{
+  "crawled_at": "2026-07-05T17:27:28.431212Z",
+  "ufc": [
+    {
+      "event": "UFC 329",
+      "main_fight": "McGregor vs Holloway 2",
+      "date": "2026-07-11",
+      "location": "T-Mobile Arena, Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Du Plessis vs Usman",
+      "date": "2026-07-18",
+      "location": "Paycom Center, Oklahoma City, OK, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Ankalaev vs Rountree Jr.",
+      "date": "2026-07-25",
+      "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Medic vs Rodriguez",
+      "date": "2026-08-01",
+      "location": "Belgrade Arena, BG, Serbia"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Gamrot vs Salkilld",
+      "date": "2026-08-08",
+      "location": "Meta APEX, Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC 330",
+      "main_fight": "Makhachev vs Machado Garry",
+      "date": "2026-08-15",
+      "location": "Xfinity Mobile Arena, Philadelphia, PA, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Hernandez vs Rodrigues",
+      "date": "2026-08-22",
+      "location": "Golden 1 Center, Sacramento, CA, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "TBD vs TBD",
+      "date": "2026-08-29",
+      "location": "Oriental Sports Center, Pudong District, China"
+    }
+  ],
+  "boxing": []
+}
