@@ -132,7 +132,7 @@ Each result object MUST have these exact keys:
 - "winner": full fighter name
 - "loser": full fighter name
 - "method": one of "KO/TKO", "Submission", "Decision (Unanimous)", "Decision (Split)", "Decision (Majority)", "DQ", "No Contest"
-- "round": integer (1–5)
+- "round": integer (1–5 for MMA, 1–12 for boxing)
 - "time": string like "3:45"
 - "event": event name, e.g. "UFC 315" or "Canelo vs. Munguia 2"
 - "weight_class": e.g. "Heavyweight", "Welterweight", "Super Middleweight"
@@ -140,7 +140,8 @@ Each result object MUST have these exact keys:
 - "sport": "MMA" or "Boxing"
 
 ONLY include fights with confirmed COMPLETED results. Exclude upcoming or scheduled bouts.
-If round or time is unknown, use 0 and "0:00".
+If round or time is unknown, use 0 and "0:00". A missing detail (round, time, weight class)
+is NOT a reason to exclude a result — include it with the unknown fields defaulted.
 
 Content:
 {content}
