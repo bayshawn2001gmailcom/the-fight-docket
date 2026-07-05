@@ -45,13 +45,12 @@ IG_DIR.mkdir(exist_ok=True)
 
 FC_HEADERS = {"Authorization": f"Bearer {FIRECRAWL_API_KEY}", "Content-Type": "application/json"}
 
+# NOTE: espn.com/mma/results and espn.com/boxing/results are dead (404) — removed 2026-07-05
 RESULT_SOURCES = [
-    "https://www.espn.com/mma/results",
     "https://www.ufc.com/events",
     "https://www.sherdog.com/events/recent",
 ]
 BOXING_SOURCES = [
-    "https://www.espn.com/boxing/results",
     "https://www.boxingscene.com/results",
 ]
 
@@ -87,11 +86,17 @@ def firecrawl_scrape(url: str) -> str:
     try:
         resp = requests.post(
             "https://api.firecrawl.dev/v1/scrape",
-            json={"url": url, "formats": ["markdown"], "waitFor": 2000},
+            json={"url": url, "formats": ["markdown"], "waitFor": 2000, "onlyMainContent": True},
             headers=FC_HEADERS, timeout=30
         )
         data = resp.json()
-        return (data.get("data") or {}).get("markdown", "")
+        md = (data.get("data") or {}).get("markdown", "")
+        # Guard against soft-404s: error pages full of nav links, no real content
+        meta = (data.get("data") or {}).get("metadata", {})
+        if meta.get("statusCode") and meta["statusCode"] >= 400:
+            print(f"  Warning: {url} returned HTTP {meta['statusCode']} — skipping")
+            return ""
+        return md
     except Exception as e:
         print(f"  Warning: crawl failed for {url}: {e}")
         return ""
@@ -104,7 +109,7 @@ def crawl_all_results() -> str:
         content = firecrawl_scrape(url)
         if content:
             domain = url.split("/")[2]
-            parts.append(f"### {domain}\n{content[:2500]}")
+            parts.append(f"### {domain}\n{content[:8000]}")
             print(f"    Got {len(content)} chars from {domain}")
         time.sleep(1)
     return "\n\n".join(parts)
@@ -114,7 +119,9 @@ def crawl_all_results() -> str:
 # Gemini extraction
 # ---------------------------------------------------------------------------
 
-EXTRACT_PROMPT = """Extract ALL completed fight results announced TONIGHT from this content.
+EXTRACT_PROMPT = """Extract ALL completed professional fight results from THE LAST 48 HOURS from this content.
+Today's date is {today}. Include results from fights that took place yesterday or today.
+Results may appear as headlines (e.g. "X halts Y in the last round", "X dominates Y to retain title").
 Return ONLY a valid JSON array. If no results found, return [].
 
 Each result object MUST have these exact keys:
@@ -142,7 +149,7 @@ def extract_results(raw_content: str) -> list:
     from google import genai
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-    prompt = EXTRACT_PROMPT.replace("{content}", raw_content[:8000])
+    prompt = EXTRACT_PROMPT.replace("{today}", date.today().isoformat()).replace("{content}", raw_content[:30000])
     print("  Calling Gemini to extract results...")
     response = client.models.generate_content(model="gemini-2.5-flash", contents=[prompt])
     raw = response.text.strip()
