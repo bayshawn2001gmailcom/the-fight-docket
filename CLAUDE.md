@@ -190,11 +190,13 @@ python "The fight Docket/generate_weekly_ig.py"
 
 These bugs silently broke the pipeline for up to 9 weeks. Do not reintroduce them.
 
-1. **This folder is NOT a git repo.** There is no `.git` here. Fixes made locally do NOT reach
-   GitHub on their own — the Friday crawler was fixed locally July 3 but GitHub ran the broken
-   copy for 9 straight weeks. Any script/workflow change must be explicitly pushed
-   (web upload via browser, or set up a proper git clone). ALWAYS verify a fix landed on
-   GitHub main after making it.
+1. **Local changes do NOT reach GitHub on their own.** The Friday crawler was fixed locally
+   July 3 but GitHub ran the broken copy for 9 straight weeks. As of 2026-07-05 this folder
+   IS a git repo (shallow clone, origin = GitHub, autocrlf=true) — so the fix is now:
+   `git add <files> && git commit && git push` after any script/workflow change, then verify
+   the commit landed on GitHub main. First push may prompt a GitHub browser login (Git
+   Credential Manager). Note: git history is shallow (depth 1); run `git fetch --unshallow`
+   if full history is ever needed.
 
 2. **Never use instagrapi in GitHub Actions.** Instagram blocks Actions IPs — it hangs until
    the job times out (the old Sunday workflow burned 1-hour timeouts every week). Always use
@@ -232,7 +234,11 @@ These bugs silently broke the pipeline for up to 9 weeks. Do not reintroduce the
 9. **Gemini 503s crash the posting script** (no retry wrapper yet). The multiple crons per fight
    night absorb one-off failures; if adding new single-shot workflows, add a retry.
 
-**Known open items:** Carrington vs Palacios (Jul 4) posted to IG/FB but never tweeted (Twitter
-was still broken at that moment). Sunday image-gen consumes the previous Monday's prompts
-(one week stale) — consider moving image gen into the Monday pipeline. Local folder still needs
-a real git link to GitHub.
+**Fixed 2026-07-05 (evening):** git link established (this folder is now a real clone);
+image generation moved into the Monday pipeline (`newsletter_pipeline.yml`) so images match
+the current issue — the Sunday image cron is gone (its push-trigger never fired because
+GITHUB_TOKEN pushes don't trigger workflows).
+
+**Known open items:** Carrington vs Palacios (Jul 4) posted to IG/FB but never tweeted
+(Twitter was still broken at that moment). Local working tree has minor drift vs GitHub
+(newsletter_2026-06-29.html, some locally-generated images) — reconcile with git when convenient.
