@@ -7,5 +7,23 @@
     "tweet": "",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260705_Carrington-vs-Palacios-2026-07-04.png",
     "posted_at": "2026-07-05"
+  },
+  "Johnson-vs-Guerrero-2026-07-04": {
+    "winner": "Delante Johnson",
+    "loser": "Christopher Guerrero",
+    "method": "Decision (Unanimous)",
+    "event": "Cleveland Fight Night",
+    "tweet": "https://x.com/thefightdocket/status/2073836497501831286",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260705_Johnson-vs-Guerrero-2026-07-04.png",
+    "posted_at": "2026-07-05"
+  },
+  "Mason-vs-Bell-2026-07-04": {
+    "winner": "Abdullah Mason",
+    "loser": "Albert Bell",
+    "method": "KO/TKO",
+    "event": "Cleveland Fight Night",
+    "tweet": "https://x.com/thefightdocket/status/2073836631711252535",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260705_Mason-vs-Bell-2026-07-04.png",
+    "posted_at": "2026-07-05"
   }
 }
