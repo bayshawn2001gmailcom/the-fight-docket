@@ -8,13 +8,13 @@ on:
 jobs:
   generate-newsletter:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -30,14 +30,23 @@ jobs:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
         run: python newsletter_generator.py
 
-      - name: Commit newsletter, prompts, and IG data
+      # Images are generated HERE, right after the draft, from THIS week's prompts.
+      # (The old Sunday-cron generate_images.yml consumed week-old prompts because
+      # GITHUB_TOKEN pushes never trigger other workflows' push events.)
+      - name: Generate newsletter images from fresh prompts
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generate_images_action.py
+
+      - name: Commit newsletter, prompts, images, and IG data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "Fight Docket Bot"
           git config user.email "bot@thefightdocket.com"
-          git add "newsletter_*.html" prompts/weekly_prompts.json prompts/weekly_ig_data.json || true
-          git diff --staged --quiet || git commit -m "Newsletter draft + prompts [$(date +%Y-%m-%d)]"
+          git add "newsletter_*.html" prompts/weekly_prompts.json prompts/weekly_ig_data.json assets/newsletter_images/ prompts/last_generated_images.json || true
+          git diff --staged --quiet || git commit -m "Newsletter draft + prompts + images [$(date '+%Y-%m-%d')]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
 
       - name: Post to Beehiiv via browser

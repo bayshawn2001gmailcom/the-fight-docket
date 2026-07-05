@@ -1,12 +1,14 @@
 name: Generate Newsletter Images
 
+# NOTE (2026-07-05): The Sunday cron was removed — it generated images from the
+# PREVIOUS Monday's prompts (one week stale). Image generation now runs inside
+# newsletter_pipeline.yml right after the draft. This workflow remains for manual
+# runs and for pushes that edit prompts by hand (bot pushes via GITHUB_TOKEN
+# do NOT trigger the push event — GitHub anti-recursion rule).
 on:
   push:
     paths:
       - 'prompts/weekly_prompts.json'
-  schedule:
-    # Every Sunday at 11:15 PM UTC = 7:15 PM EDT
-    - cron: '15 23 * * 0'
   workflow_dispatch:
 
 jobs:
