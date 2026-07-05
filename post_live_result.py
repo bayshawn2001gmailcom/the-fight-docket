@@ -21,10 +21,10 @@ def _tok(key):
 
 FIRECRAWL_API_KEY    = os.getenv("FIRECRAWL_API_KEY", "")
 GEMINI_API_KEY       = os.getenv("GEMINI_API_KEY", "")
-TWITTER_API_KEY      = os.getenv("TWITTER_API_KEY", "")
-TWITTER_API_SECRET   = os.getenv("TWITTER_API_SECRET", "")
-TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN", "")
-TWITTER_ACCESS_SECRET= os.getenv("TWITTER_ACCESS_SECRET", "") or os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "")
+TWITTER_API_KEY      = _tok("TWITTER_API_KEY")
+TWITTER_API_SECRET   = _tok("TWITTER_API_SECRET")
+TWITTER_ACCESS_TOKEN = _tok("TWITTER_ACCESS_TOKEN")
+TWITTER_ACCESS_SECRET= _tok("TWITTER_ACCESS_SECRET") or _tok("TWITTER_ACCESS_TOKEN_SECRET")
 # Official Graph API credentials (replaces instagrapi username/password login,
 # which Instagram blocks from GitHub Actions IPs)
 INSTAGRAM_ACCOUNT_ID = _tok("INSTAGRAM_ACCOUNT_ID")
@@ -52,6 +52,7 @@ RESULT_SOURCES = [
 ]
 BOXING_SOURCES = [
     "https://www.boxingscene.com/results",
+    "https://www.boxingscene.com/articles",
 ]
 
 
@@ -122,6 +123,8 @@ def crawl_all_results() -> str:
 EXTRACT_PROMPT = """Extract ALL completed professional fight results from THE LAST 48 HOURS from this content.
 Today's date is {today}. Include results from fights that took place yesterday or today.
 Results may appear as headlines (e.g. "X halts Y in the last round", "X dominates Y to retain title").
+Relative timestamps like "912h ago" are often BROKEN on these sites — do not use them to judge recency.
+Judge recency by explicit fight dates, or include headline results that read as fresh news.
 Return ONLY a valid JSON array. If no results found, return [].
 
 Each result object MUST have these exact keys:

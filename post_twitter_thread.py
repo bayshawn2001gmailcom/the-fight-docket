@@ -13,11 +13,15 @@ from dotenv import load_dotenv
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
-TWITTER_API_KEY            = os.getenv("TWITTER_API_KEY", "")
-TWITTER_API_SECRET         = os.getenv("TWITTER_API_SECRET", "")
-TWITTER_ACCESS_TOKEN       = os.getenv("TWITTER_ACCESS_TOKEN", "")
-TWITTER_ACCESS_TOKEN_SECRET = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "")
-GEMINI_API_KEY             = os.getenv("GEMINI_API_KEY", "")
+def _tok(key):
+    """Get env var, stripping whitespace/newlines/quotes that copy-paste adds."""
+    return os.getenv(key, "").strip().strip("'\"")
+
+TWITTER_API_KEY            = _tok("TWITTER_API_KEY")
+TWITTER_API_SECRET         = _tok("TWITTER_API_SECRET")
+TWITTER_ACCESS_TOKEN       = _tok("TWITTER_ACCESS_TOKEN")
+TWITTER_ACCESS_TOKEN_SECRET = _tok("TWITTER_ACCESS_TOKEN_SECRET")
+GEMINI_API_KEY             = _tok("GEMINI_API_KEY")
 
 for k, v in [
     ("TWITTER_API_KEY", TWITTER_API_KEY),
