@@ -1,25 +1,40 @@
 {
-  "issue_date": "2026-06-22",
+  "issue_date": "2026-07-06",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Blurred fight poster, urban grit, rain-slicked street",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, blurred fight poster reflected in wet asphalt, neon lights, urban grit, rain-slicked street, dramatic low angle"
+      "topic": "UFC's relentless triple-header fight weekend tests operational limits and fan engagement.",
+      "prompt": "A motion-blurred shot of calendar pages for a single Saturday date flying off, with three different event posters faintly visible. Cinematic, dark editorial atmosphere, no faces or logos."
     },
     {
       "section": "main_story",
-      "topic": "Abstract media rights negotiations, holographic screens, city skyline",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, abstract representation of media rights negotiations, shadowy figures at a boardroom table, glowing holographic screens displaying complex data, distant city skyline through large window, moody lighting"
+      "topic": "Sean Strickland's definitive main event stoppage win in Houston over Anthony Hernandez.",
+      "prompt": "A lone fighter's shadow stretching long across an empty octagon canvas, the arena lights dimmed post-fight. Moody, atmospheric, no faces."
+    },
+    {
+      "section": "legal",
+      "topic": "The state of antitrust litigation against the UFC, including a major settlement.",
+      "prompt": "A mahogany gavel resting beside a stack of legal documents titled 'Antitrust,' with the faint shadow of an octagon cage behind it. Dark, serious, editorial."
+    },
+    {
+      "section": "rumor",
+      "topic": "Rumors on future matchmaking for Strickland and Kape and UFC venue speculation.",
+      "prompt": "A dimly lit, narrow corridor outside a locker room, with two figures whispering conspiratorially in the shadows. Anonymous, suggestive, dark."
     },
     {
       "section": "fight_previews",
-      "topic": "Two boxers in silhouette facing off in ring, empty arena",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, two boxers in silhouette facing off in the center of a boxing ring, dramatic spotlight from above, empty arena seats in the background, sense of anticipation and quiet intensity"
+      "topic": "Previews for UFC 329's McGregor vs. Holloway and a WBO title boxing match.",
+      "prompt": "Two fighters, seen only as sharp silhouettes, facing off under a single harsh spotlight on a press conference stage. Dramatic, minimalist, dark editorial feel."
     },
     {
       "section": "business_intel",
-      "topic": "Gavel on legal documents, dimly lit courtroom, corporate boardroom",
-      "prompt": "cinematic image prompt, no faces, no logos, dark editorial atmosphere, a wooden gavel resting on a stack of legal documents, dimly lit courtroom setting or corporate boardroom table, focused light on the gavel and papers, somber and authoritative mood"
+      "topic": "UFC's new $7.7 billion media rights deal with Paramount Skydance.",
+      "prompt": "A dimly lit server room with glowing data streams, reflecting off a glass screen showing a rising stock ticker and a broadcast tower icon. Abstract, financial, no logos."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "An analysis of Sean Strickland's career arc and market value.",
+      "prompt": "Close up on a fighter's hands being meticulously wrapped with white tape in a dark, gritty training gym. Focused, intense, no face visible."
     }
   ]
 }

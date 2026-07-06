@@ -1,10 +1,10 @@
 {
-  "date": "JUNE 22, 2026",
-  "issue": "jun22_2026",
+  "date": "JULY 6, 2026",
+  "issue": "jul06_2026",
   "preview_stories": [
-    "Turki Alalshikh cancer diagnosis introduces profound uncertainty to boxing's future.",
-    "Xander Zayas takes career-defining risk against welterweight champ Jaron Ennis.",
-    "Most Valuable Promotions signs title contender, signaling move into legit boxing."
+    "Strickland's High-Stakes Houston Win",
+    "Inside UFC's New $7.7B Paramount Media Deal",
+    "McGregor vs. Holloway 2: Full Breakdown"
   ],
   "announcement": {
     "fighter1": "McGregor",
@@ -15,18 +15,18 @@
     "filename": "mcgregor_vs_holloway_announcement.png"
   },
   "result": {
-    "winner": "Kai Asakura",
-    "loser": "Renan Barao",
-    "method": "KO/TKO",
-    "round_num": "R2",
-    "time": "3:45",
-    "event": "UFC Fight Night",
-    "filename": "asakura_result.png"
+    "winner": "Sean Strickland",
+    "loser": "Anthony Hernandez",
+    "method": "TKO",
+    "round_num": "",
+    "time": "",
+    "event": "UFC Houston",
+    "filename": "strickland_result.png"
   },
   "quote": {
-    "quote": "Jaron Ennis\u2019 record is 'padded,' and he 'ducked the big fights.'",
-    "attribution": "Xander Zayas",
-    "context": "On his upcoming IBF title challenge",
-    "filename": "zayas_quote_card.png"
+    "quote": "This firehose approach is a financial positive for TKO, but it risks commoditizing the very product that thrives on scarcity.",
+    "attribution": "The Fight Docket",
+    "context": "On the UFC's triple-header weekend",
+    "filename": "quote_card.png"
   }
 }
