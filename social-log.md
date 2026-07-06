@@ -1,4 +1,19 @@
 
+## 2026-07-06 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-07-06.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2074174528884990272
+
+  T1: UFC’s triple-header, $7.7B media deal, and relentless schedule raise one crucial...
+  T2: The UFC cemented its future with a $7.7 billion media rights deal with Paramount...
+  T3: Sean Strickland’s Houston stoppage win immediately reshuffled the middleweight p...
+  T4: UFC 329's main event, McGregor vs. Holloway 2, is a promoter's dream. This legac...
+  T5: TKO Group Holdings is de-risking its balance sheet with a revised $375 million s...
+  T6: Get the full breakdown on these stories, exclusive insights, and market analysis...
+
+- Status: ✅ Posted
+
 ## 2026-06-22 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-06-22.html
