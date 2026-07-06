@@ -92,14 +92,37 @@ def generate_image_bytes(prompt):
     return None
 
 
+STYLE_SUFFIX = " Cinematic, dark editorial atmosphere, no faces, no logos."
+
+def load_weekly_prompts(issue_date):
+    """Per-issue prompts written by newsletter_generator.py — in context with each section
+    (intro, main_story, fight_previews, business_intel). These take priority over the
+    generic SECTION_PROMPTS so every image matches this week's actual articles."""
+    pf = SCRIPT_DIR / "prompts" / "weekly_prompts.json"
+    if not pf.exists():
+        return {}
+    try:
+        data = json.loads(pf.read_text(encoding="utf-8"))
+        if data.get("issue_date") != issue_date:
+            print(f"  weekly_prompts.json is for {data.get('issue_date')}, not {issue_date} — ignoring")
+            return {}
+        return {p["section"]: p["prompt"].rstrip(".") + "." + STYLE_SUFFIX
+                for p in data.get("prompts", []) if p.get("section") and p.get("prompt")}
+    except Exception as e:
+        print(f"  Could not load weekly_prompts.json: {e}")
+        return {}
+
+
 def generate_missing_images(issue_date, existing_sections):
-    needed = [s for s in SECTION_PROMPTS if s not in existing_sections]
+    prompts = dict(SECTION_PROMPTS)
+    prompts.update(load_weekly_prompts(issue_date))
+    needed = [s for s in prompts if s not in existing_sections]
     if not needed:
         print("  All section images already exist — skipping generation.")
         return
 
     for section in needed:
-        prompt = SECTION_PROMPTS[section]
+        prompt = prompts[section]
         filename = f"nb2_{issue_date}_{section}.jpg"
         out_path = ASSETS_DIR / filename
         if out_path.exists():
@@ -206,12 +229,13 @@ def inject_images_into_html(html: str, url_map: dict) -> str:
             if divider_idx == -1:
                 continue
 
-            # Find the end of that div tag
-            close_bracket = html.find('>', divider_idx)
-            if close_bracket == -1:
+            # Insert AFTER the divider's closing </div>, never inside it —
+            # the divider is 40px wide x 3px tall, an img inside renders 40px wide
+            div_close = html.find('</div>', divider_idx)
+            if div_close == -1:
                 continue
 
-            insert_pos = close_bracket + 1
+            insert_pos = div_close + len('</div>')
 
             # Check if img already exists right after this divider
             snippet = html[insert_pos:insert_pos+100]
@@ -322,19 +346,17 @@ def main():
     except Exception as e:
         print(f"  beehiiv_prep.py error: {e}")
 
-    # Copy HTML to clipboard
-    inject_js_path = SCRIPT_DIR / newsletter_path.name.replace(".html", ".inject.js")
-    if inject_js_path.exists():
-        copy_to_clipboard(inject_js_path.read_text(encoding="utf-8"))
-    else:
-        copy_to_clipboard(html)
+    # Copy FINAL newsletter HTML to clipboard — user pastes straight into
+    # Beehiiv's <> HTML source editor. Never put inject.js here (user directive).
+    copy_to_clipboard(html)
 
+    inject_js_path = SCRIPT_DIR / newsletter_path.name.replace(".html", ".inject.js")
     print("\n" + "=" * 55)
     print("  DONE")
     print(f"  HTML       : {newsletter_path.name} (images injected)")
-    print(f"  Inject JS  : {inject_js_path.name if inject_js_path.exists() else 'N/A'}")
+    print(f"  Inject JS  : {inject_js_path.name if inject_js_path.exists() else 'N/A'} (fallback only)")
     print(f"  Thumbnail  : .tmp/newsletter_images/nb2_{issue_date}_thumbnail.jpg")
-    print(f"  Clipboard  : inject.js contents copied")
+    print(f"  Clipboard  : final newsletter HTML — paste into Beehiiv <> editor")
     print("=" * 55)
 
 
