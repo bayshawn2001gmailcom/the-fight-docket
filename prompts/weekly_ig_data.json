@@ -1,32 +1,32 @@
 {
-  "date": "JULY 6, 2026",
+  "date": "JULY 06, 2026",
   "issue": "jul06_2026",
   "preview_stories": [
-    "Strickland's High-Stakes Houston Win",
-    "Inside UFC's New $7.7B Paramount Media Deal",
-    "McGregor vs. Holloway 2: Full Breakdown"
+    "UFC's landmark $7.7B media rights deal with Paramount.",
+    "Manny Pacquiao launches US-based boxing promotion.",
+    "Conor McGregor vs. Max Holloway 2: a breakdown of the stakes."
   ],
   "announcement": {
     "fighter1": "McGregor",
     "fighter2": "Holloway",
     "event": "UFC 329",
     "date": "July 11 \u00b7 Las Vegas, NV",
-    "weight_class": "Welterweight",
+    "weight_class": "Lightweight",
     "filename": "mcgregor_vs_holloway_announcement.png"
   },
   "result": {
-    "winner": "Sean Strickland",
-    "loser": "Anthony Hernandez",
-    "method": "TKO",
-    "round_num": "",
+    "winner": "Deontay Wilder",
+    "loser": "Derek Chisora",
+    "method": "Split Decision",
+    "round_num": "12R",
     "time": "",
-    "event": "UFC Houston",
-    "filename": "strickland_result.png"
+    "event": "WBA Heavyweight Championship",
+    "filename": "wilder_result.png"
   },
   "quote": {
-    "quote": "This firehose approach is a financial positive for TKO, but it risks commoditizing the very product that thrives on scarcity.",
-    "attribution": "The Fight Docket",
-    "context": "On the UFC's triple-header weekend",
+    "quote": "Live sports rights, for a premier property like the UFC, have become recession-proof assets.",
+    "attribution": "The Fight Docket Analysis",
+    "context": "On UFC's $7.7B Paramount Media Deal",
     "filename": "quote_card.png"
   }
 }
