@@ -1,5 +1,5 @@
 {
-  "crawled_at": "2026-07-04T01:55:23.169047Z",
+  "crawled_at": "2026-07-10T23:53:19.135023Z",
   "ufc": [
     {
       "event": "UFC 329",
@@ -45,9 +45,21 @@
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "TBD vs TBD",
+      "main_fight": "Nurmagomedov vs Song",
       "date": "2026-08-29",
       "location": "Oriental Sports Center, Pudong District, China"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Fiziev vs Torres",
+      "date": "2026-06-27",
+      "location": "National Gymnastics Arena, Baku, Azerbaijan"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Kape vs Horiguchi",
+      "date": "2026-06-20",
+      "location": "Meta APEX, Las Vegas, NV, United States"
     }
   ],
   "boxing": []
