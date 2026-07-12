@@ -16,5 +16,23 @@
     "tweet": "https://x.com/thefightdocket/status/2076161869535154556",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260712_Suslenkov-vs-Joyce-2026-07-11.png",
     "posted_at": "2026-07-12"
+  },
+  "MuratGassiev-vs-PeterKadiru-2026-07-11": {
+    "winner": "Murat Gassiev",
+    "loser": "Peter Kadiru",
+    "method": "KO/TKO",
+    "event": "Gassiev vs. Kadiru",
+    "tweet": "https://x.com/thefightdocket/status/2076183217317548429",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260712_MuratGassiev-vs-PeterKadiru-2026-07-11.png",
+    "posted_at": "2026-07-12"
+  },
+  "ArtemSuslenkov-vs-JoeJoyce-2026-07-11": {
+    "winner": "Artem Suslenkov",
+    "loser": "Joe Joyce",
+    "method": "KO/TKO",
+    "event": "Suslenkov vs. Joyce",
+    "tweet": "https://x.com/thefightdocket/status/2076183335361982789",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260712_ArtemSuslenkov-vs-JoeJoyce-2026-07-11.png",
+    "posted_at": "2026-07-12"
   }
 }
