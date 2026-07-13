@@ -1,32 +1,32 @@
 {
-  "date": "JULY 06, 2026",
-  "issue": "jul06_2026",
+  "date": "JULY 13, 2026",
+  "issue": "jul13_2026",
   "preview_stories": [
-    "UFC's landmark $7.7B media rights deal with Paramount.",
-    "Manny Pacquiao launches US-based boxing promotion.",
-    "Conor McGregor vs. Max Holloway 2: a breakdown of the stakes."
+    "McGregor's Catastrophic Injury Derails UFC 329",
+    "TKO Faces Mounting Pressure in Fighter Antitrust Lawsuit",
+    "Spence Jr. vs. Tszyu: A High-Stakes Return to the Ring"
   ],
   "announcement": {
-    "fighter1": "McGregor",
-    "fighter2": "Holloway",
-    "event": "UFC 329",
-    "date": "July 11 \u00b7 Las Vegas, NV",
-    "weight_class": "Lightweight",
-    "filename": "mcgregor_vs_holloway_announcement.png"
+    "fighter1": "Spence Jr.",
+    "fighter2": "Tszyu",
+    "event": "DAZN Boxing",
+    "date": "July 26 \u00b7 Sydney, AUS",
+    "weight_class": "Junior Middleweight",
+    "filename": "spence_vs_tszyu_announcement.png"
   },
   "result": {
-    "winner": "Deontay Wilder",
-    "loser": "Derek Chisora",
-    "method": "Split Decision",
-    "round_num": "12R",
-    "time": "",
-    "event": "WBA Heavyweight Championship",
-    "filename": "wilder_result.png"
+    "winner": "Max Holloway",
+    "loser": "Conor McGregor",
+    "method": "TKO (Injury)",
+    "round_num": "R1",
+    "time": "1:09",
+    "event": "UFC 329",
+    "filename": "holloway_result.png"
   },
   "quote": {
-    "quote": "Live sports rights, for a premier property like the UFC, have become recession-proof assets.",
+    "quote": "What this signals is that TKO's reliance on aging PPV stars is a high-risk strategy with diminishing returns.",
     "attribution": "The Fight Docket Analysis",
-    "context": "On UFC's $7.7B Paramount Media Deal",
+    "context": "Regarding the UFC 329 main event fallout.",
     "filename": "quote_card.png"
   }
 }

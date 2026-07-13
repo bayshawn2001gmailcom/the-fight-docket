@@ -1,25 +1,40 @@
 {
-  "issue_date": "2026-07-06",
+  "issue_date": "2026-07-13",
   "prompts": [
     {
       "section": "intro",
-      "topic": "The quiet before the storm of major summer fights and business deals.",
-      "prompt": "A single spotlight illuminating a quiet, empty boxing ring in a vast, dark arena."
+      "topic": "Anticlimactic end to a major UFC superfight due to fighter injury.",
+      "prompt": "A single, fallen black MMA glove in the center of a brightly lit but empty octagon, cinematic atmosphere."
     },
     {
       "section": "main_story",
-      "topic": "UFC's massive $7.7 billion media rights deal with Paramount, a tectonic financial shift.",
-      "prompt": "Abstract cinematic image of glowing fiber optic cables converging on a television screen, dark background."
+      "topic": "Conor McGregor's career-altering leg injury at UFC 329.",
+      "prompt": "Extreme close-up on a fighter's heavily taped ankle resting on a stool in a dark, atmospheric locker room."
+    },
+    {
+      "section": "legal",
+      "topic": "The ongoing UFC antitrust lawsuit moving through federal court.",
+      "prompt": "A heavy, leather-bound law book and a gavel on a dark wood desk, dimly lit by a single overhead light."
+    },
+    {
+      "section": "rumor",
+      "topic": "Behind-the-scenes fight negotiations and verbal agreements.",
+      "prompt": "Two shadowy figures talking in a dark hallway, their faces obscured, one holding a pen over a document."
     },
     {
       "section": "fight_previews",
-      "topic": "The impending clash between Conor McGregor and Max Holloway at UFC 329.",
-      "prompt": "Two MMA gloves, one with Irish green trim, one with Hawaiian floral print, hanging opposite each other."
+      "topic": "Upcoming high-stakes professional boxing matches.",
+      "prompt": "Two vintage leather boxing gloves hanging from a frayed rope in a dimly lit, old-school boxing gym, dust in the air."
     },
     {
       "section": "business_intel",
-      "topic": "Manny Pacquiao the promoter, a legendary fighter entering a new strategic arena.",
-      "prompt": "A single chess piece, a king, casting a long shadow over a dark chessboard."
+      "topic": "Massive media rights deals and combat sports revenue.",
+      "prompt": "A stack of hundred-dollar bills under a single, harsh spotlight on a dark, polished boardroom table."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "David Benavidez's historic climb through three weight divisions.",
+      "prompt": "Three different, ornate championship belts displayed side-by-side in a glass case, under focused museum-style lighting."
     }
   ]
 }
