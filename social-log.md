@@ -1,4 +1,19 @@
 
+## 2026-07-13 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-07-06_clean.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2076706522675941531
+
+  T1: UFC's new $7.7B Paramount deal isn't just a broadcast shift; it's a strategic we...
+  T2: TKO Group Holdings secured a $7.7 billion Paramount deal for UFC domestic rights...
+  T3: The $7.7B Paramount deal will fuel renewed scrutiny over fighter compensation, e...
+  T4: The Johnson v. Zuffa antitrust case continues to loom over TKO. A pending court ...
+  T5: UFC 329's McGregor-Holloway rematch is already an economic success with T-Mobile...
+  T6: Stay ahead of the curve with insider analysis on combat sports business. Get The...
+
+- Status: ✅ Posted
+
 ## 2026-07-06 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-07-06.html
