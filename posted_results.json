@@ -34,5 +34,68 @@
     "tweet": "https://x.com/thefightdocket/status/2076183335361982789",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260712_ArtemSuslenkov-vs-JoeJoyce-2026-07-11.png",
     "posted_at": "2026-07-12"
+  },
+  "Pacheco-vs-Aleem-2026-07-19": {
+    "winner": "Diego Pacheco",
+    "loser": "Immanuwel Aleem",
+    "method": "KO/TKO",
+    "event": "Pacheco vs. Aleem",
+    "tweet": "https://x.com/thefightdocket/status/2078697525813313592",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Pacheco-vs-Aleem-2026-07-19.png",
+    "posted_at": "2026-07-19"
+  },
+  "Suarez-vs-Avila-2026-07-18": {
+    "winner": "Charly Suarez",
+    "loser": "Manuel Avila",
+    "method": "KO/TKO",
+    "event": "Suarez vs. Avila",
+    "tweet": "https://x.com/thefightdocket/status/2078697626275360920",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Suarez-vs-Avila-2026-07-18.png",
+    "posted_at": "2026-07-19"
+  },
+  "Flores-vs-Navarro-2026-07-18": {
+    "winner": "Bryan Flores",
+    "loser": "Jonathan Navarro",
+    "method": "Decision (Unanimous)",
+    "event": "ProBoxTV",
+    "tweet": "https://x.com/thefightdocket/status/2078697733678891237",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Flores-vs-Navarro-2026-07-18.png",
+    "posted_at": "2026-07-19"
+  },
+  "Cruz-vs-Montoya-2026-07-19": {
+    "winner": "Andy Cruz",
+    "loser": "Abraham Montoya",
+    "method": "KO/TKO",
+    "event": "Cruz vs. Montoya",
+    "tweet": "https://x.com/thefightdocket/status/2078697838184128803",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Cruz-vs-Montoya-2026-07-19.png",
+    "posted_at": "2026-07-19"
+  },
+  "Ruiz-vs-Fuchs-2026-07-18": {
+    "winner": "Adelaida Maria Ruiz",
+    "loser": "Ginny Fuchs",
+    "method": "Decision (Unanimous)",
+    "event": "WBC Super-Flyweight Title Fight",
+    "tweet": "https://x.com/thefightdocket/status/2078697926239392182",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Ruiz-vs-Fuchs-2026-07-18.png",
+    "posted_at": "2026-07-19"
+  },
+  "Anton-vs-Hernandez-2026-07-18": {
+    "winner": "Kevin Anton",
+    "loser": "Vladimir Hernandez",
+    "method": "Decision (Unanimous)",
+    "event": "Anton vs. Hernandez",
+    "tweet": "https://x.com/thefightdocket/status/2078698052676632662",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Anton-vs-Hernandez-2026-07-18.png",
+    "posted_at": "2026-07-19"
+  },
+  "Papot-vs-Eubank-2026-07-18": {
+    "winner": "David Papot",
+    "loser": "Harlem Eubank",
+    "method": "Decision (Unanimous)",
+    "event": "Papot vs. Eubank",
+    "tweet": "https://x.com/thefightdocket/status/2078698150202683702",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Papot-vs-Eubank-2026-07-18.png",
+    "posted_at": "2026-07-19"
   }
 }
