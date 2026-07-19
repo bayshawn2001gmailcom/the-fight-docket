@@ -97,5 +97,14 @@
     "tweet": "https://x.com/thefightdocket/status/2078698150202683702",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Papot-vs-Eubank-2026-07-18.png",
     "posted_at": "2026-07-19"
+  },
+  "Pacheco-vs-Aleem-2026-07-18": {
+    "winner": "Diego Pacheco",
+    "loser": "Immanuwel Aleem",
+    "method": "KO/TKO",
+    "event": "Pacheco vs Aleem",
+    "tweet": "https://x.com/thefightdocket/status/2078718510637994448",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Pacheco-vs-Aleem-2026-07-18.png",
+    "posted_at": "2026-07-19"
   }
 }
