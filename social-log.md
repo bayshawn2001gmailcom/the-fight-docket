@@ -1,4 +1,19 @@
 
+## 2026-07-20 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-07-20.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2079232392116768786
+
+  T1: Conor McGregor's extended absence until 2027 creates a massive PPV revenue void,...
+  T2: TKO Group Holdings reported record Q1 2026 revenue of $1.59 billion, a 26% surge...
+  T3: McGregor's major knee injury, sidelining him until 2027, exposes the critical re...
+  T4: UFC Middleweight Champion Dricus du Plessis solidified his reign with a dominant...
+  T5: The NYSAC suspended a Rochester boxing promoter for nonpayment of fighters, offi...
+  T6: For deeper insights into combat sports economics, fighter contract landscapes, a...
+
+- Status: ✅ Posted
+
 ## 2026-07-13 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-07-06_clean.html
