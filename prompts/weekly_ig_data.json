@@ -1,32 +1,32 @@
 {
-  "date": "JULY 06, 2026",
-  "issue": "jul06_2026",
+  "date": "JULY 20, 2026",
+  "issue": "jul20_2026",
   "preview_stories": [
-    "UFC's landmark $7.7B media rights deal with Paramount.",
-    "Manny Pacquiao launches US-based boxing promotion.",
-    "Conor McGregor vs. Max Holloway 2: a breakdown of the stakes."
+    "Du Plessis cements Middleweight reign over Usman.",
+    "Conor McGregor reveals ACL injury, targets Summer 2027 return.",
+    "TKO Group stacks new sponsorships with DoorDash, IBM."
   ],
   "announcement": {
-    "fighter1": "McGregor",
-    "fighter2": "Holloway",
-    "event": "UFC 329",
-    "date": "July 11 \u00b7 Las Vegas, NV",
-    "weight_class": "Lightweight",
-    "filename": "mcgregor_vs_holloway_announcement.png"
+    "fighter1": "Edwards",
+    "fighter2": "Rakhmonov",
+    "event": "UFC 330",
+    "date": "Aug 15 \u00b7 TBA",
+    "weight_class": "Welterweight",
+    "filename": "edwards_vs_rakhmonov_announcement.png"
   },
   "result": {
-    "winner": "Deontay Wilder",
-    "loser": "Derek Chisora",
-    "method": "Split Decision",
-    "round_num": "12R",
-    "time": "",
-    "event": "WBA Heavyweight Championship",
-    "filename": "wilder_result.png"
+    "winner": "Dricus Du Plessis",
+    "loser": "Kamaru Usman",
+    "method": "Unanimous Decision",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC Fight Night",
+    "filename": "duplessis_result.png"
   },
   "quote": {
-    "quote": "Live sports rights, for a premier property like the UFC, have become recession-proof assets.",
-    "attribution": "The Fight Docket Analysis",
-    "context": "On UFC's $7.7B Paramount Media Deal",
-    "filename": "quote_card.png"
+    "quote": "That kind of blurred the vision a bit.",
+    "attribution": "Kamaru Usman",
+    "context": "On an early punch from Dricus Du Plessis in their title fight.",
+    "filename": "usman_quote_card.png"
   }
 }

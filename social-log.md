@@ -1,4 +1,19 @@
 
+## 2026-07-20 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-07-20_clean.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2079350913400000777
+
+  T1: This week laid bare the contrasting realities of combat sports: championship cla...
+  T2: Dricus Du Plessis's dominant win over Kamaru Usman stabilizes the UFC middleweig...
+  T3: Conor McGregor's ACL injury, targeting Summer 2027, forces a major strategic rec...
+  T4: TKO Group Holdings is demonstrating robust commercial strength, locking in signi...
+  T5: This influx of TKO sponsorship capital arrives amid scrutiny over talent compens...
+  T6: Get the full intelligence behind these headlines and stay ahead of the fight bus...
+
+- Status: ✅ Posted
+
 ## 2026-07-06 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-07-06.html

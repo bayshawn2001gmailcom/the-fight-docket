@@ -1,25 +1,40 @@
 {
-  "issue_date": "2026-07-06",
+  "issue_date": "2026-07-20",
   "prompts": [
     {
       "section": "intro",
-      "topic": "The quiet before the storm of major summer fights and business deals.",
-      "prompt": "A single spotlight illuminating a quiet, empty boxing ring in a vast, dark arena."
+      "topic": "A lone microphone in a dark, empty press conference room after a major event.",
+      "prompt": "A single microphone stands on a table in a dark, empty press conference room. Cinematic, moody lighting, shallow depth of field, dark editorial atmosphere, no people, no logos."
     },
     {
       "section": "main_story",
-      "topic": "UFC's massive $7.7 billion media rights deal with Paramount, a tectonic financial shift.",
-      "prompt": "Abstract cinematic image of glowing fiber optic cables converging on a television screen, dark background."
+      "topic": "An overhead shot of a brightly lit MMA cage in a dark, empty arena.",
+      "prompt": "Cinematic high-angle shot looking down into a brightly lit hexagonal MMA cage. The surrounding arena is vast, dark, and empty. Focus on the canvas. No faces, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "A gavel resting on a stack of legal documents in a dark room.",
+      "prompt": "A wooden gavel rests on a thick stack of legal briefs on a dark mahogany desk. Low-key, dramatic side lighting. Dark editorial atmosphere, moody, representing legal battles."
+    },
+    {
+      "section": "rumor",
+      "topic": "Smoke tendrils in a dark, clandestine meeting space, representing whispers and rumors.",
+      "prompt": "Abstract image of smoke tendrils swirling in a dark, dimly lit room. The atmosphere is mysterious and clandestine, suggesting secret conversations. No people, no logos."
     },
     {
       "section": "fight_previews",
-      "topic": "The impending clash between Conor McGregor and Max Holloway at UFC 329.",
-      "prompt": "Two MMA gloves, one with Irish green trim, one with Hawaiian floral print, hanging opposite each other."
+      "topic": "Two heavy bags hanging in a dimly lit, gritty boxing gym.",
+      "prompt": "Two worn leather heavy bags hang motionless in a dark, gritty, empty boxing gym. A single light source from above creates long shadows. Cinematic, atmospheric, no people."
     },
     {
       "section": "business_intel",
-      "topic": "Manny Pacquiao the promoter, a legendary fighter entering a new strategic arena.",
-      "prompt": "A single chess piece, a king, casting a long shadow over a dark chessboard."
+      "topic": "A close-up of a stock ticker displaying financial data on a dark screen.",
+      "prompt": "Extreme close-up on a digital stock ticker screen, showing abstract financial data and graphs. The screen glows in a dark room. Focus on the data. Dark editorial atmosphere."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "A single spotlight shining on a wrapped hand in a locker room.",
+      "prompt": "A fighter's expertly wrapped hand rests on their knee in a dark locker room. A single, harsh spotlight from above illuminates only the hand. Moody, cinematic, introspective."
     }
   ]
 }
