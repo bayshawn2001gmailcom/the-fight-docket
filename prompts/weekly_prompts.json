@@ -1,40 +1,40 @@
 {
-  "issue_date": "2026-07-13",
+  "issue_date": "2026-07-20",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Anticlimactic end to a major UFC superfight due to fighter injury.",
-      "prompt": "A single, fallen black MMA glove in the center of a brightly lit but empty octagon, cinematic atmosphere."
+      "topic": "The intersection of high finance and combat sports",
+      "prompt": "A single leather boxing glove resting on a stack of financial reports, moody lighting, dark editorial atmosphere, no faces, no logos."
     },
     {
       "section": "main_story",
-      "topic": "Conor McGregor's career-altering leg injury at UFC 329.",
-      "prompt": "Extreme close-up on a fighter's heavily taped ankle resting on a stool in a dark, atmospheric locker room."
+      "topic": "A dominant champion stands alone after a decisive victory",
+      "prompt": "An empty MMA octagon under a single spotlight, canvas slightly scuffed, cinematic, dark atmosphere, no faces, no logos."
     },
     {
       "section": "legal",
-      "topic": "The ongoing UFC antitrust lawsuit moving through federal court.",
-      "prompt": "A heavy, leather-bound law book and a gavel on a dark wood desk, dimly lit by a single overhead light."
+      "topic": "Legal battles and regulatory actions in combat sports",
+      "prompt": "A gavel resting on a leather-bound rulebook in a dark, empty commission hearing room, cinematic, moody lighting."
     },
     {
       "section": "rumor",
-      "topic": "Behind-the-scenes fight negotiations and verbal agreements.",
-      "prompt": "Two shadowy figures talking in a dark hallway, their faces obscured, one holding a pen over a document."
+      "topic": "Whispers and unconfirmed news in the fight world",
+      "prompt": "Silhouetted figures talking in a dimly lit hallway outside a locker room, abstract, cinematic, dark atmosphere."
     },
     {
       "section": "fight_previews",
-      "topic": "Upcoming high-stakes professional boxing matches.",
-      "prompt": "Two vintage leather boxing gloves hanging from a frayed rope in a dimly lit, old-school boxing gym, dust in the air."
+      "topic": "Fighters preparing for an upcoming sanctioned bout",
+      "prompt": "Close-up on freshly wrapped hands under the dim light of a locker room, no faces, visible texture of the gauze, dark editorial atmosphere."
     },
     {
       "section": "business_intel",
-      "topic": "Massive media rights deals and combat sports revenue.",
-      "prompt": "A stack of hundred-dollar bills under a single, harsh spotlight on a dark, polished boardroom table."
+      "topic": "Global media rights deals and corporate finance in sports",
+      "prompt": "A world map made of glowing data streams on a dark screen, financial data and stock tickers overlaid, cinematic, abstract."
     },
     {
       "section": "fighter_spotlight",
-      "topic": "David Benavidez's historic climb through three weight divisions.",
-      "prompt": "Three different, ornate championship belts displayed side-by-side in a glass case, under focused museum-style lighting."
+      "topic": "The difficult road back from a career-threatening injury",
+      "prompt": "A single empty stool in the corner of a boxing ring, spotlight from above, dark and moody atmosphere, no people."
     }
   ]
 }

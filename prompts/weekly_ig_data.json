@@ -1,32 +1,33 @@
 {
-  "date": "JULY 13, 2026",
-  "issue": "jul13_2026",
+  "date": "JULY 20, 2026",
+  "issue": "jul20_2026",
   "preview_stories": [
-    "McGregor's Catastrophic Injury Derails UFC 329",
-    "TKO Faces Mounting Pressure in Fighter Antitrust Lawsuit",
-    "Spence Jr. vs. Tszyu: A High-Stakes Return to the Ring"
+    "Du Plessis dominates Usman in OKC",
+    "Conor McGregor sidelined by major knee injury until 2027",
+    "TKO Group reports record $1.59B Q1 revenue",
+    "NYSAC suspends promoter for nonpayment"
   ],
   "announcement": {
-    "fighter1": "Spence Jr.",
-    "fighter2": "Tszyu",
-    "event": "DAZN Boxing",
-    "date": "July 26 \u00b7 Sydney, AUS",
-    "weight_class": "Junior Middleweight",
-    "filename": "spence_vs_tszyu_announcement.png"
+    "fighter1": "Ankalaev",
+    "fighter2": "Guskov",
+    "event": "UFC Fight Night",
+    "date": "July 25 \u00b7 Abu Dhabi, UAE",
+    "weight_class": "Light Heavyweight",
+    "filename": "ankalaev_vs_guskov_announcement.png"
   },
   "result": {
-    "winner": "Max Holloway",
-    "loser": "Conor McGregor",
-    "method": "TKO (Injury)",
-    "round_num": "R1",
-    "time": "1:09",
-    "event": "UFC 329",
-    "filename": "holloway_result.png"
+    "winner": "Dricus du Plessis",
+    "loser": "Kamaru Usman",
+    "method": "Decision",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC Oklahoma City",
+    "filename": "duplessis_result.png"
   },
   "quote": {
-    "quote": "What this signals is that TKO's reliance on aging PPV stars is a high-risk strategy with diminishing returns.",
-    "attribution": "The Fight Docket Analysis",
-    "context": "Regarding the UFC 329 main event fallout.",
-    "filename": "quote_card.png"
+    "quote": "That kind of blurred the vision a bit.",
+    "attribution": "Kamaru Usman",
+    "context": "On an early punch in his fight against Dricus du Plessis",
+    "filename": "usman_quote_card.png"
   }
 }
