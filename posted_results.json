@@ -115,5 +115,14 @@
     "tweet": "https://x.com/thefightdocket/status/2078799189895516514",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260719_Cruz-vs-Montoya-2026-07-18.png",
     "posted_at": "2026-07-19"
+  },
+  "Fury-vs-Wach-2026-07-24": {
+    "winner": "Tyson Fury",
+    "loser": "Mariusz Wach",
+    "method": "KO/TKO",
+    "event": "Tyson Fury vs. Mariusz Wach",
+    "tweet": "https://x.com/thefightdocket/status/2080864928190329027",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260725_Fury-vs-Wach-2026-07-24.png",
+    "posted_at": "2026-07-25"
   }
 }
