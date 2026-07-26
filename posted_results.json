@@ -124,5 +124,50 @@
     "tweet": "https://x.com/thefightdocket/status/2080864928190329027",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260725_Fury-vs-Wach-2026-07-24.png",
     "posted_at": "2026-07-25"
+  },
+  "Joshua-vs-Prenga-2026-07-26": {
+    "winner": "Anthony Joshua",
+    "loser": "Kristian Prenga",
+    "method": "KO/TKO",
+    "event": "Joshua vs Prenga",
+    "tweet": "https://x.com/thefightdocket/status/2081235773710635409",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Joshua-vs-Prenga-2026-07-26.png",
+    "posted_at": "2026-07-26"
+  },
+  "Sheeraz-vs-Zachenhuber-2026-07-26": {
+    "winner": "Hamzah Sheeraz",
+    "loser": "Simon Zachenhuber",
+    "method": "Decision (Unanimous)",
+    "event": "Sheeraz vs Zachenhuber",
+    "tweet": "https://x.com/thefightdocket/status/2081235908947513572",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Sheeraz-vs-Zachenhuber-2026-07-26.png",
+    "posted_at": "2026-07-26"
+  },
+  "Kelly-vs-Agyarko-2026-07-26": {
+    "winner": "Josh Kelly",
+    "loser": "Caoimhin Agyarko",
+    "method": "Decision (Unanimous)",
+    "event": "Kelly vs Agyarko",
+    "tweet": "https://x.com/thefightdocket/status/2081236004221178252",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Kelly-vs-Agyarko-2026-07-26.png",
+    "posted_at": "2026-07-26"
+  },
+  "Tsutsumi-vs-Herrera-2026-07-26": {
+    "winner": "Reito Tsutsumi",
+    "loser": "Alvino Herrera",
+    "method": "KO/TKO",
+    "event": "Joshua vs Prenga",
+    "tweet": "https://x.com/thefightdocket/status/2081236218625618049",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Tsutsumi-vs-Herrera-2026-07-26.png",
+    "posted_at": "2026-07-26"
+  },
+  "Dev-vs-Diaz-2026-07-26": {
+    "winner": "Nishant Dev",
+    "loser": "Cesar Diaz",
+    "method": "KO/TKO",
+    "event": "Joshua vs Prenga",
+    "tweet": "https://x.com/thefightdocket/status/2081236339895542176",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Dev-vs-Diaz-2026-07-26.png",
+    "posted_at": "2026-07-26"
   }
 }
