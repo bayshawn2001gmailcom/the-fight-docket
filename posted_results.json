@@ -169,5 +169,59 @@
     "tweet": "https://x.com/thefightdocket/status/2081236339895542176",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Dev-vs-Diaz-2026-07-26.png",
     "posted_at": "2026-07-26"
+  },
+  "Anthony-Joshua-vs-Kristian-Prenga-2026-07-26": {
+    "winner": "Anthony Joshua",
+    "loser": "Kristian Prenga",
+    "method": "KO/TKO",
+    "event": "Joshua vs. Prenga",
+    "tweet": "https://x.com/thefightdocket/status/2081338472225489209",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Anthony-Joshua-vs-Kristian-Prenga-2026-0.png",
+    "posted_at": "2026-07-26"
+  },
+  "Hamzah-Sheeraz-vs-Simon-Zachenhuber-2026-07-26": {
+    "winner": "Hamzah Sheeraz",
+    "loser": "Simon Zachenhuber",
+    "method": "Decision (Unanimous)",
+    "event": "Sheeraz vs. Zachenhuber",
+    "tweet": "https://x.com/thefightdocket/status/2081338577234035131",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Hamzah-Sheeraz-vs-Simon-Zachenhuber-2026.png",
+    "posted_at": "2026-07-26"
+  },
+  "Josh-Kelly-vs-Caoimhin-Agyarko-2026-07-26": {
+    "winner": "Josh Kelly",
+    "loser": "Caoimhin Agyarko",
+    "method": "Decision (Unanimous)",
+    "event": "Kelly vs. Agyarko",
+    "tweet": "https://x.com/thefightdocket/status/2081338674130895173",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Josh-Kelly-vs-Caoimhin-Agyarko-2026-07-2.png",
+    "posted_at": "2026-07-26"
+  },
+  "Reito-Tsutsumi-vs-Alvino-Herrera-2026-07-26": {
+    "winner": "Reito Tsutsumi",
+    "loser": "Alvino Herrera",
+    "method": "KO/TKO",
+    "event": "Tsutsumi vs. Herrera",
+    "tweet": "https://x.com/thefightdocket/status/2081338775372959994",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Reito-Tsutsumi-vs-Alvino-Herrera-2026-07.png",
+    "posted_at": "2026-07-26"
+  },
+  "Nishant-Dev-vs-Cesar-Diaz-2026-07-26": {
+    "winner": "Nishant Dev",
+    "loser": "Cesar Diaz",
+    "method": "KO/TKO",
+    "event": "Joshua vs. Prenga Undercard",
+    "tweet": "https://x.com/thefightdocket/status/2081338863730216971",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Nishant-Dev-vs-Cesar-Diaz-2026-07-26.png",
+    "posted_at": "2026-07-26"
+  },
+  "Tyson-Fury-vs-Mariusz-Wach-2026-07-24": {
+    "winner": "Tyson Fury",
+    "loser": "Mariusz Wach",
+    "method": "KO/TKO",
+    "event": "Fury vs. Wach",
+    "tweet": "https://x.com/thefightdocket/status/2081338992944193778",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Tyson-Fury-vs-Mariusz-Wach-2026-07-24.png",
+    "posted_at": "2026-07-26"
   }
 }
