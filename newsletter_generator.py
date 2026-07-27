@@ -526,11 +526,38 @@ def write_outputs(data):
     print(f"  IG data     : {IG_DATA_FILE.name}")
 
 
+def _already_generated_upstream() -> bool:
+    """Check origin/main for today's issue file before burning Firecrawl/Perplexity/Gemini
+    calls on a duplicate local run. Never blocks on network/git failure — only blocks on a
+    confirmed match. Bypass with FORCE_REGENERATE=1."""
+    import subprocess
+    if os.getenv("FORCE_REGENERATE"):
+        return False
+    try:
+        subprocess.run(["git", "fetch", "origin", "main", "--quiet"], cwd=SCRIPT_DIR,
+                        timeout=20, check=False)
+        result = subprocess.run(
+            ["git", "cat-file", "-e", f"origin/main:{ISSUE_FILE.name}"],
+            cwd=SCRIPT_DIR, timeout=10,
+        )
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
 def main():
     print("=" * 55)
     print("  The Fight Docket — Newsletter Generator")
     print(f"  Issue: {ISSUE_DATE}")
     print("=" * 55)
+
+    if _already_generated_upstream():
+        raise SystemExit(
+            f"\n{ISSUE_FILE.name} already exists on origin/main — GitHub Actions has already "
+            f"generated this issue. Skipping to avoid duplicate Firecrawl/Perplexity/Gemini "
+            f"calls. Run `git pull` to get it locally, or set FORCE_REGENERATE=1 to regenerate "
+            f"anyway."
+        )
 
     print("\n[1/4] Loading confirmed upcoming fights...")
     upcoming_fights_data = load_upcoming_fights()

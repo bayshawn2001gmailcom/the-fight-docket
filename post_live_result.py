@@ -149,13 +149,31 @@ Content:
 JSON array:"""
 
 
+def _gemini_call_with_retry(client, model, prompt, attempts=3):
+    """Retry on 429/503 with backoff; raises on other errors or after exhausting attempts."""
+    last_err = None
+    for attempt in range(attempts):
+        try:
+            return client.models.generate_content(model=model, contents=[prompt])
+        except Exception as e:
+            msg = str(e)
+            last_err = e
+            if "429" in msg or "503" in msg:
+                wait = 20 * (attempt + 1)
+                print(f"  Gemini {msg[:30]} — retrying in {wait}s (attempt {attempt+1}/{attempts})")
+                time.sleep(wait)
+            else:
+                raise
+    raise SystemExit(f"Gemini call failed after {attempts} attempts: {last_err}")
+
+
 def extract_results(raw_content: str) -> list:
     from google import genai
     client = genai.Client(api_key=GEMINI_API_KEY)
 
     prompt = EXTRACT_PROMPT.replace("{today}", date.today().isoformat()).replace("{content}", raw_content[:30000])
     print("  Calling Gemini to extract results...")
-    response = client.models.generate_content(model="gemini-2.5-flash", contents=[prompt])
+    response = _gemini_call_with_retry(client, "gemini-2.5-flash", prompt)
     raw = response.text.strip()
 
     raw = re.sub(r"^```(?:json)?\s*", "", raw)

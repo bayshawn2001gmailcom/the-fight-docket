@@ -134,6 +134,24 @@ Output ONLY a JSON array of 6 strings (the tweets), no other text:
 """
 
 
+def _gemini_call_with_retry(client, model, prompt, attempts=3):
+    """Retry on 429/503 with backoff; raises on other errors or after exhausting attempts."""
+    last_err = None
+    for attempt in range(attempts):
+        try:
+            return client.models.generate_content(model=model, contents=[prompt])
+        except Exception as e:
+            msg = str(e)
+            last_err = e
+            if "429" in msg or "503" in msg:
+                wait = 20 * (attempt + 1)
+                print(f"  Gemini {msg[:30]} — retrying in {wait}s (attempt {attempt+1}/{attempts})")
+                time.sleep(wait)
+            else:
+                raise
+    raise SystemExit(f"Gemini call failed after {attempts} attempts: {last_err}")
+
+
 def generate_thread(newsletter_text, ig_data):
     from google import genai
     client = genai.Client(api_key=GEMINI_API_KEY)
@@ -146,7 +164,7 @@ def generate_thread(newsletter_text, ig_data):
     prompt = f"{THREAD_PROMPT}\n\n{context}\n\nGenerate the 6-tweet thread JSON array now:"
 
     print("  Calling Gemini to write thread...")
-    response = client.models.generate_content(model="gemini-2.5-flash", contents=[prompt])
+    response = _gemini_call_with_retry(client, "gemini-2.5-flash", prompt)
     raw = response.text.strip()
 
     # Strip markdown fences
