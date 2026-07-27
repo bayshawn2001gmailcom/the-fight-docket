@@ -1,33 +1,32 @@
 {
-  "date": "JULY 20, 2026",
-  "issue": "jul20_2026",
+  "date": "JULY 27, 2026",
+  "issue": "jul27_2026",
   "preview_stories": [
-    "Du Plessis dominates Usman in OKC",
-    "Conor McGregor sidelined by major knee injury until 2027",
-    "TKO Group reports record $1.59B Q1 revenue",
-    "NYSAC suspends promoter for nonpayment"
+    "Gaethje shocks Topuria to win UFC lightweight title.",
+    "UFC media rights negotiations heat up with ESPN.",
+    "Jaron 'Boots' Ennis becomes unified champion."
   ],
   "announcement": {
-    "fighter1": "Ankalaev",
-    "fighter2": "Guskov",
-    "event": "UFC Fight Night",
-    "date": "July 25 \u00b7 Abu Dhabi, UAE",
-    "weight_class": "Light Heavyweight",
-    "filename": "ankalaev_vs_guskov_announcement.png"
+    "fighter1": "Alvarez",
+    "fighter2": "Mbilli",
+    "event": "WBC Super Middleweight Championship",
+    "date": "September 12 \u00b7 Riyadh, SA",
+    "weight_class": "Super Middleweight",
+    "filename": "alvarez_vs_mbilli_announcement.png"
   },
   "result": {
-    "winner": "Dricus du Plessis",
-    "loser": "Kamaru Usman",
-    "method": "Decision",
-    "round_num": "R5",
-    "time": "5:00",
-    "event": "UFC Oklahoma City",
-    "filename": "duplessis_result.png"
+    "winner": "Justin Gaethje",
+    "loser": "Ilia Topuria",
+    "method": "KO/TKO",
+    "round_num": "R4",
+    "time": "2:15",
+    "event": "UFC Freedom 250",
+    "filename": "gaethje_result.png"
   },
   "quote": {
-    "quote": "That kind of blurred the vision a bit.",
-    "attribution": "Kamaru Usman",
-    "context": "On an early punch in his fight against Dricus du Plessis",
-    "filename": "usman_quote_card.png"
+    "quote": "I'm open to Paulo Costa fight next, unless he\u2019s going to be running away.",
+    "attribution": "Magomed Ankalaev",
+    "context": "Post-fight at UFC Fight Night",
+    "filename": "ankalaev_quote_card.png"
   }
 }

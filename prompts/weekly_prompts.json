@@ -1,40 +1,25 @@
 {
-  "issue_date": "2026-07-20",
+  "issue_date": "2026-07-27",
   "prompts": [
     {
       "section": "intro",
-      "topic": "The intersection of high finance and combat sports",
-      "prompt": "A single leather boxing glove resting on a stack of financial reports, moody lighting, dark editorial atmosphere, no faces, no logos."
+      "topic": "UFC lightweight division in chaos after a major title upset.",
+      "prompt": "A championship belt lies abandoned on a dark canvas, spotlights casting long shadows."
     },
     {
       "section": "main_story",
-      "topic": "A dominant champion stands alone after a decisive victory",
-      "prompt": "An empty MMA octagon under a single spotlight, canvas slightly scuffed, cinematic, dark atmosphere, no faces, no logos."
-    },
-    {
-      "section": "legal",
-      "topic": "Legal battles and regulatory actions in combat sports",
-      "prompt": "A gavel resting on a leather-bound rulebook in a dark, empty commission hearing room, cinematic, moody lighting."
-    },
-    {
-      "section": "rumor",
-      "topic": "Whispers and unconfirmed news in the fight world",
-      "prompt": "Silhouetted figures talking in a dimly lit hallway outside a locker room, abstract, cinematic, dark atmosphere."
+      "topic": "Justin Gaethje's shocking upset victory for the UFC lightweight championship.",
+      "prompt": "An MMA glove, stained with chalk and sweat, rests on the top of the octagon cage."
     },
     {
       "section": "fight_previews",
-      "topic": "Fighters preparing for an upcoming sanctioned bout",
-      "prompt": "Close-up on freshly wrapped hands under the dim light of a locker room, no faces, visible texture of the gauze, dark editorial atmosphere."
+      "topic": "A placeholder for the upcoming fight schedule and analysis.",
+      "prompt": "A single spotlight illuminates an empty boxing ring in a vast, dark arena."
     },
     {
       "section": "business_intel",
-      "topic": "Global media rights deals and corporate finance in sports",
-      "prompt": "A world map made of glowing data streams on a dark screen, financial data and stock tickers overlaid, cinematic, abstract."
-    },
-    {
-      "section": "fighter_spotlight",
-      "topic": "The difficult road back from a career-threatening injury",
-      "prompt": "A single empty stool in the corner of a boxing ring, spotlight from above, dark and moody atmosphere, no people."
+      "topic": "UFC's complex media rights negotiations and global sponsorship deals.",
+      "prompt": "A glowing television screen displaying static in a dark boardroom, reflecting on a polished table."
     }
   ]
 }
