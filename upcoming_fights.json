@@ -1,12 +1,6 @@
 {
-  "crawled_at": "2026-07-10T23:53:19.135023Z",
+  "crawled_at": "2026-07-17T23:45:19.548449Z",
   "ufc": [
-    {
-      "event": "UFC 329",
-      "main_fight": "McGregor vs Holloway 2",
-      "date": "2026-07-11",
-      "location": "T-Mobile Arena, Las Vegas, NV, United States"
-    },
     {
       "event": "UFC Fight Night",
       "main_fight": "Du Plessis vs Usman",
@@ -15,7 +9,7 @@
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "Ankalaev vs Rountree Jr.",
+      "main_fight": "Ankalaev vs Guskov",
       "date": "2026-07-25",
       "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
     },
@@ -51,15 +45,15 @@
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "Fiziev vs Torres",
-      "date": "2026-06-27",
-      "location": "National Gymnastics Arena, Baku, Azerbaijan"
+      "main_fight": "TBD vs TBD",
+      "date": "2026-09-05",
+      "location": "Accor Arena, Paris, France"
     },
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Kape vs Horiguchi",
-      "date": "2026-06-20",
-      "location": "Meta APEX, Las Vegas, NV, United States"
+      "event": "UFC 329",
+      "main_fight": "McGregor vs Holloway 2",
+      "date": "2026-07-11",
+      "location": "T-Mobile Arena, Las Vegas, NV, United States"
     }
   ],
   "boxing": []

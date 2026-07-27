@@ -1,32 +1,25 @@
 {
-  "date": "JULY 20, 2026",
-  "issue": "jul20_2026",
+  "date": "JULY 27, 2026",
+  "issue": "jul27_2026",
   "preview_stories": [
-    "Du Plessis cements Middleweight reign over Usman.",
-    "Conor McGregor reveals ACL injury, targets Summer 2027 return.",
-    "TKO Group stacks new sponsorships with DoorDash, IBM."
+    "Tim Tszyu outpoints Errol Spence Jr. in Sydney, sending him into retirement.",
+    "Jaron 'Boots' Ennis is the new unified king at 154 lbs. What's next?",
+    "UFC and ESPN enter exclusive U.S. media rights negotiation window."
   ],
-  "announcement": {
-    "fighter1": "Edwards",
-    "fighter2": "Rakhmonov",
-    "event": "UFC 330",
-    "date": "Aug 15 \u00b7 TBA",
-    "weight_class": "Welterweight",
-    "filename": "edwards_vs_rakhmonov_announcement.png"
-  },
+  "announcement": null,
   "result": {
-    "winner": "Dricus Du Plessis",
-    "loser": "Kamaru Usman",
-    "method": "Unanimous Decision",
-    "round_num": "R5",
-    "time": "5:00",
-    "event": "UFC Fight Night",
-    "filename": "duplessis_result.png"
+    "winner": "Tim Tszyu",
+    "loser": "Errol Spence Jr.",
+    "method": "UD",
+    "round_num": "12",
+    "time": null,
+    "event": "Sydney, Australia — Spence announces retirement",
+    "filename": "tszyu_spence_result.png"
   },
   "quote": {
-    "quote": "That kind of blurred the vision a bit.",
-    "attribution": "Kamaru Usman",
-    "context": "On an early punch from Dricus Du Plessis in their title fight.",
-    "filename": "usman_quote_card.png"
+    "quote": "I am open to a Paulo Costa fight next, unless he’s going to be running away.",
+    "attribution": "Magomed Ankalaev",
+    "context": "Following his UFC Fight Night win",
+    "filename": "ankalaev_quote_card.png"
   }
 }
