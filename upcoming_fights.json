@@ -1,12 +1,6 @@
 {
-  "crawled_at": "2026-07-17T23:45:19.548449Z",
+  "crawled_at": "2026-07-24T23:58:20.046981Z",
   "ufc": [
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Du Plessis vs Usman",
-      "date": "2026-07-18",
-      "location": "Paycom Center, Oklahoma City, OK, United States"
-    },
     {
       "event": "UFC Fight Night",
       "main_fight": "Ankalaev vs Guskov",
@@ -48,6 +42,18 @@
       "main_fight": "TBD vs TBD",
       "date": "2026-09-05",
       "location": "Accor Arena, Paris, France"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "TBD vs TBD",
+      "date": "2026-09-12",
+      "location": "Desert Diamond Arena, Glendale, AZ, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Du Plessis vs Usman",
+      "date": "2026-07-18",
+      "location": "Paycom Center, Oklahoma City, OK, United States"
     },
     {
       "event": "UFC 329",

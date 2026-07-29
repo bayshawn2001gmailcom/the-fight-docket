@@ -1,4 +1,19 @@
 
+## 2026-07-27 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_april_20_2026.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2081776344472437036
+
+  T1: Dana White says the McGregor deal is 'looking good.' The truth? It's a complex f...
+  T2: McGregor's last deal relied on PPV points, a system dismantled after the $7.7 bi...
+  T3: The UFC's $7.7 billion Paramount/CBS deal was supposed to lift all boats. Instea...
+  T4: While base pay struggles, the UFC did increase event bonuses. Total outlay is no...
+  T5: Beyond current contracts, the combat sports landscape is still shaped by legal b...
+  T6: Want the deeper dives on combat sports business? Join thousands of insiders who ...
+
+- Status: ✅ Posted
+
 ## 2026-07-20 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-07-20.html
