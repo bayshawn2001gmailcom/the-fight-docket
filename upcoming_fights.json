@@ -1,17 +1,11 @@
 {
-  "crawled_at": "2026-07-24T23:58:20.046981Z",
+  "crawled_at": "2026-07-31T23:55:30.892311Z",
   "ufc": [
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Ankalaev vs Guskov",
-      "date": "2026-07-25",
-      "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
-    },
     {
       "event": "UFC Fight Night",
       "main_fight": "Medic vs Rodriguez",
       "date": "2026-08-01",
-      "location": "Belgrade Arena, BG, Serbia"
+      "location": "Belgrade Arena, Serbia"
     },
     {
       "event": "UFC Fight Night",
@@ -39,7 +33,7 @@
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "TBD vs TBD",
+      "main_fight": "Hooker vs Parnasse",
       "date": "2026-09-05",
       "location": "Accor Arena, Paris, France"
     },
@@ -48,6 +42,18 @@
       "main_fight": "TBD vs TBD",
       "date": "2026-09-12",
       "location": "Desert Diamond Arena, Glendale, AZ, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Buckley vs Malott",
+      "date": "2026-10-17",
+      "location": "Rogers Place, Edmonton, AB, Canada"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Ankalaev vs Guskov",
+      "date": "2026-07-25",
+      "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
     },
     {
       "event": "UFC Fight Night",
