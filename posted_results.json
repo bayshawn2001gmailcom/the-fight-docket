@@ -223,5 +223,41 @@
     "tweet": "https://x.com/thefightdocket/status/2081338992944193778",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Tyson-Fury-vs-Mariusz-Wach-2026-07-24.png",
     "posted_at": "2026-07-26"
+  },
+  "Muratalla-vs-Conceicao-2026-08-01": {
+    "winner": "Raymond Muratalla",
+    "loser": "Robson Conceicao",
+    "method": "Decision (Unanimous)",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771499727695936",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Muratalla-vs-Conceicao-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Curiel-vs-Randall-2026-08-01": {
+    "winner": "Raul Curiel",
+    "loser": "Quinton Randall",
+    "method": "Decision (Majority)",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771602614043107",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Curiel-vs-Randall-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Chamberlain-vs-O'Leary-2026-08-01": {
+    "winner": "Mark Chamberlain",
+    "loser": "Pierce O\u2019Leary",
+    "method": "KO/TKO",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771730557100532",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Chamberlain-vs-O'Leary-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Barney-Smith-vs-Bellotti-2026-08-01": {
+    "winner": "Royston Barney-Smith",
+    "loser": "Reece Bellotti",
+    "method": "Decision (Unanimous)",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771824605995139",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Barney-Smith-vs-Bellotti-2026-08-01.png",
+    "posted_at": "2026-08-02"
   }
 }
