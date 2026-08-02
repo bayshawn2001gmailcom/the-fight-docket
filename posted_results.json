@@ -259,5 +259,14 @@
     "tweet": "https://x.com/thefightdocket/status/2083771824605995139",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Barney-Smith-vs-Bellotti-2026-08-01.png",
     "posted_at": "2026-08-02"
+  },
+  "Chamberlain-vs-OLeary-2026-08-01": {
+    "winner": "Mark Chamberlain",
+    "loser": "Pierce O'Leary",
+    "method": "KO/TKO",
+    "event": "Dublin Fight Night",
+    "tweet": "https://x.com/thefightdocket/status/2083874335119258065",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Chamberlain-vs-OLeary-2026-08-01.png",
+    "posted_at": "2026-08-02"
   }
 }
