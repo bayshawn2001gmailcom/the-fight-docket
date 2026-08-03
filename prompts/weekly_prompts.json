@@ -1,40 +1,25 @@
 {
-  "issue_date": "2026-07-27",
+  "issue_date": "2026-08-03",
   "prompts": [
     {
       "section": "intro",
-      "topic": "A new boxing champion shifts the market, as UFC media rights talks begin.",
-      "prompt": "Cinematic, dark editorial photo of a single, gleaming championship belt casting a long shadow over a polished boardroom table."
+      "topic": "Strategic disruption and shifting power dynamics in combat sports.",
+      "prompt": "A single, dramatically lit chessboard in a dark room. One king piece has been violently knocked over, signifying a major upset. Cinematic, moody, editorial style."
     },
     {
       "section": "main_story",
-      "topic": "Tim Tszyu defeats Errol Spence Jr. by unanimous decision in Sydney, sending Spence into retirement.",
-      "prompt": "Cinematic, high-contrast photo of two boxers in silhouette facing off center-ring under a single hard spotlight, one figure's shadow stretching long across the canvas as if fading — no visible faces, from-behind and side angles only."
-    },
-    {
-      "section": "legal",
-      "topic": "The UFC antitrust lawsuit's remaining case and a new White House event injunction.",
-      "prompt": "A stark, shadowy image of a judge's gavel resting on a stack of legal documents in a dark, empty courtroom."
-    },
-    {
-      "section": "rumor",
-      "topic": "PFL's strategic expansion into the UAE and Tom Aspinall's links to Matchroom Boxing.",
-      "prompt": "Moody, cinematic shot of two anonymous figures in silhouette, speaking intently in a smoke-filled, dimly lit room."
+      "topic": "Justin Gaethje's shocking upset win for the UFC Lightweight Championship.",
+      "prompt": "An official UFC championship belt being placed onto a dark, empty octagon canvas under a single, harsh spotlight. No people, no logos. Abstract and symbolic."
     },
     {
       "section": "fight_previews",
-      "topic": "A quiet week in the combat sports schedule before the next major events.",
-      "prompt": "A wide, atmospheric shot of an empty, dark arena with a single spotlight shining on the center of the vacant octagon."
+      "topic": "Upcoming major title fights in both boxing and MMA.",
+      "prompt": "Two pairs of gloves, one MMA and one boxing, hanging opposite each other on a stark, concrete wall. Minimalist, dramatic side-lighting, dark editorial atmosphere."
     },
     {
       "section": "business_intel",
-      "topic": "UFC's international media rights deals and its exclusive U.S. renewal talks with ESPN.",
-      "prompt": "Abstract cinematic image of glowing data streams connecting countries on a dark, minimalist digital map of the world."
-    },
-    {
-      "section": "fighter_spotlight",
-      "topic": "Tim Tszyu's career-best win over Errol Spence Jr. and his rising commercial stock.",
-      "prompt": "Dark, triumphant shot of a boxer in silhouette raising a gloved fist against bright arena lights, shot from behind so no face is visible, crowd a blurred glow in the background."
+      "topic": "The merger of PFL and MVP promotions creates a new corporate power.",
+      "prompt": "Two abstract, dark glass skyscrapers at night slowly merging into a single, more formidable structure. Conceptual, corporate, financial aesthetic, dark tones."
     }
   ]
 }
