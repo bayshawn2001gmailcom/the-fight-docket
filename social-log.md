@@ -1,4 +1,19 @@
 
+## 2026-08-03 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-07-20.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2084314554939437558
+
+  T1: TKO Group just posted $1.59B in Q1 revenue, a 26% surge. But the shadow of a sin...
+  T2: TKO Group Holdings Q1 2026 revenue hit $1.59 billion, a 26% increase year-over-y...
+  T3: Despite the strong financials, Conor McGregor's catastrophic injury creates a si...
+  T4: A key driver of TKO's growth is strategic media rights. DAZN extended its UFC de...
+  T5: UFC Middleweight Dricus du Plessis solidified his reign, defeating Kamaru Usman....
+  T6: Stay ahead of the curve with insider analysis on the business of combat sports. ...
+
+- Status: ✅ Posted
+
 ## 2026-07-27 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_april_20_2026.html
