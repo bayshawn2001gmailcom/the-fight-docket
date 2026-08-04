@@ -1,40 +1,40 @@
 {
-  "issue_date": "2026-07-27",
+  "issue_date": "2026-08-03",
   "prompts": [
     {
       "section": "intro",
-      "topic": "A new boxing champion shifts the market, as UFC media rights talks begin.",
-      "prompt": "Cinematic, dark editorial photo of a single, gleaming championship belt casting a long shadow over a polished boardroom table."
+      "topic": "One fighter earns a belt over twelve rounds; another declines a title shot over money.",
+      "prompt": "Split-composition editorial image: on one side a worn pair of red boxing gloves hanging over the top rope of a ring, sweat-lit and steaming under a single hot overhead lamp; on the other side an unsigned contract and a capped pen on a cold grey boardroom table. Hard vertical division between warm amber and cold steel blue, documentary photography, shallow depth of field, no people, no text"
     },
     {
       "section": "main_story",
-      "topic": "Tim Tszyu defeats Errol Spence Jr. by unanimous decision in Sydney, sending Spence into retirement.",
-      "prompt": "Cinematic, high-contrast photo of two boxers in silhouette facing off center-ring under a single hard spotlight, one figure's shadow stretching long across the canvas as if fading — no visible faces, from-behind and side angles only."
+      "topic": "William Zepeda throws 884 punches to beat Lamont Roach Jr. for the vacant WBC lightweight title.",
+      "prompt": "Long-exposure motion-blur photograph of a lone fighter's gloved fists in mid-flurry against a black background, punches smearing into overlapping red and gold light trails to convey relentless volume, hundreds of punches compressed into one frame. Only forearms and gloves in frame, head and body cropped out entirely, deep black background, warm crimson and gold key light, high contrast, cinematic sports photography, no text"
     },
     {
       "section": "legal",
-      "topic": "The UFC antitrust lawsuit's remaining case and a new White House event injunction.",
-      "prompt": "A stark, shadowy image of a judge's gavel resting on a stack of legal documents in a dark, empty courtroom."
+      "topic": "The WBO championship committee weighs Keyshawn Davis's withdrawal; UFC antitrust suits continue.",
+      "prompt": "An open championship-belt case sitting on the polished mahogany table of an empty hearing room, a stack of legal filings beside it, tall shuttered windows throwing hard slatted shadows across the wood. Cold desaturated blue-grey palette, one shaft of pale light, austere and institutional, wide cinematic framing, no people, no readable text"
     },
     {
       "section": "rumor",
-      "topic": "PFL's strategic expansion into the UAE and Tom Aspinall's links to Matchroom Boxing.",
-      "prompt": "Moody, cinematic shot of two anonymous figures in silhouette, speaking intently in a smoke-filled, dimly lit room."
+      "topic": "Fury-Joshua venue, a vacated IBF belt, and a WBO mandatory reshuffle.",
+      "prompt": "Two anonymous figures in overcoats standing far apart under a single sodium streetlight in a rain-slick empty stadium loading dock at night, one holding a folded envelope at their side. Extreme backlighting reduces both to pure silhouettes, heavy atmospheric haze, film-noir contrast, amber light against deep blue-black shadow, no faces visible, no text"
     },
     {
       "section": "fight_previews",
-      "topic": "A quiet week in the combat sports schedule before the next major events.",
-      "prompt": "A wide, atmospheric shot of an empty, dark arena with a single spotlight shining on the center of the vacant octagon."
+      "topic": "Zuffa Boxing in Ireland, UFC at the APEX, Serrano and Shields, Romero-Lopez PPV.",
+      "prompt": "An empty arena photographed from the upper deck hours before doors open, a single lit boxing ring glowing white at the center of thousands of dark vacant seats, cables and lighting trusses overhead. Wide symmetrical composition, cool blue darkness with a hot pool of white light at center, anticipation and scale, architectural cinematic photography, no people, no text"
     },
     {
       "section": "business_intel",
-      "topic": "UFC's international media rights deals and its exclusive U.S. renewal talks with ESPN.",
-      "prompt": "Abstract cinematic image of glowing data streams connecting countries on a dark, minimalist digital map of the world."
+      "topic": "Keyshawn Davis declines a $2.14M purse and his mandatory position; TKO consolidates on Paramount+.",
+      "prompt": "A single empty chair at a long negotiating table in a dark glass-walled conference room high above a city at night, an unsigned document and a pen placed in front of the vacant seat, city lights blurred beyond the glass. Cold blue and charcoal palette, one warm lamp pooling on the paper, emptiness and refusal as the subject, wide cinematic framing, no people, no readable text"
     },
     {
       "section": "fighter_spotlight",
-      "topic": "Tim Tszyu's career-best win over Errol Spence Jr. and his rising commercial stock.",
-      "prompt": "Dark, triumphant shot of a boxer in silhouette raising a gloved fist against bright arena lights, shot from behind so no face is visible, crowd a blurred glow in the background."
+      "topic": "William Zepeda rebuilds from the Shakur Stevenson loss into a world champion.",
+      "prompt": "A green and gold championship belt draped over a corner stool in a dim empty gym, hand wraps unspooled beside it on the canvas, dust suspended in a single warm shaft of window light. Fine-art still life, rich warm amber and deep green tones, textured leather and worn canvas, quiet and earned, macro cinematic detail, no people, no text"
     }
   ]
 }
