@@ -1,0 +1,33 @@
+name: Thursday IG Post — Fight Announcement
+
+# Posts the weekly fight announcement card to Instagram + Facebook.
+# Card generated Monday 11am EDT by weekly_ig_content.yml.
+on:
+  schedule:
+    - cron: '0 16 * * 4'  # Thursday 4pm UTC = 12pm EDT
+  workflow_dispatch:
+
+jobs:
+  post-announcement-card:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv pillow --break-system-packages
+
+      - name: Post fight announcement card (IG + FB)
+        env:
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          INSTAGRAM_PAGE_TOKEN: ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+          FACEBOOK_PAGE_ID:     ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN:  ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          IMGBB_API_KEY:        ${{ secrets.IMGBB_API_KEY }}
+        run: python post_instagram_weekly.py --card announcement
