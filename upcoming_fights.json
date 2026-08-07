@@ -1,12 +1,6 @@
 {
-  "crawled_at": "2026-07-31T23:55:30.892311Z",
+  "crawled_at": "2026-08-07T23:27:11.016963Z",
   "ufc": [
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Medic vs Rodriguez",
-      "date": "2026-08-01",
-      "location": "Belgrade Arena, Serbia"
-    },
     {
       "event": "UFC Fight Night",
       "main_fight": "Gamrot vs Salkilld",
@@ -39,15 +33,27 @@
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "TBD vs TBD",
+      "main_fight": "Rodriguez vs Silva",
       "date": "2026-09-12",
       "location": "Desert Diamond Arena, Glendale, AZ, United States"
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "Buckley vs Malott",
-      "date": "2026-10-17",
-      "location": "Rogers Place, Edmonton, AB, Canada"
+      "main_fight": "Van vs Pantoja 2",
+      "date": "2026-09-19",
+      "location": "Crypto.com Arena, Los Angeles, CA, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "TBD vs TBD",
+      "date": "2026-09-26",
+      "location": "Meta APEX, Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Medic vs Rodriguez",
+      "date": "2026-08-01",
+      "location": "Belgrade Arena, BG, Serbia"
     },
     {
       "event": "UFC Fight Night",
@@ -63,7 +69,7 @@
     },
     {
       "event": "UFC 329",
-      "main_fight": "McGregor vs Holloway 2",
+      "main_fight": "McGregor vs Holloway",
       "date": "2026-07-11",
       "location": "T-Mobile Arena, Las Vegas, NV, United States"
     }
