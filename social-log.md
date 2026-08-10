@@ -1,4 +1,19 @@
 
+## 2026-08-10 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-07-27_clean.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2086829618787491914
+
+  T1: While UFC's industrial-scale output dominates the weekly calendar, the squared c...
+  T2: Tim Tszyu’s dominant win over Errol Spence Jr. not only retired a legend but tur...
+  T3: Jaron 'Boots' Ennis unified WBA/WBO junior middleweight titles, stopping Xander ...
+  T4: Behind the ropes, TKO is deep into exclusive media rights negotiations with ESPN...
+  T5: The PFL's strategic move to establish a significant presence in the UAE, coupled...
+  T6: From new boxing champions minting millions to UFC's pivotal media rights and PFL...
+
+- Status: ✅ Posted
+
 ## 2026-08-03 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-07-20.html
