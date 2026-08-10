@@ -12,6 +12,8 @@ import requests
 from pathlib import Path
 from dotenv import load_dotenv
 
+from issue_selector import latest_issue
+
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
@@ -35,12 +37,11 @@ def find_newsletter(path_arg=None):
         if not p.exists():
             raise SystemExit(f"File not found: {path_arg}")
         return p
-    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), key=lambda f: f.stat().st_mtime, reverse=True)
-    # skip _clean.html files
-    files = [f for f in files if "_clean" not in f.name]
-    if not files:
-        raise SystemExit("No newsletter_*.html found.")
-    return files[0]
+    # Selected by the date in the filename, never mtime — see issue_selector.py.
+    # No age limit here: this is build tooling and is legitimately re-run on
+    # older issues to regenerate their images.
+    _, path = latest_issue(SCRIPT_DIR, max_age_days=None)
+    return path
 
 
 # ------------------------------------------------------------------ #

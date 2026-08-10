@@ -16,6 +16,8 @@ from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
 import requests
 
+from issue_selector import MAX_ISSUE_AGE_DAYS, latest_issue
+
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
@@ -64,11 +66,9 @@ def load_newsletter(status: dict, is_retry: bool) -> tuple:
             return candidate.name, candidate.read_text(encoding="utf-8")
         print(f"  Retry file not found ({status['newsletter_file']}), finding latest...")
 
-    # Sort by modification time so mixed filename formats pick the newest file
-    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), key=lambda f: f.stat().st_mtime, reverse=True)
-    if not files:
-        raise SystemExit("No newsletter_*.html found. Run newsletter_generator.py first.")
-    latest = files[0]
+    # Selected by the date in the filename, never mtime — see issue_selector.py.
+    # This publishes to subscribers, so the staleness guard is enforced.
+    _, latest = latest_issue(SCRIPT_DIR, max_age_days=MAX_ISSUE_AGE_DAYS)
     print(f"  Newsletter: {latest.name}")
     return latest.name, latest.read_text(encoding="utf-8")
 

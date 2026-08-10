@@ -1,9 +1,24 @@
 
 ## 2026-08-10 — Twitter Thread (@thefightdocket)
 
-- Newsletter: newsletter_2026-07-27_clean.html
+- Newsletter: newsletter_2026-08-10.html
 - Tweets posted: 6
-- Thread root: https://x.com/thefightdocket/status/2086829618787491914
+- Thread root: https://x.com/thefightdocket/status/2086907019781386538
+
+  T1: Three world titles changed hands Saturday, but the real fight wasn't in the ring...
+  T2: The MVP-PFL merger targets TKO's dominance by consolidating title inventory. By ...
+  T3: TKO's Zuffa Boxing crowned Ireland's Aaron McKenna, controlling a homegrown cham...
+  T4: Unranked Quillan Salkilld's upset submission of Mateusz Gamrot carries significa...
+  T5: TKO Operating Co. faces a critical motion for severe sanctions in the Johnson et...
+  T6: For more insider analysis on combat sports business intelligence, subscribe free...
+
+- Status: ✅ Posted
+
+## 2026-08-10 — Twitter Thread (@thefightdocket) — DELETED, DO NOT COUNT
+
+- Newsletter: newsletter_2026-07-27_clean.html  ← WRONG FILE, two weeks stale
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2086829618787491914 (dead link)
 
   T1: While UFC's industrial-scale output dominates the weekly calendar, the squared c...
   T2: Tim Tszyu’s dominant win over Errol Spence Jr. not only retired a legend but tur...
@@ -12,7 +27,18 @@
   T5: The PFL's strategic move to establish a significant presence in the UAE, coupled...
   T6: From new boxing champions minting millions to UFC's pivotal media rights and PFL...
 
-- Status: ✅ Posted
+- Status: ❌ **Deleted 2026-08-10.** All 6 tweets removed and replaced by the
+  thread logged above.
+- Why: `post_twitter_thread.py` selected the newsletter by file mtime. Git does
+  not preserve mtimes, so on a fresh GitHub Actions clone the "newest" file was
+  arbitrary and it picked the July 27 issue. The thread described the wrong
+  weekend (Tszyu/Spence, Ennis/Zayas) and T4 repeated the false claim that TKO
+  was negotiating US rights with ESPN. Paramount has held those rights since
+  2026; the ESPN window ran in early 2025 and produced no deal.
+- Fix: selection now keys off the ISO date in the filename via
+  `issue_selector.py`, with a 3-day staleness guard that aborts the run.
+- Note: the 2026-08-03 entry below has the same defect (used the July 20 issue).
+  Those tweets were left up; only the 08-10 thread was retracted.
 
 ## 2026-08-03 — Twitter Thread (@thefightdocket)
 

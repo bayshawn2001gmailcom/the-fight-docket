@@ -10,6 +10,8 @@ from pathlib import Path
 from datetime import date
 from dotenv import load_dotenv
 
+from issue_selector import MAX_ISSUE_AGE_DAYS, latest_issue
+
 load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
@@ -81,12 +83,13 @@ def post_thread(tweets):
 # ---------------------------------------------------------------------------
 
 def load_newsletter():
-    """Find and read the most recent newsletter HTML."""
-    files = sorted(SCRIPT_DIR.glob("newsletter_*.html"), key=lambda p: p.stat().st_mtime, reverse=True)
-    if not files:
-        return None, None
-    latest = files[0]
-    return latest.name, latest.read_text(encoding="utf-8")
+    """Read the current newsletter, selected by the date in its FILENAME.
+
+    Never sort by st_mtime — see issue_selector.py for why that shipped two
+    stale threads before it was caught.
+    """
+    _, path = latest_issue(SCRIPT_DIR, max_age_days=MAX_ISSUE_AGE_DAYS)
+    return path.name, path.read_text(encoding="utf-8")
 
 
 def load_ig_data():
