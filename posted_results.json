@@ -223,5 +223,95 @@
     "tweet": "https://x.com/thefightdocket/status/2081338992944193778",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260726_Tyson-Fury-vs-Mariusz-Wach-2026-07-24.png",
     "posted_at": "2026-07-26"
+  },
+  "Muratalla-vs-Conceicao-2026-08-01": {
+    "winner": "Raymond Muratalla",
+    "loser": "Robson Conceicao",
+    "method": "Decision (Unanimous)",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771499727695936",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Muratalla-vs-Conceicao-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Curiel-vs-Randall-2026-08-01": {
+    "winner": "Raul Curiel",
+    "loser": "Quinton Randall",
+    "method": "Decision (Majority)",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771602614043107",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Curiel-vs-Randall-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Chamberlain-vs-O'Leary-2026-08-01": {
+    "winner": "Mark Chamberlain",
+    "loser": "Pierce O\u2019Leary",
+    "method": "KO/TKO",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771730557100532",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Chamberlain-vs-O'Leary-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Barney-Smith-vs-Bellotti-2026-08-01": {
+    "winner": "Royston Barney-Smith",
+    "loser": "Reece Bellotti",
+    "method": "Decision (Unanimous)",
+    "event": "",
+    "tweet": "https://x.com/thefightdocket/status/2083771824605995139",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Barney-Smith-vs-Bellotti-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "Chamberlain-vs-OLeary-2026-08-01": {
+    "winner": "Mark Chamberlain",
+    "loser": "Pierce O'Leary",
+    "method": "KO/TKO",
+    "event": "Dublin Fight Night",
+    "tweet": "https://x.com/thefightdocket/status/2083874335119258065",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260802_Chamberlain-vs-OLeary-2026-08-01.png",
+    "posted_at": "2026-08-02"
+  },
+  "McKenna-vs-Oliha-2026-08-08": {
+    "winner": "Aaron McKenna",
+    "loser": "Etinosa Oliha",
+    "method": "Decision (Unanimous)",
+    "event": "Dublin Fight Night at 3Arena",
+    "tweet": "https://x.com/thefightdocket/status/2086287555075396025",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260809_McKenna-vs-Oliha-2026-08-08.png",
+    "posted_at": "2026-08-09"
+  },
+  "Walsh-vs-Denny-2026-08-08": {
+    "winner": "Callum Walsh",
+    "loser": "Tyler Denny",
+    "method": "Decision (Unanimous)",
+    "event": "Dublin Fight Night at 3Arena",
+    "tweet": "https://x.com/thefightdocket/status/2086287647589187791",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260809_Walsh-vs-Denny-2026-08-08.png",
+    "posted_at": "2026-08-09"
+  },
+  "Simpson-vs-Williamson-2026-08-08": {
+    "winner": "Callum Simpson",
+    "loser": "Troy Williamson",
+    "method": "Decision (Unanimous)",
+    "event": "Leeds Fight Night",
+    "tweet": "https://x.com/thefightdocket/status/2086287736558825514",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260809_Simpson-vs-Williamson-2026-08-08.png",
+    "posted_at": "2026-08-09"
+  },
+  "Ward-vs-Kasparian-2026-08-08": {
+    "winner": "Joe Ward",
+    "loser": "Artjom Kasparian",
+    "method": "Decision (Unanimous)",
+    "event": "Dublin Fight Night at 3Arena",
+    "tweet": "https://x.com/thefightdocket/status/2086287819635367947",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260809_Ward-vs-Kasparian-2026-08-08.png",
+    "posted_at": "2026-08-09"
+  },
+  "Simpson-vs-Williamson-2026-08-09": {
+    "winner": "Callum Simpson",
+    "loser": "Troy Williamson",
+    "method": "Decision (Unanimous)",
+    "event": "Leeds, England",
+    "tweet": "https://x.com/thefightdocket/status/2086400201569308823",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260809_Simpson-vs-Williamson-2026-08-09.png",
+    "posted_at": "2026-08-09"
   }
 }

@@ -1,40 +1,40 @@
 {
-  "issue_date": "2026-08-03",
+  "issue_date": "2026-08-10",
   "prompts": [
     {
       "section": "intro",
-      "topic": "One fighter earns a belt over twelve rounds; another declines a title shot over money.",
-      "prompt": "Split-composition editorial image: on one side a worn pair of red boxing gloves hanging over the top rope of a ring, sweat-lit and steaming under a single hot overhead lamp; on the other side an unsigned contract and a capped pen on a cold grey boardroom table. Hard vertical division between warm amber and cold steel blue, documentary photography, shallow depth of field, no people, no text"
+      "topic": "A chaotic chessboard with fallen king pieces and newly crowned pawns.",
+      "prompt": "cinematic macro shot of a dark, marble chessboard. Several black and white king pieces are toppled over. In the center, a single pawn stands on the back rank, with a tiny, glowing crown hovering just above it. Dark, moody, editorial atmosphere, shallow depth of field."
     },
     {
       "section": "main_story",
-      "topic": "William Zepeda throws 884 punches to beat Lamont Roach Jr. for the vacant WBC lightweight title.",
-      "prompt": "Long-exposure motion-blur photograph of a lone fighter's gloved fists in mid-flurry against a black background, punches smearing into overlapping red and gold light trails to convey relentless volume, hundreds of punches compressed into one frame. Only forearms and gloves in frame, head and body cropped out entirely, deep black background, warm crimson and gold key light, high contrast, cinematic sports photography, no text"
+      "topic": "Three new championship belts under a single spotlight.",
+      "prompt": "A wide cinematic shot of three gleaming, distinct boxing championship belts (IBF, WBO) resting on the canvas of a dark, empty boxing ring. A single, harsh spotlight from above illuminates the belts, making the leather and gold plates stand out. The ring ropes are slightly out of focus. No people, no logos."
     },
     {
       "section": "legal",
-      "topic": "The WBO championship committee weighs Keyshawn Davis's withdrawal; UFC antitrust suits continue.",
-      "prompt": "An open championship-belt case sitting on the polished mahogany table of an empty hearing room, a stack of legal filings beside it, tall shuttered windows throwing hard slatted shadows across the wood. Cold desaturated blue-grey palette, one shaft of pale light, austere and institutional, wide cinematic framing, no people, no readable text"
+      "topic": "Allegations of document destruction in a federal courthouse setting.",
+      "prompt": "Abstract photo of a paper shredder in a dark, mahogany-paneled office. A single beam of light illuminates strands of shredded paper containing legal text. The atmosphere is tense and ominous. No faces, focus on the texture of the paper and the shadows."
     },
     {
       "section": "rumor",
-      "topic": "Fury-Joshua venue, a vacated IBF belt, and a WBO mandatory reshuffle.",
-      "prompt": "Two anonymous figures in overcoats standing far apart under a single sodium streetlight in a rain-slick empty stadium loading dock at night, one holding a folded envelope at their side. Extreme backlighting reduces both to pure silhouettes, heavy atmospheric haze, film-noir contrast, amber light against deep blue-black shadow, no faces visible, no text"
+      "topic": "Whispers and backroom deals in the fight game.",
+      "prompt": "A grainy, black and white image of two silhouetted figures seen through a frosted glass door. The only visible detail is the faint outline of a boxing glove on a table between them. Film noir aesthetic, high contrast."
     },
     {
       "section": "fight_previews",
-      "topic": "Zuffa Boxing in Ireland, UFC at the APEX, Serrano and Shields, Romero-Lopez PPV.",
-      "prompt": "An empty arena photographed from the upper deck hours before doors open, a single lit boxing ring glowing white at the center of thousands of dark vacant seats, cables and lighting trusses overhead. Wide symmetrical composition, cool blue darkness with a hot pool of white light at center, anticipation and scale, architectural cinematic photography, no people, no text"
+      "topic": "The quiet anticipation before a confirmed fight.",
+      "prompt": "An empty fighter's stool in a stark, concrete locker room. A roll of white athletic tape and a pair of worn boxing gloves sit on the floor beside it. The only light comes from a single bare bulb overhead. A feeling of stillness and quiet anticipation."
     },
     {
       "section": "business_intel",
-      "topic": "Keyshawn Davis declines a $2.14M purse and his mandatory position; TKO consolidates on Paramount+.",
-      "prompt": "A single empty chair at a long negotiating table in a dark glass-walled conference room high above a city at night, an unsigned document and a pen placed in front of the vacant seat, city lights blurred beyond the glass. Cold blue and charcoal palette, one warm lamp pooling on the paper, emptiness and refusal as the subject, wide cinematic framing, no people, no readable text"
+      "topic": "A major merger and a high-stakes media rights negotiation.",
+      "prompt": "An abstract, cinematic image of two executive silhouettes shaking hands in a dark boardroom. In the background, a large, glowing screen displays a complex diagram of interconnected corporate logos and broadcast signals. The focus is on the handshake, rendered in sharp detail."
     },
     {
       "section": "fighter_spotlight",
-      "topic": "William Zepeda rebuilds from the Shakur Stevenson loss into a world champion.",
-      "prompt": "A green and gold championship belt draped over a corner stool in a dim empty gym, hand wraps unspooled beside it on the canvas, dust suspended in a single warm shaft of window light. Fine-art still life, rich warm amber and deep green tones, textured leather and worn canvas, quiet and earned, macro cinematic detail, no people, no text"
+      "topic": "The dramatic career change for upset winner Quillan Salkilld.",
+      "prompt": "A fighter's gloved fist punching through a paper chart showing a downward-trending stock market line, causing the chart to rip and explode upwards. The background is dark, and the motion is frozen, capturing the moment of impact and disruption. Editorial, symbolic, no face."
     }
   ]
 }
