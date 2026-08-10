@@ -1,25 +1,40 @@
 {
-  "issue_date": "2026-08-03",
+  "issue_date": "2026-08-10",
   "prompts": [
     {
       "section": "intro",
-      "topic": "Strategic disruption and shifting power dynamics in combat sports.",
-      "prompt": "A single, dramatically lit chessboard in a dark room. One king piece has been violently knocked over, signifying a major upset. Cinematic, moody, editorial style."
+      "topic": "A chaotic chessboard with fallen king pieces and newly crowned pawns.",
+      "prompt": "cinematic macro shot of a dark, marble chessboard. Several black and white king pieces are toppled over. In the center, a single pawn stands on the back rank, with a tiny, glowing crown hovering just above it. Dark, moody, editorial atmosphere, shallow depth of field."
     },
     {
       "section": "main_story",
-      "topic": "Justin Gaethje's shocking upset win for the UFC Lightweight Championship.",
-      "prompt": "An official UFC championship belt being placed onto a dark, empty octagon canvas under a single, harsh spotlight. No people, no logos. Abstract and symbolic."
+      "topic": "Three new championship belts under a single spotlight.",
+      "prompt": "A wide cinematic shot of three gleaming, distinct boxing championship belts (IBF, WBO) resting on the canvas of a dark, empty boxing ring. A single, harsh spotlight from above illuminates the belts, making the leather and gold plates stand out. The ring ropes are slightly out of focus. No people, no logos."
+    },
+    {
+      "section": "legal",
+      "topic": "Allegations of document destruction in a federal courthouse setting.",
+      "prompt": "Abstract photo of a paper shredder in a dark, mahogany-paneled office. A single beam of light illuminates strands of shredded paper containing legal text. The atmosphere is tense and ominous. No faces, focus on the texture of the paper and the shadows."
+    },
+    {
+      "section": "rumor",
+      "topic": "Whispers and backroom deals in the fight game.",
+      "prompt": "A grainy, black and white image of two silhouetted figures seen through a frosted glass door. The only visible detail is the faint outline of a boxing glove on a table between them. Film noir aesthetic, high contrast."
     },
     {
       "section": "fight_previews",
-      "topic": "Upcoming major title fights in both boxing and MMA.",
-      "prompt": "Two pairs of gloves, one MMA and one boxing, hanging opposite each other on a stark, concrete wall. Minimalist, dramatic side-lighting, dark editorial atmosphere."
+      "topic": "The quiet anticipation before a confirmed fight.",
+      "prompt": "An empty fighter's stool in a stark, concrete locker room. A roll of white athletic tape and a pair of worn boxing gloves sit on the floor beside it. The only light comes from a single bare bulb overhead. A feeling of stillness and quiet anticipation."
     },
     {
       "section": "business_intel",
-      "topic": "The merger of PFL and MVP promotions creates a new corporate power.",
-      "prompt": "Two abstract, dark glass skyscrapers at night slowly merging into a single, more formidable structure. Conceptual, corporate, financial aesthetic, dark tones."
+      "topic": "A major merger and a high-stakes media rights negotiation.",
+      "prompt": "An abstract, cinematic image of two executive silhouettes shaking hands in a dark boardroom. In the background, a large, glowing screen displays a complex diagram of interconnected corporate logos and broadcast signals. The focus is on the handshake, rendered in sharp detail."
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "The dramatic career change for upset winner Quillan Salkilld.",
+      "prompt": "A fighter's gloved fist punching through a paper chart showing a downward-trending stock market line, causing the chart to rip and explode upwards. The background is dark, and the motion is frozen, capturing the moment of impact and disruption. Editorial, symbolic, no face."
     }
   ]
 }

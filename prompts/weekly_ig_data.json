@@ -1,32 +1,33 @@
 {
-  "date": "AUGUST 03, 2026",
-  "issue": "aug03_2026",
+  "date": "AUGUST 10, 2026",
+  "issue": "aug10_2026",
   "preview_stories": [
-    "Gaethje shocks Topuria for UFC lightweight title",
-    "PFL and Most Valuable Promotions merge to form new power",
-    "Jaron 'Boots' Ennis unifies WBA/WBO junior middleweight belts"
+    "Three new world champions crowned in boxing",
+    "PFL merges with Jake Paul's MVP to challenge UFC",
+    "Quillan Salkilld scores massive upset over Mateusz Gamrot",
+    "TKO enters exclusive media rights window with ESPN"
   ],
   "announcement": {
-    "fighter1": "Makhachev",
-    "fighter2": "Garry",
-    "event": "UFC 330",
-    "date": "Aug 15 \u00b7 Philadelphia, PA",
-    "weight_class": "Welterweight Championship",
-    "filename": "makhachev_vs_garry_announcement.png"
+    "fighter1": "Romero",
+    "fighter2": "Lopez Jr.",
+    "event": "WBA Welterweight Championship",
+    "date": "August 22 \u00b7 Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "romero_vs_lopez_announcement.png"
   },
   "result": {
-    "winner": "Justin Gaethje",
-    "loser": "Ilia Topuria",
-    "method": "Decision (Upset)",
-    "round_num": "Full",
-    "time": "Fight",
-    "event": "UFC Freedom 250",
-    "filename": "gaethje_result.png"
+    "winner": "Quillan Salkilld",
+    "loser": "Mateusz Gamrot",
+    "method": "Submission",
+    "round_num": "R1",
+    "time": "4:25",
+    "event": "UFC Fight Night",
+    "filename": "salkilld_result.png"
   },
   "quote": {
-    "quote": "When a champion like that becomes available, you have to look at it. We're always looking for the best talent in the world.",
-    "attribution": "Dana White",
-    "context": "On Usman Nurmagomedov's free agency",
-    "filename": "white_quote_card.png"
+    "quote": "Ilia Topuria would f*cking annihilate 100% of your roster.",
+    "attribution": "Ilia Topuria's Manager",
+    "context": "Responding to a rival promotion",
+    "filename": "topuria_quote_card.png"
   }
 }
