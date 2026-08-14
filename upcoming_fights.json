@@ -1,12 +1,6 @@
 {
-  "crawled_at": "2026-08-07T23:27:11.016963Z",
+  "crawled_at": "2026-08-14T23:14:50.832102Z",
   "ufc": [
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Gamrot vs Salkilld",
-      "date": "2026-08-08",
-      "location": "Meta APEX, Las Vegas, NV, United States"
-    },
     {
       "event": "UFC 330",
       "main_fight": "Makhachev vs Machado Garry",
@@ -50,28 +44,10 @@
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Medic vs Rodriguez",
-      "date": "2026-08-01",
-      "location": "Belgrade Arena, BG, Serbia"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Ankalaev vs Guskov",
-      "date": "2026-07-25",
-      "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Du Plessis vs Usman",
-      "date": "2026-07-18",
-      "location": "Paycom Center, Oklahoma City, OK, United States"
-    },
-    {
-      "event": "UFC 329",
-      "main_fight": "McGregor vs Holloway",
-      "date": "2026-07-11",
-      "location": "T-Mobile Arena, Las Vegas, NV, United States"
+      "event": "UFC 332",
+      "main_fight": "TBD vs TBD",
+      "date": "2026-10-03",
+      "location": "Delta Center, Salt Lake City, UT, United States"
     }
   ],
   "boxing": []
