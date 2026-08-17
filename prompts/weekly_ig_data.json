@@ -1,33 +1,32 @@
 {
-  "date": "AUGUST 10, 2026",
-  "issue": "aug10_2026",
+  "date": "AUGUST 17, 2026",
+  "issue": "aug17_2026",
   "preview_stories": [
-    "Three world titles change hands in a single night",
-    "TKO and MVP run rival cards nine days after the PFL merger",
-    "Quillan Salkilld submits Mateusz Gamrot in round one",
-    "TKO posts a $1.55B quarter and raises full-year guidance"
+    "Makhachev dominates Garry to retain UFC title",
+    "UFC signs $7.7B deal with Paramount, kills PPV model",
+    "Romero vs. Lopez title clash headlines huge fight week"
   ],
   "announcement": {
     "fighter1": "Romero",
-    "fighter2": "Teofimo Lopez",
+    "fighter2": "Lopez",
     "event": "WBA Welterweight Championship",
-    "date": "August 22 · Las Vegas, NV",
+    "date": "August 22 \u00b7 Las Vegas, NV",
     "weight_class": "Welterweight",
     "filename": "romero_vs_lopez_announcement.png"
   },
   "result": {
-    "winner": "Quillan Salkilld",
-    "loser": "Mateusz Gamrot",
-    "method": "Submission",
-    "round_num": "R1",
-    "time": "4:25",
-    "event": "UFC Fight Night",
-    "filename": "salkilld_result.png"
+    "winner": "Islam Makhachev",
+    "loser": "Ian Machado Garry",
+    "method": "Unanimous Decision",
+    "round_num": "R5",
+    "time": "5:00",
+    "event": "UFC 330",
+    "filename": "makhachev_result.png"
   },
   "quote": {
-    "quote": "I started MVP to disrupt a broken model.",
-    "attribution": "Jake Paul",
-    "context": "On the MVP merger with the PFL",
-    "filename": "jake_paul_quote_card.png"
+    "quote": "He lacked a killer instinct. He never fought with the kind of desperation you need to when you're trying to take a belt.",
+    "attribution": "Dana White",
+    "context": "On Ian Machado Garry's UFC 330 Performance",
+    "filename": "white_quote_card.png"
   }
 }

@@ -1,40 +1,25 @@
 {
-  "issue_date": "2026-08-10",
+  "issue_date": "2026-08-17",
   "prompts": [
     {
       "section": "intro",
-      "topic": "A chaotic chessboard with fallen king pieces and newly crowned pawns.",
-      "prompt": "cinematic macro shot of a dark, marble chessboard. Several black and white king pieces are toppled over. In the center, a single pawn stands on the back rank, with a tiny, glowing crown hovering just above it. Dark, moody, editorial atmosphere, shallow depth of field."
+      "topic": "An empty, dramatically lit boxing ring in a silent arena after a major fight.",
+      "prompt": "Cinematic wide shot of an empty boxing ring, viewed from ringside. The canvas is empty except for a single stool. Dramatic, low-key lighting from above illuminates the center of the ring, with the surrounding arena shrouded in deep shadow. Moody, editorial, dark atmosphere."
     },
     {
       "section": "main_story",
-      "topic": "Three new championship belts under a single spotlight.",
-      "prompt": "A wide cinematic shot of three gleaming, distinct boxing championship belts (IBF, WBO) resting on the canvas of a dark, empty boxing ring. A single, harsh spotlight from above illuminates the belts, making the leather and gold plates stand out. The ring ropes are slightly out of focus. No people, no logos."
-    },
-    {
-      "section": "legal",
-      "topic": "Allegations of document destruction in a federal courthouse setting.",
-      "prompt": "Abstract photo of a paper shredder in a dark, mahogany-paneled office. A single beam of light illuminates strands of shredded paper containing legal text. The atmosphere is tense and ominous. No faces, focus on the texture of the paper and the shadows."
-    },
-    {
-      "section": "rumor",
-      "topic": "Whispers and backroom deals in the fight game.",
-      "prompt": "A grainy, black and white image of two silhouetted figures seen through a frosted glass door. The only visible detail is the faint outline of a boxing glove on a table between them. Film noir aesthetic, high contrast."
+      "topic": "UFC champion Islam Makhachev controls challenger Ian Machado Garry on the mat during their title fight.",
+      "prompt": "An MMA fighter in black shorts with gold trim maintaining dominant top control over an opponent in green shorts on the octagon canvas. The lighting is focused and dramatic, like a major PPV event. No visible faces or logos. Action shot, captures the feeling of pressure and control. Dark editorial atmosphere."
     },
     {
       "section": "fight_previews",
-      "topic": "The quiet anticipation before a confirmed fight.",
-      "prompt": "An empty fighter's stool in a stark, concrete locker room. A roll of white athletic tape and a pair of worn boxing gloves sit on the floor beside it. The only light comes from a single bare bulb overhead. A feeling of stillness and quiet anticipation."
+      "topic": "A split image of two boxers, Rolando Romero and Teofimo Lopez, staring intensely.",
+      "prompt": "Split-screen style image of two boxers facing off. On the left, a fighter with a powerful build. On the right, another athletically built fighter. They are not looking at each other but forward with intense focus. Moody, dramatic lighting. Abstract, no recognizable faces or logos. Dark editorial atmosphere."
     },
     {
       "section": "business_intel",
-      "topic": "A major merger and a high-stakes media rights negotiation.",
-      "prompt": "An abstract, cinematic image of two executive silhouettes shaking hands in a dark boardroom. In the background, a large, glowing screen displays a complex diagram of interconnected corporate logos and broadcast signals. The focus is on the handshake, rendered in sharp detail."
-    },
-    {
-      "section": "fighter_spotlight",
-      "topic": "The dramatic career change for upset winner Quillan Salkilld.",
-      "prompt": "A fighter's gloved fist punching through a paper chart showing a downward-trending stock market line, causing the chart to rip and explode upwards. The background is dark, and the motion is frozen, capturing the moment of impact and disruption. Editorial, symbolic, no face."
+      "topic": "Paramount and UFC logos merging, symbolizing their new multi-billion dollar media rights deal.",
+      "prompt": "Abstract image representing a media deal. A glowing red octagon symbol is on the left, and a stylized blue mountain peak symbol is on the right, set against a dark, tech-themed background with light trails connecting them. Represents a partnership or merger of two powerful brands. Dark, corporate, editorial atmosphere."
     }
   ]
 }
