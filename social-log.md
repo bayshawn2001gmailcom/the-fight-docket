@@ -1,18 +1,26 @@
 
-## 2026-08-17 — Twitter Thread (@thefightdocket)
+## 2026-08-17 - Twitter Thread (@thefightdocket) [REPOSTED]
 
-- Newsletter: newsletter_2026-08-17.html
+- Newsletter: newsletter_2026-08-17.html (fact-checked revision)
 - Tweets posted: 6
-- Thread root: https://x.com/thefightdocket/status/2089358177947267469
+- Thread root: https://x.com/thefightdocket/status/2089496781436452876
 
-  T1: The UFC just killed its PPV model. The $7.7 billion Paramount deal fundamentally...
-  T2: TKO Group Holdings finalized a landmark $7.7 billion, seven-year pact with Param...
-  T3: Islam Makhachev's dominant unanimous decision over Ian Machado Garry at UFC 330 ...
-  T4: Rolando Romero defends his WBA welterweight title against Teofimo Lopez Jr. on A...
-  T5: Sources indicate the UFC targets Sean O'Malley vs. Merab Dvalishvili for its fir...
-  T6: The combat sports landscape is shifting faster than ever. Stay ahead with inside...
+  T1 (2089496781436452876): Makhachev passes Anderson Silva; the number Paramount has not released
+  T2 (2089496793214046218): 17th UFC win, scorecards 49-46/49-46/48-47, Dana White on killer instinct
+  T3 (2089496802655342669): Shields regains WBC/WBA middleweight belts, stops Kaye Scott in the sixth
+  T4 (2089496812142928262): UFC 330 viewership figures still unreleased under the new model
+  T5 (2089496821684916656): Johnson v. Zuffa antitrust, injunctive relief, pending sanctions motion
+  T6 (2089496831201825202): CTA / subscribe
 
-- Status: ✅ Posted
+- Status: Posted
+- Note: The original 10am thread (root 2089358177947267469) was generated from
+  the uncorrected Gemini draft and contained two material errors: T1/T2 reported
+  the Aug-2025 Paramount deal as breaking news (it took effect Jan 2026 and had
+  already run in the 08-10 thread), and T5 named Sean O'Malley as bantamweight
+  champion when Petr Yan has held the title since UFC 323. All 6 original tweets
+  were deleted and replaced with this thread. Deleted IDs: 2089358177947267469,
+  2089358187397050400, 2089358196809023555, 2089358206279766376,
+  2089358215708594628, 2089358225099591759
 
 ## 2026-08-10 — Twitter Thread (@thefightdocket)
 
