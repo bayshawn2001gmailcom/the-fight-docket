@@ -12,6 +12,16 @@
       "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-08-17_main_story.jpg"
     },
     {
+      "section": "legal",
+      "file": "nb2_2026-08-17_legal.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-08-17_legal.jpg"
+    },
+    {
+      "section": "rumor",
+      "file": "nb2_2026-08-17_rumor.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-08-17_rumor.jpg"
+    },
+    {
       "section": "fight_previews",
       "file": "nb2_2026-08-17_fight_previews.jpg",
       "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-08-17_fight_previews.jpg"
@@ -20,6 +30,11 @@
       "section": "business_intel",
       "file": "nb2_2026-08-17_business_intel.jpg",
       "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-08-17_business_intel.jpg"
+    },
+    {
+      "section": "fighter_spotlight",
+      "file": "nb2_2026-08-17_fighter_spotlight.jpg",
+      "url": "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/nb2_2026-08-17_fighter_spotlight.jpg"
     }
   ]
 }
