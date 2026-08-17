@@ -2,15 +2,15 @@
   "date": "AUGUST 17, 2026",
   "issue": "aug17_2026",
   "preview_stories": [
-    "Makhachev dominates Garry to retain UFC title",
-    "UFC signs $7.7B deal with Paramount, kills PPV model",
-    "Romero vs. Lopez title clash headlines huge fight week"
+    "Makhachev passes Silva with 17th straight UFC win",
+    "Shields stops Scott, reclaims middleweight belts",
+    "Romero vs. Lopez headlines huge fight week"
   ],
   "announcement": {
     "fighter1": "Romero",
     "fighter2": "Lopez",
     "event": "WBA Welterweight Championship",
-    "date": "August 22 \u00b7 Las Vegas, NV",
+    "date": "August 22 · Las Vegas, NV",
     "weight_class": "Welterweight",
     "filename": "romero_vs_lopez_announcement.png"
   },
@@ -24,7 +24,7 @@
     "filename": "makhachev_result.png"
   },
   "quote": {
-    "quote": "He lacked a killer instinct. He never fought with the kind of desperation you need to when you're trying to take a belt.",
+    "quote": "If he had even an ounce of killer instinct, in that fifth round, you don't come out and hug and shake hands.",
     "attribution": "Dana White",
     "context": "On Ian Machado Garry's UFC 330 Performance",
     "filename": "white_quote_card.png"

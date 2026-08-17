@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<title>The Fight Docket | AUGUST 17, 2026</title>
-<style>
-  body { margin:0; padding:0; background-color:#0D0D0D !important; }
-  p { margin:0 0 18px 0; color:#F2F2E8; font-size:16px; line-height:1.8; }
-  a { color:#DE1E20; text-decoration:none; }
-  a:hover { text-decoration:underline; }
-  strong, b { color:#F2F2E8; }
-  em { color:#999; }
-  h2, h3 { color:#F2F2E8; }
-  ul, ol { color:#F2F2E8; padding-left:20px; margin:0 0 18px 0; }
-  li { margin-bottom:8px; line-height:1.7; }
-  blockquote { border-left:3px solid #DE1E20; padding:4px 0 4px 18px; margin:24px 0; }
-  blockquote p { color:#C5A059; font-style:italic; }
-</style>
-</head>
-<body style="margin:0; padding:0; background-color:#0D0D0D;">
-<div style="max-width:680px; margin:0 auto; background-color:#0D0D0D; font-family:Georgia,'Times New Roman',serif; color:#F2F2E8;">
+// ============================================================
+// BEEHIIV INJECTION SCRIPT — The Fight Docket
+// Run this in the browser console on the Beehiiv editor page
+// ============================================================
 
-  <!-- HEADER -->
+(async function injectAndClean() {
+  const editor = document.querySelector('.ProseMirror');
+  if (!editor) { console.error('ProseMirror editor not found'); return; }
+
+  // Step 1: Focus and select all existing content
+  editor.focus();
+  document.execCommand('selectAll', false, null);
+
+  // Step 2: Inject clean HTML
+  const CLEAN_HTML = `<div style="max-width:680px; margin:0 auto; background-color:#0D0D0D; font-family:Georgia,'Times New Roman',serif; color:#F2F2E8;">
+<!-- HEADER -->
   <div style="background:#0D0D0D; border-top:6px solid #DE1E20; padding:36px 40px 28px 40px;">
     <p style="margin:0 0 1px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:8px; color:#C5A059;">The</p>
     <div style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:56px; font-weight:900; text-transform:uppercase; color:#F2F2E8; line-height:0.95; letter-spacing:-2px; margin:0 0 16px 0;">FIGHT<br>DOCKET</div>
@@ -30,52 +21,40 @@
     <p style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:10px; text-transform:uppercase; letter-spacing:4px; color:#C5A059;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
     <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#555;">AUGUST 17, 2026</p>
   </div>
-
-  <!-- CONTENT -->
+<!-- CONTENT -->
   <div style="padding:0 40px 48px 40px;">
-
-    <!-- EDITOR'S NOTE -->
+<!-- EDITOR'S NOTE -->
     <div style="padding-top:40px;">
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#C5A059;">Editor's Note</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/pvCFZ2rB/nb2-2026-08-17-intro.jpg" alt="intro" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <div style="color:#F2F2E8;"><p style='color:#F2F2E8;'>Islam Makhachev walked out of Philadelphia on Saturday with the UFC welterweight title still around his waist and a record that had stood since 2013 in his back pocket. His unanimous decision over Ian Machado Garry at UFC 330 was his 17th straight win inside the Octagon, one better than Anderson Silva's 16. That is the headline. The fight underneath it was more competitive than a 49-46, 49-46, 48-47 card suggests.</p><p style='color:#F2F2E8;'>Boxing's weekend belonged to Claressa Shields, who walked into State Farm Arena in Atlanta as the challenger and walked out with the WBC and WBA middleweight belts back in her possession after stopping Kaye Scott in the sixth. It was the rare Shields fight that ended early, and it leaves her one Tamm Thibeault fight away from a third undisputed run at 160.</p><p style='color:#F2F2E8;'>The number that actually matters this week has not been released yet. UFC 330 was the biggest title fight of the year under a distribution model that no longer sells anything per event, and Paramount has not said how many people watched. When that figure lands, it will tell you more about where this business is heading than anything that happened in the cage.</p></div></div>
+<div style="color:#F2F2E8;"><p style='color:#F2F2E8;'>Islam Makhachev walked out of Philadelphia on Saturday with the UFC welterweight title still around his waist and a record that had stood since 2013 in his back pocket. His unanimous decision over Ian Machado Garry at UFC 330 was his 17th straight win inside the Octagon, one better than Anderson Silva's 16. That is the headline. The fight underneath it was more competitive than a 49-46, 49-46, 48-47 card suggests.</p><p style='color:#F2F2E8;'>Boxing's weekend belonged to Claressa Shields, who walked into State Farm Arena in Atlanta as the challenger and walked out with the WBC and WBA middleweight belts back in her possession after stopping Kaye Scott in the sixth. It was the rare Shields fight that ended early, and it leaves her one Tamm Thibeault fight away from a third undisputed run at 160.</p><p style='color:#F2F2E8;'>The number that actually matters this week has not been released yet. UFC 330 was the biggest title fight of the year under a distribution model that no longer sells anything per event, and Paramount has not said how many people watched. When that figure lands, it will tell you more about where this business is heading than anything that happened in the cage.</p></div></div>
     </div>
-
-    <div style="height:1px; background:#1E1E1E; border-top:1px solid #C5A059; opacity:0.25; margin:40px 0;"></div>
-
-    <!-- MAIN STORY -->
+<div style="height:1px; background:#1E1E1E; border-top:1px solid #C5A059; opacity:0.25; margin:40px 0;"></div>
+<!-- MAIN STORY -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Main Story</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/TBbgBFrX/nb2-2026-08-17-main-story.jpg" alt="main_story" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:28px; font-weight:900; line-height:1.2; margin:0 0 22px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">MAKHACHEV PASSES ANDERSON SILVA, HOLDS OFF GARRY TO KEEP WELTERWEIGHT TITLE</h2>
+<h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:28px; font-weight:900; line-height:1.2; margin:0 0 22px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">MAKHACHEV PASSES ANDERSON SILVA, HOLDS OFF GARRY TO KEEP WELTERWEIGHT TITLE</h2>
       <div style="color:#F2F2E8;"><p style='color:#F2F2E8;'>Islam Makhachev retained the UFC welterweight title with a unanimous decision over Ian Machado Garry in the main event of UFC 330 on Saturday night at Xfinity Mobile Arena in Philadelphia. Judges scored it 49-46, 49-46 and 48-47. The win was Makhachev's 17th consecutive victory in the UFC, moving him past Anderson Silva's 16-fight run from 2006 to 2013 for the longest winning streak in company history.</p><p style='color:#F2F2E8;'>Makhachev (29-1) took the fight where he wanted it early, putting Garry on the mat with his first takedown attempt inside two minutes. He opened up in the second and dropped the challenger with a head kick, a reminder that the striking has quietly caught up to the grappling. Through two rounds it looked like it might not go the distance.</p><p style='color:#F2F2E8;'>It did, because Garry (17-2) figured something out. The Irishman began digging to the body with kicks in the third, started timing the level changes, and stuffed takedowns that had been landing at will. He took a round on one card and had the champion visibly working. Whatever the final scores say, this was not the shutout Makhachev put on Jack Della Maddalena at UFC 322. When he needed it in the fifth, Makhachev found the takedown and took Garry's back to close the show.</p><p style='color:#F2F2E8;'>Makhachev was unimpressed with the challenger's in-fight friendliness, which included talking and hugging between exchanges. Dana White was blunter at the post-fight press conference. "If he had even an ounce of killer instinct, in that fifth round, you don't come out and hug and shake hands," the UFC CEO said, noting Garry had been getting through to the body and had the champion's right side marked up.</p><p style='color:#F2F2E8;'>Makhachev did name a preferred next opponent: Carlos Prates, who beat Garry earlier in his run and sat cageside arguing with Michael Morales about which of them is next. Morales took the backup assignment for UFC 330. Makhachev's view is that Prates has earned the shot and Morales has not done enough for it. The champion has now cleaned out one division and taken the belt in another, and the queue behind him is getting loud.</p></div></div>
     </div>
-
-    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
-
-    <!-- LEGAL TRACKER -->
+<div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+<!-- LEGAL TRACKER -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Legal Tracker</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/cXygdT44/nb2-2026-08-17-legal.jpg" alt="legal" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#DE1E20; margin:0 0 20px 0;">Active Federal Cases</p>
+<p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#DE1E20; margin:0 0 20px 0;">Active Federal Cases</p>
       <p style='margin:0 0 20px 0; color:#F2F2E8;'><strong style='color:#F2F2E8;'>Johnson v. Zuffa, LLC (D. Nev., filed June 23, 2021)</strong><br><span style='color:#888;'>No new docket activity reported this week</span><br>The second UFC antitrust class action, brought by Kajan Johnson and C.B. Dollaway on behalf of fighters who competed on or after July 1, 2017, remains live. It is the more dangerous of the two cases for the promotion because it seeks injunctive relief on top of damages, meaning a plaintiff win could dictate how UFC contracts are written going forward rather than simply cutting a check. The earlier Le v. Zuffa case settled for $375 million after a judge rejected an initial $335 million agreement.<br>The live thread to watch is the sanctions motion plaintiffs filed in February, which alleges TKO Operating Co., Endeavor Group Holdings and Zuffa destroyed years of evidence relevant to the case. Nothing was added to that fight this week, but an adverse ruling there would reshape the leverage on both sides well before any trial.<br><em style='color:#888;'>Status: Discovery / sanctions motion pending</em></p><p style='margin:0 0 20px 0; color:#F2F2E8;'>No major suspensions or disciplinary actions were announced by the Nevada, California or New York state athletic commissions in the past week, and no new adverse findings were reported by VADA or USADA involving major combat sports athletes.</p>
     </div>
-
-    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
-
-    <!-- RUMOR MILL -->
+<div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+<!-- RUMOR MILL -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Rumor Mill</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/YTdZh9TP/nb2-2026-08-17-rumor.jpg" alt="rumor" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <div style='border-left:3px solid #C5A059; padding:4px 0 4px 18px; margin-bottom:28px;'>
+<div style='border-left:3px solid #C5A059; padding:4px 0 4px 18px; margin-bottom:28px;'>
         <p style='font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:#C5A059; margin:0 0 10px 0;'>CONFIDENCE 0.85</p>
         <p style='margin:0; color:#F2F2E8; line-height:1.8;'>Carlos Prates is the strong favorite to get the next crack at Makhachev's welterweight title ahead of Michael Morales. Makhachev said as much after UFC 330, arguing Prates has done more to earn it, and Prates himself is telling anyone who asks that he will not take a stay-busy fight first. Morales served as the backup for UFC 330 and believes that entitles him to the shot, which produced a cageside argument between the two during the event. When a champion publicly names his preference, matchmaking usually follows.</p>
       </div><div style='border-left:3px solid #888888; padding:4px 0 4px 18px; margin-bottom:28px;'>
@@ -86,46 +65,35 @@
         <p style='margin:0; color:#F2F2E8; line-height:1.8;'>Zuffa Boxing is expected to add dates to its 2026 calendar beyond the schedule it originally published, with people around the promotion pointing to as many as 16 events and a wider international footprint. The Dublin card in August was the tenth of the year and drew well in a market TKO had not touched before. Nothing has been formally announced, and the promotion has been careful not to commit to a number in public.</p>
       </div>
     </div>
-
-    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
-
-    <!-- FIGHT CARD PREVIEWS -->
+<div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+<!-- FIGHT CARD PREVIEWS -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fight Card Previews</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/RVNZ35p/nb2-2026-08-17-fight-previews.jpg" alt="fight_previews" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">What's on Deck</h2>
+<h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">What's on Deck</h2>
       <div style="color:#F2F2E8;"><p style='color:#F2F2E8;'><strong style='color:#DE1E20;'>Rolando Romero vs. Teofimo Lopez Jr. (August 22)</strong></p><p style='color:#F2F2E8;'>Romero (17-2, 13 KOs) makes the first defense of the WBA welterweight title against Teofimo Lopez (22-2, 13 KOs) at T-Mobile Arena in Las Vegas, on a PBC pay-per-view carried by DAZN and Prime Video. Romero won the belt in its regular form by upsetting Ryan Garcia at Times Square in May 2025 and was elevated to full champion on August 1 after Jaron Ennis vacated to move up to 154. Lopez has held titles at lightweight and junior welterweight, so a win here makes him a three-division champion. Lopez is the better boxer by a wide margin. Romero is the one who keeps getting written off and keeps not going away, and he only needs to land once.</p><p style='color:#F2F2E8;'><strong style='color:#DE1E20;'>Mikaela Mayer vs. Chantelle Cameron (August 29)</strong></p><p style='color:#F2F2E8;'>A junior middleweight unification at bp pulse LIVE Arena in Birmingham, England, headlining an all-female MVP card on which every main-card bout pits a British fighter against an American. Cameron (22-1, 8 KOs), the former undisputed junior welterweight champion, brings pressure and physical strength. Mayer (22-2, 5 KOs) brings the jab, the volume and the better engine. Mayer has already called it the female fight of the year, which is the sort of thing fighters say and, in this case, might be right. Caroline Dubois against Amelia Moore supports. Sky Sports in the UK, ESPN+ in the States.</p><p style='color:#F2F2E8;'><strong style='color:#DE1E20;'>Umar Nurmagomedov vs. Song Yadong (August 29)</strong></p><p style='color:#F2F2E8;'>The UFC returns to Shanghai with the third-ranked bantamweight against the fifth. Nurmagomedov (20-1, 7-1 UFC) is the more complete fighter and by some distance the better grappler, though the aura of invincibility went with his loss to Merab Dvalishvili. Song (23-9-1, 12-4-1 UFC) has the crisper hands and the home crowd at Shanghai Oriental Sports Center. With Petr Yan holding the belt and the division reshuffling behind him, the winner is realistically one fight from a title shot. The UFC is leaning on Song's drawing power in China to make this Fight Night matter internationally.</p></div></div>
     </div>
-
-    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
-
-    <!-- BUSINESS INTEL -->
+<div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+<!-- BUSINESS INTEL -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Business Intel</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/5hS5L71z/nb2-2026-08-17-business-intel.jpg" alt="business_intel" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">THE NO-PPV ERA GETS ITS BIGGEST TEST, AND PARAMOUNT IS NOT TALKING YET</h2>
+<h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">THE NO-PPV ERA GETS ITS BIGGEST TEST, AND PARAMOUNT IS NOT TALKING YET</h2>
       <div style="color:#F2F2E8;"><p style='color:#F2F2E8;'>UFC 330 was the first superfight-scale main event to land in the back half of the Paramount era, and as of this writing neither the promotion nor the network has released an audience figure for it. That silence is the story. Under the seven-year, $7.7 billion deal that took effect in January, there is no buyrate to leak and no per-event revenue line to brag about. There is only reach, and reach gets disclosed when it flatters you.</p><p style='color:#F2F2E8;'>The benchmarks are already on the board. UFC 324 set streaming records for Paramount+ when it opened the deal on January 24. UFC 329 reached roughly 15.9 million viewers across the United States and Latin America and peaked at 8.3 million concurrent streams, which Paramount called the most-streamed exclusive live event in the service's history. Freedom 250 at the White House averaged about 7 million U.S. viewers and reached 17 million in total. Those are broadcast-scale numbers the old model, at roughly $80 a card, could never have produced.</p><p style='color:#F2F2E8;'>What none of it settles is whether the audience converts. A pay-per-view buy was a hard number attached to a credit card. A stream inside a $12.99 subscription is an engagement metric, and engagement metrics are worth exactly what retention says they are worth. TKO reported second-quarter revenue up 18 percent to $1.5 billion in early August and raised full-year guidance, so the money is arriving on schedule. It arrives whether 3 million people watch or 16 million do, which is the entire point of the deal and also the reason these viewership figures have become a branding exercise rather than a business one.</p><p style='color:#F2F2E8;'>Boxing is running the control experiment in real time. Six days after Makhachev fought for free to anyone with a Paramount+ login, Romero and Lopez fight for the WBA welterweight title on a pay-per-view. The sport still needs the per-event premium to finance its purses, and it is now asking fans to pay for a single card in a market where the biggest promotion in combat sports has stopped asking. The size of that gap is the most important number in the industry, and nobody has published it either.</p></div></div>
     </div>
-
-    <div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
-
-    <!-- FIGHTER SPOTLIGHT -->
+<div style="height:1px; background:#C5A059; opacity:0.2; margin:40px 0;"></div>
+<!-- FIGHTER SPOTLIGHT -->
     <div>
       <p style="margin:0 0 5px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:4px; color:#DE1E20;">Fighter Spotlight</p>
       <div style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"></div>
       <img src="https://i.ibb.co/4gn0n8NR/nb2-2026-08-17-fighter-spotlight.jpg" alt="fighter_spotlight" style="width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;">
-      
-      <h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">IAN MACHADO GARRY</h2>
+<h2 style="font-family:Arial Black,Impact,Helvetica,sans-serif; font-size:22px; font-weight:900; line-height:1.2; margin:0 0 20px 0; letter-spacing:-0.5px; color:#F2F2E8; text-transform:uppercase;">IAN MACHADO GARRY</h2>
       <div style="color:#F2F2E8;"><p style='color:#F2F2E8;'>Ian Machado Garry started his professional career 15-0 and won his first eight UFC fights on the strength of a long, slick, range-managing striking game and a self-belief that made him must-watch whether you liked him or not. Shavkat Rakhmonov ended the undefeated run over five rounds at UFC 310 in December 2024. What Garry did next was the interesting part: he beat Belal Muhammad and Carlos Prates back to back, a harder two-fight stretch than most contenders survive, and it bought him the title shot.</p><p style='color:#F2F2E8;'>Saturday cost him that shot and left him 17-2. It was not the beating the first two rounds threatened to become. He was dropped by a head kick in the second and looked headed for a long night, then adjusted, went to the body, and made the back half genuinely difficult for a man who had won 16 in a row without much argument. One judge gave him a round. Against this champion, that is not nothing.</p><p style='color:#F2F2E8;'>The criticism he took afterward was not about skill. Dana White's complaint was that Garry opened the fifth round of a world title fight he was losing by shaking hands and hugging rather than throwing, and that the body work he had been landing deserved a closer. Fighters get remembered for those five minutes. Garry, at 28 and still one of the more marketable names at 170, can afford one such night but probably not two.</p><p style='color:#F2F2E8;'>The rebuild is straightforward if the UFC is patient. Give him a top-ten striker, let him fight going forward instead of backward, and let him remind people what the hype was about. Someone like Geoff Neal makes sense competitively and commercially. What he cannot afford is another five-round chess match with an elite grappler before he has answered the question Rakhmonov asked and Makhachev asked again: what happens when he has to win a fight he is losing.</p></div></div>
     </div>
-
-  </div>
-
-  <!-- FOOTER -->
+</div>
+<!-- FOOTER -->
   <div style="border-top:1px solid #C5A059; background:#0D0D0D; padding:32px 40px 36px 40px;">
     <p style="margin:0 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:6px; color:#C5A059;">The Fight Docket</p>
     <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:9px; text-transform:uppercase; letter-spacing:3px; color:#888888;">Boxing &middot; MMA &middot; The Stories Behind The Sport</p>
@@ -137,7 +105,24 @@
     <p style="margin:12px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">You're receiving this because you subscribed. Forward to a fight fan who thinks like an analyst.</p>
     <p style="margin:6px 0 0 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#777777;">Not subscribed yet? Join free &rarr; <a href="https://www.thefightdocket.com/" style="color:#DE1E20; text-decoration:none;">www.thefightdocket.com</a></p>
   </div>
+</div>`;
+  document.execCommand('insertHTML', false, CLEAN_HTML);
 
-</div>
-</body>
-</html>
+  // Step 3: Wait one tick for ProseMirror to process
+  await new Promise(r => setTimeout(r, 500));
+
+  // Step 4: Post-injection cleanup — remove any stray empty block elements
+  const allBlocks = Array.from(editor.querySelectorAll('p, div'));
+  let removed = 0;
+  allBlocks.forEach(el => {
+    if (el.textContent.trim() === '' && !el.querySelector('img')) {
+      el.remove();
+      removed++;
+    }
+  });
+
+  // Step 5: Fire input event so Beehiiv autosave picks up the changes
+  editor.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true }));
+
+  console.log(`✅ Injected successfully. Cleaned up ${removed} empty block elements.`);
+})();

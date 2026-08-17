@@ -3,23 +3,38 @@
   "prompts": [
     {
       "section": "intro",
-      "topic": "An empty, dramatically lit boxing ring in a silent arena after a major fight.",
-      "prompt": "Cinematic wide shot of an empty boxing ring, viewed from ringside. The canvas is empty except for a single stool. Dramatic, low-key lighting from above illuminates the center of the ring, with the surrounding arena shrouded in deep shadow. Moody, editorial, dark atmosphere."
+      "topic": "A record that stood since 2013 falls, while the number that matters goes unreported.",
+      "prompt": "Fine-art still life of a single championship belt lying flat on weathered arena concrete under one hard overhead spotlight, the rest of the frame falling away into deep black. A faint chalk tally of seventeen marks is scratched into the concrete beside it. Warm amber key light against cold shadow, high contrast, quiet and monumental rather than triumphant"
     },
     {
       "section": "main_story",
-      "topic": "UFC champion Islam Makhachev controls challenger Ian Machado Garry on the mat during their title fight.",
-      "prompt": "An MMA fighter in black shorts with gold trim maintaining dominant top control over an opponent in green shorts on the octagon canvas. The lighting is focused and dramatic, like a major PPV event. No visible faces or logos. Action shot, captures the feeling of pressure and control. Dark editorial atmosphere."
+      "topic": "Makhachev passes Anderson Silva's 16-fight streak, holding off a rallying Ian Machado Garry.",
+      "prompt": "Low, wide action photograph from mat level inside a cage: one fighter in dark shorts pinning an opponent in pale shorts against the fence in the closing seconds of a round, both bodies rendered as sweat-lit silhouettes rimmed in hot white light. Fence mesh in sharp foreground focus, crowd dissolved into bokeh. Desaturated steel and amber palette, documentary sports photography, grain, sense of exhaustion and control rather than celebration"
+    },
+    {
+      "section": "legal",
+      "topic": "Johnson v. Zuffa antitrust case and the pending sanctions motion over allegedly destroyed evidence.",
+      "prompt": "Cold institutional still life: a tall stack of manila document folders on a steel table in an empty federal courtroom, the top folders half-empty with pages visibly missing, a few loose sheets shredded into ribbons on the floor beneath. Hard blue-grey window light raking across from the left, everything else in deep shadow. Muted slate and paper-white palette, austere architectural composition, unsettling emptiness"
+    },
+    {
+      "section": "rumor",
+      "topic": "Carlos Prates and Michael Morales argue cageside over who gets the next welterweight title shot.",
+      "prompt": "Two shadowed male figures shot from behind and slightly above, standing close and squared toward each other in a darkened arena walkway, body language mid-confrontation, a single closed door of light at the end of the corridor behind them. Only one of them can pass through it. Deep charcoal and ember-red palette, heavy vignette, cinematic tension, faces entirely unseen"
     },
     {
       "section": "fight_previews",
-      "topic": "A split image of two boxers, Rolando Romero and Teofimo Lopez, staring intensely.",
-      "prompt": "Split-screen style image of two boxers facing off. On the left, a fighter with a powerful build. On the right, another athletically built fighter. They are not looking at each other but forward with intense focus. Moody, dramatic lighting. Abstract, no recognizable faces or logos. Dark editorial atmosphere."
+      "topic": "Rolando Romero vs Teofimo Lopez for the WBA welterweight title in Las Vegas.",
+      "prompt": "Two boxers in classic standoff, both rendered as pure black silhouettes facing each other in profile against a burning crimson and gold gradient backdrop, separated by a narrow vertical band of darkness down the center of the frame. Gloves raised, no facial detail whatsoever. Bold graphic poster composition, high contrast, minimal, saturated fight-promotion energy"
     },
     {
       "section": "business_intel",
-      "topic": "Paramount and UFC logos merging, symbolizing their new multi-billion dollar media rights deal.",
-      "prompt": "Abstract image representing a media deal. A glowing red octagon symbol is on the left, and a stylized blue mountain peak symbol is on the right, set against a dark, tech-themed background with light trails connecting them. Represents a partnership or merger of two powerful brands. Dark, corporate, editorial atmosphere."
+      "topic": "The audience figure for UFC 330 that Paramount has not released, and streaming versus pay-per-view.",
+      "prompt": "A vast dark arena scoreboard suspended above an empty venue, every digit position blank and unlit except for a single faintly glowing cursor waiting for input. Thousands of empty seats below fade into blackness. Cold cyan and deep blue palette, wide symmetrical composition, clinical and corporate, a sense of a number withheld"
+    },
+    {
+      "section": "fighter_spotlight",
+      "topic": "Ian Machado Garry after a second career loss, facing the rebuild at 28.",
+      "prompt": "Intimate documentary photograph of a lone fighter seen from behind, seated on a bench in an empty locker room, shoulders slumped forward, hand wraps still on and partly unravelled at his feet. A single warm tungsten bulb overhead, everything beyond the bench in soft darkness. Muted sepia and warm amber palette, shallow depth of field, melancholy and quietly hopeful, face never visible"
     }
   ]
 }
