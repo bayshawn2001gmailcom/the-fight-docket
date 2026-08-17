@@ -1,4 +1,19 @@
 
+## 2026-08-17 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-08-17.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2089358177947267469
+
+  T1: The UFC just killed its PPV model. The $7.7 billion Paramount deal fundamentally...
+  T2: TKO Group Holdings finalized a landmark $7.7 billion, seven-year pact with Param...
+  T3: Islam Makhachev's dominant unanimous decision over Ian Machado Garry at UFC 330 ...
+  T4: Rolando Romero defends his WBA welterweight title against Teofimo Lopez Jr. on A...
+  T5: Sources indicate the UFC targets Sean O'Malley vs. Merab Dvalishvili for its fir...
+  T6: The combat sports landscape is shifting faster than ever. Stay ahead with inside...
+
+- Status: ✅ Posted
+
 ## 2026-08-10 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-08-10.html
