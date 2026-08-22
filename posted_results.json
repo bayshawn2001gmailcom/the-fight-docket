@@ -313,5 +313,14 @@
     "tweet": "https://x.com/thefightdocket/status/2086400201569308823",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260809_Simpson-vs-Williamson-2026-08-09.png",
     "posted_at": "2026-08-09"
+  },
+  "Takahashi-vs-Utsuki-2026-08-21": {
+    "winner": "Reito Takahashi",
+    "loser": "Shu Utsuki",
+    "method": "KO/TKO",
+    "event": "Unknown Event",
+    "tweet": "https://x.com/thefightdocket/status/2090984513392275667",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260822_Takahashi-vs-Utsuki-2026-08-21.png",
+    "posted_at": "2026-08-22"
   }
 }
