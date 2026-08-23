@@ -376,5 +376,41 @@
     "tweet": "https://x.com/thefightdocket/status/2091371834360893935",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Liddard-vs-Morello-2026-08-22.png",
     "posted_at": "2026-08-23"
+  },
+  "Lopez-vs-Romero-2026-08-23": {
+    "winner": "Teofimo Lopez",
+    "loser": "Rolly Romero",
+    "method": "Decision (Unanimous)",
+    "event": "Romero vs. Lopez",
+    "tweet": "https://x.com/thefightdocket/status/2091471026538664191",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Lopez-vs-Romero-2026-08-23.png",
+    "posted_at": "2026-08-23"
+  },
+  "Hernandez-vs-Veron-2026-08-23": {
+    "winner": "Yoenli Hernandez",
+    "loser": "Francisco Daniel Veron",
+    "method": "Decision (Majority)",
+    "event": "Romero vs. Lopez",
+    "tweet": "https://x.com/thefightdocket/status/2091471133648548066",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Hernandez-vs-Veron-2026-08-23.png",
+    "posted_at": "2026-08-23"
+  },
+  "Utria-vs-Mercado-2026-08-23": {
+    "winner": "Carlos Utria",
+    "loser": "Israel Mercado",
+    "method": "Decision (Split)",
+    "event": "Romero vs. Lopez",
+    "tweet": "https://x.com/thefightdocket/status/2091471232466358652",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Utria-vs-Mercado-2026-08-23.png",
+    "posted_at": "2026-08-23"
+  },
+  "Serrano-vs-Manzur-2026-08-22": {
+    "winner": "Amanda Serrano",
+    "loser": "Lucrecia Manzur",
+    "method": "Decision (Majority)",
+    "event": "Unified Featherweight Title Defense",
+    "tweet": "https://x.com/thefightdocket/status/2091471321565900932",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Serrano-vs-Manzur-2026-08-22.png",
+    "posted_at": "2026-08-23"
   }
 }
