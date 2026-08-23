@@ -331,5 +331,23 @@
     "tweet": "https://x.com/thefightdocket/status/2091006149592035556",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260822_Takahashi-vs-Utsuki-2026-08-22.png",
     "posted_at": "2026-08-22"
+  },
+  "Liddard-vs-Morello-2026-08-23": {
+    "winner": "George Liddard",
+    "loser": "Dario Morello",
+    "method": "KO/TKO",
+    "event": "European Middleweight Title Bout",
+    "tweet": "https://x.com/thefightdocket/status/2091351183667642498",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Liddard-vs-Morello-2026-08-23.png",
+    "posted_at": "2026-08-23"
+  },
+  "Serrano-vs-Manzur-2026-08-21": {
+    "winner": "Amanda Serrano",
+    "loser": "Lucrecia Manzur",
+    "method": "Decision (Majority)",
+    "event": "Amanda Serrano vs Lucrecia Manzur",
+    "tweet": "https://x.com/thefightdocket/status/2091351294128935142",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Serrano-vs-Manzur-2026-08-21.png",
+    "posted_at": "2026-08-23"
   }
 }
