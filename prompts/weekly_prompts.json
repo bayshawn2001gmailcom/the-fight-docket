@@ -1,40 +1,25 @@
 {
-  "issue_date": "2026-08-17",
+  "issue_date": "2026-08-24",
   "prompts": [
     {
       "section": "intro",
-      "topic": "A record that stood since 2013 falls, while the number that matters goes unreported.",
-      "prompt": "Fine-art still life of a single championship belt lying flat on weathered arena concrete under one hard overhead spotlight, the rest of the frame falling away into deep black. A faint chalk tally of seventeen marks is scratched into the concrete beside it. Warm amber key light against cold shadow, high contrast, quiet and monumental rather than triumphant"
+      "topic": "The boxing world reshuffles after a major title change and a huge promoter merger.",
+      "prompt": "A lone boxing ring under a single spotlight in a vast, empty arena, canvas showing scuff marks from a recent bout, red corner stool slightly askew."
     },
     {
       "section": "main_story",
-      "topic": "Makhachev passes Anderson Silva's 16-fight streak, holding off a rallying Ian Machado Garry.",
-      "prompt": "Low, wide action photograph from mat level inside a cage: one fighter in dark shorts pinning an opponent in pale shorts against the fence in the closing seconds of a round, both bodies rendered as sweat-lit silhouettes rimmed in hot white light. Fence mesh in sharp foreground focus, crowd dissolved into bokeh. Desaturated steel and amber palette, documentary sports photography, grain, sense of exhaustion and control rather than celebration"
-    },
-    {
-      "section": "legal",
-      "topic": "Johnson v. Zuffa antitrust case and the pending sanctions motion over allegedly destroyed evidence.",
-      "prompt": "Cold institutional still life: a tall stack of manila document folders on a steel table in an empty federal courtroom, the top folders half-empty with pages visibly missing, a few loose sheets shredded into ribbons on the floor beneath. Hard blue-grey window light raking across from the left, everything else in deep shadow. Muted slate and paper-white palette, austere architectural composition, unsettling emptiness"
-    },
-    {
-      "section": "rumor",
-      "topic": "Carlos Prates and Michael Morales argue cageside over who gets the next welterweight title shot.",
-      "prompt": "Two shadowed male figures shot from behind and slightly above, standing close and squared toward each other in a darkened arena walkway, body language mid-confrontation, a single closed door of light at the end of the corridor behind them. Only one of them can pass through it. Deep charcoal and ember-red palette, heavy vignette, cinematic tension, faces entirely unseen"
+      "topic": "Teofimo Lopez becomes a three-weight champion after a hard-fought majority decision victory.",
+      "prompt": "Close-up on three different championship belts hanging on hooks in a dimly lit, gritty locker room, the leather worn and the gold plates gleaming."
     },
     {
       "section": "fight_previews",
-      "topic": "Rolando Romero vs Teofimo Lopez for the WBA welterweight title in Las Vegas.",
-      "prompt": "Two boxers in classic standoff, both rendered as pure black silhouettes facing each other in profile against a burning crimson and gold gradient backdrop, separated by a narrow vertical band of darkness down the center of the frame. Gloves raised, no facial detail whatsoever. Bold graphic poster composition, high contrast, minimal, saturated fight-promotion energy"
+      "topic": "Upcoming title fights featuring Katie Taylor, Ryan Garcia, and Conor Benn.",
+      "prompt": "Two pairs of boxing gloves, one Irish green and one British red, resting opposite each other on a dark wooden table in a press conference setting."
     },
     {
       "section": "business_intel",
-      "topic": "The audience figure for UFC 330 that Paramount has not released, and streaming versus pay-per-view.",
-      "prompt": "A vast dark arena scoreboard suspended above an empty venue, every digit position blank and unlit except for a single faintly glowing cursor waiting for input. Thousands of empty seats below fade into blackness. Cold cyan and deep blue palette, wide symmetrical composition, clinical and corporate, a sense of a number withheld"
-    },
-    {
-      "section": "fighter_spotlight",
-      "topic": "Ian Machado Garry after a second career loss, facing the rebuild at 28.",
-      "prompt": "Intimate documentary photograph of a lone fighter seen from behind, seated on a bench in an empty locker room, shoulders slumped forward, hand wraps still on and partly unravelled at his feet. A single warm tungsten bulb overhead, everything beyond the bench in soft darkness. Muted sepia and warm amber palette, shallow depth of field, melancholy and quietly hopeful, face never visible"
+      "topic": "Most Valuable Promotions and PFL merge to create a new global combat sports powerhouse.",
+      "prompt": "A stark, minimalist boardroom with a long, polished black table reflecting the empty chairs around it, suggesting a major deal just concluded."
     }
   ]
 }
