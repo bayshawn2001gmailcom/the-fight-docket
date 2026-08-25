@@ -8,7 +8,8 @@ Usage:
     python post_instagram_weekly.py --card preview --platform instagram
     python post_instagram_weekly.py --card preview --dry-run
 
-Runs from GitHub Actions on Mon/Tue/Thu/Sat.
+Runs from GitHub Actions on Tue/Thu/Fri; Monday's preview posts
+from the on-demand newsletter run.
 Token refresh required every 60 days — see INSTAGRAM_TOKEN_ISSUED_AT in .env.
 """
 import argparse, base64, glob, json, os, re, sys, time
@@ -41,7 +42,7 @@ DAY_HEADERS = {
     "preview":      "MONDAY",
     "result":       "TUESDAY",
     "announcement": "THURSDAY",
-    "quote":        "SATURDAY",
+    "quote":        "FRIDAY",
 }
 
 SCRIPT_DIR = Path(__file__).parent
@@ -206,6 +207,25 @@ def check_freshness(force: bool = False) -> None:
     raise SystemExit(1)
 
 
+def check_approved(force: bool = False) -> None:
+    """Refuse to publish cards nobody signed off.
+
+    check_freshness() catches last week's cards. It cannot catch this week's
+    wrong ones. Approval is the only thing that can, so it is explicit and
+    recorded in the manifest rather than implied by the files existing.
+    """
+    manifest = load_manifest()
+    if manifest.get("approved") is True:
+        return
+    msg = "cards for issue %s are not approved" % (manifest.get("issue_date") or "?")
+    if force:
+        print(f"  WARNING: {msg}. Posting anyway (--force).")
+        return
+    print(f"  Refusing to post: {msg}.")
+    print("  Review the cards, then run: python approve_week.py")
+    raise SystemExit(1)
+
+
 def check_credentials(platform: str) -> None:
     needed = {"IMGBB_API_KEY": IMGBB_API_KEY}
     if platform in ("instagram", "both"):
@@ -233,6 +253,7 @@ def main():
 
     check_credentials(args.platform)
     check_freshness(force=args.force)
+    check_approved(force=args.force)
 
     print(f"\n[1/4] Finding {args.card} image...")
     img_path = find_latest_image(args.card)

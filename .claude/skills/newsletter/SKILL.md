@@ -167,20 +167,43 @@ buried in prose.
 
 ---
 
-## Step 6 — Stage social. Do not post.
+## Step 6 — Stage social, then post only what is approved
 
-The user's standing choice is stage-and-approve. Generate, report, and wait.
+The user's standing choice is stage-and-approve. Generate everything, show it,
+and wait for an explicit go.
 
 ```bash
-PYTHONUTF8=1 python post_twitter_thread.py --dry-run   # if unsupported, generate and print without posting
-PYTHONUTF8=1 python ig_content_generator.py            # 4 PNGs + captions in instagram_content/
+PYTHONUTF8=1 python post_twitter_thread.py --dry-run   # writes .tmp/thread_<issue>.txt
+PYTHONUTF8=1 python ig_content_generator.py            # 4 cards + captions, marked NOT approved
 ```
 
-Show the thread text and name the generated files. Post to X, Instagram or Facebook
-**only after the user says go**, in that message or a later one. Instagram cards must
-be converted to JPEG before the Graph API will accept them.
+Show the thread text and the four cards. **Look at the cards yourself first** —
+the templates have shipped clipped watermarks and stranded text before.
 
----
+When the user says go:
+
+```bash
+PYTHONUTF8=1 python approve_week.py            # flips approved:true in current_week.json
+PYTHONUTF8=1 python post_twitter_thread.py     # posts the thread
+PYTHONUTF8=1 python post_instagram_weekly.py --card preview   # Monday's IG + FB post
+```
+
+**Monday's preview card has no cron.** It used to ride along with
+`weekly_ig_content.yml`, which is now disabled, so this run is the only thing
+that posts it. Forgetting it means Monday has no social presence at all.
+
+The rest of the week drips automatically from the crons, and they will only
+post cards that `approve_week.py` has signed off:
+
+| Day | Card | Posted by |
+|---|---|---|
+| Mon | Newsletter preview | **this run, manually** |
+| Tue | Fight result | cron |
+| Thu | Fight announcement | cron |
+| Fri | Quote card | cron |
+
+Instagram needs JPEG for some cards; convert before posting if the Graph API
+rejects a PNG. Nothing posts to X, Instagram or Facebook without an explicit go.
 
 ## Step 7 — Commit
 

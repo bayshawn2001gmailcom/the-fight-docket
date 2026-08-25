@@ -1,10 +1,10 @@
-name: Saturday IG Post — Quote Card
+name: Friday IG Post — Quote Card
 
 # Posts the weekly quote card to Instagram + Facebook.
 # Card generated Monday 11am EDT by weekly_ig_content.yml.
 on:
   schedule:
-    - cron: '0 16 * * 6'  # Saturday 4pm UTC = 12pm EDT
+    - cron: '0 16 * * 5'  # Friday 4pm UTC = 12pm EDT
   workflow_dispatch:
 
 jobs:

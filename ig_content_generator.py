@@ -162,7 +162,7 @@ Full breakdown in this week's newsletter → www.thefightdocket.com
 Full preview in The Fight Docket newsletter → www.thefightdocket.com
 #UFC #MMA #FightAnnouncement #{event_ann.replace(' ', '')} #{f1.split()[-1]} #{f2.split()[-1]}
 
---- SATURDAY: Quote Card ---
+--- FRIDAY: Quote Card ---
 "{quote_text}"
 — {quote_attr}
 
@@ -191,6 +191,10 @@ Subscribe → www.thefightdocket.com
         # ISO date so post_instagram_weekly.py can refuse to post stale cards.
         # The "issue" slug (aug17_2026) is for humans and cannot be compared.
         "issue_date": issue_date_iso,
+        # Cards start unapproved. The Tue/Thu/Fri crons are a release schedule
+        # for content a human signed off, not a publisher. approve_week.py
+        # flips this once the cards have actually been looked at.
+        "approved": False,
         "captions": captions_file.name,
         "preview":      f"{issue}_newsletter_preview.png",
         "announcement": ann_filename,
@@ -206,7 +210,7 @@ Subscribe → www.thefightdocket.com
     print("    Mon  — Newsletter Preview")
     print("    Tue  — Fight Result")
     print("    Thu  — Fight Announcement")
-    print("    Sat  — Quote Card")
+    print("    Fri  — Quote Card")
 
 
 if __name__ == "__main__":
