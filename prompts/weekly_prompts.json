@@ -1,40 +1,12 @@
 {
-  "issue_date": "2026-08-17",
+  "issue_date": "2026-08-24",
   "prompts": [
-    {
-      "section": "intro",
-      "topic": "A record that stood since 2013 falls, while the number that matters goes unreported.",
-      "prompt": "Fine-art still life of a single championship belt lying flat on weathered arena concrete under one hard overhead spotlight, the rest of the frame falling away into deep black. A faint chalk tally of seventeen marks is scratched into the concrete beside it. Warm amber key light against cold shadow, high contrast, quiet and monumental rather than triumphant"
-    },
-    {
-      "section": "main_story",
-      "topic": "Makhachev passes Anderson Silva's 16-fight streak, holding off a rallying Ian Machado Garry.",
-      "prompt": "Low, wide action photograph from mat level inside a cage: one fighter in dark shorts pinning an opponent in pale shorts against the fence in the closing seconds of a round, both bodies rendered as sweat-lit silhouettes rimmed in hot white light. Fence mesh in sharp foreground focus, crowd dissolved into bokeh. Desaturated steel and amber palette, documentary sports photography, grain, sense of exhaustion and control rather than celebration"
-    },
-    {
-      "section": "legal",
-      "topic": "Johnson v. Zuffa antitrust case and the pending sanctions motion over allegedly destroyed evidence.",
-      "prompt": "Cold institutional still life: a tall stack of manila document folders on a steel table in an empty federal courtroom, the top folders half-empty with pages visibly missing, a few loose sheets shredded into ribbons on the floor beneath. Hard blue-grey window light raking across from the left, everything else in deep shadow. Muted slate and paper-white palette, austere architectural composition, unsettling emptiness"
-    },
-    {
-      "section": "rumor",
-      "topic": "Carlos Prates and Michael Morales argue cageside over who gets the next welterweight title shot.",
-      "prompt": "Two shadowed male figures shot from behind and slightly above, standing close and squared toward each other in a darkened arena walkway, body language mid-confrontation, a single closed door of light at the end of the corridor behind them. Only one of them can pass through it. Deep charcoal and ember-red palette, heavy vignette, cinematic tension, faces entirely unseen"
-    },
-    {
-      "section": "fight_previews",
-      "topic": "Rolando Romero vs Teofimo Lopez for the WBA welterweight title in Las Vegas.",
-      "prompt": "Two boxers in classic standoff, both rendered as pure black silhouettes facing each other in profile against a burning crimson and gold gradient backdrop, separated by a narrow vertical band of darkness down the center of the frame. Gloves raised, no facial detail whatsoever. Bold graphic poster composition, high contrast, minimal, saturated fight-promotion energy"
-    },
-    {
-      "section": "business_intel",
-      "topic": "The audience figure for UFC 330 that Paramount has not released, and streaming versus pay-per-view.",
-      "prompt": "A vast dark arena scoreboard suspended above an empty venue, every digit position blank and unlit except for a single faintly glowing cursor waiting for input. Thousands of empty seats below fade into blackness. Cold cyan and deep blue palette, wide symmetrical composition, clinical and corporate, a sense of a number withheld"
-    },
-    {
-      "section": "fighter_spotlight",
-      "topic": "Ian Machado Garry after a second career loss, facing the rebuild at 28.",
-      "prompt": "Intimate documentary photograph of a lone fighter seen from behind, seated on a bench in an empty locker room, shoulders slumped forward, hand wraps still on and partly unravelled at his feet. A single warm tungsten bulb overhead, everything beyond the bench in soft darkness. Muted sepia and warm amber palette, shallow depth of field, melancholy and quietly hopeful, face never visible"
-    }
+    {"section": "intro", "prompt": "Wide cinematic film still shot from high in the upper deck of a Las Vegas arena an hour after a world title fight. Rows of empty blue seats, a lit boxing ring far below with a lone corner stool and a coiled roll of hand wrap left on the canvas, house lights half raised. Cold desaturated blue everywhere with one warm pool of light on the canvas. Shot on 35mm, visible grain, deep shadows. No people, no faces, no logos, no text"},
+    {"section": "main_story", "prompt": "Two boxers in full silhouette squared up at center ring under a single hard overhead light, photographed from behind and slightly below so no faces are visible. Deep black background, harsh rim light catching shoulders and gloves, one figure flat footed and squared up, the other angled and side on. High contrast near monochrome with a bleed of red spilling in from the ring lights. Cinematic, editorial, dramatic. No faces, no logos, no text"},
+    {"section": "legal", "prompt": "Fine art still life on a dark walnut desk in a dim law office. A stack of stapled court filings, a fountain pen, and three luxury wristwatches laid out in a row beside them like evidence exhibits. A green banker's lamp throws a narrow warm pool of light into surrounding blackness, faint dust in the air. Desaturated, cold shadows, photorealistic, shallow depth of field. No people, no faces, no readable text on the documents, no logos"},
+    {"section": "rumor", "prompt": "Noir photograph of an empty press conference dais in a darkened ballroom. Two microphones on a bare table, two chairs pushed back, a plain unmarked cloth backdrop, a single hard spotlight from above leaving the rest of the room in black. Heavy film grain, very high contrast, moody and secretive. No people, no faces, no text, no logos"},
+    {"section": "fight_previews", "prompt": "Documentary photograph of the loading bay of a large London arena the night before a fight. A freight elevator standing open, ring posts and turnbuckle pads stacked on a wooden pallet, wet concrete floor reflecting sodium lights, rain falling outside the open roll up door. Cool blue grey palette with amber highlights, photojournalistic, available light. No people, no faces, no logos, no text"},
+    {"section": "business_intel", "prompt": "Conceptual editorial photograph of a single boxing glove resting alone at the head of a long boardroom table of polished black glass, mirrored in the tabletop, empty executive chairs receding on both sides, a wall of blank glowing screens behind it casting cold blue light across the room. Wide angle, symmetrical, corporate, cold and slightly ominous. No people, no faces, no text on the screens, no logos"},
+    {"section": "fighter_spotlight", "prompt": "Intimate fine art photograph of a pair of well worn women's boxing gloves hanging from a nail on a weathered gym wall. Laces frayed, leather cracked and creased from years of use, late afternoon sunlight coming through a dusty window and falling across them. Warm amber and umber tones, shallow depth of field, quiet and reverent, photorealistic. No people, no faces, no logos, no text"}
   ]
 }
