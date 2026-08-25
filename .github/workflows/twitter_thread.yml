@@ -2,9 +2,11 @@ name: Monday Twitter Thread
 
 # Runs Monday 10am EDT (1400 UTC) — 2 hours after newsletter pipeline
 # so the newsletter HTML is already committed before this runs.
+# DISABLED 2026-08-25: superseded by the on-demand /newsletter skill.
+# Content is now researched, written and verified in-session when asked for,
+# because the generated draft always required a fact-check pass anyway.
+# workflow_dispatch is kept so this can still be fired by hand.
 on:
-  schedule:
-    - cron: '0 14 * * 1'  # Monday 2pm UTC = 10am EDT
   workflow_dispatch:
 
 jobs:

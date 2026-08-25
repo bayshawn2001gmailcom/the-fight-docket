@@ -1,32 +1,33 @@
 {
-  "date": "AUGUST 17, 2026",
-  "issue": "aug17_2026",
+  "date": "AUGUST 24, 2026",
+  "issue_date": "2026-08-24",
+  "issue": "aug24_2026",
   "preview_stories": [
-    "Makhachev passes Silva with 17th straight UFC win",
-    "Shields stops Scott, reclaims middleweight belts",
-    "Romero vs. Lopez headlines huge fight week"
+    "Lopez outboxes Romero for WBA 147 title, third division",
+    "Serrano grinds out 50th win, KO record still tied",
+    "Lopez won it with no promoter, just a DAZN deal"
   ],
   "announcement": {
-    "fighter1": "Romero",
-    "fighter2": "Lopez",
-    "event": "WBA Welterweight Championship",
-    "date": "August 22 · Las Vegas, NV",
-    "weight_class": "Welterweight",
-    "filename": "romero_vs_lopez_announcement.png"
+    "fighter1": "Itauma",
+    "fighter2": "Hrgovic",
+    "event": "Vacant IBF Heavyweight Title",
+    "date": "August 29 · London, UK",
+    "weight_class": "Heavyweight",
+    "filename": "itauma_vs_hrgovic_announcement.png"
   },
   "result": {
-    "winner": "Islam Makhachev",
-    "loser": "Ian Machado Garry",
-    "method": "Unanimous Decision",
-    "round_num": "R5",
-    "time": "5:00",
-    "event": "UFC 330",
-    "filename": "makhachev_result.png"
+    "winner": "Teofimo Lopez",
+    "loser": "Rolly Romero",
+    "method": "Majority Decision",
+    "round_num": "R12",
+    "time": "3:00",
+    "event": "WBA Welterweight Title",
+    "filename": "lopez_result.png"
   },
   "quote": {
-    "quote": "If he had even an ounce of killer instinct, in that fifth round, you don't come out and hug and shake hands.",
-    "attribution": "Dana White",
-    "context": "On Ian Machado Garry's UFC 330 Performance",
-    "filename": "white_quote_card.png"
+    "quote": "If you lose and you come back, you never lost, because you're a winner.",
+    "attribution": "Teofimo Lopez",
+    "context": "After winning the WBA welterweight title",
+    "filename": "lopez_quote_card.png"
   }
 }

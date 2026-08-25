@@ -5,10 +5,11 @@ name: Generate Newsletter Images
 # newsletter_pipeline.yml right after the draft. This workflow remains for manual
 # runs and for pushes that edit prompts by hand (bot pushes via GITHUB_TOKEN
 # do NOT trigger the push event — GitHub anti-recursion rule).
+# DISABLED 2026-08-25: superseded by the on-demand /newsletter skill.
+# Content is now researched, written and verified in-session when asked for,
+# because the generated draft always required a fact-check pass anyway.
+# workflow_dispatch is kept so this can still be fired by hand.
 on:
-  push:
-    paths:
-      - 'prompts/weekly_prompts.json'
   workflow_dispatch:
 
 jobs:

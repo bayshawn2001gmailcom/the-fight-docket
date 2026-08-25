@@ -1,8 +1,9 @@
 {
-  "issue": "aug17_2026",
-  "captions": "aug17_2026_captions.txt",
-  "preview": "aug17_2026_newsletter_preview.png",
-  "announcement": "aug17_2026_romero_vs_lopez_announcement.png",
-  "result": "aug17_2026_makhachev_result.png",
-  "quote": "aug17_2026_white_quote_card.png"
+  "issue": "aug24_2026",
+  "issue_date": "2026-08-24",
+  "captions": "aug24_2026_captions.txt",
+  "preview": "aug24_2026_newsletter_preview.png",
+  "announcement": "aug24_2026_itauma_vs_hrgovic_announcement.png",
+  "result": "aug24_2026_lopez_result.png",
+  "quote": "aug24_2026_lopez_quote_card.png"
 }

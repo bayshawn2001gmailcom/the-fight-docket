@@ -185,14 +185,34 @@ def generate_thread(newsletter_text, ig_data):
     newsletter_url = "https://www.thefightdocket.com/"
     tweets = [t.replace("[NEWSLETTER_URL]", newsletter_url) for t in tweets]
 
-    # Hard truncate only if Gemini ignores the 240-char instruction
-    safe = []
-    for t in tweets:
-        if len(t) > 280:
-            t = t[:277] + "..."
-        safe.append(t)
-
+    # Truncate only if Gemini ignores the 240-char instruction. Cut on a sentence
+    # boundary where possible and a word boundary otherwise: slicing at [:277] left
+    # tweets ending mid-word ("Serious allegations for comb..."), which posts publicly
+    # looking broken.
+    safe = [_fit_tweet(t) for t in tweets]
     return safe
+
+
+TWEET_LIMIT = 280
+
+
+def _fit_tweet(t: str) -> str:
+    t = t.strip()
+    if len(t) <= TWEET_LIMIT:
+        return t
+
+    head = t[:TWEET_LIMIT - 1]
+
+    # Prefer ending on a complete sentence, if that keeps enough of the tweet.
+    end = max(head.rfind(". "), head.rfind("! "), head.rfind("? "))
+    if end >= TWEET_LIMIT * 0.6:
+        return head[:end + 1].strip()
+
+    # Otherwise cut at the last word boundary and mark the elision.
+    cut = head.rfind(" ")
+    if cut <= 0:
+        cut = TWEET_LIMIT - 4
+    return head[:cut].rstrip(" ,;:-") + "..."
 
 
 # ---------------------------------------------------------------------------
@@ -223,9 +243,17 @@ def save_log(tweets, tweet_ids, newsletter_name):
 # ---------------------------------------------------------------------------
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true",
+                        help="write the thread to disk and print it, post nothing")
+    args = parser.parse_args()
+
     print("=" * 55)
     print("  The Fight Docket — Twitter Thread Poster")
     print(f"  Date: {date.today().isoformat()}")
+    if args.dry_run:
+        print("  MODE: dry run, nothing will be posted")
     print("=" * 55)
 
     print("\n[1/3] Loading newsletter...")
@@ -242,6 +270,19 @@ def main():
     print(f"  Generated {len(tweets)} tweets:")
     for i, t in enumerate(tweets, 1):
         print(f"    T{i} ({len(t)} chars): {t[:70]}...")
+
+    if args.dry_run:
+        staged = SCRIPT_DIR / ".tmp" / f"thread_{name.replace('.html', '')}.txt"
+        staged.parent.mkdir(parents=True, exist_ok=True)
+        staged.write_text(
+            "\n\n".join(f"[T{i}] {t}" for i, t in enumerate(tweets, 1)),
+            encoding="utf-8")
+        print("\n[3/3] DRY RUN — not posting. Full thread:")
+        for i, t in enumerate(tweets, 1):
+            print(f"\n--- T{i} ({len(t)} chars) ---\n{t}")
+        print(f"\n  Staged for review: {staged}")
+        print("  Post it with: python post_twitter_thread.py")
+        return True
 
     print("\n[3/3] Posting thread to @thefightdocket...")
     tweet_ids = post_thread(tweets)

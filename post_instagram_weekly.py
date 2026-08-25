@@ -174,6 +174,38 @@ def post_facebook(img_url: str, caption: str) -> bool:
     return ok
 
 
+# Cards are generated on issue day and drip out Tue/Thu/Sat, so the newest card
+# is at most 5 days old in normal operation. Anything past this means no issue was
+# built that week and we would be reposting last week's news as if it were current.
+MAX_CARD_AGE_DAYS = 9
+
+
+def check_freshness(force: bool = False) -> None:
+    from datetime import date, datetime
+    manifest = load_manifest()
+    raw = manifest.get("issue_date")
+    if not raw:
+        msg = "manifest has no issue_date — cannot tell whether these cards are current"
+    else:
+        try:
+            age = (date.today() - datetime.strptime(raw, "%Y-%m-%d").date()).days
+        except ValueError:
+            msg = f"manifest issue_date is unparseable: {raw!r}"
+        else:
+            if age <= MAX_CARD_AGE_DAYS:
+                print(f"  Staged cards are from issue {raw} ({age}d old) — fresh")
+                return
+            msg = (f"staged cards are from issue {raw}, {age} days old "
+                   f"(limit {MAX_CARD_AGE_DAYS})")
+    if force:
+        print(f"  WARNING: {msg}. Posting anyway (--force).")
+        return
+    print(f"  Refusing to post: {msg}.")
+    print("  No issue was built this week, so these cards are last week's news.")
+    print("  Build the issue first, or pass --force if this is deliberate.")
+    raise SystemExit(1)
+
+
 def check_credentials(platform: str) -> None:
     needed = {"IMGBB_API_KEY": IMGBB_API_KEY}
     if platform in ("instagram", "both"):
@@ -192,12 +224,15 @@ def main():
     parser.add_argument("--card", required=True, choices=["preview", "result", "announcement", "quote"])
     parser.add_argument("--platform", default="both", choices=["instagram", "facebook", "both"])
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--force", action="store_true",
+                        help="post even if the staged cards are from a stale issue")
     args = parser.parse_args()
 
     print(f"\n  Fight Docket — IG/FB Weekly Post ({args.card})")
     print(f"  Platform: {args.platform}")
 
     check_credentials(args.platform)
+    check_freshness(force=args.force)
 
     print(f"\n[1/4] Finding {args.card} image...")
     img_path = find_latest_image(args.card)

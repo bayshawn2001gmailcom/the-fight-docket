@@ -1,8 +1,10 @@
 name: Monday Newsletter Pipeline
 
+# DISABLED 2026-08-25: superseded by the on-demand /newsletter skill.
+# Content is now researched, written and verified in-session when asked for,
+# because the generated draft always required a fact-check pass anyway.
+# workflow_dispatch is kept so this can still be fired by hand.
 on:
-  schedule:
-    - cron: '0 12 * * 1'  # Monday 8am EDT
   workflow_dispatch:
 
 jobs:

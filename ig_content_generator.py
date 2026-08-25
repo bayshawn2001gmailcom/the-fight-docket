@@ -16,6 +16,41 @@ IG_CONTENT_DIR.mkdir(exist_ok=True)
 sys.path.insert(0, str(SCRIPT_DIR))
 
 
+def _derive_issue_date(week: dict):
+    """Best-effort ISO date for this issue, or None if it cannot be determined.
+
+    Returning None is deliberate: the poster treats an unknown date as stale and
+    refuses, which is the safe direction. Guessing today's date would let last
+    week's cards pass the freshness check.
+    """
+    import re
+    from datetime import datetime
+
+    raw_iso = str(week.get("issue_date") or "")
+    m = re.search(r"\d{4}-\d{2}-\d{2}", raw_iso)
+    if m:
+        return m.group(0)
+
+    display = str(week.get("date") or "").strip()      # "AUGUST 17, 2026"
+    for fmt in ("%B %d, %Y", "%b %d, %Y"):
+        try:
+            return datetime.strptime(display.title(), fmt).date().isoformat()
+        except ValueError:
+            pass
+
+    slug = str(week.get("issue") or "").strip()         # "aug17_2026"
+    m = re.match(r"([a-z]{3})(\d{1,2})_(\d{4})$", slug, re.I)
+    if m:
+        mon, day, year = m.groups()
+        try:
+            return datetime.strptime(f"{mon} {day} {year}", "%b %d %Y").date().isoformat()
+        except ValueError:
+            pass
+
+    print("  WARNING: could not determine issue date — cards will be treated as stale")
+    return None
+
+
 def main():
     if not IG_DATA_FILE.exists():
         raise SystemExit(f"ERROR: {IG_DATA_FILE} not found. Run newsletter_generator.py first.")
@@ -140,6 +175,12 @@ Subscribe → www.thefightdocket.com
     captions_file.write_text(captions, encoding="utf-8")
     print(f"\n  Captions saved: {captions_file.name}")
 
+    # Derive the ISO issue date so post_instagram_weekly.py can refuse stale cards.
+    # weekly_ig_data.json carries a display date ("AUGUST 17, 2026") and a slug
+    # ("aug17_2026"), neither of which is comparable. Never fall back to today:
+    # stamping stale content with today's date would defeat the freshness guard.
+    issue_date_iso = _derive_issue_date(week)
+
     # Write manifest so post_instagram_weekly.py can find the right files
     # (GitHub Actions checkouts give all files identical timestamps, making mtime sort unreliable)
     ann_filename = f"{issue}_{a.get('filename', 'announcement.png')}" if a else ""
@@ -147,6 +188,9 @@ Subscribe → www.thefightdocket.com
     qot_filename = f"{issue}_{q.get('filename', 'quote.png')}" if q else ""
     manifest = {
         "issue": issue,
+        # ISO date so post_instagram_weekly.py can refuse to post stale cards.
+        # The "issue" slug (aug17_2026) is for humans and cannot be compared.
+        "issue_date": issue_date_iso,
         "captions": captions_file.name,
         "preview":      f"{issue}_newsletter_preview.png",
         "announcement": ann_filename,

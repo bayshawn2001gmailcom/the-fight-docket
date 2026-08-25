@@ -143,6 +143,27 @@ def generate_missing_images(issue_date, existing_sections):
 # ImgBB upload
 # ------------------------------------------------------------------ #
 
+WEB_WIDTH   = 1200   # 2x the 600px display width, for retina
+WEB_QUALITY = 82
+
+def compress_for_web(src: Path) -> Path:
+    """Raw Nano Banana 2 output is ~3MB at 2752px; the newsletter shows it at 600px.
+    Seven uncompressed images is ~21MB and Beehiiv/email clients silently drop them.
+    Always upload the derivative, never the original. The full-size file stays in
+    assets/ as the archive copy."""
+    from PIL import Image
+    dst = TMP_IMG_DIR / f"{src.stem}_web.jpg"
+    if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime:
+        return dst
+    im = Image.open(src).convert("RGB")
+    w, h = im.size
+    if w > WEB_WIDTH:
+        im = im.resize((WEB_WIDTH, round(h * WEB_WIDTH / w)), Image.LANCZOS)
+    im.save(dst, "JPEG", quality=WEB_QUALITY, optimize=True, progressive=True)
+    print(f"    compressed {src.stat().st_size//1024}KB -> {dst.stat().st_size//1024}KB")
+    return dst
+
+
 def upload_to_imgbb(image_path: Path) -> str:
     if not IMGBB_API_KEY:
         print(f"  Warning: IMGBB_API_KEY not set — skipping {image_path.name}")
@@ -176,6 +197,10 @@ def upload_all_images(issue_date):
             print(f"  [{section}] File not found: {filename} — skipping")
             continue
         print(f"  Uploading [{section}]...")
+        try:
+            img_path = compress_for_web(img_path)
+        except Exception as e:
+            print(f"    compression failed ({e}) — uploading original")
         url = upload_to_imgbb(img_path)
         if url:
             url_map[section] = url
