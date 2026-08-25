@@ -1,4 +1,19 @@
 
+## 2026-08-24 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-08-24.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2091898563634848022
+
+  T1: The combat sports landscape just got a major jolt. Teofimo Lopez reclaims boxing...
+  T2: Teofimo Lopez's majority decision over Rolando Romero for the WBA 140-pound titl...
+  T3: The MVP-PFL merger is officially positioned as the first truly scaled challenger...
+  T4: Zuffa faces a new antitrust class action, Costantino et al. v. Zuffa, LLC et al....
+  T5: The newly merged MVP-PFL is preparing a significant eight-figure offer for a cur...
+  T6: For the deepest dive into combat sports business intelligence, you need The Figh...
+
+- Status: ✅ Posted
+
 ## 2026-08-17 - Twitter Thread (@thefightdocket) [REPOSTED]
 
 - Newsletter: newsletter_2026-08-17.html (fact-checked revision)

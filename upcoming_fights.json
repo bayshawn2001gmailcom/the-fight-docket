@@ -1,14 +1,8 @@
 {
-  "crawled_at": "2026-08-14T23:14:50.832102Z",
+  "crawled_at": "2026-08-21T23:16:28.749289Z",
   "ufc": [
     {
-      "event": "UFC 330",
-      "main_fight": "Makhachev vs Machado Garry",
-      "date": "2026-08-15",
-      "location": "Xfinity Mobile Arena, Philadelphia, PA, United States"
-    },
-    {
-      "event": "UFC Fight Night",
+      "event": "UFC Sacramento",
       "main_fight": "Hernandez vs Rodrigues",
       "date": "2026-08-22",
       "location": "Golden 1 Center, Sacramento, CA, United States"
@@ -33,21 +27,39 @@
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "Van vs Pantoja 2",
-      "date": "2026-09-19",
-      "location": "Crypto.com Arena, Los Angeles, CA, United States"
+      "main_fight": "Rosas Jr. vs Barcelos",
+      "date": "2026-09-26",
+      "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "TBD vs TBD",
-      "date": "2026-09-26",
-      "location": "Meta APEX, Las Vegas, NV, United States"
+      "main_fight": "Buckley vs Malott",
+      "date": "2026-10-17",
+      "location": "Rogers Place, Edmonton, AB, Canada"
     },
     {
       "event": "UFC 332",
       "main_fight": "TBD vs TBD",
       "date": "2026-10-03",
       "location": "Delta Center, Salt Lake City, UT, United States"
+    },
+    {
+      "event": "UFC 330",
+      "main_fight": "Makhachev vs Machado Garry",
+      "date": "2026-08-15",
+      "location": "Xfinity Mobile Arena, Philadelphia, PA, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Gamrot vs Salkilld",
+      "date": "2026-08-08",
+      "location": "Meta APEX, Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Medic vs Rodriguez",
+      "date": "2026-08-01",
+      "location": "Belgrade Arena, BG, Serbia"
     }
   ],
   "boxing": []
