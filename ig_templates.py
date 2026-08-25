@@ -59,9 +59,19 @@ def _red_bar(d, side="left", thickness=14):
 def _rule(d, y, color=GOLD, margin=60, thickness=2):
     d.line([(margin, y),(W-margin, y)], fill=color, width=thickness)
 
-def _watermark(d):
+def _watermark(d, fill="#3A3A3A", margin=60, baseline=None):
+    """Right-aligned brand mark.
+
+    The x position used to be hardcoded at W-220, which assumed the string
+    rendered exactly 220px wide. It does not, so the mark ran off the right
+    edge and "THE FIGHT DOCKET" was clipped mid-word. Measure it instead.
+    """
     f = _font("InstrumentSans-Regular.ttf", 28)
-    d.text((W-220, H-44), "THE FIGHT DOCKET", font=f, fill="#333333")
+    text = "THE FIGHT DOCKET"
+    bbox = d.textbbox((0, 0), text, font=f)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    y = (H - 34 - th) if baseline is None else baseline
+    d.text((W - margin - tw, y), text, font=f, fill=fill)
 
 def _wrap_text(d, text, font, x, y, max_width, fill=WHITE, line_spacing=1.25):
     """Draw wrapped text, return final y position."""
@@ -257,46 +267,61 @@ def fight_result(winner, loser, method, round_num, time, event, filename="fight_
     d.text((60, 48), f"OFFICIAL RESULT  ·  {event.upper()}", font=res_f, fill=GOLD)
     _rule(d, 102, margin=60, color="#333333")
 
-    # WINNER label
+    # Fonts and sizes first, so the block can be measured before it is drawn.
+    # Previously every y was fixed from the top, so a short winner/loser pair
+    # left roughly 500px of dead space at the bottom of the card.
     win_label_f = _font("InstrumentSans-Bold.ttf", 28)
-    d.text((60, 126), "WINNER", font=win_label_f, fill=RED)
-
-    # Winner name — massive
     w_size  = min(160, max(70, 160 - max(0, len(winner)-8)*9))
     win_f   = _font("BigShoulders-Bold.ttf", w_size)
-    d.text((60, 158), winner.upper(), font=win_f, fill=WHITE)
+    def_f   = _font("InstrumentSans-Regular.ttf", 34)
+    l_size  = min(100, max(50, 100 - max(0, len(loser)-8)*6))
+    los_f   = _font("BigShoulders-Bold.ttf", l_size)
+    chip_f  = _font("BigShoulders-Bold.ttf", 48)
 
-    # Thin rule under winner
-    winner_bbox = d.textbbox((60,158), winner.upper(), font=win_f)
-    _rule(d, winner_bbox[3] + 20, margin=60, color="#333333")
+    def _h(text, font):
+        b = d.textbbox((0, 0), text, font=font)
+        return b[3]
 
-    # DEF. label
-    def_y = winner_bbox[3] + 44
-    def_f = _font("InstrumentSans-Regular.ttf", 34)
-    d.text((60, def_y), "def.", font=def_f, fill="#888888")
+    win_h  = _h(winner.upper(), win_f)
+    los_h  = _h(loser.upper(), los_f)
+    chip_h = _h("Ag", chip_f) + 20
 
-    # Loser name
-    l_size = min(100, max(50, 100 - max(0, len(loser)-8)*6))
-    los_f  = _font("BigShoulders-Bold.ttf", l_size)
-    d.text((60, def_y + 46), loser.upper(), font=los_f, fill="#888888")
-    loser_bbox = d.textbbox((60, def_y+46), loser.upper(), font=los_f)
+    # Offsets within the block, mirroring the original rhythm.
+    off_winner = 32                       # WINNER label -> winner name
+    off_rule1  = off_winner + win_h + 20
+    off_def    = off_winner + win_h + 44
+    off_loser  = off_def + 46
+    off_rule2  = off_loser + los_h + 30
+    off_chips  = off_loser + los_h + 60
+    block_h    = off_chips + chip_h
 
-    _rule(d, loser_bbox[3] + 30, margin=60)
+    # Sit the block between the header rule and the gold bottom band, biased
+    # upward. True centring leaves a hole under the header, because the header
+    # is anchored to the top and reads as part of the same group.
+    area_top, area_bottom = 126, H - 20
+    slack = max(0, (area_bottom - area_top) - block_h)
+    top = area_top + int(slack * 0.38)
+
+    d.text((60, top), "WINNER", font=win_label_f, fill=RED)
+    d.text((60, top + off_winner), winner.upper(), font=win_f, fill=WHITE)
+    _rule(d, top + off_rule1, margin=60, color="#333333")
+    d.text((60, top + off_def), "def.", font=def_f, fill="#888888")
+    d.text((60, top + off_loser), loser.upper(), font=los_f, fill="#888888")
+    _rule(d, top + off_rule2, margin=60)
 
     # Method / Round / Time chips
-    info_y  = loser_bbox[3] + 60
+    info_y = top + off_chips
     chip_data = [(method.upper(), RED, WHITE), (round_num.upper(), MGRAY, GOLD), (time, MGRAY, WHITE)]
     cx = 60
-    chip_f = _font("BigShoulders-Bold.ttf", 48)
     gap = 24
     for label, bg_c, fg_c in chip_data:
         bbox = d.textbbox((0,0), label, font=chip_f)
-        cw   = bbox[2] + 36; ch = bbox[3] + 20
-        d.rectangle([(cx, info_y),(cx+cw, info_y+ch)], fill=bg_c)
+        cw   = bbox[2] + 36
+        d.rectangle([(cx, info_y),(cx+cw, info_y+chip_h)], fill=bg_c)
         d.text((cx+18, info_y+10), label, font=chip_f, fill=fg_c)
         cx += cw + gap
 
-    _watermark(d)
+    _watermark(d, baseline=H - 56)
     path = f"{OUT}/{filename}"
     img.save(path, "PNG")
     print(f"✓ Saved: {path}")
@@ -336,19 +361,22 @@ def quote_card(quote, attribution, context="", filename="quote_card.png"):
     # Quote text — large, centered-left
     q_font_size = 68 if len(quote) < 80 else 54 if len(quote) < 120 else 44
     q_font = _font("Lora-Bold.ttf", q_font_size)
-    _wrap_text(d, f"\u201C{quote}\u201D", q_font, 60, 190, 940, fill=WHITE, line_spacing=1.35)
+    quote_end = _wrap_text(d, f"\u201C{quote}\u201D", q_font, 60, 190, 940, fill=WHITE, line_spacing=1.35)
 
-    # Attribution
-    _rule(d, 870, margin=60)
+    # Attribution follows the quote instead of being pinned at a fixed y=870,
+    # which stranded it far below any short quote. Clamped so it cannot
+    # collide with the bottom brand strip.
+    attr_rule_y = min(max(quote_end + 60, 400), H - 210)
+    _rule(d, attr_rule_y, margin=60)
     attr_f = _font("InstrumentSans-Regular.ttf", 36)
-    d.text((60, 892), f"— {attribution}", font=attr_f, fill=GOLD)
+    d.text((60, attr_rule_y + 22), f"— {attribution}", font=attr_f, fill=GOLD)
 
     # Bottom brand strip
     d.rectangle([(0, H-64),(W, H)], fill="#111111")
     brand_f = _font("BigShoulders-Bold.ttf", 38)
     d.text((60, H-52), "THE FIGHT DOCKET", font=brand_f, fill=RED)
-
-    _watermark(d)
+    # No _watermark() here: this card already prints the name bottom-left,
+    # so calling it rendered "THE FIGHT DOCKET" twice on the same strip.
     path = f"{OUT}/{filename}"
     img.save(path, "PNG")
     print(f"✓ Saved: {path}")
