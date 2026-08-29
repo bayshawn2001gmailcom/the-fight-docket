@@ -1,65 +1,53 @@
 {
-  "crawled_at": "2026-08-21T23:16:28.749289Z",
+  "crawled_at": "2026-08-29T03:59:33.228994Z",
   "ufc": [
     {
-      "event": "UFC Sacramento",
-      "main_fight": "Hernandez vs Rodrigues",
-      "date": "2026-08-22",
-      "location": "Golden 1 Center, Sacramento, CA, United States"
-    },
-    {
-      "event": "UFC Fight Night",
+      "event": "UFC Fight Night: Nurmagomedov vs Song",
       "main_fight": "Nurmagomedov vs Song",
       "date": "2026-08-29",
       "location": "Oriental Sports Center, Pudong District, China"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC Fight Night: Hooker vs Parnasse",
       "main_fight": "Hooker vs Parnasse",
       "date": "2026-09-05",
       "location": "Accor Arena, Paris, France"
     },
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Rodriguez vs Silva",
+      "event": "UFC Fight Night: Silva vs Delgado",
+      "main_fight": "Silva vs Delgado",
       "date": "2026-09-12",
       "location": "Desert Diamond Arena, Glendale, AZ, United States"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC 331: Van vs Pantoja 2",
+      "main_fight": "Van vs Pantoja 2",
+      "date": "2026-09-19",
+      "location": "Crypto.com Arena, Los Angeles, CA, United States"
+    },
+    {
+      "event": "UFC Fight Night: Rosas Jr. vs Barcelos",
       "main_fight": "Rosas Jr. vs Barcelos",
       "date": "2026-09-26",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Buckley vs Malott",
-      "date": "2026-10-17",
-      "location": "Rogers Place, Edmonton, AB, Canada"
-    },
-    {
-      "event": "UFC 332",
+      "event": "UFC 332: TBD vs TBD",
       "main_fight": "TBD vs TBD",
       "date": "2026-10-03",
       "location": "Delta Center, Salt Lake City, UT, United States"
     },
     {
-      "event": "UFC 330",
-      "main_fight": "Makhachev vs Machado Garry",
-      "date": "2026-08-15",
-      "location": "Xfinity Mobile Arena, Philadelphia, PA, United States"
+      "event": "UFC Fight Night: Buckley vs Malott",
+      "main_fight": "Buckley vs Malott",
+      "date": "2026-10-17",
+      "location": "Rogers Place, Edmonton, AB, Canada"
     },
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Gamrot vs Salkilld",
-      "date": "2026-08-08",
-      "location": "Meta APEX, Las Vegas, NV, United States"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Medic vs Rodriguez",
-      "date": "2026-08-01",
-      "location": "Belgrade Arena, BG, Serbia"
+      "event": "UFC 333: Volkanovski vs Evloev",
+      "main_fight": "Volkanovski vs Evloev",
+      "date": "2026-10-24",
+      "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
     }
   ],
   "boxing": []
