@@ -484,5 +484,14 @@
     "tweet": "https://x.com/thefightdocket/status/2093985879958180052",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Noakes-vs-Berinchyk-2026-08-29.png",
     "posted_at": "2026-08-30"
+  },
+  "Ursu-vs-Vaughan-2026-08-29": {
+    "winner": "Constantin Ursu",
+    "loser": "Ben Vaughan",
+    "method": "KO/TKO",
+    "event": "Boxing Event",
+    "tweet": "https://x.com/thefightdocket/status/2094072985661435963",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Ursu-vs-Vaughan-2026-08-29.png",
+    "posted_at": "2026-08-30"
   }
 }
