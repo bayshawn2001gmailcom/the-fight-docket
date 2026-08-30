@@ -412,5 +412,23 @@
     "tweet": "https://x.com/thefightdocket/status/2091471321565900932",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Serrano-vs-Manzur-2026-08-22.png",
     "posted_at": "2026-08-23"
+  },
+  "Martinez-vs-Plantic-2026-08-29": {
+    "winner": "Lester Martinez",
+    "loser": "Luka Plantic",
+    "method": "KO/TKO",
+    "event": "Lester Martinez-Luka Plantic",
+    "tweet": "https://x.com/thefightdocket/status/2093947493469864050",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Martinez-vs-Plantic-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Lopez-vs-Carrillo-2026-08-30": {
+    "winner": "Najee Lopez",
+    "loser": "Juan Carrillo",
+    "method": "KO/TKO",
+    "event": "ProBoxTV",
+    "tweet": "https://x.com/thefightdocket/status/2093947589305504221",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Lopez-vs-Carrillo-2026-08-30.png",
+    "posted_at": "2026-08-30"
   }
 }
