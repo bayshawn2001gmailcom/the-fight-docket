@@ -245,10 +245,17 @@ def inject_images_into_html(html: str, url_map: dict) -> str:
 
         # For each label, find the block and inject after the red divider
         for label in labels:
-            # Find the label in the HTML
-            label_idx = html.find(label)
-            if label_idx == -1:
+            # Match the label ONLY where it is an actual section header, i.e.
+            # inside the letter-spacing:4px label <p>. Plain html.find(label)
+            # also matched body prose (an Editor's Note that says "Business
+            # Intel below" stole the Main Story slot), so anchor the match.
+            m = re.search(
+                r"letter-spacing:4px;[^>]*>\s*" + re.escape(label) + r"\s*</p>",
+                html,
+            )
+            if not m:
                 continue
+            label_idx = m.end()
 
             # Find the red divider div that comes after this label
             divider_idx = html.find(RED_DIVIDER, label_idx)

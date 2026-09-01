@@ -1,11 +1,10 @@
 {
-  "issue": "aug24_2026",
-  "issue_date": "2026-08-24",
-  "approved": true,
-  "captions": "aug24_2026_captions.txt",
-  "preview": "aug24_2026_newsletter_preview.png",
-  "announcement": "aug24_2026_itauma_vs_hrgovic_announcement.png",
-  "result": "aug24_2026_lopez_result.png",
-  "quote": "aug24_2026_lopez_quote_card.png",
-  "approved_at": "2026-08-25T16:07:41+00:00"
+  "issue": "aug31_2026",
+  "issue_date": "2026-08-31",
+  "approved": false,
+  "captions": "aug31_2026_captions.txt",
+  "preview": "aug31_2026_newsletter_preview.png",
+  "announcement": "aug31_2026_garcia_vs_benn_announcement.png",
+  "result": "aug31_2026_hrgovic_result.png",
+  "quote": "aug31_2026_hrgovic_quote_card.png"
 }

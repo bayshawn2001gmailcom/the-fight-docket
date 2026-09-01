@@ -1,12 +1,33 @@
 {
-  "issue_date": "2026-08-24",
+  "issue_date": "2026-08-31",
   "prompts": [
-    {"section": "intro", "prompt": "Wide cinematic film still shot from high in the upper deck of a Las Vegas arena an hour after a world title fight. Rows of empty blue seats, a lit boxing ring far below with a lone corner stool and a coiled roll of hand wrap left on the canvas, house lights half raised. Cold desaturated blue everywhere with one warm pool of light on the canvas. Shot on 35mm, visible grain, deep shadows. No people, no faces, no logos, no text"},
-    {"section": "main_story", "prompt": "Two boxers in full silhouette squared up at center ring under a single hard overhead light, photographed from behind and slightly below so no faces are visible. Deep black background, harsh rim light catching shoulders and gloves, one figure flat footed and squared up, the other angled and side on. High contrast near monochrome with a bleed of red spilling in from the ring lights. Cinematic, editorial, dramatic. No faces, no logos, no text"},
-    {"section": "legal", "prompt": "Fine art still life on a dark walnut desk in a dim law office. A stack of stapled court filings, a fountain pen, and three luxury wristwatches laid out in a row beside them like evidence exhibits. A green banker's lamp throws a narrow warm pool of light into surrounding blackness, faint dust in the air. Desaturated, cold shadows, photorealistic, shallow depth of field. No people, no faces, no readable text on the documents, no logos"},
-    {"section": "rumor", "prompt": "Noir photograph of an empty press conference dais in a darkened ballroom. Two microphones on a bare table, two chairs pushed back, a plain unmarked cloth backdrop, a single hard spotlight from above leaving the rest of the room in black. Heavy film grain, very high contrast, moody and secretive. No people, no faces, no text, no logos"},
-    {"section": "fight_previews", "prompt": "Documentary photograph of the loading bay of a large London arena the night before a fight. A freight elevator standing open, ring posts and turnbuckle pads stacked on a wooden pallet, wet concrete floor reflecting sodium lights, rain falling outside the open roll up door. Cool blue grey palette with amber highlights, photojournalistic, available light. No people, no faces, no logos, no text"},
-    {"section": "business_intel", "prompt": "Conceptual editorial photograph of a single boxing glove resting alone at the head of a long boardroom table of polished black glass, mirrored in the tabletop, empty executive chairs receding on both sides, a wall of blank glowing screens behind it casting cold blue light across the room. Wide angle, symmetrical, corporate, cold and slightly ominous. No people, no faces, no text on the screens, no logos"},
-    {"section": "fighter_spotlight", "prompt": "Intimate fine art photograph of a pair of well worn women's boxing gloves hanging from a nail on a weathered gym wall. Laces frayed, leather cracked and creased from years of use, late afternoon sunlight coming through a dusty window and falling across them. Warm amber and umber tones, shallow depth of field, quiet and reverent, photorealistic. No people, no faces, no logos, no text"}
+    {
+      "section": "intro",
+      "prompt": "A white towel caught mid-air as it falls through the ropes into an empty boxing ring, frozen in motion, lit by a single harsh overhead arena light that leaves the surrounding seats in total blackness. Documentary photojournalism, shot from ringside at floor level, cold white key light against deep black, slight motion blur on the fabric. Absolutely no people, no faces, no text, no logos"
+    },
+    {
+      "section": "main_story",
+      "prompt": "Two heavyweight boxer silhouettes in near-total darkness, one backed against the ring ropes with his head down and arms hanging low, the other advancing on him in a flat forward stance. Rim lighting only, figures rendered as pure black shapes against a smoky amber haze, ropes cutting hard diagonal lines across the frame. Cinematic wide shot, high contrast, exhaustion and inevitability. No visible faces, no identifiable features, no text, no logos"
+    },
+    {
+      "section": "legal",
+      "prompt": "An evidence table in a dim federal courthouse conference room, a row of switched-off mobile phones laid out in numbered clear plastic bags, one bag conspicuously empty. Cold blue-grey daylight through vertical blinds, muted desaturated palette, sharp editorial still life, shallow depth of field. No people, no faces, no readable text, no logos"
+    },
+    {
+      "section": "rumor",
+      "prompt": "An empty arena in a northern English city seen from the upper tier at night, house lights off, only the work lights over a bare ring in the center, scaffolding and stacked chairs at the edges. Wide desaturated documentary shot, cool grey and dull orange, a venue waiting for a date that has not happened yet. No people, no faces, no text, no logos"
+    },
+    {
+      "section": "fight_previews",
+      "prompt": "Five pairs of boxing and MMA gloves arranged in a single row on weathered dark wood, each pair distinct in age and wear, lit from a low raking angle so the leather texture and stitching read sharply. Fine art still life, warm tungsten light against a near-black background, painterly and restrained. No people, no faces, no text, no logos"
+    },
+    {
+      "section": "business_intel",
+      "prompt": "An unmarked championship belt lying face down on a bare negotiating table beside a closed briefcase and a single pulled-out empty chair, in a hotel meeting room with the lights half off. Cold institutional lighting, desaturated greens and greys, wide flat composition emphasizing empty space, the mood of a transaction rather than a sport. No people, no faces, no text, no logos, no insignia on the belt"
+    },
+    {
+      "section": "fighter_spotlight",
+      "prompt": "Rear view from directly behind a heavyweight boxer sitting alone on a stool in an empty locker room, the camera positioned behind his back so only his shoulders, the back of his shaved head and his taped hands resting at his sides are visible. His head is turned completely away from the camera. A warm shaft of light falls across his back from an open doorway ahead of him, lockers and a wooden bench receding into shadow. Painterly chiaroscuro oil study, deep amber and umber tones, dignity and late-career weariness. Strictly a back view, no face, no profile, no reflection, no mirrors, no other people, no text, no logos"
+    }
   ]
 }

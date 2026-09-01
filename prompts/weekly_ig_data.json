@@ -1,33 +1,33 @@
 {
-  "date": "AUGUST 24, 2026",
-  "issue_date": "2026-08-24",
-  "issue": "aug24_2026",
+  "date": "AUGUST 31, 2026",
+  "issue_date": "2026-08-31",
+  "issue": "aug31_2026",
   "preview_stories": [
-    "Lopez outboxes Romero for WBA 147 title, third division",
-    "Serrano grinds out 50th win, KO record still tied",
-    "Lopez won it with no promoter, just a DAZN deal"
+    "Hrgovic stops Itauma in nine for the vacant IBF title",
+    "Cameron outpoints Mayer to unify at junior middleweight",
+    "Queensberry paid to clear the path and lost the belt"
   ],
   "announcement": {
-    "fighter1": "Itauma",
-    "fighter2": "Hrgovic",
-    "event": "Vacant IBF Heavyweight Title",
-    "date": "August 29 · London, UK",
-    "weight_class": "Heavyweight",
-    "filename": "itauma_vs_hrgovic_announcement.png"
+    "fighter1": "Garcia",
+    "fighter2": "Benn",
+    "event": "WBC Welterweight Title",
+    "date": "September 12 · Las Vegas, NV",
+    "weight_class": "Welterweight",
+    "filename": "garcia_vs_benn_announcement.png"
   },
   "result": {
-    "winner": "Teofimo Lopez",
-    "loser": "Rolly Romero",
-    "method": "Majority Decision",
-    "round_num": "R12",
-    "time": "3:00",
-    "event": "WBA Welterweight Title",
-    "filename": "lopez_result.png"
+    "winner": "Filip Hrgovic",
+    "loser": "Moses Itauma",
+    "method": "TKO",
+    "round_num": "R9",
+    "time": "Corner stoppage",
+    "event": "Vacant IBF Heavyweight Title",
+    "filename": "hrgovic_result.png"
   },
   "quote": {
-    "quote": "If you lose and you come back, you never lost, because you're a winner.",
-    "attribution": "Teofimo Lopez",
-    "context": "After winning the WBA welterweight title",
-    "filename": "lopez_quote_card.png"
+    "quote": "He's amazing fighter. I want to thank him to accepting this fight, to give me chance to become a new superstar in heavyweight division.",
+    "attribution": "Filip Hrgovic",
+    "context": "After winning the vacant IBF heavyweight title",
+    "filename": "hrgovic_quote_card.png"
   }
 }
