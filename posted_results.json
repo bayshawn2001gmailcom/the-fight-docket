@@ -412,5 +412,86 @@
     "tweet": "https://x.com/thefightdocket/status/2091471321565900932",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260823_Serrano-vs-Manzur-2026-08-22.png",
     "posted_at": "2026-08-23"
+  },
+  "Martinez-vs-Plantic-2026-08-29": {
+    "winner": "Lester Martinez",
+    "loser": "Luka Plantic",
+    "method": "KO/TKO",
+    "event": "Lester Martinez-Luka Plantic",
+    "tweet": "https://x.com/thefightdocket/status/2093947493469864050",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Martinez-vs-Plantic-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Lopez-vs-Carrillo-2026-08-30": {
+    "winner": "Najee Lopez",
+    "loser": "Juan Carrillo",
+    "method": "KO/TKO",
+    "event": "ProBoxTV",
+    "tweet": "https://x.com/thefightdocket/status/2093947589305504221",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Lopez-vs-Carrillo-2026-08-30.png",
+    "posted_at": "2026-08-30"
+  },
+  "Lopez-vs-Carrillo-2026-08-29": {
+    "winner": "Najee Lopez",
+    "loser": "Juan Carrillo",
+    "method": "TKO",
+    "event": "ProBoxTV's L.A. Card",
+    "tweet": "https://x.com/thefightdocket/status/2093985398338842805",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Lopez-vs-Carrillo-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Cardenas-vs-Carrillo-2026-08-29": {
+    "winner": "Ramon Cardenas",
+    "loser": "Leonardo Carrillo",
+    "method": "Decision (Split)",
+    "event": "ProBoxTV's L.A. Card",
+    "tweet": "https://x.com/thefightdocket/status/2093985511408857469",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Cardenas-vs-Carrillo-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Ocampo-vs-Mindoro-2026-08-29": {
+    "winner": "Carlos Ocampo",
+    "loser": "Weljon Mindoro",
+    "method": "TKO",
+    "event": "ProBoxTV's L.A. Card",
+    "tweet": "https://x.com/thefightdocket/status/2093985606900555811",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Ocampo-vs-Mindoro-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Garcia-vs-Garcia-2026-08-29": {
+    "winner": "Emilio Garcia",
+    "loser": "Luis Guerrero Garcia",
+    "method": "TKO",
+    "event": "ProBoxTV's L.A. Card",
+    "tweet": "https://x.com/thefightdocket/status/2093985700941050243",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Garcia-vs-Garcia-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Cameron-vs-Mayer-2026-08-29": {
+    "winner": "Chantelle Cameron",
+    "loser": "Mikaela Mayer",
+    "method": "Decision (Unanimous)",
+    "event": "Chantelle Cameron vs Mikaela Mayer",
+    "tweet": "https://x.com/thefightdocket/status/2093985790988530131",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Cameron-vs-Mayer-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Noakes-vs-Berinchyk-2026-08-29": {
+    "winner": "Sam Noakes",
+    "loser": "Denys Berinchyk",
+    "method": "Decision (Unanimous)",
+    "event": "Sam Noakes vs Denys Berinchyk",
+    "tweet": "https://x.com/thefightdocket/status/2093985879958180052",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Noakes-vs-Berinchyk-2026-08-29.png",
+    "posted_at": "2026-08-30"
+  },
+  "Ursu-vs-Vaughan-2026-08-29": {
+    "winner": "Constantin Ursu",
+    "loser": "Ben Vaughan",
+    "method": "KO/TKO",
+    "event": "Boxing Event",
+    "tweet": "https://x.com/thefightdocket/status/2094072985661435963",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Ursu-vs-Vaughan-2026-08-29.png",
+    "posted_at": "2026-08-30"
   }
 }
