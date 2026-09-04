@@ -1,10 +1,11 @@
 {
   "issue": "aug31_2026",
   "issue_date": "2026-08-31",
-  "approved": false,
+  "approved": true,
   "captions": "aug31_2026_captions.txt",
   "preview": "aug31_2026_newsletter_preview.png",
   "announcement": "aug31_2026_garcia_vs_benn_announcement.png",
   "result": "aug31_2026_hrgovic_result.png",
-  "quote": "aug31_2026_hrgovic_quote_card.png"
+  "quote": "aug31_2026_hrgovic_quote_card.png",
+  "approved_at": "2026-09-03T22:11:57+00:00"
 }
