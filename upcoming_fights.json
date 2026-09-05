@@ -1,50 +1,50 @@
 {
-  "crawled_at": "2026-08-29T03:59:33.228994Z",
+  "crawled_at": "2026-09-05T00:31:54.363080Z",
   "ufc": [
     {
-      "event": "UFC Fight Night: Nurmagomedov vs Song",
-      "main_fight": "Nurmagomedov vs Song",
-      "date": "2026-08-29",
-      "location": "Oriental Sports Center, Pudong District, China"
-    },
-    {
-      "event": "UFC Fight Night: Hooker vs Parnasse",
+      "event": "UFC Fight Night September 05, 2026",
       "main_fight": "Hooker vs Parnasse",
       "date": "2026-09-05",
       "location": "Accor Arena, Paris, France"
     },
     {
-      "event": "UFC Fight Night: Silva vs Delgado",
+      "event": "UFC Fight Night September 12, 2026",
       "main_fight": "Silva vs Delgado",
       "date": "2026-09-12",
       "location": "Desert Diamond Arena, Glendale, AZ, United States"
     },
     {
-      "event": "UFC 331: Van vs Pantoja 2",
+      "event": "Crypto.com UFC 331",
       "main_fight": "Van vs Pantoja 2",
       "date": "2026-09-19",
       "location": "Crypto.com Arena, Los Angeles, CA, United States"
     },
     {
-      "event": "UFC Fight Night: Rosas Jr. vs Barcelos",
+      "event": "UFC Fight Night September 26, 2026",
       "main_fight": "Rosas Jr. vs Barcelos",
       "date": "2026-09-26",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
-      "event": "UFC 332: TBD vs TBD",
+      "event": "UFC 332",
       "main_fight": "TBD vs TBD",
       "date": "2026-10-03",
       "location": "Delta Center, Salt Lake City, UT, United States"
     },
     {
-      "event": "UFC Fight Night: Buckley vs Malott",
+      "event": "UFC Fight Night October 10, 2026",
+      "main_fight": "Allen vs Duncan",
+      "date": "2026-10-10",
+      "location": "Meta APEX, Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC Fight Night October 17, 2026",
       "main_fight": "Buckley vs Malott",
       "date": "2026-10-17",
       "location": "Rogers Place, Edmonton, AB, Canada"
     },
     {
-      "event": "UFC 333: Volkanovski vs Evloev",
+      "event": "UFC 333",
       "main_fight": "Volkanovski vs Evloev",
       "date": "2026-10-24",
       "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
