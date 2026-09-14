@@ -1,4 +1,19 @@
 
+## 2026-09-14 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-09-14.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2099385103155663255
+
+  T1: Zuffa Boxing guaranteed Conor Benn $15 million for four and a half minutes of wo...
+  T2: Ryan Garcia stopped Conor Benn at 1:25 of Round 2, making his first WBC welterwe...
+  T3: The $15 million Zuffa Boxing paid Conor Benn for 265 seconds of action highlight...
+  T4: Alexis Rocha delivered a dominant performance against Jose Ramirez, winning a cl...
+  T5: After stopping Noel Mikaelian, Jai Opetaia verbally agreed to a cruiserweight un...
+  T6: Get the full business intelligence behind combat sports. Subscribe free to The F...
+
+- Status: ✅ Posted
+
 ## 2026-08-24 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-08-24.html

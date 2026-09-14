@@ -1,33 +1,33 @@
 {
-  "date": "AUGUST 31, 2026",
-  "issue_date": "2026-08-31",
-  "issue": "aug31_2026",
+  "date": "SEPTEMBER 14, 2026",
+  "issue_date": "2026-09-14",
+  "issue": "sep14_2026",
   "preview_stories": [
-    "Hrgovic stops Itauma in nine for the vacant IBF title",
-    "Cameron outpoints Mayer to unify at junior middleweight",
-    "Queensberry paid to clear the path and lost the belt"
+    "Garcia stops Benn in two, keeps WBC welterweight title",
+    "Rocha outboxes Ramirez, Opetaia-Benavidez set for 2027",
+    "Zuffa's $15M purse for 265 seconds of work"
   ],
   "announcement": {
-    "fighter1": "Garcia",
-    "fighter2": "Benn",
-    "event": "WBC Welterweight Title",
-    "date": "September 12 · Las Vegas, NV",
-    "weight_class": "Welterweight",
-    "filename": "garcia_vs_benn_announcement.png"
+    "fighter1": "Van",
+    "fighter2": "Pantoja",
+    "event": "UFC 331: Flyweight Title Rematch",
+    "date": "September 19 · Los Angeles, CA",
+    "weight_class": "Flyweight",
+    "filename": "van_vs_pantoja_announcement.png"
   },
   "result": {
-    "winner": "Filip Hrgovic",
-    "loser": "Moses Itauma",
+    "winner": "Ryan Garcia",
+    "loser": "Conor Benn",
     "method": "TKO",
-    "round_num": "R9",
-    "time": "Corner stoppage",
-    "event": "Vacant IBF Heavyweight Title",
-    "filename": "hrgovic_result.png"
+    "round_num": "R2",
+    "time": "1:25",
+    "event": "WBC Welterweight Title",
+    "filename": "garcia_benn_result.png"
   },
   "quote": {
-    "quote": "He's amazing fighter. I want to thank him to accepting this fight, to give me chance to become a new superstar in heavyweight division.",
-    "attribution": "Filip Hrgovic",
-    "context": "After winning the vacant IBF heavyweight title",
-    "filename": "hrgovic_quote_card.png"
+    "quote": "I'll beat your ass right now. These are the first two fights I've had no injuries to my right hand.",
+    "attribution": "Ryan Garcia",
+    "context": "After stopping Conor Benn to retain his title",
+    "filename": "garcia_quote_card.png"
   }
 }
