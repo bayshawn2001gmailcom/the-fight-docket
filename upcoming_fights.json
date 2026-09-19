@@ -1,52 +1,52 @@
 {
-  "crawled_at": "2026-09-12T00:50:09.638097Z",
+  "crawled_at": "2026-09-19T00:52:25.783296Z",
   "ufc": [
     {
-      "event": "Noche UFC",
-      "main_fight": "Silva vs Delgado",
-      "date": "2026-09-12T17:00:00 EDT",
-      "location": "Desert Diamond Arena, Glendale, AZ, United States"
-    },
-    {
-      "event": "UFC 331",
+      "event": "Crypto.com UFC 331",
       "main_fight": "Van vs Pantoja 2",
-      "date": "2026-09-19T21:00:00 EDT",
+      "date": "2026-09-19",
       "location": "Crypto.com Arena, Los Angeles, CA, United States"
     },
     {
       "event": "UFC Fight Night",
       "main_fight": "Rosas Jr. vs Barcelos",
-      "date": "2026-09-26T20:00:00 EDT",
+      "date": "2026-09-26",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
       "event": "UFC 332",
       "main_fight": "Silva vs Wang",
-      "date": "2026-10-03T20:00:00 EDT",
+      "date": "2026-10-03",
       "location": "Delta Center, Salt Lake City, UT, United States"
     },
     {
       "event": "UFC Fight Night",
       "main_fight": "Allen vs Duncan",
-      "date": "2026-10-10T20:00:00 EDT",
+      "date": "2026-10-10",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
       "event": "UFC Fight Night",
       "main_fight": "Buckley vs Malott",
-      "date": "2026-10-17T14:00:00 EDT",
+      "date": "2026-10-17",
       "location": "Rogers Place, Edmonton, AB, Canada"
     },
     {
       "event": "UFC 333",
       "main_fight": "Volkanovski vs Evloev",
-      "date": "2026-10-24T14:00:00 EDT",
+      "date": "2026-10-24",
       "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "TBD vs TBD",
-      "date": "2026-10-31T20:00:00 EDT",
+      "main_fight": "Moicano vs Nolan",
+      "date": "2026-10-31",
+      "location": "Meta APEX, Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC Fight Night",
+      "main_fight": "Bonfim vs Brady",
+      "date": "2026-11-07",
       "location": "Meta APEX, Las Vegas, NV, United States"
     }
   ],
