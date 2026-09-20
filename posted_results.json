@@ -493,5 +493,50 @@
     "tweet": "https://x.com/thefightdocket/status/2094072985661435963",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260830_Ursu-vs-Vaughan-2026-08-29.png",
     "posted_at": "2026-08-30"
+  },
+  "Cruz-vs-Bravo-2026-09-19": {
+    "winner": "Isaac Cruz",
+    "loser": "Nestor Bravo",
+    "method": "KO/TKO",
+    "event": "PBC Card at Pechanga Arena",
+    "tweet": "https://x.com/thefightdocket/status/2101550778196406278",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260920_Cruz-vs-Bravo-2026-09-19.png",
+    "posted_at": "2026-09-20"
+  },
+  "Blancas-vs-Jimenez-2026-09-19": {
+    "winner": "Daniel Blancas",
+    "loser": "Sergio Jimenez",
+    "method": "KO/TKO",
+    "event": "PBC Card at Pechanga Arena",
+    "tweet": "https://x.com/thefightdocket/status/2101550870743708099",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260920_Blancas-vs-Jimenez-2026-09-19.png",
+    "posted_at": "2026-09-20"
+  },
+  "Brown-vs-Hedges-2026-09-19": {
+    "winner": "Pat Brown",
+    "loser": "John Hedges",
+    "method": "KO/TKO",
+    "event": "Boxing Card at Co-op LIVE",
+    "tweet": "https://x.com/thefightdocket/status/2101550952431903061",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260920_Brown-vs-Hedges-2026-09-19.png",
+    "posted_at": "2026-09-20"
+  },
+  "Masoud-vs-Mansilla-2026-09-19": {
+    "winner": "Shabaz Masoud",
+    "loser": "Ckari Cani Mansilla",
+    "method": "Decision (Unanimous)",
+    "event": "Boxing Card at Co-op LIVE",
+    "tweet": "https://x.com/thefightdocket/status/2101551030722761138",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260920_Masoud-vs-Mansilla-2026-09-19.png",
+    "posted_at": "2026-09-20"
+  },
+  "Jeffers-vs-Conway-2026-09-19": {
+    "winner": "Mark Jeffers",
+    "loser": "Kieron Conway",
+    "method": "Decision (Unanimous)",
+    "event": "Boxing Card at Co-op LIVE",
+    "tweet": "https://x.com/thefightdocket/status/2101551111081496970",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260920_Jeffers-vs-Conway-2026-09-19.png",
+    "posted_at": "2026-09-20"
   }
 }
