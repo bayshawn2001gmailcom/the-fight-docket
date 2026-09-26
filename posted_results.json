@@ -538,5 +538,14 @@
     "tweet": "https://x.com/thefightdocket/status/2101551111081496970",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260920_Jeffers-vs-Conway-2026-09-19.png",
     "posted_at": "2026-09-20"
+  },
+  "Hernandez-vs-Kameda-2026-09-26": {
+    "winner": "Sebastian Hernandez",
+    "loser": "Kyonosuke Kameda",
+    "method": "Decision (Split)",
+    "event": "Unknown Event",
+    "tweet": "https://x.com/thefightdocket/status/2103721568433995810",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260926_Hernandez-vs-Kameda-2026-09-26.png",
+    "posted_at": "2026-09-26"
   }
 }
