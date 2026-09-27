@@ -556,5 +556,41 @@
     "tweet": "https://x.com/thefightdocket/status/2103778990863650920",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260926_Hernandez-vs-Kameda-2026-09-25.png",
     "posted_at": "2026-09-26"
+  },
+  "Fisher-vs-Pirotton-2026-09-26": {
+    "winner": "Johnny Fisher",
+    "loser": "Michael Pirotton",
+    "method": "Decision (Majority)",
+    "event": "Copper Box Arena",
+    "tweet": "https://x.com/thefightdocket/status/2104095265212821548",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260927_Fisher-vs-Pirotton-2026-09-26.png",
+    "posted_at": "2026-09-27"
+  },
+  "Kalajdzic-vs-Richards-2026-09-26": {
+    "winner": "Radivoje Kalajdzic",
+    "loser": "Craig Richards",
+    "method": "Decision (Unanimous)",
+    "event": "Copper Box Arena",
+    "tweet": "https://x.com/thefightdocket/status/2104095289178984754",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260927_Kalajdzic-vs-Richards-2026-09-26.png",
+    "posted_at": "2026-09-27"
+  },
+  "Davies-vs-Collins-2026-09-26": {
+    "winner": "Liam Davies",
+    "loser": "Nathaniel Collins",
+    "method": "KO/TKO",
+    "event": "bp pulse LIVE Arena",
+    "tweet": "https://x.com/thefightdocket/status/2104095310901317726",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260927_Davies-vs-Collins-2026-09-26.png",
+    "posted_at": "2026-09-27"
+  },
+  "Lizarraga-vs-Torres-2026-09-27": {
+    "winner": "Gilberto Garcia Lizarraga",
+    "loser": "Arturo Torres",
+    "method": "KO/TKO",
+    "event": "Unknown",
+    "tweet": "https://x.com/thefightdocket/status/2104095333672165612",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260927_Lizarraga-vs-Torres-2026-09-27.png",
+    "posted_at": "2026-09-27"
   }
 }
