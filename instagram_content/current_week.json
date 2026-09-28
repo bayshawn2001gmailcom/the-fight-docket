@@ -1,11 +1,10 @@
 {
-  "issue": "sep14_2026",
-  "issue_date": "2026-09-14",
-  "approved": true,
-  "captions": "sep14_2026_captions.txt",
-  "preview": "sep14_2026_newsletter_preview.png",
-  "announcement": "sep14_2026_van_vs_pantoja_announcement.png",
-  "result": "sep14_2026_garcia_benn_result.png",
-  "quote": "sep14_2026_garcia_quote_card.png",
-  "approved_at": "2026-09-14T06:29:32+00:00"
+  "issue": "sep28_2026",
+  "issue_date": "2026-09-28",
+  "approved": false,
+  "captions": "sep28_2026_captions.txt",
+  "preview": "sep28_2026_newsletter_preview.png",
+  "announcement": "sep28_2026_silva_vs_wang_announcement.png",
+  "result": "sep28_2026_rosas_barcelos_result.png",
+  "quote": "sep28_2026_white_quote_card.png"
 }

@@ -1,33 +1,33 @@
 {
-  "date": "SEPTEMBER 14, 2026",
-  "issue_date": "2026-09-14",
-  "issue": "sep14_2026",
+  "date": "SEPTEMBER 28, 2026",
+  "issue_date": "2026-09-28",
+  "issue": "sep28_2026",
   "preview_stories": [
-    "Garcia stops Benn in two, keeps WBC welterweight title",
-    "Rocha outboxes Ramirez, Opetaia-Benavidez set for 2027",
-    "Zuffa's $15M purse for 265 seconds of work"
+    "Rosas Jr. rallies to stop Barcelos in the fifth",
+    "Heather Hardy sues MVP and Jake Paul for $10M+",
+    "Joshua-Fury's Dana White problem"
   ],
   "announcement": {
-    "fighter1": "Van",
-    "fighter2": "Pantoja",
-    "event": "UFC 331: Flyweight Title Rematch",
-    "date": "September 19 · Los Angeles, CA",
-    "weight_class": "Flyweight",
-    "filename": "van_vs_pantoja_announcement.png"
+    "fighter1": "Silva",
+    "fighter2": "Wang",
+    "event": "UFC 332: Vacant Women's Flyweight Title",
+    "date": "October 3 · Salt Lake City, UT",
+    "weight_class": "Women's Flyweight",
+    "filename": "silva_vs_wang_announcement.png"
   },
   "result": {
-    "winner": "Ryan Garcia",
-    "loser": "Conor Benn",
+    "winner": "Raul Rosas Jr.",
+    "loser": "Raoni Barcelos",
     "method": "TKO",
-    "round_num": "R2",
-    "time": "1:25",
-    "event": "WBC Welterweight Title",
-    "filename": "garcia_benn_result.png"
+    "round_num": "R5",
+    "time": "1:38",
+    "event": "UFC Fight Night Main Event",
+    "filename": "rosas_barcelos_result.png"
   },
   "quote": {
-    "quote": "I'll beat your ass right now. These are the first two fights I've had no injuries to my right hand.",
-    "attribution": "Ryan Garcia",
-    "context": "After stopping Conor Benn to retain his title",
-    "filename": "garcia_quote_card.png"
+    "quote": "Have I not answered this question 257,000 times?",
+    "attribution": "Dana White",
+    "context": "On his role in Joshua vs. Fury",
+    "filename": "white_quote_card.png"
   }
 }
