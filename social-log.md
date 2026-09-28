@@ -1,4 +1,19 @@
 
+## 2026-09-28 — Twitter Thread (@thefightdocket)
+
+- Newsletter: newsletter_2026-09-28.html
+- Tweets posted: 6
+- Thread root: https://x.com/thefightdocket/status/2104579287139422658
+
+  T1: Raul Rosas Jr. was losing on all three cards entering the fifth. 1:38 later he'd...
+  T2: Rosas (13-1) slammed Barcelos out of a clinch at the fence and Herb Dean stopped...
+  T3: Heather Hardy sued MVP, Jake Paul, Bryce Holden and Holden Boxing for $10M+ in f...
+  T4: Joshua vs. Fury: announced Thursday for Dec. 11 in Cardiff with Dana White named...
+  T5: Takuma Inoue got up from a 7th-round knockdown to beat Tenshin Nasukawa again an...
+  T6: The full issue, with the Legal Tracker, Rumor Mill and previews of UFC 332, Fund...
+
+- Status: ✅ Posted
+
 ## 2026-09-14 — Twitter Thread (@thefightdocket)
 
 - Newsletter: newsletter_2026-09-14.html
