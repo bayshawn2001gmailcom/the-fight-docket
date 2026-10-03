@@ -1,95 +1,53 @@
 {
-  "crawled_at": "2026-09-26T01:05:56.163765Z",
+  "crawled_at": "2026-10-03T01:37:05.995088Z",
   "ufc": [
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Rosas Jr. vs Barcelos",
-      "date": "2026-09-26T20:00:00-04:00",
-      "location": "Meta APEX, Las Vegas, NV, United States"
-    },
-    {
-      "event": "UFC Fight Night",
+      "event": "UFC 332",
       "main_fight": "Silva vs Wang",
-      "date": "2026-10-03T20:00:00-04:00",
+      "date": "2026-10-03",
       "location": "Delta Center, Salt Lake City, UT, United States"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC Fight Night: Allen vs Duncan",
       "main_fight": "Allen vs Duncan",
-      "date": "2026-10-10T20:00:00-04:00",
+      "date": "2026-10-10",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC Fight Night: Buckley vs Malott",
       "main_fight": "Buckley vs Malott",
-      "date": "2026-10-17T14:00:00-04:00",
+      "date": "2026-10-17",
       "location": "Rogers Place, Edmonton, AB, Canada"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC 333",
       "main_fight": "Volkanovski vs Evloev",
-      "date": "2026-10-24T14:00:00-04:00",
+      "date": "2026-10-24",
       "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC Fight Night: Moicano vs Nolan",
       "main_fight": "Moicano vs Nolan",
-      "date": "2026-10-31T20:00:00-04:00",
+      "date": "2026-10-31",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC Fight Night: Bonfim vs Brady",
       "main_fight": "Bonfim vs Brady",
-      "date": "2026-11-07T17:00:00-04:00",
+      "date": "2026-11-07",
       "location": "Meta APEX, Las Vegas, NV, United States"
     },
     {
-      "event": "UFC 334",
+      "event": "UFC Fight Night: Gane vs Hokit",
       "main_fight": "Gane vs Hokit",
-      "date": "2026-11-14T21:00:00-05:00",
+      "date": "2026-11-14",
       "location": "Madison Square Garden, New York, NY, United States"
     },
     {
-      "event": "UFC 331",
-      "main_fight": "Van vs Pantoja 2",
-      "date": "2026-09-19T21:00:00-04:00",
-      "location": "Crypto.com Arena, Los Angeles, CA, United States"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Silva vs Delgado",
-      "date": "2026-09-12T17:00:00-04:00",
-      "location": "Desert Diamond Arena, Glendale, AZ, United States"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Hooker vs Parnasse",
-      "date": "2026-09-05T15:00:00-04:00",
-      "location": "Accor Arena, Paris, France"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Nurmagomedov vs Song",
-      "date": "2026-08-29T06:00:00-04:00",
-      "location": "Oriental Sports Center, Pudong District, China"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Hernandez vs Rodrigues",
-      "date": "2026-08-22T20:00:00-04:00",
-      "location": "Golden 1 Center, Sacramento, CA, United States"
-    },
-    {
-      "event": "UFC 330",
-      "main_fight": "Makhachev vs Machado Garry",
-      "date": "2026-08-15T21:00:00-04:00",
-      "location": "Xfinity Mobile Arena, Philadelphia, PA, United States"
-    },
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Gamrot vs Salkilld",
-      "date": "2026-08-08T20:00:00-04:00",
-      "location": "Meta APEX, Las Vegas, NV, United States"
+      "event": "UFC Fight Night: Prochazka vs Stirling",
+      "main_fight": "Prochazka vs Stirling",
+      "date": "2026-11-21",
+      "location": "ABHA Arena, Doha, Qatar"
     }
   ],
   "boxing": []
