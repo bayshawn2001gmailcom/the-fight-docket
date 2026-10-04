@@ -592,5 +592,23 @@
     "tweet": "https://x.com/thefightdocket/status/2104095333672165612",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20260927_Lizarraga-vs-Torres-2026-09-27.png",
     "posted_at": "2026-09-27"
+  },
+  "Whittaker-vs-Wallace-2026-10-04": {
+    "winner": "Ben Whittaker",
+    "loser": "Conor Wallace",
+    "method": "Decision (Unanimous)",
+    "event": "Birmingham's Utilita Arena",
+    "tweet": "https://x.com/thefightdocket/status/2106636073694539901",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261004_Whittaker-vs-Wallace-2026-10-04.png",
+    "posted_at": "2026-10-04"
+  },
+  "Fawaz-vs-Kelly-2026-10-04": {
+    "winner": "Bilal Fawaz",
+    "loser": "Ryan Kelly",
+    "method": "KO/TKO",
+    "event": "Birmingham's Utilita Arena",
+    "tweet": "https://x.com/thefightdocket/status/2106636159954653413",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261004_Fawaz-vs-Kelly-2026-10-04.png",
+    "posted_at": "2026-10-04"
   }
 }
