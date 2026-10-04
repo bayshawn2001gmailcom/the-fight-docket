@@ -610,5 +610,14 @@
     "tweet": "https://x.com/thefightdocket/status/2106636159954653413",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261004_Fawaz-vs-Kelly-2026-10-04.png",
     "posted_at": "2026-10-04"
+  },
+  "Fawaz-vs-Kelly-2026-10-03": {
+    "winner": "Bilal Fawaz",
+    "loser": "Ryan Kelly",
+    "method": "KO/TKO",
+    "event": "Fawaz vs Kelly",
+    "tweet": "https://x.com/thefightdocket/status/2106763627231400412",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261004_Fawaz-vs-Kelly-2026-10-03.png",
+    "posted_at": "2026-10-04"
   }
 }
