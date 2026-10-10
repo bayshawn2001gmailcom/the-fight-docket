@@ -1,53 +1,53 @@
 {
-  "crawled_at": "2026-10-03T01:37:05.995088Z",
+  "crawled_at": "2026-10-10T02:01:35.002461Z",
   "ufc": [
     {
-      "event": "UFC 332",
-      "main_fight": "Silva vs Wang",
-      "date": "2026-10-03",
-      "location": "Delta Center, Salt Lake City, UT, United States"
-    },
-    {
-      "event": "UFC Fight Night: Allen vs Duncan",
+      "event": "UFC Fight Night",
       "main_fight": "Allen vs Duncan",
       "date": "2026-10-10",
-      "location": "Meta APEX, Las Vegas, NV, United States"
+      "location": "Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night: Buckley vs Malott",
+      "event": "UFC Fight Night",
       "main_fight": "Buckley vs Malott",
       "date": "2026-10-17",
-      "location": "Rogers Place, Edmonton, AB, Canada"
+      "location": "Edmonton, AB, Canada"
     },
     {
       "event": "UFC 333",
       "main_fight": "Volkanovski vs Evloev",
       "date": "2026-10-24",
-      "location": "Etihad Arena, Abu Dhabi, United Arab Emirates"
+      "location": "Abu Dhabi, United Arab Emirates"
     },
     {
-      "event": "UFC Fight Night: Moicano vs Nolan",
+      "event": "UFC Fight Night",
       "main_fight": "Moicano vs Nolan",
       "date": "2026-10-31",
-      "location": "Meta APEX, Las Vegas, NV, United States"
+      "location": "Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night: Bonfim vs Brady",
+      "event": "UFC Fight Night",
       "main_fight": "Bonfim vs Brady",
       "date": "2026-11-07",
-      "location": "Meta APEX, Las Vegas, NV, United States"
+      "location": "Las Vegas, NV, United States"
     },
     {
-      "event": "UFC Fight Night: Gane vs Hokit",
+      "event": "UFC Fight Night",
       "main_fight": "Gane vs Hokit",
       "date": "2026-11-14",
-      "location": "Madison Square Garden, New York, NY, United States"
+      "location": "New York, NY, United States"
     },
     {
-      "event": "UFC Fight Night: Prochazka vs Stirling",
+      "event": "UFC Fight Night",
       "main_fight": "Prochazka vs Stirling",
       "date": "2026-11-21",
-      "location": "ABHA Arena, Doha, Qatar"
+      "location": "Doha, Qatar"
+    },
+    {
+      "event": "UFC 176",
+      "main_fight": "TBD vs TBD",
+      "date": "2026-12-11",
+      "location": "Principality Stadium, United Kingdom"
     }
   ],
   "boxing": []
