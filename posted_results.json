@@ -619,5 +619,14 @@
     "tweet": "https://x.com/thefightdocket/status/2106763627231400412",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261004_Fawaz-vs-Kelly-2026-10-03.png",
     "posted_at": "2026-10-04"
+  },
+  "Mendoza-vs-Sandoval-2026-10-10": {
+    "winner": "Sergio Mendoza",
+    "loser": "Ricardo Sandoval",
+    "method": "KO/TKO",
+    "event": "BoxingScene Fight Card",
+    "tweet": "https://x.com/thefightdocket/status/2109176427627057341",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261011_Mendoza-vs-Sandoval-2026-10-10.png",
+    "posted_at": "2026-10-11"
   }
 }
