@@ -628,5 +628,14 @@
     "tweet": "https://x.com/thefightdocket/status/2109176427627057341",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261011_Mendoza-vs-Sandoval-2026-10-10.png",
     "posted_at": "2026-10-11"
+  },
+  "Schofield-vs-Bahdi-2026-10-10": {
+    "winner": "Floyd Schofield III",
+    "loser": "Lucas Bahdi",
+    "method": "Decision (Unanimous)",
+    "event": "Unknown Event",
+    "tweet": "https://x.com/thefightdocket/status/2109216902937473484",
+    "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261011_Schofield-vs-Bahdi-2026-10-10.png",
+    "posted_at": "2026-10-11"
   }
 }
