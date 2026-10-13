@@ -247,6 +247,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true",
                         help="write the thread to disk and print it, post nothing")
+    parser.add_argument("--from-file",
+                        help="post an approved staged thread file ([T1] ... blocks) "
+                             "instead of regenerating with Gemini")
     args = parser.parse_args()
 
     print("=" * 55)
@@ -265,8 +268,19 @@ def main():
     ig_data = load_ig_data()
     newsletter_text = strip_html(html)
 
-    print("\n[2/3] Generating thread with Gemini...")
-    tweets = generate_thread(newsletter_text, ig_data)
+    if args.from_file:
+        # Post exactly what was approved. A live run otherwise regenerates the
+        # thread, so the reviewed text and the posted text silently diverge.
+        print(f"\n[2/3] Loading approved thread from {args.from_file}...")
+        raw = Path(args.from_file).read_text(encoding="utf-8")
+        tweets = [re.sub(r"^\[T\d+\]\s*", "", b).strip()
+                  for b in re.split(r"\n\s*\n", raw) if b.strip()]
+        over = [i for i, t in enumerate(tweets, 1) if len(t) > TWEET_LIMIT]
+        if over:
+            raise SystemExit(f"Tweets over {TWEET_LIMIT} chars: {over}")
+    else:
+        print("\n[2/3] Generating thread with Gemini...")
+        tweets = generate_thread(newsletter_text, ig_data)
     print(f"  Generated {len(tweets)} tweets:")
     for i, t in enumerate(tweets, 1):
         print(f"    T{i} ({len(t)} chars): {t[:70]}...")

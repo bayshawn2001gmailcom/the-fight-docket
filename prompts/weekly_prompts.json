@@ -1,33 +1,33 @@
 {
-  "issue_date": "2026-09-28",
+  "issue_date": "2026-10-12",
   "prompts": [
     {
       "section": "intro",
-      "prompt": "Documentary photograph, an empty octagon canvas after a fight, a folded medical stretcher leaning against the cage fence, scattered tape and a towel on the mat, harsh overhead arena lights fading to black at the edges, somber quiet mood, desaturated palette with a single cold highlight, no people, no faces, no text, no logos"
+      "prompt": "Fine art oil painting style, a single pair of worn boxing gloves hung by their laces from a rope in an empty arena at dusk, a slow spill of amber light across a stretch of canvas, quiet elegiac mood for a legend's passing, warm ochre and deep umber palette, no people, no faces, no text, no logos"
     },
     {
       "section": "main_story",
-      "prompt": "Dramatic high-contrast sports photograph from low angle, two silhouetted mixed martial artists locked in a clinch against a chain-link cage, one lifting the other off his feet mid-slam, figures rendered as pure black shapes against blazing white backlight, sweat spray frozen in the light, kinetic violent energy, red rim light, no faces, no text, no logos"
+      "prompt": "Noir cinematic photograph, a plain gold championship belt with no markings lying on wet ring canvas under one hard spotlight, blurred ring ropes receding into deep navy shadow, a single pair of gloves out of focus in the background, cold blue palette with one warm gold highlight on the belt, measured triumphant mood, no faces, no text, no lettering, no logos"
     },
     {
       "section": "legal",
-      "prompt": "Fine art still life, a pair of worn women's boxing gloves resting on a thick stack of legal papers on a dark wood courtroom table, a brass desk lamp casting warm light, a medical x-ray film of a skull blurred in the background, sober reflective mood, muted amber and deep brown tones, no faces, no text, no logos"
+      "prompt": "Documentary still life, a neat stack of sealed manila file folders and a dark cracked smartphone on a long courtroom table, the empty judge's bench blurred behind, cold fluorescent light, a single blank legal pad, desaturated grey and slate palette with a faint green tint, sober procedural mood, no people, no faces, no readable text, no logos"
     },
     {
       "section": "rumor",
-      "prompt": "Film noir photograph, three tall black shadows cast on a wet concrete stadium tunnel wall: two heavyweight boxers in robes and gloves on either side and a shorter shadow of a man in a fedora between them, the people themselves entirely out of frame, only their shadows visible on the wall, hard single light source, rain streaks, deep blacks and silver grey tones, atmosphere of stalled negotiation, no people visible, no faces, no text, no logos"
+      "prompt": "Atmospheric silhouette photograph, two heavyweight shadow figures facing each other across a fog-covered boxing ring from behind, their gloves raised but not touching, the faces entirely turned away and out of frame, a muted red glow bleeding through the mist, cool gray palette, uncertain tense mood, no faces, no text, no logos"
     },
     {
       "section": "fight_previews",
-      "prompt": "Atmospheric wide-angle photograph of a vast empty arena at night viewed from the upper deck, mountain silhouettes visible through tall glass windows behind, a single warm spotlight on an empty octagon far below, cool blue haze in the air, anticipatory calm before a championship night, no people, no text, no logos"
+      "prompt": "Wide cinematic photograph of a vast stadium at night, a desert sky gradient from indigo to burnt orange behind the structure, a single illuminated ring on an empty floor far below, rising haze catching the light, anticipation before a big weekend of fights, no people, no faces, no text, no logos"
     },
     {
       "section": "business_intel",
-      "prompt": "Conceptual editorial photograph, a blank contract page torn partly down the middle on a polished dark boardroom table, a plain unbranded gold championship belt lying across it, a fountain pen and a loose stack of banknotes beside it, a rainy window behind showing only soft-focus grey stadium roof masts with no signage, cold blue light with gold accents, no faces, no text, no lettering, no signs, no logos"
+      "prompt": "Conceptual editorial photograph, a row of unmarked black fighter contract folders on a polished dark conference table, a single pair of plain red boxing gloves with no markings laid at the end of the row, a single fountain pen laid across a blank page, cool steel light with a warm gold accent, shallow depth of field, no faces, no text, no lettering, no signs, no logos"
     },
     {
       "section": "fighter_spotlight",
-      "prompt": "Intimate fine art photograph, a boxer seen from behind sitting on a stool in the corner between rounds, towel over the shoulders, one gloved hand gripping the ring rope, soft red lantern light and a blurred crowd of paper lanterns in the background evoking a Tokyo arena, quiet resilient mood, warm crimson and gold tones, no faces, no text, no logos"
+      "prompt": "Intimate black and white fine art photograph, a boxer's pair of hands wrapped in fresh white hand wraps resting on the knees while seated on a locker room bench, a single shaft of light from a high window across the knuckles, a worn towel beside him, quiet resolve after a last-minute call, high contrast, no faces, no text, no logos"
     }
   ]
 }

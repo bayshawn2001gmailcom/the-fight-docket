@@ -1,33 +1,33 @@
 {
-  "date": "SEPTEMBER 28, 2026",
-  "issue_date": "2026-09-28",
-  "issue": "sep28_2026",
+  "date": "OCTOBER 12, 2026",
+  "issue_date": "2026-10-12",
+  "issue": "oct12_2026",
   "preview_stories": [
-    "Rosas Jr. rallies to stop Barcelos in the fifth",
-    "Heather Hardy sues MVP and Jake Paul for $10M+",
-    "Joshua-Fury's Dana White problem"
+    "Schofield outpoints Bahdi for vacant WBA lightweight title",
+    "Late replacement Mendoza stops Sandoval, takes two belts",
+    "Allen submits Duncan in the fifth"
   ],
   "announcement": {
-    "fighter1": "Silva",
-    "fighter2": "Wang",
-    "event": "UFC 332: Vacant Women's Flyweight Title",
-    "date": "October 3 · Salt Lake City, UT",
-    "weight_class": "Women's Flyweight",
-    "filename": "silva_vs_wang_announcement.png"
+    "fighter1": "Fundora",
+    "fighter2": "Hadribeaj",
+    "event": "WBC 154-lb Title",
+    "date": "October 17 · Las Vegas, NV",
+    "weight_class": "Junior Middleweight",
+    "filename": "fundora_vs_hadribeaj_announcement.png"
   },
   "result": {
-    "winner": "Raul Rosas Jr.",
-    "loser": "Raoni Barcelos",
-    "method": "TKO",
-    "round_num": "R5",
-    "time": "1:38",
-    "event": "UFC Fight Night Main Event",
-    "filename": "rosas_barcelos_result.png"
+    "winner": "Floyd Schofield",
+    "loser": "Lucas Bahdi",
+    "method": "DECISION",
+    "round_num": "R12",
+    "time": "UD",
+    "event": "Vacant WBA Lightweight Title",
+    "filename": "schofield_bahdi_result.png"
   },
   "quote": {
-    "quote": "Have I not answered this question 257,000 times?",
-    "attribution": "Dana White",
-    "context": "On his role in Joshua vs. Fury",
-    "filename": "white_quote_card.png"
+    "quote": "He was badly hurt after the two knockdowns and it was just a matter of time.",
+    "attribution": "Sergio Mendoza",
+    "context": "On stopping Sandoval for two flyweight belts",
+    "filename": "mendoza_quote_card.png"
   }
 }
