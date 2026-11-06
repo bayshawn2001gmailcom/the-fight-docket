@@ -78,52 +78,65 @@ Every one of these has shipped as an error before. Check each explicitly:
 
 ---
 
-## Step 2 — Write the 7 sections
+## Step 2 — Write the issue (business-of-sports format, decided 2026-11-05)
 
-Order: Editor's Note, Main Story, Legal Tracker, Rumor Mill, Fight Card Previews,
-Business Intel, Fighter Spotlight.
+The lane is a weekly boxing and MMA **business** digest (models: Huddle Up, Front
+Office Sports, Extra Points). Results and rumors are covered faster elsewhere; the
+edge is money and law. Monday morning ET, about a 5-minute read. Sections in order:
 
-**Voice: Dan Rafael.** State what happened plainly in the first sentence. No scene
-setting, no rhetorical questions, no "what this signals to the market is." Headlines
-are active, names first, one vivid verb. Full formal title names on first reference.
-Records as `(23-2, 13 KOs)`. Scorecards in order. Restrained but real adjectives. A
-wry line inside straight reporting is right; hype words are not.
+1. **This Week in 60 Seconds** — 3 bullets, each ending in a source link.
+2. **Main Story** — ONE numbers-led essay, 400-600 words, on a fight-business or
+   legal development. Numbers in the first paragraph (purse, rights fee, revenue,
+   damages, valuation). Close with **Why it matters** and **What to watch**. Its
+   headline is the Beehiiv title and subject line.
+3. **Business Intel** — 4-6 briefs, 2-3 sentences each (rights deals, sponsors,
+   promoter and manager moves, gate/PPV numbers, fighter pay). Each ends with a
+   number or a link.
+4. **Legal Tracker** — a TABLE: case or matter | court or body | last movement
+   (date) | next date | money at stake | source link. Public filings and reported
+   items only. Link every row. Never invent a docket number or a date.
+5. **Fight Schedule** — a TABLE for the next 7 days: date | fight | broadcaster |
+   title at stake. Top 5-7 bouts. Confirm each on the promoter's or broadcaster's
+   own page; aggregators disagree on dates (Boxing247 vs DAZN did on Nov 2026).
+6. **The Number** (Fighter Spotlight) — MONTHLY only, a data profile: reported
+   career purses, next fight, contract status, social following.
+7. **Sources and Further Reading** — every substantive claim, linked.
+8. **Poll** — one question, 3 options. 9. **Referral footer.**
 
-**No em-dashes.** Not `—`, not `&mdash;`. Restructure the sentence; do not swap in
-an en-dash. Sweep the finished HTML before delivering.
+**Rumors are cut by default.** At most 2-3 items under "Reported, not confirmed",
+each with a named source publication, a confidence label, one sentence and a link.
 
-**Structure rules** are in `newsletter_2026-08-24.html`, the current reference file.
-Copy its markup exactly. The two that matter most:
+**Voice: Dan Rafael.** Plain first sentences, names first, active headlines,
+records as `(23-2, 13 KOs)`. **No em-dashes or en-dashes.**
 
-- **Every section carries its own `background-color:#0D0D0D`.** Beehiiv fragments
-  the paste and later sections lose any ancestor background. This includes the
-  content wrapper, every section div, every divider wrapper, and the blockquote.
-- **Every body `<p>` needs inline `style="color:#F2F2E8;"`.** Beehiiv strips the
-  `<style>` block. Keep the style block anyway for email clients.
-- Divider spacing goes in the wrapper's padding, never as the child's margin, or
-  vertical margins collapse out and leave white bands.
-
-Rumor Mill uses three confidence levels with left border colors: HIGH `#C5A059`
-(0.85-0.95), MEDIUM `#888888` (0.55-0.75), LOW `#444444` (0.25-0.40).
+**Files:** `newsletter_YYYY-MM-DD.html` (styled, brand colors black `#0A0A0A`, red
+`#C8102E`, gold `#C9A84C`, every block with its own dark background and inline text
+color) and `newsletter_YYYY-MM-DD_native.html` (plain h3/p/ul/table version for
+Beehiiv's native editor). Reference: the 2026-11-09 issue.
 
 ---
 
-## Step 3 — Images
+## Step 3 — Images (one per section: 6, or 7 with The Number)
 
-Write 7 story-specific prompts to `prompts/weekly_prompts.json` (schema: `issue_date`
-plus a `prompts` array of `{section, prompt}`), then:
+Write prompts to `prompts/weekly_prompts.json` (`issue_date` + `prompts` array of
+`{section, prompt}`; sections `intro`, `main_story`, `business`, `legal`,
+`schedule`, `spotlight`, `sources`), then:
 
 ```bash
 PYTHONUTF8=1 python build_newsletter_images.py newsletter_YYYY-MM-DD.html
 ```
 
-It generates via Nano Banana 2, **compresses to 1200px/q82 before uploading**,
-pushes to ImgBB, and injects each `<img>` after the section's red divider.
+It generates with Nano Banana 2 into `assets/newsletter_images/nb2_<date>_<section>.jpg`,
+writes 1200px web copies to `.tmp/newsletter_images/nb2_<date>_<section>_web.jpg`,
+and points the HTML at the public GitHub raw URLs. **No ImgBB** (those links are
+dead). The images must be pushed before Muse builds the draft.
 
-Prompt rules from `ROLES/IMAGE_STYLE_GUIDE.md`: vary the style week to week
-(cinematic, documentary, fine art, noir, abstract), let color follow mood, and for a
-named fighter matchup use silhouettes or gloves. **No faces and no logos are the two
-rules that never change.** Look at the images before shipping them.
+Style: real sports photojournalism, real venues, real moments, brand accent colors.
+The photo must say what the section is about (legal = courtroom or documents,
+business = boardroom or money). No generic silhouettes-in-smoke or dark stock looks.
+Do not generate photorealistic faces of real fighters or render real logos: a
+fake photo of a real person in a news product misleads readers and carries
+right-of-publicity risk. Show fighters from behind, mid-motion, or by setting.
 
 ---
 
@@ -134,36 +147,25 @@ PYTHONUTF8=1 python verify_issue.py newsletter_YYYY-MM-DD.html
 ```
 
 Renders the Beehiiv worst case (style block stripped, outer container gone, white
-page), then checks that all 7 images load at full size, that no paragraph falls below
+page), then checks that all 6 or 7 section images load at full size, that no paragraph falls below
 3:1 contrast, and that there are no em-dashes. Exit 0 means safe to paste.
 
 It writes a full-page screenshot next to the output. **Open it and look at it.**
 
-If images report broken, warm the ImgBB URLs with curl once and re-run; a fresh
-upload is cold for 5-11s and looks identical to a dead link.
+Images only load after they are pushed to GitHub, so run this after the push.
 
 ---
 
-## Step 5 — Deliver
+## Step 5 — Deliver to the repo for Muse
 
-```bash
-python beehiiv_prep.py newsletter_YYYY-MM-DD.html
-```
+Muse (a second agent) picks the issue up from GitHub, creates the Beehiiv draft
+(Free plan: plain paste, no Custom HTML block), adds images by repo URL and fixes
+what the paste loses. Muse never sends. The user approves every issue.
 
-Then put the **raw HTML** on the clipboard, always last, after every other script has
-run (`build_newsletter_images.py` leaves inject.js on the clipboard):
-
-```powershell
-$html = [System.IO.File]::ReadAllText("<abs path>\newsletter_YYYY-MM-DD.html", [System.Text.Encoding]::UTF8)
-Set-Clipboard -Value $html
-```
-
-The user pastes that into Beehiiv's `<>` **HTML source editor**, not the visual
-editor. `.inject.js` is the browser-console alternative; the two are not
-interchangeable.
-
-Give the **Beehiiv post title as a plain copy-paste line**, in a fenced block, not
-buried in prose.
+So delivery is: commit `newsletter_<date>.html`, `newsletter_<date>_native.html`,
+`prompts/weekly_prompts.json`, `assets/newsletter_images/nb2_<date>_*` and
+`.tmp/newsletter_images/nb2_<date>_*_web.jpg`, push to `main`, then tell the user
+the issue is ready and give the title as a plain copy-paste line.
 
 ---
 
@@ -205,10 +207,10 @@ post cards that `approve_week.py` has signed off:
 Instagram needs JPEG for some cards; convert before posting if the Graph API
 rejects a PNG. Nothing posts to X, Instagram or Facebook without an explicit go.
 
-## Step 7 — Commit
+## Step 7 — Commit and push
 
-Commit the issue, images, prompts and clean/inject files. Do not push unless asked;
-say that it is committed locally and offer.
+The user's workflow is repo-first: commit and push to `main` so Muse can pick it up.
+Nothing is sent or published from here.
 
 ---
 

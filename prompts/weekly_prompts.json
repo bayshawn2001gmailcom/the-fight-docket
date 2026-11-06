@@ -1,33 +1,29 @@
 {
-  "issue_date": "2026-10-12",
+  "issue_date": "2026-11-09",
   "prompts": [
     {
       "section": "intro",
-      "prompt": "Fine art oil painting style, a single pair of worn boxing gloves hung by their laces from a rope in an empty arena at dusk, a slow spill of amber light across a stretch of canvas, quiet elegiac mood for a legend's passing, warm ochre and deep umber palette, no people, no faces, no text, no logos"
+      "prompt": "Wide photojournalism shot from the upper deck of a sold-out Las Vegas arena during a UFC-style octagon card, the cage lit white in the center, thousands of fans with phone lights, broadcast camera rig in the foreground, red and gold accent lighting against deep black, energy of a record-gate night"
     },
     {
       "section": "main_story",
-      "prompt": "Noir cinematic photograph, a plain gold championship belt with no markings lying on wet ring canvas under one hard spotlight, blurred ring ropes receding into deep navy shadow, a single pair of gloves out of focus in the background, cold blue palette with one warm gold highlight on the belt, measured triumphant mood, no faces, no text, no lettering, no logos"
+      "prompt": "Editorial business photograph on a black glass boardroom table: a printed quarterly earnings report with a rising red bar chart, a pair of black 4-ounce MMA fight gloves resting beside it, a fountain pen and a calculator, a city skyline at dusk through the window behind, warm gold desk light, Reuters-style corporate photography, money and fighting in one frame"
+    },
+    {
+      "section": "business",
+      "prompt": "Documentary stadium photograph: a huge enclosed rugby stadium with its roof closed, set up for a heavyweight boxing night, the ring in the center of the pitch under a white lighting truss, 70,000 seats rising on all sides, streaming broadcast cameras on cranes, red and gold lighting washing the stands, scale of a global streaming event"
     },
     {
       "section": "legal",
-      "prompt": "Documentary still life, a neat stack of sealed manila file folders and a dark cracked smartphone on a long courtroom table, the empty judge's bench blurred behind, cold fluorescent light, a single blank legal pad, desaturated grey and slate palette with a faint green tint, sober procedural mood, no people, no faces, no readable text, no logos"
+      "prompt": "Courtroom photojournalism inside a modern U.S. federal courtroom: counsel table stacked with legal binders and exhibit tabs, an open laptop, a banker's box of documents with a pair of worn MMA gloves on top, the empty judge's bench in soft focus behind, cool daylight with one red accent, serious antitrust-case atmosphere"
     },
     {
-      "section": "rumor",
-      "prompt": "Atmospheric silhouette photograph, two heavyweight shadow figures facing each other across a fog-covered boxing ring from behind, their gloves raised but not touching, the faces entirely turned away and out of frame, a muted red glow bleeding through the mist, cool gray palette, uncertain tense mood, no faces, no text, no logos"
+      "section": "schedule",
+      "prompt": "Live fight photography from cage-side at a packed New York arena: two heavyweight mixed martial artists mid-exchange inside the octagon, shot through the fence with motion blur on gloves and bodies, sweat spray under harsh overhead lights, faces turned away or hidden by gloves and motion, crowd blurred in red and gold tones, the feel of fight week"
     },
     {
-      "section": "fight_previews",
-      "prompt": "Wide cinematic photograph of a vast stadium at night, a desert sky gradient from indigo to burnt orange behind the structure, a single illuminated ring on an empty floor far below, rising haze catching the light, anticipation before a big weekend of fights, no people, no faces, no text, no logos"
-    },
-    {
-      "section": "business_intel",
-      "prompt": "Conceptual editorial photograph, a row of unmarked black fighter contract folders on a polished dark conference table, a single pair of plain red boxing gloves with no markings laid at the end of the row, a single fountain pen laid across a blank page, cool steel light with a warm gold accent, shallow depth of field, no faces, no text, no lettering, no signs, no logos"
-    },
-    {
-      "section": "fighter_spotlight",
-      "prompt": "Intimate black and white fine art photograph, a boxer's pair of hands wrapped in fresh white hand wraps resting on the knees while seated on a locker room bench, a single shaft of light from a high window across the knuckles, a worn towel beside him, quiet resolve after a last-minute call, high contrast, no faces, no text, no logos"
+      "section": "sources",
+      "prompt": "Ringside press row at a big boxing night: reporters' laptops, spiral notebooks with handwritten round-by-round notes, a stack of printed press releases and a phone recording, the ring apron and ropes in soft focus behind, red and gold arena light on a black table, working-journalist photojournalism"
     }
   ]
 }

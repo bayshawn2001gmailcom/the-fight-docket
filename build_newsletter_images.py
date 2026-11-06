@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 build_newsletter_images.py
-Generates missing section images, uploads all to ImgBB, injects into newsletter HTML,
+Generates section images from prompts/weekly_prompts.json, saves web copies to .tmp/newsletter_images/, points the HTML at the public GitHub repo,
 saves thumbnail to .tmp/newsletter_images/, copies final HTML to clipboard.
 
 Run: python build_newsletter_images.py [newsletter_html_file]
@@ -18,13 +18,13 @@ load_dotenv()
 load_dotenv(Path.home() / ".env", override=False)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-IMGBB_API_KEY  = os.getenv("IMGBB_API_KEY", "")
 
 SCRIPT_DIR   = Path(__file__).parent
 ASSETS_DIR   = SCRIPT_DIR / "assets" / "newsletter_images"
 TMP_IMG_DIR  = SCRIPT_DIR / ".tmp" / "newsletter_images"
 TMP_IMG_DIR.mkdir(parents=True, exist_ok=True)
 
+REPO_RAW = "https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main"
 IMG_STYLE = 'width:100%; max-width:600px; display:block; margin:0 0 28px 0; border:1px solid #1E1E1E;'
 
 # ------------------------------------------------------------------ #
@@ -93,7 +93,9 @@ def generate_image_bytes(prompt):
     return None
 
 
-STYLE_SUFFIX = " Cinematic, dark editorial atmosphere, no faces, no logos."
+STYLE_SUFFIX = (" Photorealistic live sports photojournalism, real venue, natural grain, sharp focus,"
+                " brand accent colors black #0A0A0A, red #C8102E and gold #C9A84C."
+                " No identifiable real person's face, no rendered text, no logos or trademarks.")
 
 def load_weekly_prompts(issue_date):
     """Per-issue prompts written by newsletter_generator.py — in context with each section
@@ -115,8 +117,12 @@ def load_weekly_prompts(issue_date):
 
 
 def generate_missing_images(issue_date, existing_sections):
-    prompts = dict(SECTION_PROMPTS)
-    prompts.update(load_weekly_prompts(issue_date))
+    # Story-specific prompts only. The generic SECTION_PROMPTS fallback produced
+    # images that did not match their section, so it is no longer used.
+    prompts = load_weekly_prompts(issue_date)
+    if not prompts:
+        print("  No weekly_prompts.json for this issue - write prompts first.")
+        return
     needed = [s for s in prompts if s not in existing_sections]
     if not needed:
         print("  All section images already exist — skipping generation.")
@@ -140,7 +146,7 @@ def generate_missing_images(issue_date, existing_sections):
 
 
 # ------------------------------------------------------------------ #
-# ImgBB upload
+# Web copies
 # ------------------------------------------------------------------ #
 
 WEB_WIDTH   = 1200   # 2x the 600px display width, for retina
@@ -164,54 +170,17 @@ def compress_for_web(src: Path) -> Path:
     return dst
 
 
-def upload_to_imgbb(image_path: Path) -> str:
-    if not IMGBB_API_KEY:
-        print(f"  Warning: IMGBB_API_KEY not set — skipping {image_path.name}")
-        return ""
-    try:
-        with open(image_path, "rb") as f:
-            resp = requests.post(
-                "https://api.imgbb.com/1/upload",
-                params={"key": IMGBB_API_KEY},
-                files={"image": f},
-                timeout=60,
-            )
-        if resp.ok:
-            url = resp.json()["data"]["url"]
-            print(f"    ImgBB: {url[:70]}...")
-            return url
-        print(f"    ImgBB failed {resp.status_code}: {resp.text[:100]}")
-    except Exception as e:
-        print(f"    ImgBB error: {e}")
-    return ""
-
-
-def upload_all_images(issue_date):
-    """Upload all section images for this issue date to ImgBB. Returns {section: url}."""
-    section_names = ["intro", "main_story", "legal", "rumor", "fight_previews", "business_intel", "fighter_spotlight"]
-    url_map = {}
-    for section in section_names:
-        filename = f"nb2_{issue_date}_{section}.jpg"
-        img_path = ASSETS_DIR / filename
-        if not img_path.exists():
-            print(f"  [{section}] File not found: {filename} — skipping")
-            continue
-        print(f"  Uploading [{section}]...")
-        try:
-            img_path = compress_for_web(img_path)
-        except Exception as e:
-            print(f"    compression failed ({e}) — uploading original")
-        url = upload_to_imgbb(img_path)
-        if url:
-            url_map[section] = url
-    return url_map
-
 
 # ------------------------------------------------------------------ #
 # HTML injection
 # ------------------------------------------------------------------ #
 
 SECTION_MARKERS = {
+    "This Week in 60 Seconds": "intro",
+    "Business Intel":     "business",
+    "Fight Schedule":     "schedule",
+    "Sources and Further Reading": "sources",
+    "The Number":         "spotlight",
     "Editor's Note":      "intro",
     "EDITOR'S NOTE":      "intro",
     "Main Story":         "main_story",
@@ -222,14 +191,13 @@ SECTION_MARKERS = {
     "RUMOR MILL":         "rumor",
     "Fight Card Previews": "fight_previews",
     "FIGHT CARD PREVIEWS": "fight_previews",
-    "Business Intel":     "business_intel",
     "BUSINESS INTEL":     "business_intel",
     "Fighter Spotlight":  "fighter_spotlight",
     "FIGHTER SPOTLIGHT":  "fighter_spotlight",
 }
 
 # The red underline div that appears after each section label
-RED_DIVIDER = 'style="width:40px; height:3px; background:#DE1E20; margin-bottom:22px;"'
+RED_DIVIDER = re.compile(r'style="width:40px; height:3px; background:#(?:DE1E20|C8102E); margin-bottom:22px;"')
 
 def inject_images_into_html(html: str, url_map: dict) -> str:
     """For each section, insert <img> tag after the red divider div."""
@@ -250,7 +218,7 @@ def inject_images_into_html(html: str, url_map: dict) -> str:
             # also matched body prose (an Editor's Note that says "Business
             # Intel below" stole the Main Story slot), so anchor the match.
             m = re.search(
-                r"letter-spacing:4px;[^>]*>\s*" + re.escape(label) + r"\s*</p>",
+                r"letter-spacing:4px;[^>]*>\s*" + re.escape(label) + r"[^<]*</p>",
                 html,
             )
             if not m:
@@ -258,9 +226,10 @@ def inject_images_into_html(html: str, url_map: dict) -> str:
             label_idx = m.end()
 
             # Find the red divider div that comes after this label
-            divider_idx = html.find(RED_DIVIDER, label_idx)
-            if divider_idx == -1:
+            dm = RED_DIVIDER.search(html, label_idx)
+            if not dm:
                 continue
+            divider_idx = dm.start()
 
             # Insert AFTER the divider's closing </div>, never inside it —
             # the divider is 40px wide x 3px tall, an img inside renders 40px wide
@@ -335,17 +304,15 @@ def main():
     else:
         generate_missing_images(issue_date, existing)
 
-    # Step 2: Upload all to ImgBB
-    print(f"\n[2/4] Uploading images to ImgBB...")
-    if not IMGBB_API_KEY:
-        print("  IMGBB_API_KEY not set — cannot upload, will use raw GitHub URLs")
-        # Fallback: build url_map from GitHub raw URLs
-        url_map = {}
-        for f in ASSETS_DIR.glob(f"nb2_{issue_date}_*.jpg"):
-            section = f.stem.replace(f"nb2_{issue_date}_", "")
-            url_map[section] = f"https://raw.githubusercontent.com/bayshawn2001gmailcom/the-fight-docket/main/assets/newsletter_images/{f.name}"
-    else:
-        url_map = upload_all_images(issue_date)
+    # Step 2: Compress web copies into .tmp/newsletter_images/ (tracked in git) and
+    # point every image at the repo. ImgBB links died, so the repo is the only host.
+    print("\n[2/4] Building web copies (1200px) and repo URLs...")
+    url_map = {}
+    for f in sorted(ASSETS_DIR.glob(f"nb2_{issue_date}_*.jpg")):
+        section = f.stem.replace(f"nb2_{issue_date}_", "")
+        web = compress_for_web(f)
+        url_map[section] = f"{REPO_RAW}/.tmp/newsletter_images/{web.name}"
+    print("  Commit and push assets/ and .tmp/newsletter_images/ before Muse builds the draft.")
 
     print(f"  Sections with URLs: {', '.join(sorted(url_map.keys()))}")
 

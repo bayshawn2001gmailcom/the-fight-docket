@@ -86,8 +86,8 @@ def verify(path: Path, screenshot: bool = True) -> int:
             for b in imgs["broken"]:
                 print(f"    BROKEN: {b}")
             problems.append(f"{len(imgs['broken'])} image(s) did not load")
-        if imgs["total"] != 7:
-            problems.append(f"expected 7 section images, found {imgs['total']}")
+        if imgs["total"] not in (6, 7):  # 6 most weeks, 7 when the monthly Spotlight runs
+            problems.append(f"expected 6 or 7 section images, found {imgs['total']}")
 
         paras = page.evaluate("""() => {
             const out = [];
