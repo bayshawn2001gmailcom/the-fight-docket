@@ -1,0 +1,70 @@
+{
+  "business": {
+    "caption": "Photos via Wikimedia Commons. Tyson Fury: Mike DiDomizio, CC BY-SA 4.0 (2017 file photo); Anthony Joshua: JazzyJoeyD, CC BY-SA 4.0 (2019 file photo).",
+    "composite_license": "CC BY-SA 4.0",
+    "photos": {
+      "Tyson Fury": {
+        "file": "tyson-fury.jpg",
+        "title": "Tyson Fury at Place Bell, Laval Quebec, Canada - Dec 16 2017 (cropped).jpg",
+        "artist": "Mike DiDomizio",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tyson_Fury_at_Place_Bell,_Laval_Quebec,_Canada_-_Dec_16_2017_(cropped).jpg",
+        "year": "2017"
+      },
+      "Anthony Joshua": {
+        "file": "anthony-joshua-1.jpg",
+        "title": "Anthony Joshua Press Conference (cropped).jpg",
+        "artist": "JazzyJoeyD",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Anthony_Joshua_Press_Conference_(cropped).jpg",
+        "year": "2019"
+      }
+    }
+  },
+  "schedule": {
+    "caption": "Photos via Wikimedia Commons. Ciryl Gane: U.S. Army photo by Sgt. 1st Class Brittany Primavera, Public domain (2026 file photo); Josh Hokit: U.S. Army photo by Sgt. 1st Class Brittany Primavera, Public domain (2026 file photo); Kayla Harrison: Fernando Frazão / Agência Brasil, CC BY 2.0 (2016 file photo); Amanda Nunes: MMAnytt, CC BY 3.0 (2021 file photo).",
+    "composite_license": "",
+    "photos": {
+      "Ciryl Gane": {
+        "file": "ciryl-gane.jpg",
+        "focus": 0.0,
+        "title": "UFC Freedom 250 Ceremonial Weigh In (9748626)(cropped).jpg",
+        "artist": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
+        "license": "Public domain",
+        "license_url": "",
+        "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748626)(cropped).jpg",
+        "year": "2026"
+      },
+      "Josh Hokit": {
+        "file": "josh-hokit.jpg",
+        "focus": 0.36,
+        "title": "UFC Freedom 250 Press Conference (9747953) (cropped).jpg",
+        "artist": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
+        "license": "Public domain",
+        "license_url": "",
+        "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Press_Conference_(9747953)_(cropped).jpg",
+        "year": "2026"
+      },
+      "Kayla Harrison": {
+        "file": "kayla-harrison.jpg",
+        "title": "Kayla Harrison Rio 2016c.jpg",
+        "artist": "Fernando Frazão / Agência Brasil",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Kayla_Harrison_Rio_2016c.jpg",
+        "year": "2016"
+      },
+      "Amanda Nunes": {
+        "file": "amanda-nunes-1.jpg",
+        "title": "Ceremonial weigh ins - Amanda Nunes vs Julianna Peña UFC 269 (cropped 2).jpg",
+        "artist": "MMAnytt",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ceremonial_weigh_ins_-_Amanda_Nunes_vs_Julianna_Pe%C3%B1a_UFC_269_(cropped_2).jpg",
+        "year": "2021"
+      }
+    }
+  }
+}
