@@ -254,13 +254,32 @@ def find_winner_photo(winner):
     """Real, licensed photo of the winner at assets/fighters/<slug>.jpg, with its
     credit in <slug>.json ({"credit", "license", "source"}). Returns (path, credit)
     or (None, None); no photo means the card is skipped, never posted half-empty."""
+    import json, glob
     slug = _fighter_slug(winner)
-    for ext in (".jpg", ".jpeg", ".png"):
-        path = os.path.join(FIGHTER_DIR, f"{slug}{ext}")
-        if os.path.exists(path):
-            meta = os.path.join(FIGHTER_DIR, f"{slug}.json")
-            credit = __import__("json").load(open(meta, encoding="utf-8")).get("credit", "") if os.path.exists(meta) else ""
-            return path, credit
+    candidates = [slug]
+    # Names arrive in many spellings ("Saul 'Canelo' Alvarez"). Try the alias
+    # file, then a last-name match when exactly one library photo has that name.
+    alias_file = os.path.join(FIGHTER_DIR, "aliases.json")
+    if os.path.exists(alias_file):
+        aliases = json.load(open(alias_file, encoding="utf-8"))
+        if slug in aliases:
+            candidates.append(aliases[slug])
+    parts = [p for p in slug.split("-") if p not in ("jr", "sr", "ii", "iii", "iv")]
+    if parts:
+        # Same last name AND the library fighter's first name appears in the
+        # incoming name, so a different "Jones" never gets Jon Jones's photo.
+        same_surname = [os.path.basename(f)[:-4] for f in glob.glob(os.path.join(FIGHTER_DIR, "*.jpg"))
+                        if os.path.basename(f)[:-4].split("-")[-1] == parts[-1]
+                        and os.path.basename(f)[:-4].split("-")[0] in parts]
+        if len(same_surname) == 1:
+            candidates.append(same_surname[0])
+    for s in candidates:
+        for ext in (".jpg", ".jpeg", ".png"):
+            path = os.path.join(FIGHTER_DIR, f"{s}{ext}")
+            if os.path.exists(path):
+                meta = os.path.join(FIGHTER_DIR, f"{s}.json")
+                credit = json.load(open(meta, encoding="utf-8")).get("credit", "") if os.path.exists(meta) else ""
+                return path, credit
     return None, None
 
 
