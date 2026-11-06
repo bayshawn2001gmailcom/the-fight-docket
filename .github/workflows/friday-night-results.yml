@@ -5,13 +5,11 @@ name: Friday Night Live Results
 #  11:00pm EDT  = Sat 03:00 UTC  → main card underway
 #  12:30am EDT  = Sat 04:30 UTC  → after main event
 # Posts via official Graph API (IG + FB) + tweepy (X). Deduped via posted_results.json.
-# PAUSED 2026-11-05 (user request): result cards are being reworked (no placeholders,
-# winner photo, new fight IDs). Re-enable the schedule only after the preview is approved.
 on:
-  # schedule:
-  # - cron: '0 1 * * 6'
-  # - cron: '0 3 * * 6'
-  # - cron: '30 4 * * 6'
+  schedule:
+    - cron: '0 1 * * 6'
+    - cron: '0 3 * * 6'
+    - cron: '30 4 * * 6'
   workflow_dispatch:
 
 jobs:

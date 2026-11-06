@@ -2,11 +2,9 @@ name: Tuesday IG Post — Fight Result
 
 # Posts the weekly fight result card to Instagram + Facebook.
 # Card generated Monday 11am EDT by weekly_ig_content.yml.
-# PAUSED 2026-11-05 (user request): result cards are being reworked (no placeholders,
-# winner photo, new fight IDs). Re-enable the schedule only after the preview is approved.
 on:
-  # schedule:
-  # - cron: '0 16 * * 2'  # Tuesday 4pm UTC = 12pm EDT
+  schedule:
+    - cron: '0 16 * * 2'  # Tuesday 4pm UTC = 12pm EDT
   workflow_dispatch:
 
 jobs:

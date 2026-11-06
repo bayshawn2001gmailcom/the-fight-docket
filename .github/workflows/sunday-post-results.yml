@@ -4,11 +4,9 @@ name: Sunday Post Fight Results
 # Friday/Saturday night runs missed. Same script + dedup, so nothing
 # double-posts. Replaces the old instagrapi 1am–4am sleep-loop design
 # (instagrapi is blocked from GitHub Actions IPs; Graph API is not).
-# PAUSED 2026-11-05 (user request): result cards are being reworked (no placeholders,
-# winner photo, new fight IDs). Re-enable the schedule only after the preview is approved.
 on:
-  # schedule:
-  # - cron: '0 10 * * 0'
+  schedule:
+    - cron: '0 10 * * 0'
   workflow_dispatch:
 
 jobs:
