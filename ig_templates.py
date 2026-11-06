@@ -241,14 +241,82 @@ def fight_announcement(fighter1, fighter2, event, date, weight_class, filename="
 # ═══════════════════════════════════════════════════════════════
 # 3. FIGHT RESULT CARD
 # ═══════════════════════════════════════════════════════════════
-def fight_result(winner, loser, method, round_num, time, event, filename="fight_result.png"):
+FIGHTER_DIR = os.path.join(_SCRIPT_DIR, "assets", "fighters")
+
+
+def _fighter_slug(name) -> str:
+    import re, unicodedata
+    text = unicodedata.normalize("NFKD", str(name or "")).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def find_winner_photo(winner):
+    """Real, licensed photo of the winner at assets/fighters/<slug>.jpg, with its
+    credit in <slug>.json ({"credit", "license", "source"}). Returns (path, credit)
+    or (None, None); no photo means the card is skipped, never posted half-empty."""
+    slug = _fighter_slug(winner)
+    for ext in (".jpg", ".jpeg", ".png"):
+        path = os.path.join(FIGHTER_DIR, f"{slug}{ext}")
+        if os.path.exists(path):
+            meta = os.path.join(FIGHTER_DIR, f"{slug}.json")
+            credit = __import__("json").load(open(meta, encoding="utf-8")).get("credit", "") if os.path.exists(meta) else ""
+            return path, credit
+    return None, None
+
+
+FINISH_METHODS = ("KO", "TKO", "SUBMISSION", "DQ")
+_SOURCE_SITES = ("boxingscene", "sherdog", "ufc.com", "espn", "tapology", "fight card")
+_PLACEHOLDERS = {"", "?", "r?", "r0", "0", "0:00", "unknown", "unknown event", "tbd", "n/a", "none"}
+
+
+def _is_blank(v) -> bool:
+    return v is None or str(v).strip().lower() in _PLACEHOLDERS
+
+
+def is_finish(method: str) -> bool:
+    m = (method or "").upper()
+    return any(k in m for k in FINISH_METHODS) and "DECISION" not in m
+
+
+def result_card_problems(winner, loser, method, round_num, time, event, winner_image=None):
+    """Everything that would stop a result card from rendering. Empty list = OK.
+    A card with a placeholder ("R?", "0:00", "UNKNOWN EVENT") or a half-empty
+    image panel must never be made, so callers skip the card on any problem."""
+    missing = []
+    for name, val in (("winner", winner), ("loser", loser), ("method", method), ("event", event)):
+        if _is_blank(val):
+            missing.append(name)
+    # Gemini sometimes fills "event" with the scraped site's name
+    # (e.g. "BoxingScene Fight Card"), which is not an event.
+    if "event" not in missing and any(src in str(event).lower() for src in _SOURCE_SITES):
+        missing.append("event (got a source-site name)")
+    if is_finish(method):
+        if _is_blank(round_num):
+            missing.append("round")
+        if _is_blank(time):
+            missing.append("time")
+    if not winner_image or not os.path.exists(str(winner_image)):
+        missing.append("winner photo")
+    return missing
+
+
+def fight_result(winner, loser, method, round_num, time, event, filename="fight_result.png",
+                 winner_image=None, photo_credit=""):
     """
     winner/loser: fighter names
-    method: e.g. "KO/TKO" | "SUBMISSION" | "DECISION"
-    round_num: e.g. "R1" | "R3"
-    time: e.g. "3:45"
+    method: e.g. "KO/TKO" | "SUBMISSION" | "DECISION (UNANIMOUS)"
+    round_num: e.g. "R1" | "R3" (required for finishes; optional for decisions)
+    time: e.g. "3:45" (finishes only; never printed for decisions)
     event: e.g. "UFC 327"
+    winner_image: path to the winner's photo, which fills the lower panel
+    photo_credit: attribution printed on the photo (required for licensed photos)
+
+    Raises ValueError listing the missing fields instead of drawing placeholders.
     """
+    problems = result_card_problems(winner, loser, method, round_num, time, event, winner_image)
+    if problems:
+        raise ValueError("result card skipped, missing: " + ", ".join(problems))
+
     img, d = _base()
 
     # Bold gold top band
@@ -267,16 +335,14 @@ def fight_result(winner, loser, method, round_num, time, event, filename="fight_
     d.text((60, 48), f"OFFICIAL RESULT  ·  {event.upper()}", font=res_f, fill=GOLD)
     _rule(d, 102, margin=60, color="#333333")
 
-    # Fonts and sizes first, so the block can be measured before it is drawn.
-    # Previously every y was fixed from the top, so a short winner/loser pair
-    # left roughly 500px of dead space at the bottom of the card.
-    win_label_f = _font("InstrumentSans-Bold.ttf", 28)
-    w_size  = min(160, max(70, 160 - max(0, len(winner)-8)*9))
+    # Text block is packed under the header; the winner's photo fills the rest.
+    win_label_f = _font("InstrumentSans-Bold.ttf", 26)
+    w_size  = min(120, max(64, 120 - max(0, len(winner)-10)*6))
     win_f   = _font("BigShoulders-Bold.ttf", w_size)
-    def_f   = _font("InstrumentSans-Regular.ttf", 34)
-    l_size  = min(100, max(50, 100 - max(0, len(loser)-8)*6))
+    def_f   = _font("InstrumentSans-Regular.ttf", 30)
+    l_size  = min(76, max(44, 76 - max(0, len(loser)-10)*4))
     los_f   = _font("BigShoulders-Bold.ttf", l_size)
-    chip_f  = _font("BigShoulders-Bold.ttf", 48)
+    chip_f  = _font("BigShoulders-Bold.ttf", 44)
 
     def _h(text, font):
         b = d.textbbox((0, 0), text, font=font)
@@ -284,42 +350,55 @@ def fight_result(winner, loser, method, round_num, time, event, filename="fight_
 
     win_h  = _h(winner.upper(), win_f)
     los_h  = _h(loser.upper(), los_f)
-    chip_h = _h("Ag", chip_f) + 20
+    chip_h = _h("Ag", chip_f) + 18
 
-    # Offsets within the block, mirroring the original rhythm.
-    off_winner = 32                       # WINNER label -> winner name
-    off_rule1  = off_winner + win_h + 20
-    off_def    = off_winner + win_h + 44
-    off_loser  = off_def + 46
-    off_rule2  = off_loser + los_h + 30
-    off_chips  = off_loser + los_h + 60
-    block_h    = off_chips + chip_h
-
-    # Sit the block between the header rule and the gold bottom band, biased
-    # upward. True centring leaves a hole under the header, because the header
-    # is anchored to the top and reads as part of the same group.
-    area_top, area_bottom = 126, H - 20
-    slack = max(0, (area_bottom - area_top) - block_h)
-    top = area_top + int(slack * 0.38)
+    top = 128
+    y_winner = top + 30
+    y_def    = y_winner + win_h + 14
+    y_loser  = y_def + 40
+    y_chips  = y_loser + los_h + 26
 
     d.text((60, top), "WINNER", font=win_label_f, fill=RED)
-    d.text((60, top + off_winner), winner.upper(), font=win_f, fill=WHITE)
-    _rule(d, top + off_rule1, margin=60, color="#333333")
-    d.text((60, top + off_def), "def.", font=def_f, fill="#888888")
-    d.text((60, top + off_loser), loser.upper(), font=los_f, fill="#888888")
-    _rule(d, top + off_rule2, margin=60)
+    d.text((60, y_winner), winner.upper(), font=win_f, fill=WHITE)
+    d.text((60, y_def), "def.", font=def_f, fill="#888888")
+    d.text((60, y_loser), loser.upper(), font=los_f, fill="#888888")
 
-    # Method / Round / Time chips
-    info_y = top + off_chips
-    chip_data = [(method.upper(), RED, WHITE), (round_num.upper(), MGRAY, GOLD), (time, MGRAY, WHITE)]
-    cx = 60
-    gap = 24
+    # Method / Round / Time chips. Decisions never show a time chip, and only
+    # show a round chip when the round is known.
+    chip_data = [(method.upper(), RED, WHITE)]
+    if not _is_blank(round_num):
+        chip_data.append((str(round_num).upper(), MGRAY, GOLD))
+    if is_finish(method):
+        chip_data.append((str(time), MGRAY, WHITE))
+    cx, gap = 60, 20
     for label, bg_c, fg_c in chip_data:
         bbox = d.textbbox((0,0), label, font=chip_f)
-        cw   = bbox[2] + 36
-        d.rectangle([(cx, info_y),(cx+cw, info_y+chip_h)], fill=bg_c)
-        d.text((cx+18, info_y+10), label, font=chip_f, fill=fg_c)
+        cw   = bbox[2] + 32
+        d.rectangle([(cx, y_chips),(cx+cw, y_chips+chip_h)], fill=bg_c)
+        d.text((cx+16, y_chips+9), label, font=chip_f, fill=fg_c)
         cx += cw + gap
+
+    # Winner photo panel: fills from under the chips to above the watermark.
+    panel_top    = y_chips + chip_h + 28
+    panel_bottom = H - 96
+    panel_left, panel_right = 40, W - 40
+    pw, ph = panel_right - panel_left, panel_bottom - panel_top
+    photo = Image.open(winner_image).convert("RGB")
+    # Cover-crop, biased toward the top so heads are not cut off.
+    scale = max(pw / photo.width, ph / photo.height)
+    photo = photo.resize((round(photo.width * scale), round(photo.height * scale)), Image.LANCZOS)
+    left = (photo.width - pw) // 2
+    top_crop = int((photo.height - ph) * 0.2)
+    photo = photo.crop((left, top_crop, left + pw, top_crop + ph))
+    img.paste(photo, (panel_left, panel_top))
+    d.rectangle([(panel_left, panel_top), (panel_right, panel_top + 6)], fill=RED)
+    d.rectangle([(panel_left-1, panel_top-1), (panel_right, panel_bottom)], outline=GOLD, width=2)
+    if photo_credit:
+        cr_f = _font("InstrumentSans-Regular.ttf", 18)
+        cb = d.textbbox((0, 0), photo_credit, font=cr_f)
+        tx, ty = panel_right - cb[2] - 14, panel_bottom - cb[3] - 12
+        d.rectangle([(tx-8, ty-4), (tx+cb[2]+8, ty+cb[3]+6)], fill="#000000")
+        d.text((tx, ty), photo_credit, font=cr_f, fill="#BBBBBB")
 
     _watermark(d, baseline=H - 56)
     path = f"{OUT}/{filename}"

@@ -91,15 +91,24 @@ def main():
     r = week.get("result", {})
     if r:
         print("[3/4] Fight result card...")
-        fight_result(
-            winner=r["winner"],
-            loser=r["loser"],
-            method=r["method"],
-            round_num=r["round_num"],
-            time=r["time"],
-            event=r.get("event", ""),
-            filename=f"{issue}_{r.get('filename', 'result.png')}",
-        )
+        # Same rules as the live cards: complete data and a real winner photo
+        # (assets/fighters/<slug>.jpg + .json credit), or the card is skipped.
+        from ig_templates import find_winner_photo
+        photo, credit = find_winner_photo(r["winner"])
+        try:
+            fight_result(
+                winner=r["winner"],
+                loser=r["loser"],
+                method=r["method"],
+                round_num=r.get("round_num", ""),
+                time=r.get("time", ""),
+                event=r.get("event", ""),
+                filename=f"{issue}_{r.get('filename', 'result.png')}",
+                winner_image=photo,
+                photo_credit=credit,
+            )
+        except ValueError as e:
+            print(f"  [3/4] Result card SKIPPED: {e}")
     else:
         print("[3/4] Skipped (no result data)")
 

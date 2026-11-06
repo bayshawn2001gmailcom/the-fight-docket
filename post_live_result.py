@@ -4,12 +4,15 @@ The Fight Docket — Live Fight Night Result Poster
 Runs during Friday and Saturday night fight windows (every 90 min).
 Crawls for fresh results → deduplicates → tweets → generates IG card.
 
-Run: python post_live_result.py
+Run: python post_live_result.py            (posts)
+     python post_live_result.py --dry-run  (renders cards, posts nothing)
 Or triggered by GitHub Actions (friday-night-results.yml / saturday-night-results.yml)
 """
 import os, sys, json, re, time
 from pathlib import Path
-from datetime import date
+from datetime import date, timedelta
+import unicodedata
+from ig_templates import result_card_problems, is_finish, find_winner_photo
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -40,6 +43,9 @@ for k, v in [("FIRECRAWL_API_KEY", FIRECRAWL_API_KEY), ("GEMINI_API_KEY", GEMINI
 SCRIPT_DIR    = Path(__file__).parent
 POSTED_FILE   = SCRIPT_DIR / "posted_results.json"
 IG_DIR        = SCRIPT_DIR / "instagram_content"
+SKIPPED_FILE  = SCRIPT_DIR / "skipped_results.json"
+DRY_RUN       = "--dry-run" in sys.argv or os.getenv("RESULTS_DRY_RUN") == "1"
+DUP_WINDOW_DAYS = 14
 SESSION_FILE  = IG_DIR / ".ig_session.json"
 IG_DIR.mkdir(exist_ok=True)
 
@@ -70,8 +76,63 @@ def save_posted(posted: dict):
     POSTED_FILE.write_text(json.dumps(posted, indent=2), encoding="utf-8")
 
 
-def is_new(fight_id: str, posted: dict) -> bool:
-    return fight_id not in posted
+_SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
+
+def _norm(text) -> str:
+    text = unicodedata.normalize("NFKD", str(text or "")).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9 ]+", " ", text.lower()).strip()
+
+
+def _surname(name) -> str:
+    parts = [p for p in _norm(name).split() if p not in _SUFFIXES]
+    return parts[-1] if parts else ""
+
+
+def _pair(winner, loser) -> tuple:
+    return tuple(sorted([_surname(winner), _surname(loser)]))
+
+
+def make_fight_id(winner, loser, event) -> str:
+    """Same two fighters + same event = same fight. No dates: runs on either
+    side of midnight used to give one fight two IDs and post it twice
+    (Fawaz vs Kelly went out Oct 3 and Oct 4)."""
+    a, b = _pair(winner, loser)
+    return f"{a}-vs-{b}--{re.sub(r' +', '-', _norm(event))}"
+
+
+def is_duplicate(result: dict, posted: dict):
+    """Return why this result counts as already posted, or None if it is new."""
+    fid = result["fight_id"]
+    if fid in posted:
+        return "same fighters and event"
+    pair = _pair(result.get("winner"), result.get("loser"))
+    cutoff = date.today() - timedelta(days=DUP_WINDOW_DAYS)
+    for key, meta in posted.items():
+        if _pair(meta.get("winner"), meta.get("loser")) != pair:
+            continue
+        if make_fight_id(meta.get("winner"), meta.get("loser"), meta.get("event")) == fid:
+            return f"same fighters and event (posted as {key})"
+        # Backstop: older entries stored "Unknown Event" or a different event
+        # spelling, so the same pair inside two weeks counts as the same fight.
+        try:
+            if date.fromisoformat(meta.get("posted_at", "1970-01-01")) >= cutoff:
+                return f"same fighters posted {meta.get('posted_at')} ({key})"
+        except ValueError:
+            pass
+    return None
+
+
+def log_skip(result: dict, missing: list):
+    entries = json.loads(SKIPPED_FILE.read_text(encoding="utf-8")) if SKIPPED_FILE.exists() else []
+    entries.append({
+        "fight": f"{result.get('winner')} vs {result.get('loser')}",
+        "event": result.get("event"),
+        "missing": missing,
+        "logged_at": date.today().isoformat(),
+    })
+    SKIPPED_FILE.write_text(json.dumps(entries[-200:], indent=2), encoding="utf-8")
+    print(f"  SKIPPED ({result.get('winner')} vs {result.get('loser')}): missing {', '.join(missing)}")
 
 
 def mark_posted(fight_id: str, posted: dict, meta: dict):
@@ -128,7 +189,6 @@ Judge recency by explicit fight dates, or include headline results that read as 
 Return ONLY a valid JSON array. If no results found, return [].
 
 Each result object MUST have these exact keys:
-- "fight_id": string like "LastName1-vs-LastName2-YYYY-MM-DD" (use today's date if unknown)
 - "winner": full fighter name
 - "loser": full fighter name
 - "method": one of "KO/TKO", "Submission", "Decision (Unanimous)", "Decision (Split)", "Decision (Majority)", "DQ", "No Contest"
@@ -140,7 +200,7 @@ Each result object MUST have these exact keys:
 - "sport": "MMA" or "Boxing"
 
 ONLY include fights with confirmed COMPLETED results. Exclude upcoming or scheduled bouts.
-If round or time is unknown, use 0 and "0:00". A missing detail (round, time, weight class)
+If round or time is unknown, use 0 and "". If the event name is unknown, use "". A missing detail (round, time, weight class)
 is NOT a reason to exclude a result — include it with the unknown fields defaulted.
 
 Content:
@@ -221,7 +281,7 @@ def tweet_result(result: dict) -> str | None:
         main   = result.get("is_main_event", False)
 
         prefix = "MAIN EVENT RESULT 🏆" if main else "RESULT"
-        if method in ("KO/TKO", "Submission"):
+        if is_finish(method):
             text = f"{prefix} | {winner} def. {loser} by {method} (R{rnd}, {t}) — {event} [{wc}] #MMA #Boxing #UFC"
         else:
             text = f"{prefix} | {winner} def. {loser} by {method} — {event} [{wc}] #MMA #Boxing #UFC"
@@ -244,22 +304,24 @@ def tweet_result(result: dict) -> str | None:
 # Instagram card
 # ---------------------------------------------------------------------------
 
-def generate_ig_card(result: dict) -> str | None:
+def generate_ig_card(result: dict):
+    """Render the result card, or return None (and log why) if anything is
+    missing. Never renders placeholders or an empty photo panel."""
+    from ig_templates import fight_result as make_card
+    photo, credit = find_winner_photo(result["winner"])
+    rnd = f"R{result['round']}" if result.get("round") else ""
+    missing = result_card_problems(result.get("winner"), result.get("loser"), result.get("method"),
+                                   rnd, result.get("time"), result.get("event"), photo)
+    if missing:
+        log_skip(result, missing)
+        return None
+    today = date.today().strftime("%Y%m%d")
+    slug  = result["fight_id"].replace(" ", "_")[:60]
+    fname = f"live_result_{today}_{slug}.png"
     try:
-        from ig_templates import fight_result as make_card
-        today = date.today().strftime("%Y%m%d")
-        slug  = result["fight_id"].replace(" ", "_")[:40]
-        fname = f"live_result_{today}_{slug}.png"
-
-        path = make_card(
-            winner    = result["winner"],
-            loser     = result["loser"],
-            method    = result["method"],
-            round_num = f"R{result['round']}" if result["round"] else "R?",
-            time      = result["time"],
-            event     = result["event"],
-            filename  = fname,
-        )
+        path = make_card(winner=result["winner"], loser=result["loser"], method=result["method"],
+                         round_num=rnd, time=result.get("time"), event=result["event"],
+                         filename=fname, winner_image=photo, photo_credit=credit)
         print(f"  IG card saved: {fname}")
         return path
     except Exception as e:
@@ -371,7 +433,7 @@ def build_ig_caption(result: dict, tweet_url: str | None) -> str:
 
     caption  = f"{winner} defeats {loser}\n"
     caption += f"{method}"
-    if rnd and rnd > 0:
+    if is_finish(method) and rnd and rnd > 0:
         caption += f" | R{rnd} {t}"
     caption += f"\n{event} • {wc}\n\n"
     caption += "#MMA #Boxing #FightNight #TheFightDocket"
@@ -404,7 +466,14 @@ def main():
         print("  No completed results found tonight.")
         return
 
-    new_results = [r for r in results if is_new(r["fight_id"], posted)]
+    new_results = []
+    for r in results:
+        r["fight_id"] = make_fight_id(r.get("winner"), r.get("loser"), r.get("event"))
+        dup = is_duplicate(r, posted)
+        if dup:
+            print(f"  already posted: {r.get('winner')} vs {r.get('loser')} ({dup})")
+        else:
+            new_results.append(r)
     print(f"  {len(new_results)} new result(s) out of {len(results)} total")
 
     if not new_results:
@@ -417,8 +486,21 @@ def main():
         fid = result["fight_id"]
         print(f"\n  → {result['winner']} def. {result['loser']} ({result['method']})")
 
-        tweet_url = tweet_result(result)
+        # Data gate: no tweet or card with placeholder data.
+        rnd = f"R{result['round']}" if result.get("round") else ""
+        data_missing = [m for m in result_card_problems(
+                            result.get("winner"), result.get("loser"), result.get("method"),
+                            rnd, result.get("time"), result.get("event"), __file__)
+                        if m != "winner photo"]
+        if data_missing:
+            log_skip(result, data_missing)
+            continue  # not marked posted, so a later run with full data can post it
+
         card_path = generate_ig_card(result)
+        if DRY_RUN:
+            print(f"  DRY RUN: nothing posted. Card: {card_path or '(skipped)'}")
+            continue
+        tweet_url = tweet_result(result)
 
         if card_path:
             caption = build_ig_caption(result, tweet_url)
