@@ -1,17 +1,17 @@
 {
-  "crawled_at": "2026-10-31T01:57:19.856532Z",
+  "crawled_at": "2026-11-07T02:30:48.770696Z",
   "ufc": [
-    {
-      "event": "UFC Fight Night",
-      "main_fight": "Moicano vs Nolan",
-      "date": "2026-10-31",
-      "location": "Meta APEX, Las Vegas, NV"
-    },
     {
       "event": "UFC Fight Night",
       "main_fight": "Cortes Acosta vs Walker",
       "date": "2026-11-07",
-      "location": "Meta APEX, Las Vegas, NV"
+      "location": "Las Vegas, NV, United States"
+    },
+    {
+      "event": "UFC 334",
+      "main_fight": "Gane vs Hokit",
+      "date": "2026-11-14",
+      "location": "Madison Square Garden, New York, NY, United States"
     },
     {
       "event": "UFC Fight Night",
@@ -20,34 +20,28 @@
       "location": "ABHA Arena, Doha, Qatar"
     },
     {
-      "event": "UFC Fight Night",
-      "main_fight": "Gane vs Hokit",
-      "date": "2026-11-14",
-      "location": "Madison Square Garden, New York, NY"
-    },
-    {
-      "event": "UFC Fight Night",
+      "event": "UFC 335",
       "main_fight": "Oliveira vs Lopes",
       "date": "2026-12-12",
-      "location": "T-Mobile Arena, Las Vegas, NV"
+      "location": "T-Mobile Arena, Las Vegas, NV, United States"
     },
     {
       "event": "UFC Fight Night",
       "main_fight": "TBD vs TBD",
       "date": "2027-01-16",
-      "location": "American Airlines Center, Dallas, TX"
+      "location": "American Airlines Center, Dallas, TX, United States"
     },
     {
-      "event": "UFC Fight Night",
+      "event": "UFC 336",
       "main_fight": "Van vs Kape",
       "date": "2027-01-30",
-      "location": "Scotiabank Arena, Toronto, ON"
+      "location": "Scotiabank Arena, Toronto, Canada"
     },
     {
       "event": "UFC Fight Night",
-      "main_fight": "TBD vs TBD",
+      "main_fight": "Salkilld vs Saint Denis",
       "date": "2027-02-06",
-      "location": "Afterpay Arena, Sydney Olympic Park, NSW"
+      "location": "Afterpay Arena, Sydney Olympic Park, NSW, Australia"
     }
   ],
   "boxing": []
