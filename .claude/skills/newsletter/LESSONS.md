@@ -45,10 +45,29 @@ an error before.
       without a web copy.
 - [ ] No `<div>` wrappers in the native HTML; inline styles on each `<p>`.
 - [ ] No `inject.js` or script text visible in the body.
+- [ ] Legal Tracker and Schedule tables are wrapped in a horizontal-scroll
+      container (`overflow-x:auto`, table `min-width:600px` / `520px`).
+      Render at 375px wide and confirm the tables scroll sideways instead
+      of crushing into mid-word breaks.
 
 ---
 
 ## Log
+
+### 2026-11-08 — Legal Tracker table unreadable on mobile Gmail
+
+**Issue:** Nov 9 (sent Nov 5, 2026).
+**What happened:** The 6-column Legal Tracker table renders fine on desktop
+but crushes on a phone. Gmail on mobile squeezes it to ~55px per column and
+the text breaks mid-word ("Ca se or ma tte r", "Co urt or bo dy"). Shawn
+sent a screenshot Nov 8; the table cannot be read on mobile at all. The
+4-column Schedule table has the same problem, less severe.
+**What changed:** Tables are wrapped in a horizontal-scroll container
+(`overflow-x:auto; -webkit-overflow-scrolling:touch;` with a `min-width` on
+the table) so they keep a readable width and the reader swipes sideways.
+Media queries do NOT work in Gmail, so no responsive restyling. Step 4
+verification now includes a 375px mobile render check of both tables.
+**Status:** Active, promoted to SKILL.md Steps 2 and 4.
 
 ### 2026-11-08 — Fundora lead was 30 days stale
 

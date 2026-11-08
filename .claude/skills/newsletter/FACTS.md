@@ -77,6 +77,11 @@ not argued with.
 - **Gemini:** result workflows failed Oct 18–Nov 5 on 402
   RESOURCE_EXHAUSTED until credits were topped up. Watch for 402s as the
   first sign of a silent outage.
+- **Mobile Gmail:** tables wider than ~360px crush on a phone. The 6-column
+  Legal Tracker squeezed to ~55px per column in the Nov 9 issue and the text
+  broke mid-word. Wrap tables in a horizontal-scroll div (`overflow-x:auto`,
+  table `min-width:600px` Legal Tracker / `520px` Schedule). Media queries
+  do NOT work in Gmail. Verify at 375px wide before shipping.
 
 ## Cadence and rules (standing)
 

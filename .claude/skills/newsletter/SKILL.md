@@ -116,9 +116,21 @@ edge is money and law. Monday morning ET, about a 5-minute read. Sections in ord
 4. **Legal Tracker** — a TABLE: case or matter | court or body | last movement
    (date) | next date | money at stake | source link. Public filings and reported
    items only. Link every row. Never invent a docket number or a date.
+   **Mobile rule:** a 6-column table crushes on a phone. Gmail on mobile
+   squeezes it to ~55px per column and the text breaks mid-word
+   ("Ca se or ma tte r" — seen in the Nov 9 issue, Nov 8, 2026). Wrap the
+   table in a horizontal-scroll container so it keeps a readable width and
+   the reader swipes sideways instead:
+   `<div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">` around
+   a table with `min-width:600px`. Same wrapper on the Schedule table with
+   `min-width:520px`. Gmail supports this; clients that ignore it render the
+   table as they do now, no worse. Media queries do NOT work in Gmail, so do
+   not try to restyle the table for mobile with them.
 5. **Fight Schedule** — a TABLE for the next 7 days: date | fight | broadcaster |
    title at stake. Top 5-7 bouts. Confirm each on the promoter's or broadcaster's
    own page; aggregators disagree on dates (Boxing247 vs DAZN did on Nov 2026).
+   Wrap it in the same horizontal-scroll container as the Legal Tracker
+   (see above).
 6. **The Number** (Fighter Spotlight) — MONTHLY only, a data profile: reported
    career purses, next fight, contract status, social following.
 7. **Sources and Further Reading** — every substantive claim, linked.
@@ -183,6 +195,12 @@ the issue fails verification. Rewrite the lead around a timely event.
 LESSONS.md against the finished draft, one by one. Every item there has
 shipped as an error before. A draft that repeats a known past mistake fails
 verification the same way a stale lead does.
+
+**Mobile check (part of verification).** Render the issue at 375px wide
+(phone width) and look at the Legal Tracker and Schedule tables. The tables
+must scroll sideways inside their wrapper, not crush into mid-word breaks.
+If any column reads like "Ca se or ma tte r", the wrapper is missing or the
+min-width is wrong. Fix it before shipping.
 
 ---
 
