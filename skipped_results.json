@@ -30,5 +30,21 @@
       "event"
     ],
     "logged_at": "2026-11-08"
+  },
+  {
+    "fight": "Cheavon Clarke vs Chris Billam-Smith",
+    "event": "Chris Billam-Smith vs. Cheavon Clarke",
+    "missing": [
+      "time"
+    ],
+    "logged_at": "2026-11-08"
+  },
+  {
+    "fight": "Denzel Bentley vs Shane Mosley Jnr",
+    "event": "",
+    "missing": [
+      "event"
+    ],
+    "logged_at": "2026-11-08"
   }
 ]
