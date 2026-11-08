@@ -26,6 +26,14 @@ recent Monday. Derive two windows from it:
 
 Announce both windows before you start so the user can correct you cheaply.
 
+**Staleness rule (hard guardrail, added Nov 8, 2026 after the Fundora miss).**
+The Main Story event must have happened within 7 days of the issue date. A fight
+from Oct 17 cannot lead a Nov 16 issue. If no fight in the results window
+qualifies as the lead, the Main Story must be a business or legal development
+from within the window, not an older fight. Never lead with a fight older than
+7 days. Check the Main Story event date against the issue date before writing,
+and again in Step 4 verification. A stale lead fails verification.
+
 ---
 
 ## Step 1 — Research, primary sources only
@@ -159,6 +167,10 @@ It writes a full-page screenshot next to the output. **Open it and look at it.**
 
 Images only load after they are pushed to GitHub, so run this after the push.
 
+**Staleness check (part of verification).** Before calling the issue done, confirm
+the Main Story event date is within 7 days of the issue date. If it is older,
+the issue fails verification. Rewrite the lead around a timely event.
+
 ---
 
 ## Step 5 — Deliver to the repo for Muse
@@ -223,5 +235,5 @@ Nothing is sent or published from here.
 
 An issue with no images. Body text that renders invisible in Beehiiv. `<div>`
 wrappers instead of inline styles on each `<p>`. Stale or hallucinated fight
-previews. inject.js pasted as visible text in the newsletter body. Em-dashes.
+previews. A Main Story about a fight more than 7 days old. inject.js pasted as visible text in the newsletter body. Em-dashes.
 Multi-MB images that silently fail to load.
