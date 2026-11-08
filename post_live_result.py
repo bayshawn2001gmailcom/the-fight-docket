@@ -148,7 +148,10 @@ def firecrawl_scrape(url: str) -> str:
     try:
         resp = requests.post(
             "https://api.firecrawl.dev/v1/scrape",
-            json={"url": url, "formats": ["markdown"], "waitFor": 2000, "onlyMainContent": True},
+            # maxAge: 0 forces a fresh fetch. Firecrawl's default serves cached
+            # pages up to 2 days old — stale pre-event pages made Gemini find
+            # 0 results on fight nights.
+            json={"url": url, "formats": ["markdown"], "waitFor": 2000, "onlyMainContent": True, "maxAge": 0},
             headers=FC_HEADERS, timeout=30
         )
         data = resp.json()
@@ -502,11 +505,18 @@ def main():
             continue
         tweet_url = tweet_result(result)
 
+        ig_ok = fb_ok = False
         if card_path:
             caption = build_ig_caption(result, tweet_url)
             img_url = _upload_imgbb(card_path)  # upload once, share across platforms
-            post_to_instagram(card_path, caption, img_url)
-            post_to_facebook(card_path, caption, img_url)
+            ig_ok = post_to_instagram(card_path, caption, img_url)
+            fb_ok = post_to_facebook(card_path, caption, img_url)
+
+        if not tweet_url and not ig_ok and not fb_ok:
+            # Nothing went out anywhere — do NOT mark posted, or this result
+            # is lost forever. A later run retries it.
+            print("  All platforms failed — not marking posted, will retry next run")
+            continue
 
         mark_posted(fid, posted, {
             "winner":  result["winner"],
