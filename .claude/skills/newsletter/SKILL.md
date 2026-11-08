@@ -186,7 +186,7 @@ When the user says go:
 
 ```bash
 PYTHONUTF8=1 python approve_week.py            # flips approved:true in current_week.json
-PYTHONUTF8=1 python post_twitter_thread.py     # posts the thread
+PYTHONUTF8=1 python post_twitter_thread.py --from-file .tmp/thread_<issue>.txt  # posts the approved thread
 PYTHONUTF8=1 python post_instagram_weekly.py --card preview   # Monday's IG + FB post
 ```
 
