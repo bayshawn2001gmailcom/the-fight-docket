@@ -637,5 +637,23 @@
     "tweet": "https://x.com/thefightdocket/status/2109216902937473484",
     "card": "/home/runner/work/the-fight-docket/the-fight-docket/instagram_content/live_result_20261011_Schofield-vs-Bahdi-2026-10-10.png",
     "posted_at": "2026-10-11"
+  },
+  "aliyev-vs-camkiran--murad-aliyev-vs-umut-camkran": {
+    "winner": "Murad Aliyev",
+    "loser": "Umut Camkiran",
+    "method": "Decision (Unanimous)",
+    "event": "Murad Aliyev vs. Umut \u00c7amk\u0131ran",
+    "tweet": "https://x.com/thefightdocket/status/2119321184755962109",
+    "card": "",
+    "posted_at": "2026-11-08"
+  },
+  "buatsi-vs-hutchinson--joshua-buatsi-vs-willy-hutchinson-2": {
+    "winner": "Willy Hutchinson",
+    "loser": "Joshua Buatsi",
+    "method": "Decision (Unanimous)",
+    "event": "Joshua Buatsi vs. Willy Hutchinson 2",
+    "tweet": "https://x.com/thefightdocket/status/2119321198119006554",
+    "card": "",
+    "posted_at": "2026-11-08"
   }
 }

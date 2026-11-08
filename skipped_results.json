@@ -1,0 +1,34 @@
+[
+  {
+    "fight": "Murad Aliyev vs Umut Camkiran",
+    "event": "Murad Aliyev vs. Umut \u00c7amk\u0131ran",
+    "missing": [
+      "winner photo"
+    ],
+    "logged_at": "2026-11-08"
+  },
+  {
+    "fight": "Willy Hutchinson vs Joshua Buatsi",
+    "event": "Joshua Buatsi vs. Willy Hutchinson 2",
+    "missing": [
+      "winner photo"
+    ],
+    "logged_at": "2026-11-08"
+  },
+  {
+    "fight": "Cheavon Clarke vs Chris Billam-Smith",
+    "event": "Chris Billam-Smith vs. Cheavon Clarke",
+    "missing": [
+      "time"
+    ],
+    "logged_at": "2026-11-08"
+  },
+  {
+    "fight": "Denzel Bentley vs Shane Mosley Jnr",
+    "event": "",
+    "missing": [
+      "event"
+    ],
+    "logged_at": "2026-11-08"
+  }
+]
