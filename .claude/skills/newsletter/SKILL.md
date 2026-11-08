@@ -88,7 +88,12 @@ edge is money and law. Monday morning ET, about a 5-minute read. Sections in ord
 2. **Main Story** — ONE numbers-led essay, 400-600 words, on a fight-business or
    legal development. Numbers in the first paragraph (purse, rights fee, revenue,
    damages, valuation). Close with **Why it matters** and **What to watch**. Its
-   headline is the Beehiiv title and subject line.
+   headline is the Beehiiv title and subject line. **The Take:** every main story
+   must land one clear position, not just numbers. One sentence that says what
+   the writer believes the numbers mean and who is wrong or exposed because of
+   them. A reader should be able to argue with it. If the draft has no sentence
+   a reader could disagree with, it has no take. Rewrite the close until it
+   does. The take lives in Why it matters, not in a separate section.
 3. **Business Intel** — 4-6 briefs, 2-3 sentences each (rights deals, sponsors,
    promoter and manager moves, gate/PPV numbers, fighter pay). Each ends with a
    number or a link.
