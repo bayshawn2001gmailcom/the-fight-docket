@@ -295,7 +295,7 @@ def main():
         for i, t in enumerate(tweets, 1):
             print(f"\n--- T{i} ({len(t)} chars) ---\n{t}")
         print(f"\n  Staged for review: {staged}")
-        print("  Post it with: python post_twitter_thread.py")
+        print(f"  Post it with: python post_twitter_thread.py --from-file {staged}")
         return True
 
     print("\n[3/3] Posting thread to @thefightdocket...")
