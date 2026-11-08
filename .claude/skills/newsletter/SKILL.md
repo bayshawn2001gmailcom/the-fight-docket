@@ -12,6 +12,14 @@ model to remember.**
 
 Target: about 20 minutes, one pass, nothing shipped that has not been verified.
 
+**Read the repo's memory first.** Before researching, read
+`.claude/skills/newsletter/FACTS.md` (standing verified facts: rights deals,
+source gotchas, fight timing, photo coverage, platform facts) and
+`.claude/skills/newsletter/LESSONS.md` (every past failure and the Active
+checks at the top). The facts file is what the writer knows; the lessons file
+is what the writer must not repeat. A fact that is contradicted gets dropped,
+not argued with.
+
 ---
 
 ## Step 0 — Fix the date and the windows
@@ -171,6 +179,11 @@ Images only load after they are pushed to GitHub, so run this after the push.
 the Main Story event date is within 7 days of the issue date. If it is older,
 the issue fails verification. Rewrite the lead around a timely event.
 
+**Repeat check (part of verification).** Run the Active checks at the top of
+LESSONS.md against the finished draft, one by one. Every item there has
+shipped as an error before. A draft that repeats a known past mistake fails
+verification the same way a stale lead does.
+
 ---
 
 ## Step 5 — Deliver to the repo for Muse
@@ -228,6 +241,31 @@ rejects a PNG. Nothing posts to X, Instagram or Facebook without an explicit go.
 
 The user's workflow is repo-first: commit and push to `main` so Muse can pick it up.
 Nothing is sent or published from here.
+
+---
+
+## Step 8 — Log what you learned
+
+The issue is not done until the learning is written down. After every issue
+ships, or after any run that went wrong:
+
+1. **Append to LESSONS.md.** One entry per lesson: date, issue, what happened,
+   what changed. If nothing went wrong, say so in one line with the date;
+   a blank week is still a record.
+2. **Correct FACTS.md when a fact changes.** If a standing fact turned out
+   wrong, fix it there with the date and the source, and log the correction
+   in LESSONS.md.
+3. **Promote repeats into the skill.** When a lesson shows up a second time,
+   it stops being a log entry and becomes a rule in this file (fact-check
+   list, staleness rule, unacceptable list). Update the log entry to point at
+   the rule.
+4. **Drop what is contradicted.** If a later session proves a lesson or a
+   fact wrong, mark it SUPERSEDED with the date and the reason. Do not
+   delete it; the history is the point.
+
+The skill file is the rules. FACTS.md is what the writer knows. LESSONS.md is
+what the writer must not repeat. All three are read at the start of the next
+issue.
 
 ---
 
