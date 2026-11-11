@@ -49,6 +49,10 @@ an error before.
       container (`overflow-x:auto`, table `min-width:600px` / `520px`).
       Render at 375px wide and confirm the tables scroll sideways instead
       of crushing into mid-word breaks.
+- [ ] Every social card passes the stop-the-scroll test: the first line
+      would stop a scroller, and the card carries a take, a number, or a
+      sharp quote — not just a result or a date. Rewrite the first line
+      before it goes out.
 
 ---
 

@@ -230,6 +230,14 @@ PYTHONUTF8=1 python ig_content_generator.py            # 4 cards + captions, mar
 Show the thread text and the four cards. **Look at the cards yourself first** —
 the templates have shipped clipped watermarks and stranded text before.
 
+**Engagement check (part of staging, not optional).** Before showing the cards
+to the user, judge each one as a scroller would. First line: would it stop
+someone mid-scroll, or is it just a result or a date? Every card needs one
+reason to care — a take, a number, or a sharp quote. A card that only reports
+a score or a date is boring and gets scrolled past; rewrite its first line
+before it goes out. The user asked for this Nov 11: do your best to release
+the best content. No card ships on correctness alone.
+
 When the user says go:
 
 ```bash
@@ -292,4 +300,5 @@ issue.
 An issue with no images. Body text that renders invisible in Beehiiv. `<div>`
 wrappers instead of inline styles on each `<p>`. Stale or hallucinated fight
 previews. A Main Story about a fight more than 7 days old. inject.js pasted as visible text in the newsletter body. Em-dashes.
-Multi-MB images that silently fail to load.
+Multi-MB images that silently fail to load. A social card with no hook — a
+result or a date alone, nothing that would stop a scroll.
