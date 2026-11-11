@@ -54,6 +54,14 @@ an error before.
 
 ## Log
 
+### 2026-11-10 — Tuesday IG Post workflow failed with no approved issue
+
+**Issue:** Weekly IG cards (no issue this week).
+**What happened:** The scheduled Tuesday IG Post workflow ran Nov 10 at 4:30pm EST and failed in 22 seconds; GitHub emailed Shawn a run-failed notice. The workflow runs `post_instagram_weekly.py --card result` on a fixed Tuesday schedule. The manifest `instagram_content/current_week.json` still points at the Oct 12 issue with `approved: false`, and no Nov 16 content exists yet (the issue gets written Nov 15). So the run had nothing approved to post. The exact error was not confirmed from the run logs.
+**What changed:** The scheduled Tue/Thu/Fri IG post workflows must not fire in a week with no approved issue. Before the next no-issue week, add a guard: the poster exits cleanly (success, no post, no failure email) when the manifest is stale or `approved` is false, or pause the three scheduled workflows until an issue is approved. Confirm the exact error from the run logs before the Nov 15 run.
+**Status:** Active, fix pending.
+
+
 ### 2026-11-08 — Legal Tracker table unreadable on mobile Gmail
 
 **Issue:** Nov 9 (sent Nov 5, 2026).
