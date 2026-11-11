@@ -77,6 +77,11 @@ not argued with.
 - **Gemini:** result workflows failed Oct 18–Nov 5 on 402
   RESOURCE_EXHAUSTED until credits were topped up. Watch for 402s as the
   first sign of a silent outage.
+- **Firecrawl v2 (migrated Nov 11, 2026):** all 5 crawler scripts call
+  `api.firecrawl.dev/v2/scrape`. v1 returns 410 after Dec 10, 2026. JSON
+  extraction uses `formats: [{"type": "json", "prompt": ...}]`; the old
+  top-level `jsonOptions` is gone in v2. `maxAge: 0` in
+  `post_live_result.py` still forces a fresh fetch.
 - **Mobile Gmail:** tables wider than ~360px crush on a phone. The 6-column
   Legal Tracker squeezed to ~55px per column in the Nov 9 issue and the text
   broke mid-word. Wrap tables in a horizontal-scroll div (`overflow-x:auto`,
