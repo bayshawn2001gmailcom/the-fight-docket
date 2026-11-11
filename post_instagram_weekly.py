@@ -201,10 +201,11 @@ def check_freshness(force: bool = False) -> None:
     if force:
         print(f"  WARNING: {msg}. Posting anyway (--force).")
         return
-    print(f"  Refusing to post: {msg}.")
+    print(f"  Skipping post: {msg}.")
     print("  No issue was built this week, so these cards are last week's news.")
     print("  Build the issue first, or pass --force if this is deliberate.")
-    raise SystemExit(1)
+    print("  Exiting cleanly (no post, no failure).")
+    raise SystemExit(0)
 
 
 def check_approved(force: bool = False) -> None:
@@ -221,9 +222,10 @@ def check_approved(force: bool = False) -> None:
     if force:
         print(f"  WARNING: {msg}. Posting anyway (--force).")
         return
-    print(f"  Refusing to post: {msg}.")
+    print(f"  Skipping post: {msg}.")
     print("  Review the cards, then run: python approve_week.py")
-    raise SystemExit(1)
+    print("  Exiting cleanly (no post, no failure).")
+    raise SystemExit(0)
 
 
 def check_credentials(platform: str) -> None:
