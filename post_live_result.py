@@ -147,7 +147,7 @@ def firecrawl_scrape(url: str) -> str:
     import requests
     try:
         resp = requests.post(
-            "https://api.firecrawl.dev/v1/scrape",
+            "https://api.firecrawl.dev/v2/scrape",
             # maxAge: 0 forces a fresh fetch. Firecrawl's default serves cached
             # pages up to 2 days old — stale pre-event pages made Gemini find
             # 0 results on fight nights.

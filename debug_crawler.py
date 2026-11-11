@@ -21,11 +21,10 @@ def test_url(url, prompt):
 
     try:
         resp = requests.post(
-            "https://api.firecrawl.dev/v1/scrape",
+            "https://api.firecrawl.dev/v2/scrape",
             json={
                 "url": url,
-                "formats": ["json"],
-                "jsonOptions": {"prompt": prompt},
+                "formats": [{"type": "json", "prompt": prompt}],
             },
             headers=FC_HEADERS,
             timeout=30,

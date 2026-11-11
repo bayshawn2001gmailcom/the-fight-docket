@@ -74,7 +74,7 @@ def firecrawl_scrape(url):
     """Returns content string, or None on 402 (credits exhausted)."""
     try:
         resp = requests.post(
-            "https://api.firecrawl.dev/v1/scrape",
+            "https://api.firecrawl.dev/v2/scrape",
             json={
                 "url": url,
                 "formats": ["markdown"],

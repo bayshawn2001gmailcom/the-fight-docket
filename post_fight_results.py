@@ -55,14 +55,11 @@ def crawl_ufc_results():
         # Query Firecrawl API to extract fight results
         firecrawl_payload = {
             "url": url,
-            "formats": ["json"],
-            "jsonOptions": {
-                "prompt": "Extract recent UFC fight results. For each fight, provide: winner name, loser name, winning method (KO/TKO/SUBMISSION/DECISION), round number, time of finish (or fight duration), and event name. Return as array of objects."
-            }
+            "formats": [{"type": "json", "prompt": "Extract recent UFC fight results. For each fight, provide: winner name, loser name, winning method (KO/TKO/SUBMISSION/DECISION), round number, time of finish (or fight duration), and event name. Return as array of objects."}]
         }
 
         response = requests.post(
-            "https://api.firecrawl.dev/v1/scrape",
+            "https://api.firecrawl.dev/v2/scrape",
             json=firecrawl_payload,
             headers=headers,
             timeout=30
@@ -109,15 +106,12 @@ def crawl_boxing_results():
         # Crawl BoxRec for recent results
         boxrec_payload = {
             "url": "https://www.boxrec.com/en/results",
-            "formats": ["json"],
-            "jsonOptions": {
-                "prompt": "Extract recent boxing fight results from this page. For each fight, provide: winner name, loser name, winning method (KO/TKO/DECISION/POINTS), round number, time of finish, and event name. Return as array of objects."
-            }
+            "formats": [{"type": "json", "prompt": "Extract recent boxing fight results from this page. For each fight, provide: winner name, loser name, winning method (KO/TKO/DECISION/POINTS), round number, time of finish, and event name. Return as array of objects."}]
         }
 
         try:
             response = requests.post(
-                "https://api.firecrawl.dev/v1/scrape",
+                "https://api.firecrawl.dev/v2/scrape",
                 json=boxrec_payload,
                 headers=headers,
                 timeout=30
@@ -138,15 +132,12 @@ def crawl_boxing_results():
         # Crawl ESPN for additional boxing coverage
         espn_payload = {
             "url": "https://www.espn.com/boxing/results",
-            "formats": ["json"],
-            "jsonOptions": {
-                "prompt": "Extract recent boxing fight results. For each fight: winner, loser, method (KO/TKO/DECISION), round, time, and event name. Return as array of objects."
-            }
+            "formats": [{"type": "json", "prompt": "Extract recent boxing fight results. For each fight: winner, loser, method (KO/TKO/DECISION), round, time, and event name. Return as array of objects."}]
         }
 
         try:
             response = requests.post(
-                "https://api.firecrawl.dev/v1/scrape",
+                "https://api.firecrawl.dev/v2/scrape",
                 json=espn_payload,
                 headers=headers,
                 timeout=30

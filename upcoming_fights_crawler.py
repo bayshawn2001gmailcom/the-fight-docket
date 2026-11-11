@@ -25,11 +25,10 @@ def firecrawl_extract(url, prompt):
     """Structured extraction via Firecrawl."""
     try:
         resp = requests.post(
-            "https://api.firecrawl.dev/v1/scrape",
+            "https://api.firecrawl.dev/v2/scrape",
             json={
                 "url": url,
-                "formats": ["json"],
-                "jsonOptions": {"prompt": prompt},
+                "formats": [{"type": "json", "prompt": prompt}],
                 "waitFor": 3000,
             },
             headers=FC_HEADERS,
