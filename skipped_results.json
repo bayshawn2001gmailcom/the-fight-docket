@@ -71,5 +71,13 @@
       "event"
     ],
     "logged_at": "2026-11-08"
+  },
+  {
+    "fight": "Jose Nunez vs Bryan Flores",
+    "event": "ProBox TV",
+    "missing": [
+      "winner photo"
+    ],
+    "logged_at": "2026-11-14"
   }
 ]
