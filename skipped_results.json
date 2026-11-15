@@ -87,5 +87,23 @@
       "winner photo"
     ],
     "logged_at": "2026-11-15"
+  },
+  {
+    "fight": "Darius Fulghum vs Diego Pacheco",
+    "event": "",
+    "missing": [
+      "method",
+      "event"
+    ],
+    "logged_at": "2026-11-15"
+  },
+  {
+    "fight": "Anthony Olascuaga vs Yuberjen Martinez",
+    "event": "",
+    "missing": [
+      "method",
+      "event"
+    ],
+    "logged_at": "2026-11-15"
   }
 ]
