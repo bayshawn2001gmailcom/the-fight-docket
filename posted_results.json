@@ -664,5 +664,14 @@
     "tweet": "https://x.com/thefightdocket/status/2121505844307095775",
     "card": "",
     "posted_at": "2026-11-14"
+  },
+  "adames-vs-warburton--carlos-adames-vs-gerome-warburton": {
+    "winner": "Carlos Adames",
+    "loser": "Gerome Warburton",
+    "method": "Decision (Unanimous)",
+    "event": "Carlos Adames vs. Gerome Warburton",
+    "tweet": "https://x.com/thefightdocket/status/2121865874365657337",
+    "card": "",
+    "posted_at": "2026-11-15"
   }
 }
