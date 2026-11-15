@@ -67,6 +67,13 @@ an error before.
 **Status:** Fixed Nov 11.
 
 
+### 2026-11-15 — MCP connector cannot push binary files; git push from the checkout has no credentials
+
+**Issue:** Nov 16.
+**What happened:** The 6 new section images were generated and committed locally (9b65307) but could not be pushed to GitHub. The MCP `push_files` and `create_or_update_file` tools base64-encode the content string, so a base64 JPEG gets double-encoded and lands as ASCII text (verified with throwaway test files, since deleted). The `github push-files` CLI snapshot path rejects non-UTF-8 files outright. Separately, `git push` from the local checkout fails: no credential helper or token is configured (shallow clone, remote is plain https). The 3 text files (both HTML versions, prompts/weekly_prompts.json) did push via the CLI snapshot (commit 62fc15fe). The 6 image paths on remote still serve the Nov 8 versions until a credentialed git push lands 9b65307.
+**What changed:** Nothing yet. To ship new images, push from a checkout with working git credentials, or get binary support in the connector. Do not try base64 through the MCP tools again; it corrupts the file.
+**Status:** Active.
+
 ### 2026-11-08 — Legal Tracker table unreadable on mobile Gmail
 
 **Issue:** Nov 9 (sent Nov 5, 2026).
